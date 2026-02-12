@@ -1,381 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programs | Magic Math Master</title>
-
-<style>
-html, body { margin:0; padding:0; overflow-x:hidden; }
-* { box-sizing:border-box; }
-img { max-width:100%; height:auto; display:block; }
-
-body{
-  font-family: Arial, sans-serif;
-  font-size:18px;
-  line-height:1.75;
-  color:#1f2328;
-  background:
-    radial-gradient(900px 420px at 15% 10%, rgba(216,157,26,.18), transparent 55%),
-    radial-gradient(900px 420px at 85% 20%, rgba(158,50,1,.10), transparent 60%),
-    radial-gradient(1000px 600px at 55% 95%, rgba(33,102,89,.10), transparent 55%),
-    #FFF7E8;
-}
-
-:root{
-  --blue:#0d47a1;
-  --blue2:#1565c0;
-  --amber:#f39c12;
-  --paper:#fff6dd;
-  --paperBorder:#ffd88a;
-  --text:#1f2328;
-  --muted:#2f3a45;
-  --enquireGreen:#2F7D32;
-  --registerGold:#F8A825;
-  --detailsPurple:#7E57C2;
-}
-
-.programs-page{
-  width:100%;
-  margin:0 auto;
-  padding: 10px 12px 34px;
-}
-
-.lang-switch{
-  display:flex;
-  justify-content:flex-end;
-  margin:10px 0 15px;
-}
-
-.lang-btn{
-  border:2px solid var(--blue2);
-  background:#fff;
-  color:var(--blue2);
-  padding:8px 16px;
-  border-radius:18px;
-  font-weight:900;
-  cursor:pointer;
-  margin-left:8px;
-}
-
-.lang-btn:hover{
-  background:var(--blue2);
-  color:#fff;
-}
-
-.breadcrumb{
-  font-size:16px;
-  margin:4px 0 10px;
-  color: var(--muted);
-}
-
-.breadcrumb a{
-  color:var(--blue2);
-  font-weight:800;
-  text-decoration:underline;
-}
-
-.program-hero{
-  background:#fff;
-  border:2px solid rgba(13,71,161,0.12);
-  border-radius:20px;
-  box-shadow:0 8px 18px rgba(0,0,0,0.08);
-  padding: 18px;
-  text-align:center;
-}
-
-.program-hero h1{
-  color:var(--blue);
-  font-size:48px;
-  font-weight:900;
-  margin:0 0 10px;
-}
-
-.program-hero p{
-  font-size:20px;
-  font-weight:700;
-}
-
-.program-header{
-  text-align:center;
-  margin:16px 0;
-  background:#fff;
-  border-radius:18px;
-  padding:16px;
-}
-
-.program-header h2{
-  font-size:30px;
-  color:var(--blue2);
-  font-weight:900;
-}
-
-.program-header p{
-  font-size:18px;
-  font-weight:700;
-}
-
-.program-grid{
-  display:grid;
-  gap:18px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.program-card{
-  background: var(--paper);
-  border: 2px solid var(--paperBorder);
-  border-radius: 18px;
-  padding: 18px;
-  display:flex;
-  flex-direction:column;
-  box-shadow: 0 2px 4px rgba(255,200,80,0.18);
-}
-
-.program-card h3{
-  font-size: 22px;
-  color: var(--amber);
-  font-weight:900;
-}
-
-.program-card ul{
-  padding-left: 20px;
-  font-size:18px;
-}
-
-.kv{
-  margin:6px 0;
-  font-size:18px;
-}
-
-.btn-row{
-  margin-top:auto;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:12px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:900;
-  font-size:16px;
-}
-
-.btn-enq{ background:var(--enquireGreen); color:#fff; }
-.btn-reg{ background:var(--registerGold); color:#000; }
-.btn-det{ background:var(--detailsPurple); color:#fff; }
-
-.mini-cta{
-  text-align:center;
-  margin-top:22px;
-  padding:18px;
-  background:#e8f3ff;
-  border-radius:18px;
-}
-
-.mini-cta p{
-  font-size:18px;
-  font-weight:900;
-}
-
-.mini-cta a{
-  display:inline-block;
-  background:var(--enquireGreen);
-  color:#fff;
-  padding:12px 18px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:900;
-}
-
-.vi{ display:none; }
-</style>
+<meta name="description" content="Maths tutoring programs for Prep–Year 12 in Australia: primary, secondary, exam preparation, and extension. Choose the right pathway.">
+<link rel="canonical" href="https://www.magicmathmaster.com.au/programs.html">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="programs-page">
-
-<div class="lang-switch">
-<button class="lang-btn" onclick="switchLang('en')">English</button>
-<button class="lang-btn" onclick="switchLang('vi')">Tiếng Việt</button>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">M³</div>
+      <div class="brand-title"><b>Magic Math Master</b><span>Premium tutoring • Australia</span></div>
+    </a>
+    <div class="nav">
+      
+        <a data-nav href="index.html">Home</a>
+      <a data-nav href="about.html">About</a>
+      <a data-nav href="programs.html">Programs</a>
+      <a data-nav href="pricing.html">Fees</a>
+      <a data-nav href="contact.html" class="btn btn-outline">Enquire</a>
+      <a class="btn btn-outline" href="vi/index.html">Tiếng Việt</a>
+        <a class="btn btn-primary" href="contact.html">Enquire</a>
+    </div>
+  </div>
 </div>
 
-<!-- HERO -->
-<section class="program-hero">
+<main class="container">
 
-<h1 class="en">Explore Maths Programs</h1>
-<h1 class="vi">Khám phá các chương trình Toán</h1>
+  <section class="section">
+    <h1 class="section-title">Programs</h1>
+    <p class="section-sub">
+      Select a pathway based on your child’s goals: catch up, keep up, move ahead, or build exam confidence.
+      All programs are structured, calm, and aligned with Australian school learning.
+    </p>
+  </section>
 
-<p class="en">From Prep to Year 12, our programs help students build confidence, strengthen foundations, and enjoy learning maths.</p>
-<p class="vi">Từ Prep đến Lớp 12, các chương trình giúp học sinh tự tin hơn, vững nền tảng và yêu thích việc học Toán.</p>
+  <section class="section">
+    <div class="card">
+      <h2 class="section-title" style="margin-top:0;">Primary Mathematics (Prep–Year 6)</h2>
+      <p class="section-sub" style="margin-bottom:10px;">
+        Build strong foundations and confidence through clear explanation and meaningful practice.
+      </p>
+      <ul style="margin:0; padding-left:18px; color:var(--muted); font-weight:650;">
+        <li>Number sense, arithmetic fluency, mental strategies</li>
+        <li>Fractions/decimals/percentages with visual understanding</li>
+        <li>Word-problem strategies (read–plan–solve–check)</li>
+        <li>NAPLAN preparation support (where relevant)</li>
+      </ul>
+    </div>
+  </section>
 
-</section>
+  <section class="section">
+    <div class="card">
+      <h2 class="section-title" style="margin-top:0;">Secondary Mathematics (Years 7–10)</h2>
+      <p class="section-sub" style="margin-bottom:10px;">
+        Strengthen algebraic thinking and problem-solving for school assessments and confidence in class.
+      </p>
+      <ul style="margin:0; padding-left:18px; color:var(--muted); font-weight:650;">
+        <li>Algebra, equations, indices, linear relationships</li>
+        <li>Geometry, measurement, trigonometry foundations</li>
+        <li>Reasoning and multi-step problem solving</li>
+        <li>Assessment preparation + revision planning</li>
+      </ul>
+    </div>
+  </section>
 
-<!-- HEADER -->
-<div class="program-header">
-<h2 class="en">🎯 Which Program Is Right for My Child?</h2>
-<h2 class="vi">🎯 Chương trình nào phù hợp với con tôi?</h2>
+  <section class="section">
+    <div class="card">
+      <h2 class="section-title" style="margin-top:0;">Exam Preparation & Extension</h2>
+      <p class="section-sub" style="margin-bottom:10px;">
+        For students aiming higher results or needing a clear plan for tests, NAPLAN, and school exams.
+      </p>
+      <ul style="margin:0; padding-left:18px; color:var(--muted); font-weight:650;">
+        <li>Exam strategy: time management, checking methods, reducing careless mistakes</li>
+        <li>Targeted practice: focus on high-impact weaknesses</li>
+        <li>Extension challenges for advanced learners</li>
+        <li>Confidence building and growth mindset support</li>
+      </ul>
+    </div>
+  </section>
 
-<p class="en">Every child learns differently. Choose the program that best supports your child’s needs, confidence, and goals.</p>
-<p class="vi">Mỗi trẻ học theo cách khác nhau. Hãy chọn chương trình phù hợp nhất với nhu cầu, sự tự tin và mục tiêu của học sinh.</p>
-</div>
-<!-- PROGRAM GRID -->
-<div class="program-grid">
+  <section class="section">
+    <div class="card" style="padding:22px;">
+      <h2 class="section-title" style="margin:0 0 10px;">Not sure which program fits?</h2>
+      <p class="section-sub" style="margin:0 0 14px;">
+        Send your child’s year level and goals — we’ll recommend the best starting point.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="contact.html">Make an enquiry</a>
+        <a class="btn btn-outline" href="pricing.html">View fees</a>
+      </div>
+    </div>
+  </section>
 
-<!-- PROGRAM 1 -->
-<div class="program-card">
+</main>
 
-<h3 class="en">🌱 Little Math Explorers (Prep–Year 2)</h3>
-<h3 class="vi">🌱 Nhà Thám Hiểm Toán Nhí (Prep–Lớp 2)</h3>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 Magic Math Master • Australia</div>
+    <div><a href="contact.html">Contact</a> • <a href="about.html">About</a> • <a href="pricing.html">Fees</a></div>
+  </div>
+</footer>
 
-<ul class="en">
-<li>Build strong number foundations</li>
-<li>Develop early problem-solving skills</li>
-<li>Fun, interactive, confidence-building lessons</li>
-<li>Small group support</li>
-</ul>
-
-<ul class="vi">
-<li>Xây dựng nền tảng số học vững chắc</li>
-<li>Phát triển tư duy giải quyết vấn đề sớm</li>
-<li>Học vui, tương tác, tăng sự tự tin</li>
-<li>Lớp học nhóm nhỏ</li>
-</ul>
-
-<div class="kv en"><strong>Format:</strong> Small Group / 1:1</div>
-<div class="kv vi"><strong>Hình thức:</strong> Nhóm nhỏ / 1 kèm 1</div>
-
-<div class="btn-row">
-<a href="#" class="btn btn-enq">Enquire</a>
-<a href="#" class="btn btn-reg">Register</a>
-<a href="#" class="btn btn-det">Details</a>
-</div>
-
-</div>
-
-<!-- PROGRAM 2 -->
-<div class="program-card">
-
-<h3 class="en">🚀 Confident Problem Solvers (Year 3–6)</h3>
-<h3 class="vi">🚀 Người Giải Toán Tự Tin (Lớp 3–6)</h3>
-
-<ul class="en">
-<li>Strengthen core maths skills</li>
-<li>Master multi-step word problems</li>
-<li>Build logical thinking</li>
-<li>Prepare for selective & scholarship exams</li>
-</ul>
-
-<ul class="vi">
-<li>Củng cố kỹ năng Toán cốt lõi</li>
-<li>Làm chủ bài toán nhiều bước</li>
-<li>Phát triển tư duy logic</li>
-<li>Chuẩn bị cho kỳ thi chọn lọc & học bổng</li>
-</ul>
-
-<div class="kv en"><strong>Format:</strong> Small Group / 1:1</div>
-<div class="kv vi"><strong>Hình thức:</strong> Nhóm nhỏ / 1 kèm 1</div>
-
-<div class="btn-row">
-<a href="#" class="btn btn-enq">Enquire</a>
-<a href="#" class="btn btn-reg">Register</a>
-<a href="#" class="btn btn-det">Details</a>
-</div>
-
-</div>
-
-<!-- PROGRAM 3 -->
-<div class="program-card">
-
-<h3 class="en">📈 Advanced Thinkers (Year 7–10)</h3>
-<h3 class="vi">📈 Tư Duy Nâng Cao (Lớp 7–10)</h3>
-
-<ul class="en">
-<li>Deep understanding of algebra & geometry</li>
-<li>Exam-focused strategies</li>
-<li>Build independent learning habits</li>
-<li>Extension & enrichment options</li>
-</ul>
-
-<ul class="vi">
-<li>Hiểu sâu đại số & hình học</li>
-<li>Chiến lược làm bài thi hiệu quả</li>
-<li>Rèn luyện tính tự học</li>
-<li>Mở rộng & nâng cao kiến thức</li>
-</ul>
-
-<div class="kv en"><strong>Format:</strong> Small Group / 1:1</div>
-<div class="kv vi"><strong>Hình thức:</strong> Nhóm nhỏ / 1 kèm 1</div>
-
-<div class="btn-row">
-<a href="#" class="btn btn-enq">Enquire</a>
-<a href="#" class="btn btn-reg">Register</a>
-<a href="#" class="btn btn-det">Details</a>
-</div>
-
-</div>
-
-<!-- PROGRAM 4 -->
-<div class="program-card">
-
-<h3 class="en">🎓 Senior Success (Year 11–12)</h3>
-<h3 class="vi">🎓 Thành Công Trung Học (Lớp 11–12)</h3>
-
-<ul class="en">
-<li>Specialist Maths / Methods support</li>
-<li>Exam mastery & time management</li>
-<li>Target ATAR improvement</li>
-<li>Personalised 1:1 mentoring</li>
-</ul>
-
-<ul class="vi">
-<li>Hỗ trợ Specialist Maths / Methods</li>
-<li>Làm chủ kỳ thi & quản lý thời gian</li>
-<li>Nâng cao mục tiêu ATAR</li>
-<li>Kèm riêng cá nhân hoá</li>
-</ul>
-
-<div class="kv en"><strong>Format:</strong> 1:1 Preferred</div>
-<div class="kv vi"><strong>Hình thức:</strong> Ưu tiên 1 kèm 1</div>
-
-<div class="btn-row">
-<a href="#" class="btn btn-enq">Enquire</a>
-<a href="#" class="btn btn-reg">Register</a>
-<a href="#" class="btn btn-det">Details</a>
-</div>
-
-</div>
-
-</div>
-
-<!-- MINI CTA -->
-<div class="mini-cta">
-
-<p class="en">✨ Not sure which program is right? Let’s talk.</p>
-<p class="vi">✨ Chưa chắc chương trình nào phù hợp? Hãy liên hệ với chúng tôi.</p>
-
-<a href="#">Book a Free Consultation</a>
-
-</div>
-
-</div>
-
-<script>
-function switchLang(lang){
-  const en = document.querySelectorAll('.en');
-  const vi = document.querySelectorAll('.vi');
-
-  if(lang === 'vi'){
-    en.forEach(el => el.style.display='none');
-    vi.forEach(el => el.style.display='block');
-  } else {
-    vi.forEach(el => el.style.display='none');
-    en.forEach(el => el.style.display='block');
-  }
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
