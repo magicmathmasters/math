@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Magic Math Master | Math Tutor in Australia</title>
+<title>Math Tutor in Australia | Magic Math Master</title>
 
 <meta name="description" content="Magic Math Master provides professional mathematics tutoring for primary and secondary students in Australia. Improve confidence and exam results.">
 
@@ -18,120 +18,69 @@
 <meta property="og:url" content="https://www.magicmathmaster.com.au/">
 
 <style>
-
-/* ================= GLOBAL ================= */
-
-html, body { margin:0; padding:0; overflow-x:hidden; }
-* { box-sizing:border-box; }
-img { max-width:100%; height:auto; display:block; }
-
-body{
-  font-family:Arial,sans-serif;
-  font-size:18px;
-  line-height:1.7;
-  color:#1f2328;
-  background:
-    radial-gradient(900px 420px at 15% 10%, rgba(216,157,26,.18), transparent 55%),
-    radial-gradient(900px 420px at 85% 20%, rgba(158,50,1,.10), transparent 60%),
-    radial-gradient(1000px 600px at 55% 95%, rgba(33,102,89,.10), transparent 55%),
-    #FFF7E8;
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#fefcf7;
+    color:#333;
 }
 
-/* ================= HEADER ================= */
-
-header{
-  background:white;
-  padding:14px 20px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
-  position:sticky;
-  top:0;
-  z-index:1000;
+header {
+    background:#1e88e5;
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
-header h1{
-  margin:0;
-  font-size:22px;
-  color:#0d47a1;
+nav {
+    margin-top:10px;
 }
 
-nav{
-  margin-top:6px;
+nav a {
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
 }
 
-nav a{
-  margin-right:18px;
-  text-decoration:none;
-  font-weight:700;
-  color:#1565c0;
+nav a:hover {
+    text-decoration:underline;
 }
 
-nav a:hover{
-  text-decoration:underline;
+.lang-switch {
+    margin-top:10px;
 }
 
-/* ================= PAGE CONTAINER ================= */
-
-.mmm-page{
-  max-width:1200px;
-  margin:auto;
-  padding:20px 14px 40px;
+.lang-btn {
+    background:white;
+    color:#1e88e5;
+    border:none;
+    padding:6px 12px;
+    margin:5px;
+    cursor:pointer;
+    font-weight:bold;
+    border-radius:5px;
 }
 
-/* ================= HERO ================= */
-
-.mmm-hero{
-  background:white;
-  border-radius:20px;
-  padding:28px 20px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.08);
-  text-align:center;
+section {
+    padding:40px 20px;
+    max-width:1000px;
+    margin:auto;
 }
 
-.mmm-title{
-  font-size:48px;
-  margin:0 0 10px;
-  color:#0d47a1;
-  font-weight:900;
+h2 {
+    color:#1e88e5;
 }
 
-.mmm-tagline{
-  font-size:22px;
-  font-weight:800;
-  margin-bottom:16px;
+footer {
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:15px;
 }
 
-.mmm-desc{
-  max-width:900px;
-  margin:0 auto 18px;
-}
-
-.mmm-buttons a{
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:999px;
-  font-weight:900;
-  text-decoration:none;
-  margin:6px;
-}
-
-.btn-enquire{ background:#2e7d32; color:white; }
-.btn-register{ background:#f9a825; color:black; }
-
-/* ================= FOOTER ================= */
-
-footer{
-  text-align:center;
-  padding:20px;
-  background:white;
-  margin-top:40px;
-  font-size:14px;
-}
-
-@media (max-width:768px){
-  .mmm-title{ font-size:32px; }
-  .mmm-tagline{ font-size:18px; }
-  body{ font-size:16px; }
-}
+/* Hide Vietnamese by default */
+.vi { display:none; }
 
 </style>
 </head>
@@ -140,6 +89,7 @@ footer{
 
 <header>
     <h1>Magic Math Master</h1>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
@@ -147,38 +97,119 @@ footer{
         <a href="contact.html">Contact</a>
         <a href="philosophy.html">Philosophies</a>
         <a href="program.html">Programs</a>
-        <a href="pricing.html">Fees</a>
+        <a href="pricing.html">Philosophies</a>
     </nav>
+
+    <div class="lang-switch">
+        <button class="lang-btn" onclick="switchLang('en')">English</button>
+        <button class="lang-btn" onclick="switchLang('vi')">Tiếng Việt</button>
+    </div>
 </header>
 
-<div class="mmm-page">
-
-  <section class="mmm-hero">
-    <h2 class="mmm-title">MAGIC MATH MASTER</h2>
-    <div class="mmm-tagline">Nơi việc học Toán trở nên thú vị và “diệu kỳ”</div>
-
-    <p class="mmm-desc">
-      Dạy kèm Toán từ <strong>Prep đến Lớp 12</strong> — nhẹ nhàng, có cấu trúc,
-      giúp học sinh tự tin từng bước.
-    </p>
-
-    <div class="mmm-buttons">
-      <a class="btn-enquire"
-         href="https://docs.google.com/forms/d/1PZfUSLfSSqAUjk_bu6fo2mMDrdWqV4GFY7EdIniIXtM/viewform"
-         target="_blank">Gửi yêu cầu</a>
-
-      <a class="btn-register"
-         href="https://docs.google.com/forms/d/1imWsNhQJB0S8T_xGdNBnJmv4IBCWOYF-pb6XJsq6OTI/viewform"
-         target="_blank">Đăng ký</a>
+<!-- HOME -->
+<section id="home">
+    <div class="en">
+        <h2>Helping Students Excel in Mathematics</h2>
+        <p>Professional tutoring for primary and secondary students in Australia.</p>
+        <p>We build strong foundations, confidence, and problem-solving skills.</p>
     </div>
-  </section>
 
-</div>
+    <div class="vi">
+        <h2>Giúp Học Sinh Xuất Sắc Trong Toán Học</h2>
+        <p>Dạy kèm toán chuyên nghiệp cho học sinh tiểu học và trung học tại Úc.</p>
+        <p>Chúng tôi xây dựng nền tảng vững chắc, sự tự tin và kỹ năng giải quyết vấn đề.</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="en">
+        <h2>About Us</h2>
+        <p>Magic Math Master was founded by Dr. Tuyet Vu.</p>
+        <p>We are passionate about making mathematics meaningful, practical, and enjoyable.</p>
+    </div>
+
+    <div class="vi">
+        <h2>Về Chúng Tôi</h2>
+        <p>Magic Math Master được thành lập bởi Tiến sĩ Tuyet Vu.</p>
+        <p>Chúng tôi đam mê giúp toán học trở nên ý nghĩa, thực tế và thú vị.</p>
+    </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+    <div class="en">
+        <h2>Our Philosophy</h2>
+        <p>Mathematics is not just about formulas — it is about thinking.</p>
+        <ul>
+            <li>Build deep understanding</li>
+            <li>Connect maths to real life</li>
+            <li>Encourage logical reasoning</li>
+            <li>Develop independent learners</li>
+        </ul>
+    </div>
+
+    <div class="vi">
+        <h2>Triết Lý Giảng Dạy</h2>
+        <p>Toán học không chỉ là công thức — mà là tư duy.</p>
+        <ul>
+            <li>Xây dựng sự hiểu biết sâu sắc</li>
+            <li>Kết nối toán học với cuộc sống</li>
+            <li>Khuyến khích tư duy logic</li>
+            <li>Phát triển khả năng tự học</li>
+        </ul>
+    </div>
+</section>
+
+<!-- POLICIES -->
+<section id="policy">
+    <div class="en">
+        <h2>Policies</h2>
+        <p>✔ Lesson bookings must be confirmed in advance.</p>
+        <p>✔ 24-hour notice required for cancellations.</p>
+        <p>✔ Fees are payable before each lesson.</p>
+    </div>
+
+    <div class="vi">
+        <h2>Chính Sách</h2>
+        <p>✔ Cần xác nhận lịch học trước.</p>
+        <p>✔ Thông báo hủy trước 24 giờ.</p>
+        <p>✔ Thanh toán trước mỗi buổi học.</p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="en">
+        <h2>Contact Us</h2>
+        <p>Email: info@magicmathmaster.com.au</p>
+        <p>We offer both online and in-person tutoring.</p>
+    </div>
+
+    <div class="vi">
+        <h2>Liên Hệ</h2>
+        <p>Email: info@magicmathmaster.com.au</p>
+        <p>Chúng tôi cung cấp dạy kèm trực tuyến và trực tiếp.</p>
+    </div>
+</section>
 
 <footer>
-  © 2026 Magic Math Master
+    <p>© 2026 Magic Math Master</p>
 </footer>
 
-</body>
+<script>
+function switchLang(lang) {
+    if (lang === 'en') {
+        document.querySelectorAll('.en').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.vi').forEach(el => el.style.display = 'none');
+        document.documentElement.lang = "en";
+    } else {
+        document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.vi').forEach(el => el.style.display = 'block');
+        document.documentElement.lang = "vi";
+    }
+}
+</script>
 
+</body>
 </html>
