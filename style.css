@@ -653,3 +653,59 @@ textarea{ min-height: 120px; resize: vertical; }
   border-top: 1px solid rgba(0,0,0,.10);
 }
 .signature strong{ display:block; margin-top: 6px; }
+/* ===== MMM Screenshot-style Topbar + Nav pills ===== */
+.topbar-pill{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.brand-logo{
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(255,255,255,.92);
+  border: 2px solid rgba(15,23,42,.14);
+  padding: 6px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap_toggle: wrap; /* harmless if ignored */
+  flex-wrap: wrap;
+}
+
+.nav a{
+  text-decoration:none;
+  font-weight:1000;
+  font-size: 13px;
+  color:#0f172a;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.92);
+  border: 2px solid rgba(15,23,42,.14);
+}
+
+.nav a:hover{
+  background: rgba(11,94,215,.08);
+  border-color: rgba(11,94,215,.18);
+}
+
+/* ✅ Current page highlight */
+.nav a[aria-current="page"]{
+  background: rgba(11,94,215,.18);
+  border-color: rgba(11,94,215,.35);
+  box-shadow: 0 10px 18px rgba(11,94,215,.12);
+}
+
+/* Make language button look consistent */
+.nav .nav-lang{
+  font-weight: 1000;
+}
