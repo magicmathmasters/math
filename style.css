@@ -368,3 +368,31 @@ textarea{ min-height: 120px; resize: vertical; }
 .footer a:hover{ text-decoration: underline; }
 
 .sep{ height: 1px; background: var(--line); margin: 18px 0; }
+/* ===== Remove the square frame around the HERO logo ===== */
+.hero-snap-logoBox{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Optional: ensure the hero logo image itself has no padding/border */
+.hero-snap-logoBox img{
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;  /* use 18px if you want rounded logo */
+}
+/* ===== Remove square box around top-left logo ===== */
+.brand-logo{
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+
+  /* choose ONE look: */
+  border-radius: 999px !important;  /* circle logo */
+  /* border-radius: 0 !important; */ /* or no rounding */
+}
