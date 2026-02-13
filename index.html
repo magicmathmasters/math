@@ -1,603 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Magic Math Master | Premium Maths Tutoring in Australia</title>
-<meta name="description" content="Calm, structured maths tutoring for Prep to Year 12 in Australia. Build confidence step by step with personalised learning and clear family communication.">
-<link rel="canonical" href="https://www.magicmathmaster.com.au/">
+  <title>Magic Math Master | Premium Maths Tutoring in Australia</title>
+  <meta name="description" content="Calm, structured maths tutoring for Prep to Year 12 in Australia. Build confidence step by step with personalised learning and clear family communication.">
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/">
 
-<meta property="og:title" content="Magic Math Master | Premium Maths Tutoring in Australia">
-<meta property="og:description" content="Calm, structured tutoring for Prep–Year 12. Personalised learning plans and confidence-first teaching.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.magicmathmaster.com.au/">
+  <meta property="og:title" content="Magic Math Master | Premium Maths Tutoring in Australia">
+  <meta property="og:description" content="Calm, structured tutoring for Prep–Year 12. Personalised learning plans and confidence-first teaching.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/">
 
-<style>
-  /* ===== Reset ===== */
-  html, body { margin:0; padding:0; overflow-x:hidden; }
-  * { box-sizing:border-box; }
-  img { max-width:100%; height:auto; display:block; }
+  <!-- ✅ Shared site stylesheet -->
+  <link rel="stylesheet" href="style.css">
 
-  /* ===== Background (same as Philosophy page) ===== */
-  body{
-    background:
-      radial-gradient(900px 420px at 15% 10%, rgba(216,157,26,.18), transparent 55%),
-      radial-gradient(900px 420px at 85% 20%, rgba(158,50,1,.10), transparent 60%),
-      radial-gradient(1000px 600px at 55% 95%, rgba(33,102,89,.10), transparent 55%),
-      #FFF7E8;
-    font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, sans-serif;
-    color:#111;
-  }
+  <!-- ✅ Small page-specific rules (kept minimal) -->
+  <style>
+    /* ✅ Remove the square/box around the TOP-LEFT logo */
+    .brand-logo{
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      border-radius: 999px !important; /* round */
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+    }
 
-  :root{
-    --blue:#0d47a1;
-    --blue2:#1565c0;
-    --amber:#f39c12;
-    --paper:#fff6dd;
-    --paperBorder:#ffd88a;
-    --sky:#eaf4ff;
-    --skyBorder:#9ec9ff;
-    --text:#222;
-  }
+    /* ✅ No subtitle under the brand name */
+    .brand-title span{ display:none !important; }
+    .brand-title b{ font-size: 22px; }
 
-  /* ===== Page width ===== */
-  .mmm-page{
-    max-width:1200px;
-    margin:0 auto;
-    padding:14px 12px 70px;
-  }
+    /* ===== Quick links box (accordion launcher) ===== */
+    .quicklinks{
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 14px;
+      margin: 14px 0 18px;
+    }
+    .quicklinks h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 1000;
+      text-align: center;
+      color: var(--brand2);
+    }
+    .ql-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .ql-grid{ grid-template-columns: 1fr; }
+    }
+    .ql-btn{
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      font-weight: 1000;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.18);
+      color: var(--brand2);
+      cursor:pointer;
+      user-select:none;
+    }
+    .ql-btn:hover{ background: rgba(11,94,215,.10); }
 
-  /* ===== Topbar (uniform across pages) ===== */
-  .mmm-topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    padding:10px 0 12px;
-  }
+    /* ===== Accordion sections ===== */
+    details.acc{
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      margin: 0 0 12px;
+      overflow:hidden;
+      scroll-margin-top: 180px;
+    }
+    summary.acc-sum{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 16px;
+      font-weight: 1000;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      user-select:none;
+    }
+    summary.acc-sum::-webkit-details-marker{ display:none; }
+    .caret{ font-weight: 1000; opacity:.85; }
+    details[open] summary .caret{ transform: rotate(180deg); }
+    .acc-body{ padding: 0 16px 16px; }
 
-  .mmm-brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    color:inherit;
-    white-space:nowrap;
-  }
-  .mmm-brand img{
-    width:44px; height:44px; object-fit:contain;
-    border-radius:12px;
-    background:#fff;
-    border:1px solid rgba(13,71,161,0.14);
-    padding:6px;
-  }
-  .mmm-brand b{
-    font-weight:900;
-    color:var(--blue);
-    letter-spacing:.2px;
-  }
+    .h2-center{
+      margin: 14px 0 8px;
+      text-align:center;
+      font-size: 24px;
+      font-weight: 1000;
+      letter-spacing: -0.3px;
+      color: var(--brand2);
+    }
+    .sub-center{
+      margin: 0 0 14px;
+      text-align:center;
+      color: var(--muted);
+      font-weight: 650;
+    }
 
-  .mmm-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    align-items:center;
-    justify-content:flex-end;
-  }
-  .mmm-nav a{
-    text-decoration:none;
-    font-weight:900;
-    font-size:14px;
-    color:var(--blue2);
-    background:#fff;
-    border:1px solid rgba(13,71,161,0.18);
-    border-radius:999px;
-    padding:8px 12px;
-  }
-  .mmm-nav a:hover{ background:#f3f8ff; }
-
-  /* ===== HERO ===== */
-  .mmm-hero{
-    background:#fff;
-    border:2px solid rgba(13,71,161,0.12);
-    border-radius:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.10);
-    padding:20px;
-  }
-  .mmm-hero-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-  }
-  .mmm-hero-text{ flex:1; min-width:0; text-align:center; }
-  .mmm-title{ margin:2px 0 6px; color:var(--blue); font-weight:900; letter-spacing:1px; font-size:44px; line-height:1.05; }
-  .mmm-tagline{ margin:0 0 10px; color:#444; font-weight:800; font-size:18px; }
-  .mmm-desc{ margin:0 auto 10px; max-width:980px; color:var(--text); font-size:16px; line-height:1.55; text-align:center; }
-
-  /* Hero logo (same look everywhere) */
-  .mmm-hero-logo{
-    width:150px;
-    height:150px;
-    object-fit:contain;
-    flex:0 0 auto;
-    background:#fff;
-    border-radius:22px;
-    border:1px solid rgba(13,71,161,0.12);
-    padding:10px;
-  }
-
-  .mmm-checks{
-    margin:6px 0 10px;
-    color:var(--blue2);
-    font-weight:800;
-    font-size:16px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:8px 14px;
-    line-height:1.35;
-    text-align:center;
-  }
-
-  .mmm-pills{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:8px 0 12px; }
-  .mmm-pill{
-    background:var(--paper);
-    border:3px solid var(--paperBorder);
-    border-radius:999px;
-    padding:10px 14px;
-    font-weight:900;
-    font-size:15px;
-    color:#6b4b00;
-  }
-
-  .mmm-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-  .mmm-buttons a{
-    display:inline-block;
-    padding:11px 18px;
-    border-radius:999px;
-    font-weight:900;
-    font-size:16px;
-    text-decoration:none;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
-  .mmm-buttons a:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,0.10); }
-  .btn-enquire{ background:#2e7d32; color:#fff; }
-  .btn-register{ background:#f9a825; color:#000; }
-  .btn-detail{ background:var(--blue2); color:#fff; }
-
-  @media (max-width:900px){
-    .mmm-title{ font-size:28px; }
-    .mmm-tagline{ font-size:14px; }
-    .mmm-desc{ font-size:14px; }
-    .mmm-checks{ font-size:13px; }
-    .mmm-pill{ font-size:13px; padding:8px 10px; border-width:2px; }
-    .mmm-buttons a{ font-size:14px; padding:10px 14px; }
-    .mmm-hero-logo{ width:96px; height:96px; border-radius:18px; padding:8px; }
-  }
-
-  /* ===== QUICK LINKS ===== */
-  .mmm-quicklinks-box{
-    background:#fff;
-    border:2px solid rgba(13,71,161,0.14);
-    border-radius:18px;
-    padding:12px;
-    margin:14px 0 14px;
-  }
-  .mmm-quicklinks-title{
-    margin:0 0 8px;
-    font-weight:900;
-    color:var(--blue);
-    font-size:16px;
-    text-align:center;
-  }
-  .mmm-quicklinks-grid{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:10px;
-  }
-  @media (max-width:520px){ .mmm-quicklinks-grid{ grid-template-columns:1fr; } }
-
-  .mmm-qbtn{
-    display:block;
-    text-align:center;
-    background:#f3f8ff;
-    border:1px solid #cfe3ff;
-    border-radius:14px;
-    padding:10px 10px;
-    font-weight:900;
-    color:var(--blue2);
-    text-decoration:none;
-    cursor:pointer;
-  }
-
-  /* ===== Accordion ===== */
-  details.mmm-sec{
-    border:2px solid rgba(13,71,161,0.12);
-    border-radius:18px;
-    background:#fff;
-    margin:0 0 12px;
-    overflow:hidden;
-    scroll-margin-top: 200px;
-  }
-  summary.mmm-sum{
-    list-style:none;
-    cursor:pointer;
-    padding:14px 16px;
-    font-weight:900;
-    color:var(--blue);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    user-select:none;
-  }
-  summary.mmm-sum::-webkit-details-marker{ display:none; }
-  .mmm-caret{ font-weight:900; color:var(--blue2); }
-  details[open] summary .mmm-caret{ transform:rotate(180deg); }
-  .mmm-body{ padding:0 16px 16px; }
-
-  /* ===== Inner blocks ===== */
-  .mmm-h2{ margin:16px 0 8px; text-align:center; color:var(--blue); font-size:24px; font-weight:900; }
-  .mmm-sub{ margin:0 0 16px; text-align:center; color:#444; line-height:1.6; font-size:16px; }
-
-  .mmm-trust{
-    background:var(--paper);
-    border:2px solid var(--paperBorder);
-    border-radius:16px;
-    padding:16px 18px;
-    margin:0;
-    box-shadow:0 2px 4px rgba(255,200,80,0.18);
-  }
-  .mmm-trust h3{ margin:0 0 10px; font-size:18px; font-weight:900; color:var(--amber); }
-  .mmm-trust ul{ margin:0; padding-left:20px; line-height:1.7; }
-
-  .mmm-grid{ display:grid; gap:14px; grid-template-columns:repeat(2, minmax(0, 1fr)); }
-  @media (max-width:850px){ .mmm-grid{ grid-template-columns:1fr; } }
-  .mmm-card{ background:var(--paper); border:2px solid var(--paperBorder); border-radius:18px; padding:18px; }
-  .mmm-card h3{ margin:0 0 8px; font-size:18px; font-weight:900; color:var(--amber); }
-  .mmm-card ul{ margin:0; padding-left:18px; line-height:1.6; }
-
-  .mmm-why-grid{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; }
-  @media (max-width:900px){ .mmm-why-grid{ grid-template-columns:1fr; } }
-  .mmm-why-card{ background:#fff; border:2px solid #eee; border-radius:18px; padding:16px; }
-  .mmm-why-card b{ color:var(--blue2); display:block; margin-bottom:6px; }
-  .mmm-why-card p{ margin:0; line-height:1.6; color:var(--text); font-size:16px; }
-
-  .mmm-link{
-    color:var(--blue);
-    font-weight:900;
-    text-decoration:none;
-    border-bottom:1px solid rgba(13,71,161,0.35);
-  }
-
-  .mmm-finalbox{
-    background:var(--paper);
-    border:2px solid var(--paperBorder);
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
-  }
-  .mmm-finalbox h2{ margin:0 0 8px; color:var(--blue); font-size:24px; font-weight:900; }
-  .mmm-finalbox p{ margin:0 0 14px; color:var(--text); line-height:1.6; font-size:16px; }
-  .mmm-final-cta{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
-  .mmm-btn-green{ background:#2e7d32; color:#fff; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:900; }
-  .mmm-btn-amber{ background:#f9a825; color:#000; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:900; }
-
-  footer{
-    text-align:center;
-    color:#333;
-    padding:22px 0 12px;
-    font-size:14px;
-  }
-</style>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="favicon.png">
+    .two-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .two-grid{ grid-template-columns: 1fr; }
+    }
+    .mini-card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .mini-card h3{
+      margin: 0 0 8px;
+      color: #7a4a00;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+    .mini-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.7;
+    }
+    .link-strong{
+      color: var(--brand2);
+      font-weight: 1000;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .link-strong:hover{ border-bottom-color: rgba(11,94,215,.60); }
+  </style>
 </head>
 
 <body>
-<div class="mmm-page">
+  <!-- ✅ TOPBAR TEMPLATE -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo">
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+          <span>Premium tutoring • Australia</span>
+        </div>
+      </a>
 
-  <!-- TOP BAR (uniform across pages) -->
-  <div class="mmm-topbar">
-    <a class="mmm-brand" href="index.html" aria-label="Magic Math Master home">
-      <img src="assets/logo.png" alt="Magic Math Master logo">
-      <b>Magic Math Master</b>
-    </a>
-
-    <div class="mmm-nav" aria-label="Primary navigation">
-      <a data-nav href="index.html" aria-current="page">Home</a>
-      <a data-nav href="programs.html">Programs</a>
-      <a data-nav href="pricing.html">Fees</a>
-      <a data-nav href="policy.html">Policies</a>
-      <a data-nav href="about.html">About</a>
-      <a data-nav href="philosophy.html">Philosophies</a>
-      <a data-nav href="contact.html">Contact</a>
-      <a class="btn btn-outline" href="vi/index.html">Tiếng Việt</a>      
+      <div class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="policy.html">Policies</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="philosophy.html">Philosophy</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="nav-lang" href="vi/index.html">Tiếng Việt</a>
+      </div>
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="mmm-hero">
-    <div class="mmm-hero-top">
-      <div class="mmm-hero-text">
-        <h1 class="mmm-title">MAGIC MATH MASTER</h1>
-        <h2 class="mmm-tagline">Where Learning Maths Becomes Magical</h2>
+  <!-- ✅ HERO TEMPLATE (matches your screenshot layout) -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">MAGIC MATH MASTER</h1>
+            <div class="hero-snap-tagline">Where Learning Maths Becomes Magical</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-label="Magic Math Master logo">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          Calm, structured maths tutoring for students from <b>Prep to Year 12</b> — building confidence step by step.
+          Available <b>online across Australia</b> and <b>in-person</b> (where available).
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ Qualified educator</span>
+          <span>✓ Personalised learning plan</span>
+          <span>✓ Clear communication with families</span>
+        </div>
+
+        <div class="hero-snap-pills">
+          <span class="hero-snap-pill">Online &amp; in-person</span>
+          <span class="hero-snap-pill">Personalised plans</span>
+          <span class="hero-snap-pill">NAPLAN · School exams · Extension</span>
+        </div>
+
+        <div class="hero-snap-cta">
+          <a class="btn btn-success" href="enquiry.html">Enquire</a>
+          <a class="btn btn-amber" href="register.html">Register</a>
+        </div>
       </div>
-
-      <!-- Local GitHub logo -->
-      <img class="mmm-hero-logo" src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
-    </div>
-
-    <p class="mmm-desc">
-      Calm, structured maths tutoring for students from <strong>Prep to Year 12</strong> — building confidence step by step.
-      Available <strong>online across Australia</strong> and <strong>in-person</strong> (where available).
-    </p>
-
-    <div class="mmm-checks">
-      <span>✓ Qualified educator</span>
-      <span>✓ Personalised learning plan</span>
-      <span>✓ Clear communication with families</span>
-    </div>
-
-    <div class="mmm-pills">
-      <div class="mmm-pill">Online &amp; in-person</div>
-      <div class="mmm-pill">Personalised plans</div>
-      <div class="mmm-pill">NAPLAN · School exams · Extension</div>
-    </div>
-
-    <div class="mmm-buttons">
-      <a class="btn-enquire" href="enquiry.html">Enquire</a>
-      <a class="btn-register" href="register.html">Register</a>
     </div>
   </section>
 
-  <!-- QUICK LINKS -->
-  <div class="mmm-quicklinks-box">
-    <div class="mmm-quicklinks-title">Quick links (tap to open &amp; view)</div>
-    <div class="mmm-quicklinks-grid">
-      <a class="mmm-qbtn" data-open="sec_programs">Programs</a>
-      <a class="mmm-qbtn" data-open="sec_pricing">Fees</a>
-      <a class="mmm-qbtn" data-open="sec_policy">Policy</a>
-      <a class="mmm-qbtn" data-open="sec_about">About Us</a>
-      <a class="mmm-qbtn" data-open="sec_philosophy">Philosophy</a>
-      <a class="mmm-qbtn" data-open="sec_why">Why parents choose us</a>
-      <a class="mmm-qbtn" data-open="sec_contact">Contact</a>
-      <a class="mmm-qbtn" data-open="sec_all">Show all</a>
-    </div>
-  </div>
+  <main>
+    <!-- separator -->
+    <div class="container"><div class="sep"></div></div>
 
-  <!-- PROGRAMS -->
-  <details class="mmm-sec" id="sec_programs" open>
-    <summary class="mmm-sum">Programs <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Programs (overview)</div>
-      <p class="mmm-sub">Detailed information is on the Programs page. This is a quick overview.</p>
-
-      <div class="mmm-grid">
-        <div class="mmm-card">
-          <h3>🌱 Primary (Prep–Year 6)</h3>
-          <ul>
-            <li>Number sense, fluency, and confidence</li>
-            <li>Fractions/decimals/percentages made clear</li>
-            <li>Word-problem strategies</li>
-          </ul>
+    <section class="section">
+      <div class="container">
+        <!-- ✅ QUICK LINKS -->
+        <div class="quicklinks">
+          <h2>Quick links (tap to open)</h2>
+          <div class="ql-grid">
+            <a class="ql-btn" data-open="sec_programs">Programs</a>
+            <a class="ql-btn" data-open="sec_pricing">Fees</a>
+            <a class="ql-btn" data-open="sec_philosophy">Philosophy</a>
+            <a class="ql-btn" data-open="sec_about">About</a>
+            <a class="ql-btn" data-open="sec_why">Why parents choose us</a>
+            <a class="ql-btn" data-open="sec_policy">Policies</a>
+            <a class="ql-btn" data-open="sec_contact">Contact</a>
+            <a class="ql-btn" data-open="sec_all">Open all</a>
+          </div>
         </div>
 
-        <div class="mmm-card">
-          <h3>🧩 Secondary (Year 7–10)</h3>
-          <ul>
-            <li>Algebra + core skills aligned to school topics</li>
-            <li>Geometry and trigonometry foundations</li>
-            <li>Assessment and revision planning</li>
-          </ul>
-        </div>
+        <!-- PROGRAMS -->
+        <details class="acc" id="sec_programs" open>
+          <summary class="acc-sum">Programs <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Programs (overview)</div>
+            <p class="sub-center">Full details are on the Programs page. Here’s a quick overview.</p>
 
-        <div class="mmm-card">
-          <h3>🏆 Exam & Extension</h3>
-          <ul>
-            <li>NAPLAN support + exam technique</li>
-            <li>Reduce careless mistakes</li>
-            <li>Challenge for advanced learners</li>
-          </ul>
-        </div>
+            <div class="two-grid">
+              <div class="mini-card">
+                <h3>🌱 Primary (Prep–Year 6)</h3>
+                <ul>
+                  <li>Number sense, fluency, and confidence</li>
+                  <li>Fractions/decimals/percentages made clear</li>
+                  <li>Word-problem strategies</li>
+                </ul>
+              </div>
 
-        <div class="mmm-card">
-          <h3>👩‍🏫 One-to-One or Group</h3>
-          <ul>
-            <li>Personalised lessons or small group tutorials</li>
-            <li>Confidence and communication skills</li>
-            <li>Support + extension</li>
-          </ul>
-        </div>
+              <div class="mini-card">
+                <h3>🧩 Secondary (Year 7–10)</h3>
+                <ul>
+                  <li>Algebra + core skills aligned to school topics</li>
+                  <li>Geometry and trigonometry foundations</li>
+                  <li>Assessment and revision planning</li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3>🏆 Exam &amp; Extension</h3>
+                <ul>
+                  <li>NAPLAN support + exam technique</li>
+                  <li>Reduce careless mistakes</li>
+                  <li>Challenge for advanced learners</li>
+                </ul>
+              </div>
+
+              <div class="mini-card">
+                <h3>👩‍🏫 One-to-One or Group</h3>
+                <ul>
+                  <li>Personalised lessons or small group tutorials</li>
+                  <li>Confidence and communication</li>
+                  <li>Support + extension</li>
+                </ul>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="programs.html">Read full program details →</a>
+            </p>
+          </div>
+        </details>
+
+        <!-- FEES -->
+        <details class="acc" id="sec_pricing" open>
+          <summary class="acc-sum">Fees <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Fees (summary)</div>
+            <div class="mini-card">
+              <h3>Transparent pricing</h3>
+              <ul>
+                <li>Clear fee tiers for Primary, Secondary, and Extension.</li>
+                <li>Term bookings may have discounts (optional).</li>
+                <li>Online and in-person options (where available).</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="pricing.html">See full fees &amp; options →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- PHILOSOPHY -->
+        <details class="acc" id="sec_philosophy" open>
+          <summary class="acc-sum">Philosophy <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Our philosophy (summary)</div>
+            <div class="mini-card">
+              <h3>Maths for life — not just tests</h3>
+              <ul>
+                <li><b>Strong foundations first</b> so students feel confident.</li>
+                <li><b>Meaningful contexts</b> (money, games, sport, science) to make maths stick.</li>
+                <li><b>Real problem-solving</b> — students learn strategies, not just steps.</li>
+                <li><b>Growth mindset</b> — mistakes are part of learning.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="philosophy.html">Read the full Philosophy page →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- ABOUT -->
+        <details class="acc" id="sec_about" open>
+          <summary class="acc-sum">About <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">About (overview)</div>
+            <div class="mini-card">
+              <h3>Educator-led, confidence-first</h3>
+              <ul>
+                <li>Founded by <b>Dr Tuyet Vu</b>.</li>
+                <li>Calm teaching that builds deep understanding — not stress.</li>
+                <li>Clear communication with families and structured learning plans.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="about.html">Read the full About page →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- WHY -->
+        <details class="acc" id="sec_why" open>
+          <summary class="acc-sum">Why parents choose us <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Why parents choose Magic Math Master</div>
+
+            <div class="grid">
+              <div class="card">
+                <h3>Clear, calm teaching</h3>
+                <p>Step-by-step explanations so students feel safe to ask questions and learn from mistakes.</p>
+              </div>
+              <div class="card">
+                <h3>Real progress you can see</h3>
+                <p>Targeted practice + feedback helps students build accuracy, speed, and confidence over time.</p>
+              </div>
+              <div class="card">
+                <h3>Family communication</h3>
+                <p>Parents stay informed about goals, learning focus, and what to practise next.</p>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="contact.html">Send an enquiry to get a recommended starting plan →</a>
+            </p>
+          </div>
+        </details>
+
+        <!-- POLICIES -->
+        <details class="acc" id="sec_policy" open>
+          <summary class="acc-sum">Policies <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Policies (summary)</div>
+            <div class="mini-card">
+              <h3>Good to know</h3>
+              <ul>
+                <li>Lessons are prepaid and scheduled in advance.</li>
+                <li>Please provide at least <b>24 hours’ notice</b> for cancellations or changes.</li>
+                <li>We maintain a respectful, supportive learning environment.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="policy.html">Read full policies →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- CONTACT -->
+        <details class="acc" id="sec_contact" open>
+          <summary class="acc-sum">Contact <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Contact</div>
+
+            <div class="card" style="text-align:center;">
+              <h3 style="margin:0 0 8px;">Ready to help your child feel confident in maths?</h3>
+              <p style="margin:0 0 14px;">
+                Tell us your child’s year level and goals — we’ll recommend the best starting point.
+              </p>
+              <div class="hero-actions cta-row">
+                <a class="btn btn-success" href="enquiry.html">Make an enquiry</a>
+                <a class="btn btn-amber" href="pricing.html">View fees</a>
+              </div>
+            </div>
+          </div>
+        </details>
+
       </div>
+    </section>
+  </main>
 
-      <p style="text-align:center; margin:14px 0 0; font-weight:900;">
-        👉 <a class="mmm-link" href="programs.html">Read full program details →</a>
-      </p>
-    </div>
-  </details>
-
-  <!-- FEES -->
-  <details class="mmm-sec" id="sec_pricing" open>
-    <summary class="mmm-sum">Fees <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Fees (summary)</div>
-      <div class="mmm-trust">
-        <h3>Transparent pricing</h3>
-        <ul>
-          <li>Clear fee tiers for Primary, Secondary, and Extension.</li>
-          <li>Term bookings may have discounts (optional).</li>
-          <li>Online and in-person options (where available).</li>
-        </ul>
-        <a class="mmm-link" href="pricing.html">See full fees & options →</a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Magic Math Master • Australia</div>
+        <div><a href="contact.html">info@magicmathmaster.com.au</a></div>
       </div>
     </div>
-  </details>
-
-  <!-- PHILOSOPHY (new) -->
-  <details class="mmm-sec" id="sec_philosophy" open>
-    <summary class="mmm-sum">Philosophy <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Our Philosophy (summary)</div>
-      <div class="mmm-trust">
-        <h3>Maths for life — not just tests</h3>
-        <ul>
-          <li><strong>Strong foundations first</strong> so students feel confident.</li>
-          <li><strong>Meaningful contexts</strong> (money, games, sport, science) to make maths stick.</li>
-          <li><strong>Real problem-solving</strong> — students learn strategies, not just steps.</li>
-          <li><strong>Growth mindset</strong> — mistakes are part of learning and improving.</li>
-        </ul>
-        <a class="mmm-link" href="philosophy.html">Read the full Philosophy page →</a>
-      </div>
-    </div>
-  </details>
-
-  <!-- ABOUT -->
-  <details class="mmm-sec" id="sec_about" open>
-    <summary class="mmm-sum">About Us <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">About Us (overview)</div>
-      <div class="mmm-trust">
-        <h3>Educator-led, confidence-first</h3>
-        <ul>
-          <li>Founded by <strong>Dr Tuyet Vu</strong>.</li>
-          <li>Calm teaching that builds deep understanding — not stress.</li>
-          <li>Clear communication with families and structured learning plans.</li>
-        </ul>
-        <a class="mmm-link" href="about.html">Read the full About Us →</a>
-      </div>
-    </div>
-  </details>
-
-  <!-- WHY -->
-  <details class="mmm-sec" id="sec_why" open>
-    <summary class="mmm-sum">Why parents choose us <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Why parents choose Magic Math Master</div>
-
-      <div class="mmm-why-grid">
-        <div class="mmm-why-card">
-          <b>Clear, calm teaching</b>
-          <p>Step-by-step explanations so students feel safe to ask questions and learn from mistakes.</p>
-        </div>
-        <div class="mmm-why-card">
-          <b>Real progress you can see</b>
-          <p>Targeted practice + feedback helps students build accuracy, speed, and confidence over time.</p>
-        </div>
-        <div class="mmm-why-card">
-          <b>Family communication</b>
-          <p>Parents stay informed about goals, learning focus, and what to practise next.</p>
-        </div>
-      </div>
-
-      <p style="text-align:center; margin:14px 0 0; font-weight:900;">
-        👉 <a class="mmm-link" href="contact.html">Send an enquiry to get a recommended starting plan →</a>
-      </p>
-    </div>
-  </details>
-
-  <!-- POLICY -->
-  <details class="mmm-sec" id="sec_policy" open>
-    <summary class="mmm-sum">Policy <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Policy (summary)</div>
-      <div class="mmm-trust">
-        <h3>Good to know</h3>
-        <ul>
-          <li>Lessons are prepaid and scheduled in advance.</li>
-          <li>Please provide at least <strong>24 hours’ notice</strong> for cancellations or changes.</li>
-          <li>We maintain a respectful, supportive learning environment.</li>
-        </ul>
-        <span style="font-weight:900;">(Full policy page can be added later.)</span>
-      </div>
-    </div>
-  </details>
-
-  <!-- CONTACT -->
-  <details class="mmm-sec" id="sec_contact" open>
-    <summary class="mmm-sum">Contact <span class="mmm-caret">⌄</span></summary>
-    <div class="mmm-body">
-      <div class="mmm-h2">Contact</div>
-
-      <div class="mmm-finalbox">
-        <h2>Ready to help your child feel confident in maths?</h2>
-        <p>Tell us your child’s year level and goals — we’ll recommend the best starting point.</p>
-        <div class="mmm-final-cta">
-          <a class="mmm-btn-green" href="contact.html">Make an enquiry</a>
-          <a class="mmm-btn-amber" href="pricing.html">View fees</a>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <footer>
-    © 2026 Magic Math Master • Australia • <a class="mmm-link" href="contact.html">info@magicmathmaster.com.au</a>
   </footer>
 
-</div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<script>
-  (function(){
-    function isMobileLike(){ return window.matchMedia("(max-width: 900px)").matches; }
+    (function(){
+      function isMobileLike(){ return window.matchMedia("(max-width: 900px)").matches; }
 
-    function setAllDetails(open){
-      document.querySelectorAll("details.mmm-sec").forEach(function(d){
-        if(open) d.setAttribute("open","");
-        else d.removeAttribute("open");
-      });
-    }
+      function setAllDetails(open){
+        document.querySelectorAll("details.acc").forEach(function(d){
+          if(open) d.setAttribute("open","");
+          else d.removeAttribute("open");
+        });
+      }
 
-    // Desktop: open everything. Mobile: collapse by default.
-    function applyDefaultOpen(){
-      if(isMobileLike()) setAllDetails(false);
-      else setAllDetails(true);
-    }
-    applyDefaultOpen();
+      // Desktop: open all. Mobile: collapse by default.
+      function applyDefaultOpen(){
+        if(isMobileLike()) setAllDetails(false);
+        else setAllDetails(true);
+      }
+      applyDefaultOpen();
 
-    function scrollToSection(el){
-      el.scrollIntoView({ behavior:"smooth", block:"start" });
+      function scrollToSection(el){
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
 
-      var tries = 0;
-      var maxTries = 9;
+        var tries = 0;
+        var maxTries = 9;
 
-      function nudge(){
-        tries++;
-        var rect = el.getBoundingClientRect();
-        var safeTop = 150;
-        if(rect.top < safeTop){
-          window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
+        function nudge(){
+          tries++;
+          var rect = el.getBoundingClientRect();
+          var safeTop = 150;
+          if(rect.top < safeTop){
+            window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
+          }
+          if(tries < maxTries) setTimeout(nudge, 160);
         }
-        if(tries < maxTries) setTimeout(nudge, 160);
-      }
-      setTimeout(nudge, 220);
-    }
-
-    function openAndScroll(targetId){
-      if(targetId === "sec_all"){
-        setAllDetails(true);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
+        setTimeout(nudge, 220);
       }
 
-      var el = document.getElementById(targetId);
-      if(!el) return;
+      function openAndScroll(targetId){
+        if(targetId === "sec_all"){
+          setAllDetails(true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        var el = document.getElementById(targetId);
+        if(!el) return;
 
-      if(isMobileLike()) setAllDetails(false);
-      el.setAttribute("open","");
+        if(isMobileLike()) setAllDetails(false);
+        el.setAttribute("open","");
 
-      setTimeout(function(){ scrollToSection(el); }, 60);
-    }
+        setTimeout(function(){ scrollToSection(el); }, 60);
+      }
 
-    document.querySelectorAll(".mmm-qbtn[data-open]").forEach(function(btn){
-      btn.addEventListener("click", function(){
-        openAndScroll(btn.getAttribute("data-open"));
+      document.querySelectorAll(".ql-btn[data-open]").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          openAndScroll(btn.getAttribute("data-open"));
+        });
       });
-    });
-  })();
-</script>
+    })();
+  </script>
 
+  <!-- ✅ Your nav-highlighting script (adds aria-current="page" automatically) -->
+  <script src="script.js"></script>
 </body>
-
 </html>
