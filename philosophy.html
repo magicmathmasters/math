@@ -1,344 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Philosophy | Magic Math Master</title>
-<meta name="description" content="Magic Math Master philosophy: maths for life, strong foundations, confidence-first learning, and real problem solving for Prep to Year 12 in Australia.">
-<link rel="canonical" href="https://www.magicmathmaster.com.au/philosophy.html">
+  <title>Philosophy | Magic Math Master</title>
+  <meta name="description" content="Magic Math Master philosophy: maths for life, strong foundations, confidence-first learning, and real problem solving for Prep to Year 12 in Australia." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/philosophy.html" />
 
-<style>
-  html, body { margin:0; padding:0; overflow-x:hidden; }
-  * { box-sizing:border-box; }
-  img { max-width:100%; height:auto; display:block; }
+  <!-- Optional OG tags -->
+  <meta property="og:title" content="Philosophy | Magic Math Master" />
+  <meta property="og:description" content="Maths for life — strong foundations, confidence-first learning, and real problem solving for Prep–Year 12." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/philosophy.html" />
 
-  body{
-    background:
-      radial-gradient(900px 420px at 15% 10%, rgba(216,157,26,.18), transparent 55%),
-      radial-gradient(900px 420px at 85% 20%, rgba(158,50,1,.10), transparent 60%),
-      radial-gradient(1000px 600px at 55% 95%, rgba(33,102,89,.10), transparent 55%),
-      #FFF7E8;
-    font-family: Arial, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, sans-serif;
-    color:#111;
-  }
+  <!-- Shared site stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 
-  :root{
-    --blue:#0d47a1;
-    --blue2:#1565c0;
-    --amber:#f39c12;
-    --text:#222;
-  }
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-  .mmm-page{
-    max-width:1200px;
-    margin:0 auto;
-    padding:14px 12px 70px;
-  }
+  <!-- Page-only overrides (kept tiny) -->
+  <style>
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    .hero { padding: 22px 0 18px; }
 
-  /* ===== Topbar (NO LANGUAGE SWITCH) ===== */
-  .mmm-topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    padding:10px 0 12px;
-  }
+    /* Quick anchor buttons inside hero */
+    .philo-actions{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:10px; }
+    .philo-actions a{ white-space:nowrap; }
 
-  .mmm-brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    color:inherit;
-  }
-  .mmm-brand img{
-    width:44px; height:44px; object-fit:contain;
-    border-radius:12px;
-    background:#fff;
-    border:1px solid rgba(13,71,161,0.14);
-    padding:6px;
-  }
-  .mmm-brand b{
-    font-weight:900;
-    color:var(--blue);
-    letter-spacing:.2px;
-  }
+    /* Chips (small trust + scanning help) */
+    .philo-chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:10px; }
+    .philo-chip{
+      display:inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+    }
 
-  .mmm-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    align-items:center;
-    justify-content:flex-end;
-  }
-  .mmm-nav a{
-    text-decoration:none;
-    font-weight:900;
-    font-size:14px;
-    color:var(--blue2);
-    background:#fff;
-    border:1px solid rgba(13,71,161,0.18);
-    border-radius:999px;
-    padding:8px 12px;
-  }
-  .mmm-nav a:hover{ background:#f3f8ff; }
+    /* Sections */
+    .philo-list{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.85;
+      font-weight: 650;
+    }
+    .philo-list li{ margin: 8px 0; }
 
-  /* ===== Hero ===== */
-  .hero{
-    background:#fff;
-    border:2px solid rgba(13,71,161,0.12);
-    border-radius:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.10);
-    padding:26px;
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:22px;
-  }
-  @media (max-width:900px){ .hero{ grid-template-columns:1fr; } }
+    /* Teaching grid (uses your style.css grid/card vibe) */
+    .teach-grid{
+      display:grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+    @media (max-width: 1050px){
+      .teach-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px){
+      .teach-grid{ grid-template-columns: 1fr; }
+    }
 
-  .hero h1{
-    font-size:46px;
-    line-height:1.08;
-    margin:0 0 12px;
-    color:var(--blue);
-    letter-spacing:.2px;
-  }
-  @media (max-width:900px){ .hero h1{ font-size:32px; } }
-
-  .hero p{
-    margin:0 0 14px;
-    font-size:18px;
-    line-height:1.75;
-    color:var(--text);
-  }
-
-  .btn{
-    display:inline-block;
-    padding:12px 16px;
-    border-radius:14px;
-    font-weight:900;
-    text-decoration:none;
-    background:#E3F2FD;
-    color:var(--blue);
-    margin:6px 6px 0 0;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
-  .btn:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,0.10); }
-  .btn.green{ background:#2F7D32; color:#fff; }
-  .btn.amber{ background:#F8A825; color:#000; }
-
-  .hero-right{
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-  }
-  .hero-right img{
-    width:min(240px, 90%);
-    background:#fff;
-    border-radius:22px;
-    border:1px solid rgba(13,71,161,0.12);
-    padding:10px;
-  }
-  .hero-right .tag{
-    font-size:20px;
-    font-weight:900;
-    color:var(--blue2);
-    margin-top:10px;
-  }
-
-  /* ===== Sections ===== */
-  .card{
-    margin-top:26px;
-    background:#fff;
-    border:2px solid rgba(13,71,161,0.12);
-    border-radius:26px;
-    padding:22px;
-    box-shadow:0 10px 28px rgba(0,0,0,.06);
-  }
-
-  .card.alt{
-    background:#FFFCF5;
-    border-color: rgba(255,216,138,0.65);
-    box-shadow:none;
-  }
-
-  h2{
-    font-size:34px;
-    margin:0 0 14px;
-    color:var(--blue);
-  }
-  @media (max-width:900px){ h2{ font-size:26px; } }
-
-  .lead{
-    font-size:18px;
-    line-height:1.85;
-    margin:0 0 12px;
-  }
-
-  .philo-list{
-    margin:14px 0 0;
-    padding-left:20px;
-    font-size:17px;
-    line-height:1.9;
-  }
-  .philo-list li{ margin:6px 0; }
-  .philo-list strong{ color:var(--blue2); }
-
-  .teach-grid{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:14px;
-    margin-top:10px;
-  }
-  @media (max-width:1050px){ .teach-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:700px){ .teach-grid{ grid-template-columns:1fr; } }
-
-  .teach-item{
-    background:#fff;
-    border:1px solid rgba(13,71,161,0.12);
-    border-radius:20px;
-    padding:16px;
-    box-shadow:0 10px 22px rgba(0,0,0,.06);
-  }
-  .teach-item h3{
-    margin:0 0 8px;
-    font-size:18px;
-    color:var(--amber);
-    font-weight:900;
-  }
-  .teach-item p{
-    margin:0;
-    font-size:16px;
-    line-height:1.75;
-  }
-
-  footer{
-    text-align:center;
-    color:#333;
-    padding:22px 0 12px;
-    font-size:14px;
-  }
-</style>
+    /* Small note card */
+    .note{
+      background: rgba(255,255,255,.72);
+      border: 2px solid rgba(0,0,0,.10);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+  </style>
 </head>
 
 <body>
-<div class="mmm-page">
 
-  <!-- TOP BAR (NO LANGUAGE SWITCH) -->
-  <div class="mmm-topbar">
-    <a class="mmm-brand" href="index.html" aria-label="Magic Math Master home">
-      <img src="assets/logo.png" alt="Magic Math Master logo">
-      <b>Magic Math Master</b>
-    </a>
+  <!-- ===== TOP BAR (same template) ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
+      </a>
 
-    <div class="mmm-nav" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="pricing.html">Fees</a>
-      <a href="contact.html">Contact</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="policies.html">Policies</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="philosophy.html">Philosophy</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="nav-lang" href="vi/philosophy.html">Tiếng Việt</a>
+      </nav>
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- ===== HERO (same template) ===== -->
   <section class="hero">
-    <div>
-      <h1>Maths for life — confident thinking, not just tests</h1>
+    <div class="container">
+      <div class="hero-snap">
 
-      <p>
-        At <strong>Magic Math Master</strong>, we believe every child can grow in maths with the right support,
-        challenge, and encouragement. Tutoring is not just about finishing homework — it is about building
-        strong foundations, confidence, and the ability to think clearly and independently.
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">Philosophy</h1>
+            <div class="hero-snap-tagline">Maths for life — confident thinking, not just tests</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          At <strong>Magic Math Master</strong>, we believe every child can grow in maths with the right support,
+          challenge, and encouragement. We build strong foundations, confidence, and the ability to think clearly and independently.
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ Calm structure, high standards</span>
+          <span>✓ Safe to try, safe to make mistakes</span>
+          <span>✓ Clear feedback for families</span>
+        </div>
+
+        <div class="philo-chips" aria-label="Key ideas">
+          <span class="philo-chip">Foundations first</span>
+          <span class="philo-chip">Confidence &amp; growth mindset</span>
+          <span class="philo-chip">Real problem solving</span>
+          <span class="philo-chip">Prep–Year 12</span>
+        </div>
+
+        <div class="philo-actions">
+          <a class="btn btn-outline" href="#our-philosophy">Read our philosophy</a>
+          <a class="btn btn-outline" href="#how-we-teach">How we teach</a>
+          <a class="btn btn-success" href="contact.html">Enquire</a>
+          <a class="btn btn-amber" href="register.html">Register</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="container">
+
+    <!-- OUR PHILOSOPHY -->
+    <section id="our-philosophy" class="section">
+      <h2 class="section-title">Our philosophy</h2>
+      <p class="section-sub">
+        We teach maths in a way that helps children <strong>understand</strong>, <strong>use</strong>, and <strong>enjoy</strong> it.
+        The goal is not quick fixes — it’s steady, lasting progress.
       </p>
 
-      <p>
-        We teach with calm structure and high standards, so students feel safe to try, make mistakes, and improve.
-        Our aim is long-term growth: deeper understanding, better habits, and genuine mathematical thinking.
+      <div class="card">
+        <ul class="philo-list">
+          <li><strong>Maths for life, not just for tests</strong> — tests are checkpoints, but understanding is the destination.</li>
+          <li><strong>Meaningful contexts</strong> — we connect maths to real life: money, games, sport, science, and everyday decisions.</li>
+          <li><strong>Strong foundations first</strong> — we fill gaps and build accuracy before rushing ahead.</li>
+          <li><strong>Confidence and growth mindset</strong> — mistakes are information, not failure; students learn to persist and improve.</li>
+          <li><strong>Logical thinking and real problem solving</strong> — students learn strategies, not just steps to copy.</li>
+          <li><strong>Communication and presentation skills</strong> — explaining clearly is part of learning maths (and boosts school success).</li>
+          <li><strong>Preparing for future study and careers</strong> — maths supports STEM, business, design, data, and life choices.</li>
+          <li><strong>Tailored to each child</strong> — pace, explanation style, and practice are adjusted to suit the learner.</li>
+          <li><strong>A journey, not just a session</strong> — we build habits and confidence over time, with clear feedback for families.</li>
+        </ul>
+      </div>
+
+      <div class="note" style="margin-top:14px;">
+        👨‍👩‍👧‍👦 <strong>Parents can expect:</strong> clear learning goals, consistent routines, and regular updates about progress and next steps.
+      </div>
+    </section>
+
+    <!-- HOW WE TEACH -->
+    <section id="how-we-teach" class="section">
+      <h2 class="section-title">How we teach</h2>
+      <p class="section-sub">
+        Our lessons follow a clear rhythm: diagnose → build the foundation → practise with feedback → extend when ready.
+        Students learn what to do, why it works, and how to explain their thinking.
       </p>
 
-      <a class="btn" href="#our-philosophy">Read our philosophy</a>
-      <a class="btn" href="#how-we-teach">How we teach</a>
-      <a class="btn green" href="contact.html">Enquire</a>
-      <a class="btn amber" href="pricing.html">Register</a>
-    </div>
+      <div class="teach-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">Maths for life</h3>
+          <p class="section-sub" style="margin:0;">
+            We teach maths as a real-life tool students can use to reason, make decisions, understand data, and open doors for the future.
+          </p>
+        </div>
 
-    <div class="hero-right">
-      <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
-      <div class="tag">Learning that feels magical ✨</div>
-    </div>
-  </section>
+        <div class="card">
+          <h3 style="margin-top:0;">Strong foundations first</h3>
+          <p class="section-sub" style="margin:0;">
+            We ensure students truly understand core concepts before moving ahead. When foundations are solid, confidence and speed grow naturally.
+          </p>
+        </div>
 
-  <!-- OUR PHILOSOPHY -->
-  <section id="our-philosophy" class="card alt">
-    <h2>Our Philosophy</h2>
+        <div class="card">
+          <h3 style="margin-top:0;">Confidence &amp; growth mindset</h3>
+          <p class="section-sub" style="margin:0;">
+            Mistakes are part of learning. We guide students from “I can’t” to “I can improve” and eventually “I’ve got this”.
+          </p>
+        </div>
 
-    <p class="lead">
-      We teach maths in a way that helps children <strong>understand</strong>, <strong>use</strong>, and
-      <strong>enjoy</strong> it. The goal is not quick fixes — it’s steady, lasting progress.
-    </p>
+        <div class="card">
+          <h3 style="margin-top:0;">Learning how to think</h3>
+          <p class="section-sub" style="margin:0;">
+            Beyond formulas: students learn strategies for word problems, unfamiliar questions, and checking work to reduce careless errors.
+          </p>
+        </div>
 
-    <ul class="philo-list">
-      <li><strong>Maths for life, not just for tests</strong> — tests are checkpoints, but understanding is the destination.</li>
-      <li><strong>Meaningful contexts</strong> — we connect maths to real life: money, games, sport, science, and everyday decisions.</li>
-      <li><strong>Strong foundations first</strong> — we fill gaps and build accuracy before rushing ahead.</li>
-      <li><strong>Confidence and growth mindset</strong> — mistakes are information, not failure; students learn to persist and improve.</li>
-      <li><strong>Logical thinking and real problem solving</strong> — students learn strategies, not just steps to copy.</li>
-      <li><strong>Communication and presentation skills</strong> — explaining clearly is part of learning maths (and boosts school success).</li>
-      <li><strong>Preparing for future study and careers</strong> — maths supports STEM, business, design, data, and life choices.</li>
-      <li><strong>Tailored to each child</strong> — pace, explanation style, and practice are adjusted to suit the learner.</li>
-      <li><strong>A journey, not just a session</strong> — we build habits and confidence over time, with clear feedback for families.</li>
-    </ul>
-  </section>
+        <div class="card">
+          <h3 style="margin-top:0;">Tailored to each child</h3>
+          <p class="section-sub" style="margin:0;">
+            Every child learns differently. We adjust pace, explanations, and practice so each student knows exactly what to do next.
+          </p>
+        </div>
 
-  <!-- HOW WE TEACH -->
-  <section id="how-we-teach" class="card">
-    <h2>How We Teach</h2>
-
-    <p class="lead">
-      Our lessons follow a clear rhythm: diagnose → build the foundation → practise with feedback → extend when ready.
-      Students learn what to do, why it works, and how to explain their thinking.
-    </p>
-
-    <div class="teach-grid">
-      <div class="teach-item">
-        <h3>Maths for Life</h3>
-        <p>We teach maths as a real-life tool students can use to reason, make decisions, understand data, and open doors for the future.</p>
+        <div class="card">
+          <h3 style="margin-top:0;">A journey, not just a session</h3>
+          <p class="section-sub" style="margin:0;">
+            We build long-term skills and habits, with clear communication to families about progress and the next steps.
+          </p>
+        </div>
       </div>
 
-      <div class="teach-item">
-        <h3>Strong Foundations First</h3>
-        <p>We ensure students truly understand core concepts before moving ahead. When foundations are solid, confidence and speed grow naturally.</p>
+      <div class="card" style="padding:22px; margin-top:18px;">
+        <h3 style="margin:0 0 10px;">Ready to start?</h3>
+        <p class="section-sub" style="margin:0 0 14px;">
+          Tell us your child’s year level and goals — we’ll recommend the best pathway.
+        </p>
+        <a class="btn btn-success" href="contact.html">Enquire</a>
+        <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Register</a>
       </div>
+    </section>
 
-      <div class="teach-item">
-        <h3>Confidence &amp; Growth Mindset</h3>
-        <p>Mistakes are part of learning. We guide students from “I can’t” to “I can improve” and eventually “I’ve got this”.</p>
-      </div>
+  </main>
 
-      <div class="teach-item">
-        <h3>Learning How to Think</h3>
-        <p>Beyond formulas: students learn strategies for word problems, unfamiliar questions, and checking work to reduce careless errors.</p>
-      </div>
-
-      <div class="teach-item">
-        <h3>Tailored to Each Child</h3>
-        <p>Every child learns differently. We adjust pace, explanations, and practice so each student knows exactly what to do next.</p>
-      </div>
-
-      <div class="teach-item">
-        <h3>A Journey, Not Just a Session</h3>
-        <p>We build long-term skills and habits, with clear communication to families about progress and the next steps.</p>
+  <!-- ===== FOOTER (same template) ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>
+        <a href="contact.html">Contact</a> •
+        <a href="policies.html">Policies</a>
       </div>
     </div>
-  </section>
-
-  <footer>
-    © 2026 Magic Math Master • Australia
   </footer>
 
-</div>
+  <!-- Auto year -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Auto highlight current nav item -->
+  <script src="script.js"></script>
 </body>
 </html>
