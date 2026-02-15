@@ -480,14 +480,7 @@ a.card:hover{
   transition: background-color .14s ease, color .14s ease, transform .14s ease, box-shadow .14s ease, border-color .14s ease;
 }
 
-/* Only the chip under the mouse changes colour */
-.prog-chip:hover{
-  background: var(--brand);
-  color: #fff;
-  border-color: rgba(0,0,0,.10);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
-}
+
 /* Default chips: NO hover colour change (non-clickable areas stay the same) */
 .prog-chip{
   transition: none;         /* or keep transition if you like, but no hover rule */
@@ -516,3 +509,30 @@ a.card:hover{
   background: inherit !important;
 }
 
+/* Default chips: NO hover colour change (non-clickable areas stay the same) */
+.prog-chip{
+  transition: none;         /* or keep transition if you like, but no hover rule */
+}
+
+/* Only chips inside clickable chooser cards get hover colour */
+a.card .prog-chip{
+  cursor: pointer;
+  transition: background-color .14s ease, color .14s ease, transform .14s ease,
+              box-shadow .14s ease, border-color .14s ease;
+}
+
+a.card .prog-chip:hover{
+  background: var(--brand);
+  color: #fff;
+  border-color: rgba(0,0,0,.10);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
+}
+
+/* Keep whole-card hover OFF (so only chips change) */
+a.card:hover{
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+  background: inherit !important;
+}
