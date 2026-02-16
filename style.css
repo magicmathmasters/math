@@ -16,6 +16,11 @@
   --accent:#f59e0b;
   --success:#16a34a;
 
+  /* hover variants */
+  --success-hover: #15803d; /* darker green */
+  --accent-hover:  #d97706; /* deeper amber */
+  --brand-hover:   #0a4fb8;
+
   --radius: 16px;
   --shadow: 0 18px 40px rgba(2, 6, 23, .10);
   --shadow2: 0 10px 24px rgba(2, 6, 23, .08);
@@ -67,14 +72,18 @@ a{ color:inherit; }
   text-decoration:none;
 }
 
+/* ===== Top-left logo (clean) ===== */
 .brand-logo{
   width: 54px;
   height: 54px;
   object-fit: contain;
-  border-radius: 18px;
-  background: rgba(255,255,255,.92);
-  border: 2px solid rgba(15,23,42,.14);
-  padding: 8px;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+
+  border-radius: 999px; /* circle */
 }
 
 .brand-title{
@@ -155,21 +164,40 @@ a{ color:inherit; }
   border: 1px solid transparent;
   cursor:pointer;
   white-space: nowrap;
+
+  transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease, color .14s ease;
 }
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(2, 6, 23, .14);
+}
+.btn:active{ transform: translateY(0); }
+
+.btn:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+}
+
 .btn-primary{
   background: linear-gradient(135deg, var(--brand), var(--brand2));
   color:#fff;
   box-shadow: 0 14px 28px rgba(11,94,215,.18);
 }
 .btn-primary:hover{ filter: brightness(1.03); }
+
 .btn-outline{
   background: rgba(255,255,255,.85);
   border: 1px solid rgba(11,94,215,.28);
   color: var(--brand2);
 }
 .btn-outline:hover{ background: rgba(11,94,215,.06); }
+
 .btn-success{ background: var(--success); color:#fff; }
 .btn-amber{ background: var(--accent); color:#111827; }
+
+.btn-success:hover{ background: var(--success-hover); color:#fff; }
+.btn-amber:hover{ background: var(--accent-hover); color:#111827; }
 
 /* =========================
    HERO (screenshot style)
@@ -260,12 +288,14 @@ a{ color:inherit; }
   flex-wrap: wrap;
 }
 
-/* Right logo box */
+/* ===== HERO logo box (clean / no frame) ===== */
 .hero-snap-logoBox{
-  background: rgba(255,255,255,.92);
-  border: 2px solid rgba(11,94,215,.14);
-  border-radius: 28px;
-  padding: 18px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+
   display:grid;
   place-items:center;
 }
@@ -273,13 +303,19 @@ a{ color:inherit; }
   width: 240px;
   max-width: 100%;
   height: auto;
+
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0; /* set 18px if you want rounded logo */
 }
 
 /* =========================
    SECTIONS / CARDS
-   (keep your existing patterns)
    ========================= */
 .section{ padding: 26px 0; }
+
 .section-title{
   margin: 0 0 12px;
   font-size: 26px;
@@ -326,7 +362,57 @@ a{ color:inherit; }
   margin-bottom: 10px;
 }
 
-/* Forms */
+/* ===============================
+   Linkable chooser cards (<a class="card">)
+   Keep whole-card hover OFF; chips inside can hover
+   =============================== */
+a.card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+}
+a.card:hover{
+  transform: none;
+  box-shadow: none;
+  border-color: inherit;
+  background: inherit;
+}
+a.card:focus-visible{
+  outline: 3px solid rgba(11, 94, 215, .45);
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+
+/* ===== Program chips (used in Programs page) ===== */
+.prog-chip{
+  display:inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1;
+  border: 2px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.7);
+}
+
+/* Chips hover ONLY when inside a clickable chooser card */
+a.card .prog-chip{
+  cursor: pointer;
+  transition: background-color .14s ease, color .14s ease, transform .14s ease,
+              box-shadow .14s ease, border-color .14s ease;
+}
+a.card .prog-chip:hover{
+  background: var(--brand);
+  color: #fff;
+  border-color: rgba(0,0,0,.10);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
+}
+
+/* =========================
+   FORMS
+   ========================= */
 .form{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -349,7 +435,9 @@ input, select, textarea{
 textarea{ min-height: 120px; resize: vertical; }
 .helper{ color: var(--muted); font-weight: 650; font-size: 13px; margin-top: 10px; }
 
-/* Footer */
+/* =========================
+   FOOTER
+   ========================= */
 .footer{
   margin-top: 22px;
   padding: 26px 0;
@@ -368,171 +456,128 @@ textarea{ min-height: 120px; resize: vertical; }
 .footer a:hover{ text-decoration: underline; }
 
 .sep{ height: 1px; background: var(--line); margin: 18px 0; }
-/* ===== Remove the square frame around the HERO logo ===== */
-.hero-snap-logoBox{
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
+
+/* =========================
+   QUICK LINKS (panel)
+   Use on any page:
+   <div class="quicklinks"> ... <a class="ql-btn">...</a>
+   ========================= */
+.quicklinks{
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow2);
+  padding: 14px;
+  margin: 14px 0 18px;
 }
 
-/* Optional: ensure the hero logo image itself has no padding/border */
-.hero-snap-logoBox img{
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  border-radius: 0 !important;  /* use 18px if you want rounded logo */
-}
-/* ===== Remove square box around top-left logo ===== */
-.brand-logo{
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-
-  /* choose ONE look: */
-  border-radius: 999px !important;  /* circle logo */
-  /* border-radius: 0 !important; */ /* or no rounding */
+.quicklinks h2{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 1000;
+  text-align: center;
+  color: var(--brand2);
 }
 
-/* ===== Add hover colours (new variables) ===== */
-:root{
-  /* pick slightly darker / richer versions for hover */
-  --success-hover: #15803d;  /* darker green than #16a34a */
-  --accent-hover:  #d97706;  /* deeper amber than #f59e0b */
-  --brand-hover:   #0a4fb8;  /* for outlines/highlights if needed */
+.ql-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+@media (max-width: 520px){
+  .ql-grid{ grid-template-columns: 1fr; }
 }
 
-/* ===== Smooth hover for ALL buttons ===== */
-.btn{
-  transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease, color .14s ease;
+.ql-btn{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  font-weight: 1000;
+
+  padding: 12px 12px;
+  border-radius: 14px;
+
+  background: rgba(11,94,215,.06);
+  border: 1px solid rgba(11,94,215,.18);
+  color: var(--brand2);
+
+  cursor:pointer;
+  user-select:none;
+
+  transition: background-color .14s ease, color .14s ease, transform .14s ease,
+              box-shadow .14s ease, border-color .14s ease;
 }
 
-.btn:hover{
+.ql-btn:hover{
+  background: var(--brand);
+  color: #fff;
+  border-color: rgba(0,0,0,.10);
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(2, 6, 23, .14);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
 }
 
-.btn:active{
-  transform: translateY(0);
-}
+.ql-btn:active{ transform: translateY(0); }
 
-/* ===== Type-specific hover colours ===== */
-.btn-success:hover{ background: var(--success-hover); color:#fff; }
-.btn-amber:hover{ background: var(--accent-hover); color:#111827; }
-
-/* ===== Keyboard accessibility ===== */
-.btn:focus-visible{
+.ql-btn:focus-visible{
   outline: 3px solid rgba(11, 94, 215, .45);
   outline-offset: 3px;
 }
 
-/* ===============================
-   Hover effects for linkable chooser cards (<a class="card">)
-   =============================== */
-a.card{
-  display:block; /* full card clickable */
-  text-decoration:none;
-  color:inherit;
-  cursor:pointer;
-  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background-color .16s ease;
+/* =========================
+   QUICK JUMP (chip row like screenshot)
+   Use anywhere:
+   <div class="quick-jump"><a href="#...">...</a></div>
+   ========================= */
+.quick-jump{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin: 14px 0 6px;
 }
 
-a.card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(2, 6, 23, .14);
+.quick-jump a,
+.quick-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration:none;
+  color: inherit;
+
+  border: 2px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.75);
+
+  cursor:pointer;
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background-color .14s ease;
+}
+
+.quick-jump a:hover,
+.quick-link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(2, 6, 23, .10);
   border-color: rgba(11, 94, 215, .35);
   background: rgba(255,255,255,.92);
 }
 
-/* Chips react on hover (nice touch) */
-a.card:hover .prog-chip{
-  border-color: rgba(11, 94, 215, .45);
-  background: rgba(11, 94, 215, .06);
+.quick-jump a:active,
+.quick-link:active{
+  transform: translateY(0);
 }
 
-a.card:focus-visible{
+.quick-jump a:focus-visible,
+.quick-link:focus-visible{
   outline: 3px solid rgba(11, 94, 215, .45);
   outline-offset: 3px;
-  border-radius: 16px;
-}
-/* Keep the card clickable, but DO NOT change the whole card on hover */
-a.card{
-  display:block;
-  text-decoration:none;
-  color:inherit;
-  cursor:pointer;
 }
 
-/* Remove/override any existing card hover effects */
-a.card:hover{
-  transform: none !important;
-  box-shadow: none !important;
-  border-color: inherit !important;
-  background: inherit !important;
-}
-
-/* Make chips feel like buttons */
-.prog-chip{
-  cursor: pointer; /* important */
-  transition: background-color .14s ease, color .14s ease, transform .14s ease, box-shadow .14s ease, border-color .14s ease;
-}
-
-
-/* Default chips: NO hover colour change (non-clickable areas stay the same) */
-.prog-chip{
-  transition: none;         /* or keep transition if you like, but no hover rule */
-}
-
-/* Only chips inside clickable chooser cards get hover colour */
-a.card .prog-chip{
-  cursor: pointer;
-  transition: background-color .14s ease, color .14s ease, transform .14s ease,
-              box-shadow .14s ease, border-color .14s ease;
-}
-
-a.card .prog-chip:hover{
-  background: var(--brand);
-  color: #fff;
-  border-color: rgba(0,0,0,.10);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
-}
-
-/* Keep whole-card hover OFF (so only chips change) */
-a.card:hover{
-  transform: none !important;
-  box-shadow: none !important;
-  border-color: inherit !important;
-  background: inherit !important;
-}
-
-/* Default chips: NO hover colour change (non-clickable areas stay the same) */
-.prog-chip{
-  transition: none;         /* or keep transition if you like, but no hover rule */
-}
-
-/* Only chips inside clickable chooser cards get hover colour */
-a.card .prog-chip{
-  cursor: pointer;
-  transition: background-color .14s ease, color .14s ease, transform .14s ease,
-              box-shadow .14s ease, border-color .14s ease;
-}
-
-a.card .prog-chip:hover{
-  background: var(--brand);
-  color: #fff;
-  border-color: rgba(0,0,0,.10);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
-}
-
-/* Keep whole-card hover OFF (so only chips change) */
-a.card:hover{
-  transform: none !important;
-  box-shadow: none !important;
-  border-color: inherit !important;
-  background: inherit !important;
+/* =========================
+   ANCHOR TARGET OFFSET (global)
+   Put class="anchor-target" on sections you jump to
+   ========================= */
+.anchor-target{
+  scroll-margin-top: 110px;
 }
