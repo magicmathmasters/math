@@ -15,68 +15,16 @@
 
   <!-- ✅ Shared site stylesheet -->
   <link rel="stylesheet" href="style.css">
-  
-  <!--link to favicon-->
+
+  <!-- favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
   <!-- ✅ Small page-specific rules (kept minimal) -->
   <style>
-    /* ✅ Remove the square/box around the TOP-LEFT logo */
-    .brand-logo{
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      box-shadow: none !important;
-      border-radius: 999px !important; /* round */
-      width: 52px;
-      height: 52px;
-      object-fit: cover;
-    }
-
-    /* ✅ No subtitle under the brand name */
+    /* ✅ No subtitle under the brand name (index-only) */
     .brand-title span{ display:none !important; }
-    .brand-title b{ font-size: 22px; }
 
-    /* ===== Quick links box (accordion launcher) ===== */
-    .quicklinks{
-      background: rgba(255,255,255,.82);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding: 14px;
-      margin: 14px 0 18px;
-    }
-    .quicklinks h2{
-      margin: 0 0 10px;
-      font-size: 16px;
-      font-weight: 1000;
-      text-align: center;
-      color: var(--brand2);
-    }
-    .ql-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-    }
-    @media (max-width: 520px){
-      .ql-grid{ grid-template-columns: 1fr; }
-    }
-    .ql-btn{
-      display:block;
-      text-align:center;
-      text-decoration:none;
-      font-weight: 1000;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(11,94,215,.06);
-      border: 1px solid rgba(11,94,215,.18);
-      color: var(--brand2);
-      cursor:pointer;
-      user-select:none;
-    }
-    .ql-btn:hover{ background: rgba(11,94,215,.10); }
-
-    /* ===== Accordion sections ===== */
+    /* ===== Accordion sections (index-only) ===== */
     details.acc{
       background: rgba(255,255,255,.82);
       border: 1px solid var(--line);
@@ -99,7 +47,7 @@
       user-select:none;
     }
     summary.acc-sum::-webkit-details-marker{ display:none; }
-    .caret{ font-weight: 1000; opacity:.85; }
+    .caret{ font-weight: 1000; opacity:.85; transition: transform .12s ease; }
     details[open] summary .caret{ transform: rotate(180deg); }
     .acc-body{ padding: 0 16px 16px; }
 
@@ -126,6 +74,7 @@
     @media (max-width: 900px){
       .two-grid{ grid-template-columns: 1fr; }
     }
+
     .mini-card{
       background: rgba(255,255,255,.86);
       border: 1px solid var(--line);
@@ -145,6 +94,7 @@
       font-weight: 650;
       line-height: 1.7;
     }
+
     .link-strong{
       color: var(--brand2);
       font-weight: 1000;
@@ -171,7 +121,7 @@
         <a data-nav href="index.html">Home</a>
         <a data-nav href="programs.html">Programs</a>
         <a data-nav href="pricing.html">Fees</a>
-        <a data-nav href="policy.html">Policies</a>
+        <a data-nav href="policies.html">Policies</a>
         <a data-nav href="about.html">About</a>
         <a data-nav href="philosophy.html">Philosophy</a>
         <a data-nav href="contact.html">Contact</a>
@@ -180,7 +130,7 @@
     </div>
   </div>
 
-  <!-- ✅ HERO TEMPLATE (matches your screenshot layout) -->
+  <!-- ✅ HERO TEMPLATE -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
@@ -221,12 +171,12 @@
   </section>
 
   <main>
-    <!-- separator -->
     <div class="container"><div class="sep"></div></div>
 
     <section class="section">
       <div class="container">
-        <!-- ✅ QUICK LINKS -->
+
+        <!-- ✅ QUICK LINKS (styled by style.css global rules) -->
         <div class="quicklinks">
           <h2>Quick links (tap to open)</h2>
           <div class="ql-grid">
@@ -390,7 +340,7 @@
                 <li>We maintain a respectful, supportive learning environment.</li>
               </ul>
               <p style="margin:12px 0 0; font-weight:1000;">
-                👉 <a class="link-strong" href="policy.html">Read full policies →</a>
+                👉 <a class="link-strong" href="policies.html">Read full policies →</a>
               </p>
             </div>
           </div>
@@ -489,7 +439,6 @@
     })();
   </script>
 
-  <!-- ✅ Your nav-highlighting script (adds aria-current="page" automatically) -->
   <script src="script.js"></script>
 </body>
 </html>
