@@ -17,39 +17,17 @@
   <!-- Shared site stylesheet -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- link to favicon -->
+  <!-- favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-  <!-- Page-only overrides (kept tiny) -->
+  <!-- Page-only overrides (Programs fun cards only) -->
   <style>
-    /* HERO: remove square frame around logo (template default) */
-    .hero-snap-logoBox{
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-    }
-    .hero-snap-logoBox img{
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      background: transparent !important;
-      border-radius: 0 !important;
-    }
+    html{ scroll-behavior: smooth; }
+
+    /* HERO: smaller padding for this page */
     .hero { padding: 22px 0 18px; }
 
     .prog-meta{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:10px; }
-    .prog-chip{
-      display:inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 14px;
-      line-height: 1;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.7);
-    }
     .prog-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px; }
 
     /* “Parents get” line (trust signal) */
@@ -64,36 +42,95 @@
       line-height: 1.5;
     }
 
-    /* ===== Chooser cards are links: make them look like cards (not blue links) ===== */
-    a.card{
-      display:block;
-      text-decoration:none;
-      color:inherit;
-      cursor:pointer;
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background-color .16s ease;
-    }
-    a.card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 40px rgba(2, 6, 23, .14);
-      border-color: rgba(11, 94, 215, .35);
-      background: rgba(255,255,255,.92);
-    }
-    a.card:hover .prog-chip{
-      border-color: rgba(11, 94, 215, .45);
-      background: rgba(11, 94, 215, .06);
-    }
-    a.card:focus-visible{
-      outline: 3px solid rgba(11, 94, 215, .45);
-      outline-offset: 3px;
-      border-radius: 16px;
+    /* ==================================
+       Programs page: FUN titles + icons
+       (Scoped so it won't affect other pages)
+       ================================== */
+    .page-programs .card{
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Anchor jump offset (topbar height) */
-    .anchor-target{ scroll-margin-top: 110px; }
+    /* soft playful blobs */
+    .page-programs .card::before{
+      content:"";
+      position:absolute;
+      inset:-50px -60px auto auto;
+      width:220px;
+      height:220px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(11,94,215,.12), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .page-programs .card::after{
+      content:"";
+      position:absolute;
+      inset:auto auto -60px -60px;
+      width:240px;
+      height:240px;
+      border-radius:999px;
+      background: radial-gradient(circle at 40% 40%, rgba(245,158,11,.14), transparent 62%);
+      transform: rotate(-10deg);
+      pointer-events:none;
+    }
+
+    .page-programs .prog-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+    .page-programs .prog-ico{
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      font-size: 20px;
+      font-weight: 900;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 18px rgba(2, 6, 23, .08);
+      flex: 0 0 auto;
+    }
+
+    /* Bigger title just on Programs */
+    .page-programs .card h3{
+      margin: 0;               /* handled by .prog-title */
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.2px;
+      font-weight: 1000;
+    }
+
+    /* Theme colours */
+    .page-programs .theme-catchup  h3{ color: var(--brand2); }
+    .page-programs .theme-keepup   h3{ color: var(--success); }
+    .page-programs .theme-getahead h3{ color: var(--accent); }
+    .page-programs .theme-comp     h3{ color: #7c3aed; } /* violet */
+
+    /* Icon bubble tint to match theme */
+    .page-programs .theme-catchup  .prog-ico{ background: rgba(11,94,215,.10); }
+    .page-programs .theme-keepup   .prog-ico{ background: rgba(22,163,74,.12); }
+    .page-programs .theme-getahead .prog-ico{ background: rgba(245,158,11,.14); }
+    .page-programs .theme-comp     .prog-ico{ background: rgba(124,58,237,.12); }
+
+    /* Make chips look like “chips” on this page (not dark buttons) */
+    .page-programs .prog-chip{
+      background: rgba(255,255,255,.75);
+      border-color: rgba(15,23,42,.12);
+      color: var(--ink);
+    }
+    .page-programs a.card .prog-chip:hover{
+      background: rgba(11,94,215,.10);
+      color: var(--ink);
+      border-color: rgba(11,94,215,.22);
+    }
   </style>
 </head>
 
-<body>
+<body class="page-programs">
 
   <!-- ===== TOP BAR ===== -->
   <div class="topbar">
@@ -118,7 +155,7 @@
     </div>
   </div>
 
-  <!-- ===== HERO (screenshot style) ===== -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
@@ -161,18 +198,18 @@
 
   <!-- ===== PAGE CONTENT ===== -->
   <main class="container">
-
-    <!-- Combined: Choose + Programs -->
     <section class="section" id="programs">
-      <h2 class="section-title">Programs</h2>
       <p class="section-sub">
         Start with your child’s goal, then jump straight to the best-fit program.
       </p>
 
       <!-- Chooser (links to program cards) -->
       <div class="grid">
-        <a class="card" href="#p-1to1">
-          <h3>Catch up &amp; rebuild foundations</h3>
+        <a class="card theme-catchup" href="#p-1to1">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧱</span>
+            <h3>Catch up &amp; rebuild foundations</h3>
+          </div>
           <p>
             Best for students who feel behind or anxious. We rebuild core skills step-by-step, then practise until it feels easy.
           </p>
@@ -183,8 +220,11 @@
           </div>
         </a>
 
-        <a class="card" href="#p-group">
-          <h3>Keep up &amp; stay consistent</h3>
+        <a class="card theme-keepup" href="#p-group">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">📚</span>
+            <h3>Keep up &amp; stay consistent</h3>
+          </div>
           <p>
             Best for students who are doing “okay” but need structure. We align with school topics and prevent gaps from growing.
           </p>
@@ -195,8 +235,11 @@
           </div>
         </a>
 
-        <a class="card" href="#p-club">
-          <h3>Get ahead &amp; extend (with joy)</h3>
+        <a class="card theme-getahead" href="#p-club">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🚀</span>
+            <h3>Get ahead &amp; extend (with joy)</h3>
+          </div>
           <p>
             Best for capable students who want challenge without pressure. We build reasoning and flexible thinking through rich problems.
           </p>
@@ -207,8 +250,11 @@
           </div>
         </a>
 
-        <a class="card" href="#p-comp">
-          <h3>Aim for competitions</h3>
+        <a class="card theme-comp" href="#p-comp">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🏆</span>
+            <h3>Aim for competitions</h3>
+          </div>
           <p>
             Best for students targeting AMC/AMO-style questions. We teach strategies, build stamina, and refine solutions.
           </p>
@@ -223,8 +269,11 @@
       <!-- Actual program cards -->
       <div class="grid" style="margin-top:18px;">
         <!-- 1-to-1 -->
-        <div class="card anchor-target" id="p-1to1">
-          <h3>1-to-1 Tutoring</h3>
+        <div class="card anchor-target theme-catchup" id="p-1to1">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧑‍🏫</span>
+            <h3>1-to-1 Tutoring</h3>
+          </div>
           <p>
             Fully personalised lessons for rapid progress. Ideal for targeted support, confidence building, or high goals.
           </p>
@@ -249,8 +298,11 @@
         </div>
 
         <!-- Small group -->
-        <div class="card anchor-target" id="p-group">
-          <h3>Small-Group Tutorials</h3>
+        <div class="card anchor-target theme-keepup" id="p-group">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">👨‍👩‍👧</span>
+            <h3>Small-Group Tutorials</h3>
+          </div>
           <p>
             Small groups for structure + motivation. Great for consistent weekly learning and school-aligned practice.
           </p>
@@ -275,8 +327,11 @@
         </div>
 
         <!-- Maths Club -->
-        <div class="card anchor-target" id="p-club">
-          <h3>Maths Club</h3>
+        <div class="card anchor-target theme-getahead" id="p-club">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧩</span>
+            <h3>Maths Club</h3>
+          </div>
           <p>
             Weekly enrichment for curious learners. Build reasoning, pattern-spotting, and flexible thinking through fun problems.
           </p>
@@ -301,8 +356,11 @@
         </div>
 
         <!-- Competition -->
-        <div class="card anchor-target" id="p-comp">
-          <h3>Competition Training</h3>
+        <div class="card anchor-target theme-comp" id="p-comp">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">⏱️</span>
+            <h3>Competition Training</h3>
+          </div>
           <p>
             Prepare for AMC/AMO-style problem solving. Learn strategies, build stamina, and practise high-quality questions.
           </p>
@@ -329,7 +387,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ===== FOOTER ===== -->

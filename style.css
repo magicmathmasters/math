@@ -393,7 +393,7 @@ a.card:focus-visible{
   font-size: 14px;
   line-height: 1;
   border: 2px solid rgba(0,0,0,.10);
-  background: rgba(255,255,255,.7);
+  background: rgba(2, 35, 134, 0.795);
 }
 
 /* Chips hover ONLY when inside a clickable chooser card */
@@ -404,7 +404,7 @@ a.card .prog-chip{
 }
 a.card .prog-chip:hover{
   background: var(--brand);
-  color: #fff;
+  color: #1d44f3c6;
   border-color: rgba(0,0,0,.10);
   transform: translateY(-1px);
   box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
@@ -580,4 +580,95 @@ textarea{ min-height: 120px; resize: vertical; }
    ========================= */
 .anchor-target{
   scroll-margin-top: 110px;
+}
+/* =========================
+   PROGRAMS PAGE — fun card titles + icons
+   Only applies when <body class="page-programs">
+   ========================= */
+
+.page-programs .card{
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft playful blobs */
+.page-programs .card::before{
+  content:"";
+  position:absolute;
+  inset:-50px -60px auto auto;
+  width:220px;
+  height:220px;
+  border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, rgba(11,94,215,.12), transparent 60%);
+  transform: rotate(10deg);
+  pointer-events:none;
+}
+.page-programs .card::after{
+  content:"";
+  position:absolute;
+  inset:auto auto -60px -60px;
+  width:240px;
+  height:240px;
+  border-radius:999px;
+  background: radial-gradient(circle at 40% 40%, rgba(245,158,11,.14), transparent 62%);
+  transform: rotate(-10deg);
+  pointer-events:none;
+}
+
+/* title row with icon bubble */
+.page-programs .prog-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom: 8px;
+}
+
+.page-programs .prog-ico{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  font-size: 20px;
+  font-weight: 900;
+  border: 1px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.75);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .08);
+  flex: 0 0 auto;
+}
+
+/* bigger, more “headline” title */
+.page-programs .card h3{
+  margin: 0;               /* handled by .prog-title */
+  font-size: 24px;         /* bigger */
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+  font-weight: 1000;
+}
+
+/* Theme colours */
+.page-programs .theme-catchup  h3{ color: var(--brand2); }
+.page-programs .theme-keepup   h3{ color: var(--success); }
+.page-programs .theme-getahead h3{ color: var(--accent); }
+.page-programs .theme-comp     h3{ color: #7c3aed; } /* violet */
+
+/* Icon bubble tint to match theme */
+.page-programs .theme-catchup  .prog-ico{ background: rgba(11,94,215,.10); }
+.page-programs .theme-keepup   .prog-ico{ background: rgba(22,163,74,.12); }
+.page-programs .theme-getahead .prog-ico{ background: rgba(245,158,11,.14); }
+.page-programs .theme-comp     .prog-ico{ background: rgba(124,58,237,.12); }
+
+/* Optional: make chips lighter inside programs cards (so they don't look like dark buttons) */
+.page-programs .prog-chip{
+  background: rgba(255,255,255,.75);
+  border-color: rgba(15,23,42,.12);
+}
+.page-programs a.card .prog-chip:hover{
+  /*background: #1d44f3c6;rgba(11,94,215,.10);
+  color: var(--ink);*/
+  background: var(--brand);
+  color: #e1f31dc6;
+  border-color: rgba(0,0,0,.10);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(2, 6, 23, .12);
 }
