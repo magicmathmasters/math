@@ -5,24 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Chương trình | Magic Math Master</title>
-  <meta name="description" content="Khám phá các chương trình của Magic Math Master cho Prep–Lớp 12: dạy kèm 1-1, nhóm nhỏ, Maths Club và luyện thi. Phương pháp dạy nhẹ nhàng, có cấu trúc giúp con tự tin từng bước." />
+  <meta name="description" content="Khám phá các chương trình Magic Math Master cho Prep–Lớp 12: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, và luyện thi/thi đấu. Phương pháp dạy nhẹ nhàng, có cấu trúc giúp con tự tin từng bước." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/programs.html" />
 
   <!-- Optional OG tags -->
   <meta property="og:title" content="Chương trình | Magic Math Master" />
-  <meta property="og:description" content="Chương trình Prep–Lớp 12: 1-1, nhóm nhỏ, Maths Club và luyện thi — có cấu trúc rõ ràng, nền tảng vững, ưu tiên sự tự tin." />
+  <meta property="og:description" content="Chương trình Prep–Lớp 12: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, luyện thi/thi đấu — có cấu trúc rõ ràng, nền tảng vững, ưu tiên sự tự tin." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/programs.html" />
 
   <!-- ✅ Use root CSS -->
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- ✅ favicon (optional, if you use it for vi pages too) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
+  <!-- ✅ favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
 
-  <!-- Page-only overrides (kept tiny) -->
   <style>
-    /* HERO: remove square frame around logo (template default) */
     .hero-snap-logoBox{
       background: transparent !important;
       border: none !important;
@@ -52,7 +50,6 @@
     }
     .prog-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px; }
 
-    /* “Phụ huynh nhận được” line (trust signal) */
     .parents-get{
       margin-top: 10px;
       padding: 10px 12px;
@@ -63,12 +60,36 @@
       font-size: 15px;
       line-height: 1.5;
     }
+
+    a.card{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+      cursor:pointer;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background-color .16s ease;
+    }
+    a.card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, .14);
+      border-color: rgba(11, 94, 215, .35);
+      background: rgba(255,255,255,.92);
+    }
+    a.card:hover .prog-chip{
+      border-color: rgba(11, 94, 215, .45);
+      background: rgba(11, 94, 215, .06);
+    }
+    a.card:focus-visible{
+      outline: 3px solid rgba(11, 94, 215, .45);
+      outline-offset: 3px;
+      border-radius: 16px;
+    }
+
+    .anchor-target{ scroll-margin-top: 110px; }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== TOP BAR ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
@@ -91,7 +112,6 @@
     </div>
   </div>
 
-  <!-- ===== HERO (screenshot style) ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
@@ -108,12 +128,12 @@
         </div>
 
         <p class="hero-snap-desc">
-          Chọn mức hỗ trợ phù hợp cho con: dạy kèm 1-1, nhóm nhỏ, Maths Club hoặc luyện thi/nâng cao.
+          Chọn mức hỗ trợ phù hợp với con: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, hoặc luyện thi/thi đấu.
         </p>
 
         <div class="hero-snap-checks">
           <span>✓ Dạy nhẹ nhàng, có cấu trúc</span>
-          <span>✓ Lộ trình cá nhân hoá</span>
+          <span>✓ Học cá nhân hoá</span>
           <span>✓ Giao tiếp rõ ràng với phụ huynh</span>
         </div>
 
@@ -124,7 +144,8 @@
         </div>
 
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+          <!-- ✅ If you have vi/enquiry.html, this is more accurate for “Gửi yêu cầu” -->
+          <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
           <a class="btn btn-amber" href="register.html">Đăng ký</a>
         </div>
 
@@ -132,74 +153,74 @@
     </div>
   </section>
 
-  <!-- ===== PAGE CONTENT ===== -->
   <main class="container">
 
-    <!-- Overview -->
-    <section class="section">
-      <h2 class="section-title">Cách chọn chương trình phù hợp</h2>
+    <section class="section" id="programs">
+      <h2 class="section-title">Chương trình</h2>
       <p class="section-sub">
-        Bắt đầu từ mục tiêu của con, sau đó chọn hình thức học phù hợp với cách học và thời gian mong muốn.
+        Bắt đầu từ mục tiêu của con, rồi chuyển thẳng đến chương trình phù hợp nhất.
       </p>
 
       <div class="grid">
-        <div class="card">
+        <a class="card" href="#p-1to1">
           <h3>Bắt kịp &amp; xây lại nền tảng</h3>
           <p>
-            Phù hợp với học sinh đang bị hổng kiến thức hoặc lo lắng khi học Toán.
-            Chúng tôi xây lại kỹ năng cốt lõi từng bước, rồi luyện tập đến khi con thấy “dễ hơn”.
+            Phù hợp cho học sinh đang bị hổng kiến thức hoặc lo lắng với môn Toán. Chúng tôi củng cố kỹ năng cốt lõi từng bước, rồi luyện tập đến khi con thấy “dễ”.
           </p>
           <div class="prog-meta">
+            <span class="prog-chip">Đến Dạy kèm 1-1</span>
             <span class="prog-chip">Nền tảng vững</span>
             <span class="prog-chip">Tự tin</span>
-            <span class="prog-chip">Tiến bộ theo tuần</span>
           </div>
-        </div>
+        </a>
 
-        <div class="card">
-          <h3>Theo kịp &amp; duy trì đều đặn</h3>
+        <a class="card" href="#p-group">
+          <h3>Theo kịp &amp; học đều đặn</h3>
           <p>
-            Phù hợp với học sinh đang “ổn” nhưng cần cấu trúc. Chúng tôi bám sát chủ đề ở trường và ngăn khoảng hổng lớn dần.
+            Phù hợp cho học sinh “tạm ổn” nhưng cần cấu trúc. Chúng tôi bám sát nội dung ở trường và ngăn khoảng trống kiến thức ngày càng lớn.
           </p>
           <div class="prog-meta">
+            <span class="prog-chip">Đến Nhóm nhỏ</span>
             <span class="prog-chip">Bám sát trường</span>
-            <span class="prog-chip">Hỗ trợ bài tập</span>
             <span class="prog-chip">Thói quen tốt</span>
           </div>
-        </div>
+        </a>
 
-        <div class="card">
-          <h3>Vượt lên &amp; mở rộng</h3>
+        <a class="card" href="#p-club">
+          <h3>Vượt lên &amp; mở rộng (một cách vui)</h3>
           <p>
-            Phù hợp với học sinh có năng lực và muốn thử thách. Chúng tôi đào sâu hiểu biết, rèn lập luận và kỹ năng làm bài.
+            Phù hợp cho học sinh có năng lực muốn thử thách mà không áp lực. Chúng tôi rèn tư duy lập luận và linh hoạt qua các bài toán “giàu ý tưởng”.
           </p>
           <div class="prog-meta">
+            <span class="prog-chip">Đến CLB Toán</span>
             <span class="prog-chip">Nâng cao</span>
             <span class="prog-chip">Giải quyết vấn đề</span>
-            <span class="prog-chip">Sẵn sàng kiểm tra</span>
           </div>
-        </div>
+        </a>
+
+        <a class="card" href="#p-comp">
+          <h3>Hướng đến thi đấu</h3>
+          <p>
+            Phù hợp cho học sinh nhắm đến dạng câu hỏi AMC/AMO. Chúng tôi dạy chiến lược, rèn sức bền làm bài, và nâng chất lượng lời giải.
+          </p>
+          <div class="prog-meta">
+            <span class="prog-chip">Đến Luyện thi/Thi đấu</span>
+            <span class="prog-chip">Tập trung AMC/AMO</span>
+            <span class="prog-chip">Chiến lược</span>
+          </div>
+        </a>
       </div>
-    </section>
 
-    <!-- Main program cards -->
-    <section class="section">
-      <h2 class="section-title">Các chương trình</h2>
-      <p class="section-sub">
-        Chọn chương trình bên dưới, sau đó bấm Gửi yêu cầu/Đăng ký khi bạn sẵn sàng.
-      </p>
-
-      <div class="grid">
-        <!-- 1-to-1 -->
-        <div class="card">
+      <div class="grid" style="margin-top:18px;">
+        <div class="card anchor-target" id="p-1to1">
           <h3>Dạy kèm 1-1</h3>
           <p>
-            Buổi học cá nhân hoá hoàn toàn để tiến bộ nhanh. Phù hợp khi cần hỗ trợ đúng trọng tâm, tăng tự tin hoặc mục tiêu cao.
+            Buổi học cá nhân hoá hoàn toàn để tiến bộ nhanh. Phù hợp khi cần hỗ trợ đúng điểm yếu, xây tự tin, hoặc đặt mục tiêu cao.
           </p>
           <ul>
-            <li>Kế hoạch học cá nhân + mục tiêu rõ ràng</li>
-            <li>Giải thích và luyện tập đúng điểm yếu</li>
-            <li>Nhịp độ linh hoạt (bắt kịp hoặc tăng tốc)</li>
+            <li>Lộ trình học cá nhân + mục tiêu rõ ràng</li>
+            <li>Giải thích và luyện tập đúng trọng tâm</li>
+            <li>Tiến độ linh hoạt (bắt kịp hoặc tăng tốc)</li>
           </ul>
 
           <div class="prog-meta">
@@ -208,23 +229,22 @@
             <span class="prog-chip">Online &amp; trực tiếp</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> kế hoạch cá nhân hoá + cập nhật tiến bộ và bước tiếp theo định kỳ.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> lộ trình cá nhân + cập nhật tiến bộ định kỳ và bước tiếp theo.</div>
 
           <div class="prog-actions">
-            <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+            <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
             <a class="btn btn-amber" href="register.html">Đăng ký</a>
           </div>
         </div>
 
-        <!-- Small group -->
-        <div class="card">
-          <h3>Lớp nhóm nhỏ</h3>
+        <div class="card anchor-target" id="p-group">
+          <h3>Nhóm nhỏ</h3>
           <p>
-            Nhóm nhỏ giúp có cấu trúc + tạo động lực. Phù hợp để học đều đặn hằng tuần và luyện tập theo nội dung ở trường.
+            Nhóm nhỏ giúp có cấu trúc + tạo động lực. Rất phù hợp để học đều hàng tuần và luyện tập theo nội dung ở trường.
           </p>
           <ul>
-            <li>Nhóm nhỏ (giới hạn chỗ)</li>
-            <li>Trọng tâm theo tuần + hỗ trợ bài tập</li>
+            <li>Nhóm nhỏ, quan tâm sát (số chỗ giới hạn)</li>
+            <li>Trọng tâm rõ ràng theo tuần + hỗ trợ bài tập</li>
             <li>Môi trường học ưu tiên sự tự tin</li>
           </ul>
 
@@ -234,162 +254,73 @@
             <span class="prog-chip">Bám sát trường</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> chủ đề học theo tuần + cập nhật tiến bộ và bước tiếp theo rõ ràng.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> chủ đề trọng tâm theo tuần + cập nhật tiến bộ và bước tiếp theo rõ ràng.</div>
 
           <div class="prog-actions">
-            <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+            <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
             <a class="btn btn-amber" href="register.html">Đăng ký</a>
           </div>
         </div>
 
-        <!-- Maths Club -->
-        <div class="card">
-          <h3>Maths Club</h3>
+        <div class="card anchor-target" id="p-club">
+          <h3>Câu lạc bộ Toán</h3>
           <p>
-            Lớp bồi dưỡng hằng tuần cho học sinh ham học. Rèn lập luận, nhận dạng quy luật và tư duy linh hoạt qua bài toán thú vị.
+            Hoạt động nâng cao hàng tuần cho học sinh ham học hỏi. Rèn lập luận, nhận ra quy luật và tư duy linh hoạt qua các bài toán thú vị.
           </p>
           <ul>
-            <li>Câu đố, trò chơi và bài toán thử thách</li>
-            <li>Rèn lập luận và kỹ năng trình bày</li>
-            <li>Tự tin lành mạnh qua khám phá</li>
+            <li>Bài toán thử thách + trò chơi</li>
+            <li>Lập luận và kỹ năng trình bày</li>
+            <li>Xây tự tin lành mạnh qua khám phá</li>
           </ul>
 
           <div class="prog-meta">
-            <span class="prog-chip">Bài toán hằng tuần</span>
+            <span class="prog-chip">Đố vui hằng tuần</span>
             <span class="prog-chip">Online</span>
             <span class="prog-chip">Theo dõi tiến bộ</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> theo dõi tiến bộ đơn giản + gợi ý luyện tập tại nhà.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> theo dõi tiến bộ đơn giản + gợi ý hỗ trợ con học ở nhà.</div>
 
           <div class="prog-actions">
-            <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+            <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
             <a class="btn btn-amber" href="register.html">Đăng ký</a>
           </div>
         </div>
 
-        <!-- Competition -->
-        <div class="card">
-          <h3>Luyện thi (AMC/AMO)</h3>
+        <div class="card anchor-target" id="p-comp">
+          <h3>Luyện thi / Thi đấu</h3>
           <p>
-            Chuẩn bị dạng bài AMC/AMO. Học chiến lược, rèn sức bền và luyện câu hỏi chất lượng cao.
+            Chuẩn bị cho dạng câu hỏi AMC/AMO. Học chiến lược, rèn sức bền làm bài, và luyện đề chất lượng cao.
           </p>
           <ul>
-            <li>Chiến lược &amp; thói quen giải quyết vấn đề</li>
-            <li>Luyện timed practice và chữa bài</li>
+            <li>Chiến lược giải toán + thói quen tư duy</li>
+            <li>Luyện đề bấm giờ và chữa bài</li>
             <li>Giải thích lời giải rõ ràng</li>
-            <li>Học “bẫy” thường gặp &amp; cách tránh</li>
-            <li>Xây “bộ công cụ chiến lược” theo dạng câu hỏi</li>
+            <li>Học mẹo thông minh &amp; tránh bẫy thường gặp</li>
+            <li>Xây “bộ công cụ chiến lược” theo từng dạng câu hỏi</li>
           </ul>
 
           <div class="prog-meta">
             <span class="prog-chip">Nâng cao</span>
-            <span class="prog-chip">AMC/AMO</span>
+            <span class="prog-chip">Tập trung AMC/AMO</span>
             <span class="prog-chip">Chiến lược</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> phản hồi chiến lược + lộ trình luyện tập được gợi ý.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> phản hồi về chiến lược + lộ trình luyện tập gợi ý.</div>
 
           <div class="prog-actions">
-            <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+            <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
             <a class="btn btn-amber" href="register.html">Đăng ký</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- What happens each week -->
-    <section class="section">
-      <h2 class="section-title">Mỗi tuần học sinh sẽ làm gì?</h2>
-      <p class="section-sub">
-        Nhịp học đơn giản giúp tiến bộ dễ dự đoán — và giảm áp lực.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>1) Hiểu ý tưởng</h3>
-          <p>Giải thích rõ ràng theo từng bước và ví dụ phù hợp với trình độ của con.</p>
-        </div>
-        <div class="card">
-          <h3>2) Luyện tập có hướng dẫn</h3>
-          <p>Luyện tập kèm phản hồi để lỗi sai trở thành bài học — không phải sự bực bội.</p>
-        </div>
-        <div class="card">
-          <h3>3) Vận dụng &amp; tăng tự tin</h3>
-          <p>Kết hợp kỹ năng + bài toán có lời văn + lập luận để hiểu thật sự.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Fees teaser -->
-    <section class="section">
-      <h2 class="section-title">Học phí &amp; đăng ký</h2>
-      <p class="section-sub">
-        Xem học phí hiện tại, hình thức học và chính sách. Nếu bạn chưa chắc, chúng tôi có thể gợi ý điểm bắt đầu phù hợp.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Xem học phí</h3>
-          <p>Học phí minh bạch cho 1-1, nhóm nhỏ và các chương trình chuyên biệt.</p>
-          <div class="prog-actions">
-            <a class="btn btn-amber" href="pricing.html">Đi đến trang học phí</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Nhờ gợi ý lộ trình</h3>
-          <p>Cho biết lớp + mục tiêu (bắt kịp / theo kịp / vượt lên) để chúng tôi gợi ý lộ trình.</p>
-          <div class="prog-actions">
-            <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Sẵn sàng bắt đầu?</h3>
-          <p>Đăng ký để chúng tôi xác nhận lịch học và bước tiếp theo.</p>
-          <div class="prog-actions">
-            <a class="btn btn-amber" href="register.html">Đăng ký</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section">
-      <h2 class="section-title">Câu hỏi nhanh</h2>
-      <p class="section-sub">Trả lời ngắn cho các câu hỏi thường gặp.</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Có bám sát chương trình Úc không?</h3>
-          <p>
-            Có. Chúng tôi hỗ trợ nội dung ở trường, đồng thời xây hiểu biết sâu hơn và kỹ năng giải quyết vấn đề mạnh hơn.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Học online hay trực tiếp?</h3>
-          <p>
-            Cả hai (tuỳ điều kiện). Dù học online hay trực tiếp, buổi học vẫn có cấu trúc rõ ràng và tương tác tốt.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Bao lâu thì con tiến bộ?</h3>
-          <p>
-            Tuỳ điểm bắt đầu và sự đều đặn. Hầu hết học sinh tiến bộ nhanh nhất khi học hằng tuần + luyện tập đúng trọng tâm.
-          </p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Magic Math Master • Úc</div>
+      <div>© <span id="year"></span> Magic Math Master • Australia</div>
       <div>
         <a href="contact.html">Liên hệ</a> •
         <a href="policies.html">Chính sách</a>
@@ -397,12 +328,10 @@
     </div>
   </footer>
 
-  <!-- Auto year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Auto highlight current nav item -->
   <script src="../script.js"></script>
 </body>
 </html>
