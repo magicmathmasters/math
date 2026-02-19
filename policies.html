@@ -99,7 +99,7 @@
       line-height: 1.7;
     }
 
-    /* Language hint card (because you prefer separate VI pages) */
+    /* Language hint card */
     .lang-hint{
       margin-top: 14px;
       background: rgba(255,255,255,.72);
@@ -114,7 +114,7 @@
 
 <body>
 
-  <!-- ===== TOP BAR (same template) ===== -->
+  <!-- ===== TOP BAR ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="Magic Math Master home">
@@ -137,7 +137,7 @@
     </div>
   </div>
 
-  <!-- ===== HERO (same template) ===== -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
@@ -170,8 +170,8 @@
         </div>
 
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="contact.html">Enquire</a>
-          <a class="btn btn-amber" href="register.html">Register</a>
+          <a class="btn btn-success" href="contact.html#enquiry-process">Enquire</a>
+          <a class="btn btn-amber" href="contact.html#registration-process">Register</a>
         </div>
 
       </div>
@@ -180,10 +180,9 @@
 
   <!-- ===== PAGE CONTENT ===== -->
   <main class="container" id="sec_top">
-    <!-- ✅ QUICK LINKS (same UI classes as other pages) -->
+    <!-- QUICK LINKS -->
     <section class="section">
       <div class="quicklinks">
-       <!-- <h2>Quick links (tap to open)</h2> -->
         <div class="ql-grid">
           <a class="ql-btn" data-open="sec_summary">Summary</a>
           <a class="ql-btn" data-open="sec_payment">Payment</a>
@@ -329,32 +328,33 @@
           Send us your question — we’re happy to clarify and recommend the best next step.
         </p>
 
-        <!-- ✅ UPDATED: Gmail + Email-app fallback (shorter mailto for better compatibility) -->
+        <!-- ✅ Device-aware buttons:
+             Desktop/Laptop: Gmail only (.desktop-only)
+             iPhone/iPad (touch): Email app only (.mobile-only)
+             IMPORTANT: relies on style.css having desktop-only/mobile-only rules + touch override.
+        -->
         <div style="display:flex; flex-wrap:wrap; gap:10px;">
-          <a class="btn btn-success"
-             href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Question%20about%20tutoring%20policies%20%28payment%2C%20cancellations%2C%20make-up%20lessons%29&body=Hi%20Magic%20Math%20Master%20team%2C%0A%0AI'm%20interested%20in%20tutoring%20for%20my%20child%20and%20wanted%20to%20ask%20about%20your%20policies%20before%20we%20book.%20Could%20you%20please%20confirm%3A%0A%0A-%20How%20payment%20works%20%28rates%2C%20invoicing%2C%20and%20when%20payment%20is%20due%29%0A-%20Your%20cancellation%2Frescheduling%20policy%20%28notice%20period%2C%20fees%2C%20and%20make-up%20lessons%29%0A-%20What%20happens%20if%20my%20child%20is%20unwell%20or%20has%20an%20unexpected%20school%20event%0A-%20Any%20trial%20lesson%20option%20and%20how%20you%20assess%20the%20right%20level%0A-%20Expectations%20between%20sessions%20%28homework%2Fpractice%29%0A-%20How%20you%20communicate%20progress%20and%20how%20often%20updates%20are%20provided%0A-%20Any%20policies%20around%20online%20lessons%20%28platform%20used%2C%20supervision%2C%20recordings%2C%20etc.%29%0A%0AThanks%20in%20advance%20-%20happy%20to%20share%20my%20childs%20year%20level%20and%20goals%20once%20I%20understand%20the%20process.%0A%0AKind%20regards%2C%0A%5BParent%20Name%5D%0A%5BMobile%20Number%5D"
+          <a class="btn btn-success desktop-only"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Question%20about%20tutoring%20policies%20%28payment%2C%20cancellations%2C%20make-up%20lessons%29&body=Hi%20Magic%20Math%20Master%20team%2C%0A%0AI'm%20interested%20in%20tutoring%20for%20my%20child%20and%20wanted%20to%20ask%20about%20your%20policies%20before%20we%20book.%20Could%20you%20please%20confirm%3A%0A%0A-%20How%20payment%20works%20%28rates%2C%20invoicing%2C%20and%20when%20payment%20is%20due%29%0A-%20Your%20cancellation%2Frescheduling%20policy%20%28notice%20period%2C%20fees%2C%20and%20make-up%20lessons%29%0A-%20What%20happens%20if%20my%20child%20is%20unwell%20or%20has%20an%20unexpected%20school%20event%0A-%20Any%20trial%20lesson%20option%20and%20how%20you%20assess%20the%20right%20level%0A-%20Expectations%20between%20sessions%20%28homework%2Fpractice%29%0A-%20How%20you%20communicate%20progress%20and%20how%20often%20updates%20are%20provided%0A-%20Any%20policies%20around%20online%20lessons%20%28platform%20used%2C%20supervision%2C%20recordings%2C%20etc.%29%0A%0AThanks%20in%20advance%20-%20happy%20to%20share%20my%20child%E2%80%99s%20year%20level%20and%20goals%20once%20I%20understand%20the%20process.%0A%0AKind%20regards%2C%0A%5BParent%20Name%5D%0A%5BMobile%20Number%5D"
              target="_blank" rel="noopener">
             Ask about policies (Gmail)
           </a>
 
-          <a class="btn btn-blue"
-             href="mailto:magicmathmaster23@gmail.com?subject=Question%20about%20tutoring%20policies&body=Hi%20Magic%20Math%20Master%20team%2C%0D%0A%0D%0AI%20am%20interested%20in%20tutoring%20for%20my%20child%20and%20wanted%20to%20ask%20about%20your%20policies%20before%20we%20book.%0D%0A%0D%0ACould%20you%20please%20confirm%3A%0D%0A-%20Payment%20%28rates%2C%20invoicing%2C%20when%20due%29%0D%0A-%20Cancellation%2Frescheduling%20policy%20%28notice%2C%20fees%2C%20make-up%29%0D%0A-%20What%20happens%20if%20my%20child%20is%20unwell%20or%20has%20a%20school%20event%0D%0A-%20Trial%20lesson%20and%20assessment%0D%0A-%20Between-session%20practice%20expectations%0D%0A-%20Progress%20updates%20and%20communication%0D%0A-%20Online%20lesson%20policies%20%28platform%2C%20supervision%2C%20recordings%29%0D%0A%0D%0AThanks%2C%0D%0A%5BParent%20Name%5D%0D%0A%5BMobile%20Number%5D">
+          <a class="btn btn-blue mobile-only"
+             href="mailto:magicmathmaster23@gmail.com?subject=Question%20about%20tutoring%20policies&body=Hi%20Magic%20Math%20Master%20team%2C%0A%0AI%20am%20interested%20in%20tutoring%20for%20my%20child%20and%20wanted%20to%20ask%20about%20your%20policies%20before%20we%20book.%0A%0ACould%20you%20please%20confirm%3A%0A-%20Payment%20%28rates%2C%20invoicing%2C%20when%20due%29%0A-%20Cancellation%2Frescheduling%20policy%20%28notice%2C%20fees%2C%20make-up%29%0A-%20What%20happens%20if%20my%20child%20is%20unwell%20or%20has%20a%20school%20event%0A-%20Trial%20lesson%20and%20assessment%0A-%20Between-session%20practice%20expectations%0A-%20Progress%20updates%20and%20communication%0A-%20Online%20lesson%20policies%20%28platform%2C%20supervision%2C%20recordings%29%0A%0AThanks%2C%0A%5BParent%20Name%5D%0A%5BMobile%20Number%5D">
             Ask about policies (Email app)
           </a>
         </div>
 
-        <!-- Optional: keep these (nice CTAs) -->
         <div style="margin-top:12px;">
           <a class="btn btn-amber" href="contact.html">Contact</a>
-          <!--<a class="btn btn-amber" href="contact.html">Enquire</a>
-          <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Register</a> -->
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ===== FOOTER (same template) ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer-inner">
       <div>© <span id="year"></span> Magic Math Master • Australia</div>
@@ -365,18 +365,15 @@
     </div>
   </footer>
 
-  <!-- Auto year -->
+  <!-- Auto year + quick links scroll -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* Quick links: same behavior style, but scroll-only (keeps your grid format) */
     (function(){
       function scrollToSection(el){
         el.scrollIntoView({ behavior:"smooth", block:"start" });
 
-        // nudge to account for sticky topbar
         var tries = 0, maxTries = 9;
-
         function nudge(){
           tries++;
           var rect = el.getBoundingClientRect();
