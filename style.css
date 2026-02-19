@@ -32,6 +32,15 @@
   --nav-py: 6px;
   --nav-px: 12px;
   --nav-lh: 1;
+
+  /* =========================
+     Global responsive hero title sizing
+     Applies to all pages that use .hero-snap-title
+     ========================= */
+  --hero-title-min: 30px;
+  --hero-title-fluid: 3.2vw;
+  --hero-title-max: 56px;
+  --hero-title-line: 1.08;
 }
 
 /* ============ BASE ============ */
@@ -256,14 +265,15 @@ a{ color:inherit; }
   .hero-snap-grid{ grid-template-columns: 1fr; }
 }
 
+/* ===== Hero title/tagline (single source of truth) ===== */
 .hero-snap-title{
-  margin: 0;
+  margin: 0 0 10px;
   text-align:center;
   font-weight: 1000;
-  letter-spacing: 2px;
   color: var(--brand2);
-  font-size: clamp(44px, 6vw, 92px);
-  line-height: 1.02;
+  font-size: clamp(var(--hero-title-min), var(--hero-title-fluid), var(--hero-title-max));
+  line-height: var(--hero-title-line);
+  letter-spacing: -0.01em;
 }
 
 .hero-snap-tagline{
@@ -271,7 +281,8 @@ a{ color:inherit; }
   text-align:center;
   font-weight: 900;
   color: rgba(15,23,42,.72);
-  font-size: clamp(18px, 2.2vw, 34px);
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.45;
 }
 
 .hero-snap-desc{
@@ -356,29 +367,6 @@ a{ color:inherit; }
     justify-self: end;
     margin-left: auto;
   }
-}
-
-/* =========================
-   Global responsive hero title sizing
-   Applies to all pages that use .hero-snap-title
-   ========================= */
-:root{
-  --hero-title-min: 30px;
-  --hero-title-fluid: 3.2vw;
-  --hero-title-max: 56px;
-  --hero-title-line: 1.08;
-}
-
-.hero-snap-title{
-  font-size: clamp(var(--hero-title-min), var(--hero-title-fluid), var(--hero-title-max));
-  line-height: var(--hero-title-line);
-  letter-spacing: -0.01em;
-  margin: 0 0 10px;
-}
-
-.hero-snap-tagline{
-  font-size: clamp(15px, 1.25vw, 19px);
-  line-height: 1.45;
 }
 
 /* ============ SECTIONS / CARDS ============ */
@@ -685,11 +673,27 @@ textarea{ min-height: 120px; resize: vertical; }
 
 /* ============ ANCHOR TARGET OFFSET (global) ============ */
 .anchor-target{ scroll-margin-top: 110px; }
-/* Show/hide buttons by device width */
+
+/* =========================================================
+   NEW: Email button visibility helpers (3 tiers)
+   - Desktop/Laptop (>= 981px): show .desktop-only
+   - Tablet/iPad (601px–980px): show .tablet-only
+   - Phone (<= 600px): show .phone-only
+   ========================================================= */
 .desktop-only{ display: inline-flex; }
-.mobile-only{ display: none; }
+.tablet-only{ display: none; }
+.phone-only{ display: none; }
 
 @media (max-width: 980px){
   .desktop-only{ display: none !important; }
-  .mobile-only{ display: inline-flex !important; }
+  .tablet-only{ display: inline-flex !important; }
 }
+
+@media (max-width: 600px){
+  .tablet-only{ display: none !important; }
+  .phone-only{ display: inline-flex !important; }
+}
+
+/* IMPORTANT:
+   Removed old .mobile-only rules because they caused duplicate buttons on phones.
+*/
