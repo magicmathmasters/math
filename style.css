@@ -697,3 +697,7 @@ textarea{ min-height: 120px; resize: vertical; }
 /* IMPORTANT:
    Removed old .mobile-only rules because they caused duplicate buttons on phones.
 */
+@media (hover: none) and (pointer: coarse){
+  .desktop-only{ display: none !important; }
+  .mobile-only{ display: inline-flex !important; }
+}
