@@ -26,6 +26,12 @@
   --shadow2: 0 10px 24px rgba(2, 6, 23, .08);
 
   --max: 1120px;
+
+  /* ===== NAV pill sizing (tighter + one-row) ===== */
+  --nav-font: 16px;
+  --nav-py: 6px;
+  --nav-px: 12px;
+  --nav-lh: 1;
 }
 
 /* ============ BASE ============ */
@@ -99,22 +105,42 @@ a{ color:inherit; }
   color: rgba(15,23,42,.70);
 }
 
-/* nav pills */
+/* =========================
+   NAV pills (UPDATED)
+   - tighter buttons
+   - keep in ONE ROW (no wrap)
+   - if screen is too narrow: horizontal scroll instead of wrapping
+   ========================= */
 .nav{
   display:flex;
   align-items:center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 8px;                 /* tighter spacing */
+  flex-wrap: nowrap;        /* KEY: one row */
   justify-content:flex-end;
+
+  overflow-x: auto;         /* fallback on small widths */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;    /* Firefox: hide scrollbar */
 }
+.nav::-webkit-scrollbar{ display:none; } /* Chrome/Safari: hide scrollbar */
 
 .nav a{
+  display:inline-flex;          /* shrink-wrap */
+  align-items:center;
+  justify-content:center;
+
+  flex: 0 0 auto;              /* never stretch */
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+
   text-decoration:none;
   font-weight: 1000;
-  font-size: 18px;
+  font-size: var(--nav-font);
+  line-height: var(--nav-lh);
   color:#0f172a;
 
-  padding: 14px 26px;
+  padding: var(--nav-py) var(--nav-px);
   border-radius: 999px;
 
   background: rgba(255,255,255,.92);
@@ -136,12 +162,31 @@ a{ color:inherit; }
 /* language pill */
 .nav a.nav-lang{ border-color: rgba(11,94,215,.22); }
 
+/* Optional extra squeeze on mid-size screens (helps keep one row) */
+@media (max-width: 1100px){
+  :root{
+    --nav-font: 15px;
+    --nav-py: 5px;
+    --nav-px: 10px;
+  }
+  .nav{ gap: 6px; }
+  .brand-title b{ font-size: 20px; }
+  .brand-logo{ width: 50px; height: 50px; }
+}
+
 /* mobile */
 @media (max-width: 880px){
   .topbar-inner{ flex-direction: column; align-items:flex-start; }
   .nav{ justify-content:flex-start; }
-  .nav a{ font-size: 16px; padding: 12px 20px; }
+
+  :root{
+    --nav-font: 14px;
+    --nav-py: 5px;
+    --nav-px: 10px;
+  }
+
   .brand-title b{ font-size: 18px; }
+  .brand-logo{ width: 46px; height: 46px; }
 }
 
 /* ============ BUTTONS ============ */
@@ -157,6 +202,7 @@ a{ color:inherit; }
   border: 1px solid transparent;
   cursor:pointer;
   white-space: nowrap;
+  line-height: 1; /* tighter vertically */
   transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease, color .14s ease;
 }
 .btn:hover{
@@ -276,10 +322,7 @@ a{ color:inherit; }
   flex-wrap: wrap;
 }
 
-/* HERO logo box (single source of truth)
-   - Right aligned on desktop
-   - Does NOT stretch full width
-*/
+/* HERO logo box (single source of truth) */
 .hero-snap-logoBox{
   background: transparent;
   border: none;
@@ -308,12 +351,36 @@ a{ color:inherit; }
   border-radius: 0;
 }
 
-/* when hero grid stacks: keep logo compact (still right-aligned) */
 @media (max-width: 980px){
   .hero-snap-logoBox{
     justify-self: end;
     margin-left: auto;
   }
+}
+
+/* =========================
+   Global responsive hero title sizing
+   Applies to all pages that use .hero-snap-title
+   ========================= */
+:root{
+  /* Tune these once, affects all pages */
+  --hero-title-min: 30px;    /* smallest on phones */
+  --hero-title-fluid: 3.2vw; /* scales with viewport */
+  --hero-title-max: 56px;    /* cap for large screens */
+  --hero-title-line: 1.08;
+}
+
+.hero-snap-title{
+  font-size: clamp(var(--hero-title-min), var(--hero-title-fluid), var(--hero-title-max));
+  line-height: var(--hero-title-line);
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+/* Optional: match the subtitle/tagline too (nice balance) */
+.hero-snap-tagline{
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.45;
 }
 
 /* ============ SECTIONS / CARDS ============ */
@@ -353,6 +420,61 @@ a{ color:inherit; }
   letter-spacing: -0.2px;
 }
 .card p{ margin:0; color: var(--muted); font-weight: 650; }
+
+/* =========================================
+   Global: colour ALL card titles (text only)
+   - BUT do NOT force emojis/icons to be colored
+   ========================================= */
+.card h3,
+.info-card h3,
+.club-card h3,
+.discount-card h3,
+.discount-card-wide h3,
+.discount-card-green h3,
+.qr-card h3,
+.price-card h3{
+  font-size: 22px;
+  font-weight: 1000;
+  margin: 0 0 10px;
+  letter-spacing: .2px;
+  color: #2563eb; /* fallback */
+}
+
+/* Apply gradient only to the heading text.
+   If your title includes an emoji, wrap emoji in <span class="ico">🌈</span>
+   so the emoji stays normal ink color.
+*/
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .card h3,
+  .info-card h3,
+  .club-card h3,
+  .discount-card h3,
+  .discount-card-wide h3,
+  .discount-card-green h3,
+  .qr-card h3,
+  .price-card h3{
+    background-image: linear-gradient(90deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Icons/emoji inside headings should remain normal color */
+h3 .ico{
+  color: var(--ink) !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* Escape hatch: add class="no-title-color" to a card to keep it plain */
+.no-title-color h3{
+  color: #1f2937 !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
 
 .icon{
   width: 44px; height: 44px;
@@ -472,12 +594,19 @@ textarea{ min-height: 120px; resize: vertical; }
   color: var(--brand2);
 }
 
+/* ===== Quick Links: up to 4 buttons per row (single source of truth) ===== */
 .ql-grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* max 4 per row */
 }
-@media (max-width: 520px){
+@media (max-width: 1100px){
+  .ql-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 780px){
+  .ql-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 420px){
   .ql-grid{ grid-template-columns: 1fr; }
 }
 
@@ -514,27 +643,7 @@ textarea{ min-height: 120px; resize: vertical; }
   outline: 3px solid rgba(11, 94, 215, .45);
   outline-offset: 3px;
 }
-/* ===== Quick Links: up to 4 buttons per row (global) ===== */
-.ql-grid{
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* ✅ max 4 per row */
-}
 
-/* 3 per row */
-@media (max-width: 1100px){
-  .ql-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-/* 2 per row */
-@media (max-width: 780px){
-  .ql-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-/* 1 per row */
-@media (max-width: 420px){
-  .ql-grid{ grid-template-columns: 1fr; }
-}
 /* ============ QUICK JUMP (chip row) ============ */
 .quick-jump{
   display:flex;
@@ -656,34 +765,141 @@ textarea{ min-height: 120px; resize: vertical; }
 .page-programs .theme-getahead .prog-ico{ background: rgba(245,158,11,.14); }
 .page-programs .theme-comp     .prog-ico{ background: rgba(124,58,237,.12); }
 
-  /* ... keep all your existing CSS above ... */
+/* =========================================
+   GLOBAL THEMES (apply on ANY page)
+   Use: class="card theme-catchup" etc.
+   ========================================= */
+.theme-catchup h3{ color: var(--brand2); }
+.theme-keepup  h3{ color: var(--success); }
+.theme-getahead h3{ color: var(--accent); }
+.theme-comp    h3{ color: #7c3aed; }
 
-  /* ===== Colorful section titles (Policies page only) ===== */
-  .policy-block h3{
-    /* keep your current size/weight, just add color + subtle emphasis */
-    display:flex;
-    align-items:center;
-    gap: 8px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid rgba(0,0,0,.08);
+/* subtle card tint (optional; looks like Programs) */
+.theme-catchup{
+  background: linear-gradient(180deg, rgba(11,94,215,.06), rgba(255,255,255,.80) 60%);
+}
+.theme-keepup{
+  background: linear-gradient(180deg, rgba(22,163,74,.06), rgba(255,255,255,.80) 60%);
+}
+.theme-getahead{
+  background: linear-gradient(180deg, rgba(245,158,11,.08), rgba(255,255,255,.80) 60%);
+}
+.theme-comp{
+  background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(255,255,255,.80) 60%);
+}
+
+/* keep emoji/icon normal inside themed titles */
+.theme-catchup h3 .ico,
+.theme-keepup  h3 .ico,
+.theme-getahead h3 .ico,
+.theme-comp    h3 .ico{
+  color: var(--ink) !important;
+}
+
+/* ===== Colorful section titles (Policies page only) ===== */
+.policy-block h3{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(0,0,0,.08);
+}
+
+.policy-grid .policy-block:nth-child(1)  h3{ color:#0b5ed7; }
+.policy-grid .policy-block:nth-child(2)  h3{ color:#7c3aed; }
+.policy-grid .policy-block:nth-child(3)  h3{ color:#d97706; }
+.policy-grid .policy-block:nth-child(4)  h3{ color:#0f766e; }
+.policy-grid .policy-block:nth-child(5)  h3{ color:#dc2626; }
+.policy-grid .policy-block:nth-child(6)  h3{ color:#16a34a; }
+.policy-grid .policy-block:nth-child(7)  h3{ color:#be185d; }
+.policy-grid .policy-block:nth-child(8)  h3{ color:#334155; }
+
+.policy-grid .policy-block:nth-child(1){ border-left: 6px solid #0b5ed7; }
+.policy-grid .policy-block:nth-child(2){ border-left: 6px solid #7c3aed; }
+.policy-grid .policy-block:nth-child(3){ border-left: 6px solid #d97706; }
+.policy-grid .policy-block:nth-child(4){ border-left: 6px solid #0f766e; }
+.policy-grid .policy-block:nth-child(5){ border-left: 6px solid #dc2626; }
+.policy-grid .policy-block:nth-child(6){ border-left: 6px solid #16a34a; }
+.policy-grid .policy-block:nth-child(7){ border-left: 6px solid #be185d; }
+.policy-grid .policy-block:nth-child(8){ border-left: 6px solid #334155; }
+
+/* =========================================
+   Pricing page: Fees-at-a-glance title colours
+   Scoped to pricing page only (body.pricing-page)
+   ========================================= */
+.pricing-page .price-card h3{
+  margin:0 0 10px;
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: .2px;
+  color: #1f2937; /* fallback */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* Underline accent */
+.pricing-page .price-card h3::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width: 44px;
+  height: 4px;
+  border-radius: 999px;
+  opacity: .9;
+  background: rgba(15,23,42,.18);
+}
+
+/* Text gradient (supported browsers) */
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .pricing-page .price-card h3{
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+}
 
-  /* Different color per section (based on the order on the page) */
-  .policy-grid .policy-block:nth-child(1)  h3{ color:#0b5ed7; } /* blue */
-  .policy-grid .policy-block:nth-child(2)  h3{ color:#7c3aed; } /* purple */
-  .policy-grid .policy-block:nth-child(3)  h3{ color:#d97706; } /* amber */
-  .policy-grid .policy-block:nth-child(4)  h3{ color:#0f766e; } /* teal */
-  .policy-grid .policy-block:nth-child(5)  h3{ color:#dc2626; } /* red */
-  .policy-grid .policy-block:nth-child(6)  h3{ color:#16a34a; } /* green */
-  .policy-grid .policy-block:nth-child(7)  h3{ color:#be185d; } /* pink */
-  .policy-grid .policy-block:nth-child(8)  h3{ color:#334155; } /* slate */
+/* Online */
+.pricing-page #glance-online h3{
+  color:#0ea5e9;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .pricing-page #glance-online h3{
+    background-image: linear-gradient(90deg, #0ea5e9, #2563eb);
+  }
+}
+.pricing-page #glance-online h3::after{ background: #0ea5e9; }
 
-  /* Optional: color the left border of each block to match the title */
-  .policy-grid .policy-block:nth-child(1){ border-left: 6px solid #0b5ed7; }
-  .policy-grid .policy-block:nth-child(2){ border-left: 6px solid #7c3aed; }
-  .policy-grid .policy-block:nth-child(3){ border-left: 6px solid #d97706; }
-  .policy-grid .policy-block:nth-child(4){ border-left: 6px solid #0f766e; }
-  .policy-grid .policy-block:nth-child(5){ border-left: 6px solid #dc2626; }
-  .policy-grid .policy-block:nth-child(6){ border-left: 6px solid #16a34a; }
-  .policy-grid .policy-block:nth-child(7){ border-left: 6px solid #be185d; }
-  .policy-grid .policy-block:nth-child(8){ border-left: 6px solid #334155; }
+/* In-person */
+.pricing-page #glance-inperson h3{
+  color:#f97316;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .pricing-page #glance-inperson h3{
+    background-image: linear-gradient(90deg, #f97316, #ef4444);
+  }
+}
+.pricing-page #glance-inperson h3::after{ background: #f97316; }
+
+/* Short session */
+.pricing-page #glance-30 h3{
+  color:#7c3aed;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .pricing-page #glance-30 h3{
+    background-image: linear-gradient(90deg, #7c3aed, #2563eb);
+  }
+}
+.pricing-page #glance-30 h3::after{ background: #7c3aed; }
+
+/* 5+ students */
+.pricing-page #glance-5plus h3{
+  color:#16a34a;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .pricing-page #glance-5plus h3{
+    background-image: linear-gradient(90deg, #16a34a, #0ea5e9);
+  }
+}
+.pricing-page #glance-5plus h3::after{ background: #16a34a; }
