@@ -27,6 +27,48 @@
     /* ===== Offset anchors so sticky topbar won't cover headings ===== */
     #detailed-fees, #maths-club-fee, #discounts-rewards { scroll-margin-top: 110px; }
 
+    /* ==========================================================
+       ✅ SECTION TITLES (match programs.html vibe)
+       - bigger than body
+       - coloured
+       - consistent h3 sizing
+       ========================================================== */
+    .section-title{
+      font-size: clamp(26px, 2.2vw, 34px);
+      font-weight: 1000;
+      letter-spacing: .2px;
+      margin: 0 0 8px;
+      color: #2563eb; /* default blue */
+    }
+    .section-sub{
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: .9;
+      margin: 0 0 14px;
+    }
+
+    /* Card titles */
+    .card h3,
+    .qr-title,
+    .club-card h3,
+    .discount-card h3,
+    .discount-card-wide h3,
+    .discount-card-green h3,
+    .info-card h3{
+      font-size: clamp(18px, 1.4vw, 22px);
+      font-weight: 1000;
+      margin: 0 0 10px;
+      color: #0b1a2b;
+    }
+
+    /* Section-specific accent colours */
+    #detailed-fees .section-title{ color:#2563eb; }         /* blue */
+    #fees-glance .section-title{ color:#7c3aed; }          /* purple */
+    #maths-club-fee .section-title{ color:#16a34a; }        /* green */
+    #discounts-rewards .section-title{ color:#f59e0b; }     /* amber */
+    #policies-summary .section-title{ color:#0ea5e9; }      /* sky */
+    #cta-bottom .section-title{ color:#2563eb; }            /* blue */
+
     /* ===== Chip-style LINKS (clickable only) ===== */
     .chip-links{
       display:flex;
@@ -51,7 +93,6 @@
 
       transition: background-color .14s ease, color .14s ease, transform .14s ease, box-shadow .14s ease, border-color .14s ease;
     }
-    /* ✅ Hover colour change like your Programs chips */
     .chip-link:hover{
       background: var(--brand);
       color: #fff;
@@ -81,7 +122,7 @@
     }
     .hero { padding: 22px 0 18px; }
 
-    /* ===== Button hover (your global .btn hover is in style.css; keep this harmless) ===== */
+    /* ===== Button hover ===== */
     .btn{
       transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
       will-change: transform, filter;
@@ -96,7 +137,7 @@
     .price-grid{
       display:grid;
       gap:18px;
-      grid-template-columns: repeat(4, minmax(0, 1fr)); /* ✅ now 4 cards */
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     @media (max-width: 1100px){
       .price-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -109,7 +150,7 @@
       padding: 18px;
       border: 2px solid rgba(0,0,0,.10);
       background: rgba(255,255,255,.75);
-      min-width: 0; /* ✅ prevent overflow in grid items */
+      min-width: 0;
     }
     .price-card.featured{
       border-width: 3px;
@@ -134,7 +175,7 @@
       font-weight: 1000;
       font-size: 13px;
       line-height: 1.2;
-      white-space: normal;         /* ✅ allow wrap (fix overflow) */
+      white-space: normal;
       text-align: center;
       max-width: 100%;
     }
@@ -197,6 +238,7 @@
       font-size: 28px;
       font-weight: 900;
       letter-spacing: 0.2px;
+      color:#1e40af;
     }
     .imp-list{
       margin: 0 0 12px;
@@ -239,13 +281,6 @@
       padding: 0;
     }
 
-    .price-tool h1{
-      font-size: 32px;
-      margin: 0 0 8px;
-      font-weight: 1000;
-      color: var(--accent);
-      letter-spacing: .2px;
-    }
     .price-tool p{ margin: 0 0 14px; color: var(--muted); line-height: 1.45; }
 
     .price-tool .bar{
@@ -341,9 +376,7 @@
     }
     .price-tool .vceBox .hint{ font-size:14px; color:var(--muted); margin-top:8px; line-height:1.35; }
 
-    /* =========================
-       ✅ TABLE FIX: even columns + no overflow
-       ========================= */
+    /* TABLE */
     .price-tool table.fees-table{
       width:100%;
       border-collapse:separate;
@@ -353,10 +386,8 @@
       border:1px solid var(--line);
       box-shadow: var(--shadow);
       background: #fff;
-
-      table-layout: fixed; /* ✅ critical */
+      table-layout: fixed;
     }
-
     .price-tool table.fees-table thead th{
       padding:16px 12px;
       font-size:18px;
@@ -366,14 +397,13 @@
       border-bottom:1px solid rgba(2,8,23,.10);
       background: linear-gradient(180deg, var(--yellow), var(--yellow2));
     }
-
     .price-tool table.fees-table tbody td{
       padding:14px 12px;
       border-bottom:1px solid rgba(2,8,23,.08);
       vertical-align:top;
       font-size:16px;
-      min-width:0;                 /* ✅ allow grid to shrink */
-      overflow-wrap:anywhere;       /* ✅ wrap long content */
+      min-width:0;
+      overflow-wrap:anywhere;
       word-break: break-word;
     }
     .price-tool table.fees-table tbody tr:last-child td{ border-bottom:0; }
@@ -390,7 +420,6 @@
       gap: 12px;
       align-items: stretch;
     }
-
     .price-tool .pricebox{
       border:1px solid rgba(2,8,23,.10);
       border-radius:16px;
@@ -405,7 +434,6 @@
       transform: translateY(-2px);
       box-shadow: 0 14px 26px rgba(2,8,23,.12);
     }
-
     .price-tool .price{ font-size:20px; font-weight:1000; }
     .price-tool .tag{
       display:inline-flex;
@@ -414,13 +442,13 @@
       gap:8px;
       margin-top:8px;
       font-weight:1000;
-      font-size:12px;              /* ✅ smaller so it fits */
+      font-size:12px;
       padding:6px 10px;
       border-radius:999px;
       border:1px solid rgba(2,8,23,.10);
       width:fit-content;
       max-width: 100%;
-      white-space: normal;         /* ✅ allow wrapping */
+      white-space: normal;
       line-height: 1.15;
       text-align:center;
     }
@@ -458,11 +486,9 @@
     }
 
     @media (max-width: 900px){
-      .price-tool .cells{ grid-template-columns: 1fr; } /* ✅ stack pills on narrow screens */
+      .price-tool .cells{ grid-template-columns: 1fr; }
     }
-
     @media (max-width: 880px){
-      /* Hide icon column on small screens (keeps table clean) */
       .price-tool table.fees-table thead th:nth-child(1){ display:none; }
       .price-tool table.fees-table tbody td:nth-child(1){ display:none; }
     }
@@ -489,11 +515,6 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.06);
       min-width:0;
     }
-    .info-card h3{
-      margin: 0 0 10px;
-      font-size: 22px;
-      font-weight: 1000;
-    }
     .quote-box{
       margin: 10px 0 12px;
       background: rgba(255,255,255,0.65);
@@ -512,7 +533,7 @@
     }
     .notes-box ul{ margin:0; padding-left: 20px; line-height: 1.7; }
 
-    /* Maths Club standalone + Discounts */
+    /* Maths Club + Discounts sections */
     .club-section, .discounts-section{
       margin-top: 16px;
       background: rgba(255,255,255,.75);
@@ -520,12 +541,6 @@
       border-radius: 18px;
       padding: 16px;
       box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-    }
-    .club-title, .discounts-title{
-      text-align:center;
-      margin: 2px 0 6px;
-      font-size: 26px;
-      font-weight: 1000;
     }
     .club-sub, .discounts-subtitle{
       text-align:center;
@@ -546,11 +561,6 @@
       border: 2px solid rgba(0,0,0,.08);
       border-radius: 18px;
       padding: 16px 18px;
-    }
-    .club-card h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 1000;
     }
     .price-lines{ margin: 0; line-height: 1.8; font-size: 16px; font-weight: 800; }
     .best-value{
@@ -578,14 +588,6 @@
       border-radius: 14px;
       padding: 16px 18px;
     }
-    .discount-card h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 1000;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-    }
     .discount-card p,
     .discount-card ul{
       font-size: 15px;
@@ -610,14 +612,6 @@
       padding: 16px 18px;
       margin-bottom: 14px;
     }
-    .discount-card-wide h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 1000;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-    }
     .discount-card-wide ul{
       padding-left: 20px;
       margin: 8px 0 10px;
@@ -629,14 +623,6 @@
       border:2px solid rgba(46,125,50,.20);
       border-radius: 14px;
       padding: 16px 18px;
-    }
-    .discount-card-green h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 1000;
-      display:flex;
-      align-items:center;
-      gap: 8px;
     }
     .discount-card-green ul{ padding-left: 20px; margin: 0; line-height: 1.55; font-size: 15px; }
 
@@ -660,7 +646,7 @@
   </style>
 </head>
 
-<body>
+<body class="pricing-page">
 
   <!-- ===== TOP BAR ===== -->
   <div class="topbar">
@@ -718,7 +704,7 @@
         </div>
 
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="contact.html">Enquire</a>
+          <a class="btn btn-success" href="enquiry.html">Enquire</a>
           <a class="btn btn-amber" href="register.html">Register</a>
         </div>
 
@@ -729,7 +715,7 @@
   <!-- ===== PAGE CONTENT ===== -->
   <main class="container">
 
-    <!-- ===== CHIP LINKS (no "Quick links" label) ===== -->
+    <!-- ===== CHIP LINKS ===== -->
     <section class="section" id="jump-links">
       <div class="card" style="padding:16px;">
         <div class="chip-links" role="navigation" aria-label="Jump links">
@@ -864,7 +850,7 @@
             </div>
           </div>
 
-          <!-- ✅ NEW: 5+ students (always 60-min minimum) -->
+          <!-- 5+ students -->
           <div class="price-card" id="glance-5plus">
             <div class="price-top">
               <h3>5+ students</h3>
@@ -890,7 +876,6 @@
       <!-- FEES TABLE -->
       <div class="wrap">
         <table aria-label="Tutoring price table" class="fees-table">
-          <!-- ✅ colgroup fixes even distribution -->
           <colgroup>
             <col style="width:90px;">
             <col style="width:240px;">
@@ -977,8 +962,8 @@
     </section>
 
     <!-- Maths Club (Standalone) -->
-    <section class="club-section" id="maths-club-fee">
-      <div class="club-title">🌈 Maths Club – Standalone Membership</div>
+    <section class="club-section section" id="maths-club-fee">
+      <h2 class="section-title" style="text-align:center; margin-top:0;">🌈 Maths Club fee</h2>
       <p class="club-sub">
         For students <b>not currently enrolled in tutoring</b> who want weekly enrichment and fun problem solving.
       </p>
@@ -1005,8 +990,8 @@
     </section>
 
     <!-- Discounts & Rewards -->
-    <section class="discounts-section" id="discounts-rewards">
-      <h2 class="discounts-title">🎁 Discounts &amp; Rewards</h2>
+    <section class="discounts-section section" id="discounts-rewards">
+      <h2 class="section-title" style="text-align:center; margin-top:0;">🎁 Discounts &amp; rewards</h2>
       <p class="discounts-subtitle">
         We aim to support families and recognise students’ effort, progress, and growth.
       </p>
@@ -1074,9 +1059,9 @@
     </section>
 
     <!-- Policies summary -->
-    <section class="section">
+    <section class="section" id="policies-summary">
       <div class="card">
-        <h2 class="section-title" style="margin-top:0;">Policies (summary)</h2>
+        <h2 class="section-title" style="margin-top:0;">Policies summary</h2>
         <ul class="policy-list">
           <li>Lessons are prepaid and scheduled in advance.</li>
           <li>Please provide at least <strong>24 hours’ notice</strong> for cancellations or changes.</li>
@@ -1089,7 +1074,7 @@
     </section>
 
     <!-- Bottom CTAs -->
-    <section class="section">
+    <section class="section" id="cta-bottom">
       <div class="card" style="padding:22px;">
         <h2 class="section-title" style="margin:0 0 10px;">Not sure which option fits your child best?</h2>
         <p class="section-sub" style="margin:0 0 14px;">
@@ -1097,7 +1082,7 @@
         </p>
 
         <div class="btn-row">
-          <a class="btn btn-success" href="contact.html">Enquire</a>
+          <a class="btn btn-success" href="enquiry.html">Enquire</a>
           <a class="btn btn-amber" href="register.html">Register</a>
           <a class="btn btn-amber" href="programs.html">Back to Programs</a>
         </div>
@@ -1125,7 +1110,6 @@
     // Pricing Engine (Table + Glance)
     // ==========================
 
-    // Base prices (per student)
     const rows = [
       { icon:"👩‍🏫", program:"One-to-One",
         p30:{ online:55, inperson:60 }, p60:{ online:100, inperson:110 } },
@@ -1141,7 +1125,6 @@
         p30:{ online:20, inperson:25 }, p60:{ online:35,  inperson:45  }, min60:true },
     ];
 
-    // Year level adjustments
     const adjustments = {
       primary: {
         add30:-5, add60:-10,
@@ -1158,14 +1141,12 @@
       vce: { extra:"For VCE Maths, 60-minute sessions are strongly recommended." }
     };
 
-    // VCE subject add-ons
     const vceSubjects = {
       general:    { add30:+10, add60:+15, label:"VCE General Maths: +$10 (30) and +$15 (60) per student." },
       methods:    { add30:+15, add60:+20, label:"VCE Maths Methods: +$15 (30) and +$20 (60) per student." },
       specialist: { add30:+20, add60:+25, label:"VCE Specialist Maths: +$20 (30) and +$25 (60) per student." },
     };
 
-    // Program type add-ons
     const tracks = {
       standard:  { add30: 0,  add60: 0,  name:"Standard",
                    label:"Standard tutoring: +$0.", min60:false,
@@ -1235,7 +1216,6 @@
       return `${yearLabel} • ${trackLabel}`;
     }
 
-    // Sync Fees at a glance with SAME calculations as the table
     function updateFeesAtGlance(){
       const add30 = totalAdd30();
       const add60 = totalAdd60();
@@ -1270,8 +1250,7 @@
         glance30Helper.textContent = "Tip: 60 minutes usually gives better progress (more time for practice + feedback).";
       }
 
-      // ✅ 5+ students (always 60-min minimum by design)
-      const fivePlus = rows[5]; // "5+ students"
+      const fivePlus = rows[5];
       const online60_5p = fivePlus.p60.online + add60;
       const inperson60_5p = fivePlus.p60.inperson + add60;
 
@@ -1290,7 +1269,6 @@
       const y = yearAdj();
       const t = tracks[currentTrack];
 
-      // Show/hide VCE selector
       if (currentLevel === "vce") {
         vceBox.style.display = "block";
         badgeYear.textContent = "VCE subject";
@@ -1325,7 +1303,6 @@
 
         const td30 = document.createElement("td");
 
-        // 60-min minimum rules
         const force60 = !!r.min60 || tracks[currentTrack].min60;
 
         if (force60) {
@@ -1356,7 +1333,6 @@
       updateFeesAtGlance();
     }
 
-    // Year buttons
     document.querySelectorAll("[data-level]").forEach(btn => {
       btn.addEventListener("click", () => {
         currentLevel = btn.dataset.level;
@@ -1369,7 +1345,6 @@
       });
     });
 
-    // VCE buttons
     document.querySelectorAll("[data-vce]").forEach(btn => {
       btn.addEventListener("click", () => {
         currentVce = btn.dataset.vce;
@@ -1382,7 +1357,6 @@
       });
     });
 
-    // Program type buttons
     document.querySelectorAll("[data-track]").forEach(btn => {
       btn.addEventListener("click", () => {
         currentTrack = btn.dataset.track;
@@ -1398,7 +1372,6 @@
     render();
   </script>
 
-  <!-- Auto highlight current nav item -->
   <script src="script.js"></script>
 </body>
 </html>

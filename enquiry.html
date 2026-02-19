@@ -4,50 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Enquiry | Magic Math Master</title>
+  <meta name="description" content="Send an enquiry to Magic Math Master. Fill in the form below and we’ll reply as soon as possible." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/enquiry.html" />
+
+  <!-- Use your site styles (same as programs.html hero) -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
   <style>
-    html, body { margin:0; padding:0; overflow-x:hidden; }
-    * { box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; background:#fefcf7; color:#1f2328; }
+    /* Page-only bits */
+    html, body { overflow-x:hidden; }
 
-    .wrap { max-width: 980px; margin: 0 auto; padding: 18px 12px 40px; }
-    .hero { text-align:center; padding: 18px 10px 10px; }
-    .hero h1 { margin: 0 0 10px; color:#1e88e5; font-size: 44px; font-weight: 900; }
-    .hero p { margin: 0 auto; max-width: 860px; font-size: 18px; line-height: 1.7; color:#444; }
-
-    .actions{
-      display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
-      margin: 10px 0 16px;
-    }
-    .btn{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:22px;
-      font-weight:900;
-      text-decoration:none;
-      border:2px solid #1e88e5;
-      color:#1e88e5;
-      background:#fff;
-    }
-    .btn.primary{
-      background:#1e88e5;
-      color:#fff;
+    /* Keep this page aligned with your site container */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 40px;
     }
 
-    .card{
+    /* Form card */
+    .form-card{
       border: 1px solid rgba(0,0,0,.12);
       background:#fff;
       border-radius: 18px;
       overflow:hidden;
       box-shadow: 0 10px 26px rgba(0,0,0,.08);
     }
-    .card-head{
+    .form-card-head{
       padding: 14px 16px;
       border-bottom: 1px solid rgba(0,0,0,.08);
-      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
     }
-    .card-title{ margin:0; font-size: 18px; font-weight: 900; }
+    .form-card-title{ margin:0; font-size: 18px; font-weight: 1000; }
 
     .iframe-wrap{
       position:relative;
@@ -55,40 +47,117 @@
       padding-top: 135%; /* adjust height: try 120%–170% */
     }
     .iframe-wrap iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
       border:0;
     }
+
+    /* Minor: make hero buttons sit nicely */
+    .hero-snap-cta .btn{ margin: 0; }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <h1>Enquiry</h1>
-      <p>Send us your questions — we’ll reply as soon as possible.</p>
-    </header>
 
-    <div class="actions">
-      <a class="btn" href="index.html">← Back to Home</a>
-      <a class="btn primary" target="_blank" rel="noopener"
-         href="https://docs.google.com/forms/d/e/1FAIpQLSe-TIa765DgT_zu_UiaXxm9YKe4m_3cwsrdw0EjaKI1U_3dZQ/viewform">
-        Open in new tab
+  <!-- ===== TOP BAR (same as other pages) ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
       </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="policies.html">Policies</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="philosophy.html">Philosophy</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="nav-lang" href="vi/enquiry.html">Tiếng Việt</a>
+      </nav>
     </div>
+  </div>
 
-    <section class="card">
-      <div class="card-head">
-        <h2 class="card-title">Magic Math Master — Enquiry Form</h2>
+  <!-- ===== HERO (same “hero-snap” format as programs.html) ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">Enquiry</h1>
+            <div class="hero-snap-tagline">Send your questions — we’ll reply as soon as possible</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          Tell us your child’s <b>year level</b>, your goal (<b>catch up / keep up / get ahead</b>), and any topics you’d like help with.
+          We’ll recommend the best next step.
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ Clear next steps</span>
+          <span>✓ Friendly communication</span>
+          <span>✓ Confidence-first teaching</span>
+        </div>
+
+        <div class="hero-snap-cta">
+          <a class="btn btn-outline" href="index.html">← Back to Home</a>
+          <a class="btn btn-success" href="#enquiry-form">Fill in the form</a>
+          <a class="btn btn-amber" target="_blank" rel="noopener"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSe-TIa765DgT_zu_UiaXxm9YKe4m_3cwsrdw0EjaKI1U_3dZQ/viewform">
+            Open in new tab
+          </a>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="iframe-wrap">
-        <iframe
-          loading="lazy"
-          src="https://docs.google.com/forms/d/e/1FAIpQLSe-TIa765DgT_zu_UiaXxm9YKe4m_3cwsrdw0EjaKI1U_3dZQ/viewform?embedded=true">
-        </iframe>
+  <!-- ===== FORM ===== -->
+  <main class="wrap">
+    <section class="section" id="enquiry-form">
+      <div class="form-card">
+        <div class="form-card-head">
+          <h2 class="form-card-title">Magic Math Master — Enquiry Form</h2>
+        </div>
+
+        <div class="iframe-wrap">
+          <iframe
+            loading="lazy"
+            src="https://forms.gle/j6nxHLBXVsPuG1B68">
+          </iframe>
+        </div>
       </div>
     </section>
-  </div>
+  </main>
+
+  <!-- ===== FOOTER (same as other pages) ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>
+        <a href="contact.html">Contact</a> •
+        <a href="policies.html">Policies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Auto highlight current nav item -->
+  <script src="script.js"></script>
 </body>
 </html>

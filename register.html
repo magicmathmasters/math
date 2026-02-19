@@ -4,50 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Register | Magic Math Master</title>
+  <meta name="description" content="Register with Magic Math Master. Complete the registration form to enrol your child and we’ll confirm the next steps." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/register.html" />
+
+  <!-- Use your site styles (same as programs.html hero) -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
   <style>
-    html, body { margin:0; padding:0; overflow-x:hidden; }
-    * { box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; background:#fefcf7; color:#1f2328; }
+    /* Page-only bits */
+    html, body { overflow-x:hidden; }
 
-    .wrap { max-width: 980px; margin: 0 auto; padding: 18px 12px 40px; }
-    .hero { text-align:center; padding: 18px 10px 10px; }
-    .hero h1 { margin: 0 0 10px; color:#1e88e5; font-size: 44px; font-weight: 900; }
-    .hero p { margin: 0 auto; max-width: 860px; font-size: 18px; line-height: 1.7; color:#444; }
-
-    .actions{
-      display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
-      margin: 10px 0 16px;
-    }
-    .btn{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:22px;
-      font-weight:900;
-      text-decoration:none;
-      border:2px solid #1e88e5;
-      color:#1e88e5;
-      background:#fff;
-    }
-    .btn.primary{
-      background:#1e88e5;
-      color:#fff;
+    /* Keep this page aligned with your site container */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 40px;
     }
 
-    .card{
+    /* Form card */
+    .form-card{
       border: 1px solid rgba(0,0,0,.12);
       background:#fff;
       border-radius: 18px;
       overflow:hidden;
       box-shadow: 0 10px 26px rgba(0,0,0,.08);
     }
-    .card-head{
+    .form-card-head{
       padding: 14px 16px;
       border-bottom: 1px solid rgba(0,0,0,.08);
-      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
     }
-    .card-title{ margin:0; font-size: 18px; font-weight: 900; }
+    .form-card-title{ margin:0; font-size: 18px; font-weight: 1000; }
 
     .iframe-wrap{
       position:relative;
@@ -55,40 +47,117 @@
       padding-top: 145%; /* registration often longer */
     }
     .iframe-wrap iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
       border:0;
     }
+
+    /* Minor: make hero buttons sit nicely */
+    .hero-snap-cta .btn{ margin: 0; }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <h1>Register</h1>
-      <p>Complete the registration form to enrol your child.</p>
-    </header>
 
-    <div class="actions">
-      <a class="btn" href="index.html">← Back to Home</a>
-      <a class="btn primary" target="_blank" rel="noopener"
-         href="https://docs.google.com/forms/d/e/1FAIpQLScYvWyFUk1i4Yqhdg6XmTtS3o4KSptQMwUD4H8V7msnnw24_w/viewform">
-        Open in new tab
+  <!-- ===== TOP BAR (same as other pages) ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
       </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="policies.html">Policies</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="philosophy.html">Philosophy</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="nav-lang" href="vi/register.html">Tiếng Việt</a>
+      </nav>
     </div>
+  </div>
 
-    <section class="card">
-      <div class="card-head">
-        <h2 class="card-title">Magic Math Master — Registration Form</h2>
+  <!-- ===== HERO (same “hero-snap” format as programs.html) ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">Register</h1>
+            <div class="hero-snap-tagline">Complete the form to enrol your child</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          After you submit the registration, we’ll confirm <b>availability</b>, recommend the best starting point,
+          and explain the next steps clearly.
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ Calm, structured learning</span>
+          <span>✓ Clear communication</span>
+          <span>✓ Confidence-first teaching</span>
+        </div>
+
+        <div class="hero-snap-cta">
+          <a class="btn btn-outline" href="index.html">← Back to Home</a>
+          <a class="btn btn-success" href="#register-form">Fill in the form</a>
+          <a class="btn btn-amber" target="_blank" rel="noopener"
+             href="https://docs.google.com/forms/d/e/1FAIpQLScYvWyFUk1i4Yqhdg6XmTtS3o4KSptQMwUD4H8V7msnnw24_w/viewform">
+            Open in new tab
+          </a>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="iframe-wrap">
-        <iframe
-          loading="lazy"
-          src="https://docs.google.com/forms/d/e/1FAIpQLScYvWyFUk1i4Yqhdg6XmTtS3o4KSptQMwUD4H8V7msnnw24_w/viewform?embedded=true">
-        </iframe>
+  <!-- ===== FORM ===== -->
+  <main class="wrap">
+    <section class="section" id="register-form">
+      <div class="form-card">
+        <div class="form-card-head">
+          <h2 class="form-card-title">Magic Math Master — Registration Form</h2>
+        </div>
+
+        <div class="iframe-wrap">
+          <iframe
+            loading="lazy"
+            src="https://docs.google.com/forms/d/e/1FAIpQLScYvWyFUk1i4Yqhdg6XmTtS3o4KSptQMwUD4H8V7msnnw24_w/viewform?embedded=true">
+          </iframe>
+        </div>
       </div>
     </section>
-  </div>
+  </main>
+
+  <!-- ===== FOOTER (same as other pages) ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>
+        <a href="contact.html">Contact</a> •
+        <a href="policies.html">Policies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Auto highlight current nav item -->
+  <script src="script.js"></script>
 </body>
 </html>

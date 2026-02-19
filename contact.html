@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Contact | Magic Math Master</title>
-  <meta name="description" content="Contact Magic Math Master (Prep–Year 12). Enquire via QR code form, use the email template QR, or email us directly. Online and in-person in Coburg, Melbourne." />
+  <meta name="description" content="Contact Magic Math Master (Prep–Year 12). Follow the enquiry or registration process using form + optional email steps. Online and in-person in Coburg, Melbourne." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/contact.html" />
 
   <!-- Optional OG tags -->
   <meta property="og:title" content="Contact | Magic Math Master" />
-  <meta property="og:description" content="Enquire via QR code form, email template QR, or email us directly. Online & in-person (Coburg, Melbourne)." />
+  <meta property="og:description" content="Follow the enquiry or registration process using form + optional email steps. Online & in-person (Coburg, Melbourne)." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/contact.html" />
 
@@ -49,7 +49,7 @@
       border-radius: 0 !important;
     }
 
-    /* Buttons hover (only clickable buttons) */
+    /* Buttons hover */
     .btn{
       transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
       will-change: transform, filter;
@@ -60,37 +60,38 @@
       box-shadow: 0 10px 22px rgba(2, 6, 23, .12);
     }
 
-    /* Quick links */
-    .quick-links{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-    }
-    .quick-link{
-      display:inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 14px;
-      text-decoration:none;
+    /* Blue button */
+    .btn-blue{
+      background: #2563eb;
+      color: #fff;
       border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.70);
-      color: inherit;
-      transition: transform .12s ease, filter .12s ease;
     }
-    .quick-link:hover{
-      transform: translateY(-1px);
-      filter: brightness(.97);
+    .btn-blue:hover{ filter: brightness(.96); }
+
+    /* FORCE: contact cards full width, equal columns */
+    .grid{
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      width: 100% !important;
+      max-width: none !important;
+      align-items: stretch !important;
+    }
+    .grid > .card{
+      width: 100% !important;
+      max-width: none !important;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr !important; }
     }
 
-    /* QR layout */
+    /* QR/workflow layout */
     .qr-grid{
       display:grid;
       gap:18px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: stretch;
+      width: 100%;
     }
     @media (max-width: 980px){
       .qr-grid{ grid-template-columns: 1fr; }
@@ -158,7 +159,7 @@
       opacity: .95;
     }
 
-    /* Small helper block */
+    /* Helper block */
     .help-box{
       margin-top: 12px;
       padding: 12px 14px;
@@ -169,7 +170,7 @@
       line-height: 1.55;
     }
 
-    /* Make anchor jumps land nicely below sticky topbar */
+    /* Anchor offset */
     [id]{ scroll-margin-top: 110px; }
   </style>
 </head>
@@ -207,7 +208,7 @@
         <div class="hero-snap-grid">
           <div>
             <h1 class="hero-snap-title">Build Your Child’s Confidence in Maths</h1>
-            <div class="hero-snap-tagline">Scan a QR code to enquire — we’ll recommend the best pathway.</div>
+            <div class="hero-snap-tagline">Follow a simple step-by-step process — we’ll reply with clear next steps.</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-hidden="true">
@@ -222,43 +223,30 @@
         </div>
 
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="#enquiry-form">Enquire (QR)</a>
-          <a class="btn btn-amber" href="register.html">Register</a>
+          <a class="btn btn-success" href="#details">Contact details</a>
+          <a class="btn btn-amber" href="#enquiry-process">Enquiry process</a>
+          <a class="btn btn-blue" href="#registration-process">Registration process</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== PAGE CONTENT (single consistent container) ===== -->
+  <!-- ===== PAGE CONTENT ===== -->
   <main>
     <div class="container">
-
-      <!-- Under-hero helper + quick links (inside the same container now) -->
-      <section class="section" style="padding-top:14px;">
-        <p class="section-sub" style="margin:0 0 12px;">
-          Tell us your child’s year level + goal (catch up / keep up / get ahead) and we’ll respond with clear next steps.
-          Online and in-person (Coburg, Melbourne) subject to availability.
-        </p>
-
-        <div class="quick-links" aria-label="Quick links">
-          <a class="quick-link" href="pricing.html#fees-tool">Detailed fee table</a>
-          <a class="quick-link" href="pricing.html#maths-club">Maths Club fee</a>
-          <a class="quick-link" href="pricing.html#discounts">Discounts &amp; rewards</a>
-        </div>
-      </section>
 
       <!-- Contact details -->
       <section class="section" id="details">
         <h2 class="section-title">Contact details</h2>
-        <p class="section-sub">Fastest options: scan the QR enquiry form, or email us using the template QR.</p>
+        <p class="section-sub">Use the enquiry or registration process below. (Email buttons open Gmail web compose for reliability.)</p>
 
         <div class="grid">
           <div class="card">
             <h3>How to reach us</h3>
             <ul class="contact-list">
               <li><b>Location:</b> Coburg, Melbourne — online and face-to-face</li>
-              <li><b>Email:</b> <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a></li>
+              <li><b>Email:</b> magicmathmaster23@gmail.com</li>
               <li><b>Website:</b> <a href="https://www.magicmathmaster.com.au" target="_blank" rel="noopener">magicmathmaster.com.au</a></li>
               <li><b>Facebook:</b> <a href="https://www.facebook.com/magicmathmasters/" target="_blank" rel="noopener">facebook.com/magicmathmasters</a></li>
               <li><b>ABN:</b> 17 335 166 761</li>
@@ -270,10 +258,10 @@
 
             <div class="prog-actions" style="margin-top:14px;">
               <a class="btn btn-success"
-                href="mailto:magicmathmaster@outlook.com?subject=Magic%20Math%20Master%20Enquiry&body=Hi%20Dr%20Tuyet%2C%0D%0A%0D%0AStudent%20year%20level%3A%20%0D%0AGoal%20(catch%20up%20%2F%20keep%20up%20%2F%20get%20ahead)%3A%20%0D%0ATopics%20to%20focus%20on%3A%20%0D%0APreferred%20format%20(online%20%2F%20in-person)%3A%20%0D%0AAvailability%3A%20%0D%0A%0D%0AThanks%2C">
-                Email us
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Math%20Tutoring%20Enquiry"
+                 target="_blank" rel="noopener">
+                Email us (Gmail)
               </a>
-              <a class="btn btn-amber" href="programs.html">See programs</a>
             </div>
           </div>
 
@@ -295,85 +283,140 @@
         </div>
       </section>
 
-      <!-- QR Section -->
-      <section class="section" id="enquiry-form">
-        <h2 class="section-title">Enquiry options</h2>
-        <p class="section-sub">Scan a QR code to enquire quickly.</p>
+      <!-- =======================
+           ENQUIRY PROCESS
+           ======================= -->
+      <section class="section" id="enquiry-process">
+        <h2 class="section-title">Enquiry process</h2>
+        <p class="section-sub">
+          <b>Step 1:</b> Click <b>Enquiry form</b> and fill it in.<br>
+          <b>Step 2 (optional):</b> Click <b>Email Ma3</b> if you’d like to add extra details or confirm next steps by email.
+        </p>
 
         <div class="qr-grid">
-          <!-- QR 1: Enquiry Form -->
+          <!-- Step 1 -->
           <div class="qr-card">
             <div class="qr-head">
-              <h3 class="qr-title">Enquiry form</h3>
+              <h3 class="qr-title">Step 1 — Enquiry form</h3>
               <span class="qr-badge">Recommended</span>
             </div>
 
             <div class="qr-body">
-              <img
-                class="qr-img"
-                src="assets/Enquiry Form.png"
-                alt="QR code for Magic Math Master enquiry form"
-                loading="lazy"
-              />
-
+              <img class="qr-img" src="assets/Enquiry%20Form.png" alt="QR code for Enquiry form" loading="lazy" />
               <div>
                 <p style="margin:0 0 8px;">
-                  Scan to submit your child’s details (year level, goals, topics, preferred format). This helps us recommend the best pathway.
+                  Submit year level, goals, topics, and preferred format — we’ll recommend the best pathway.
                 </p>
                 <div class="qr-actions">
-                  <a class="btn btn-success" href="#details">I prefer email</a>
-                  <a class="btn btn-amber" href="register.html">Register</a>
+                  <a class="btn btn-blue" href="https://forms.gle/F2jqZS7xXwyAsaPG7" target="_blank" rel="noopener">
+                    Enquiry form
+                  </a>
+                  <a class="btn btn-amber" href="assets/Enquiry%20Form.png" target="_blank" rel="noopener">
+                    Open QR image
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- QR 2: Email Template -->
-          <div class="qr-card" id="email-template">
+          <!-- Step 2 -->
+          <div class="qr-card">
             <div class="qr-head">
-              <h3 class="qr-title">Email enquiry template</h3>
-              <span class="qr-badge">Fast &amp; clear</span>
+              <h3 class="qr-title">Step 2 — Email Ma3 (Optional)</h3>
+              <span class="qr-badge">Gmail compose</span>
             </div>
 
             <div class="qr-body">
-              <img
-                class="qr-img"
-                src="assets/Enquiry Email Template.png"
-                alt="QR code for Magic Math Master enquiry email template"
-                loading="lazy"
-              />
-
+              <img class="qr-img" src="assets/Email%20Enquire.png" alt="QR code for enquiry email template" loading="lazy" />
               <div>
                 <p style="margin:0 0 8px;">
-                  Scan to open a ready-to-send email template. Great if you want to explain your child’s situation in your own words.
+                  Optional: send an email if you want to share extra details or ask questions.
                 </p>
                 <div class="qr-actions">
                   <a class="btn btn-success"
-                    href="mailto:magicmathmaster@outlook.com?subject=Magic%20Math%20Master%20Enquiry&body=Hi%20Dr%20Tuyet%2C%0D%0A%0D%0AStudent%20name%20(optional)%3A%20%0D%0AYear%20level%3A%20%0D%0AGoal%20(catch%20up%20%2F%20keep%20up%20%2F%20get%20ahead)%3A%20%0D%0AKey%20topics%20or%20concerns%3A%20%0D%0ASchool%20assessment%20or%20exam%20timeline%3A%20%0D%0AFormat%20(online%20%2F%20in-person)%3A%20%0D%0AAvailability%3A%20%0D%0A%0D%0AThank%20you%2C">
-                    Open email draft
+                     href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Math%20Tutoring%20Enquiry&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20enquiry%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0AGoal%3A%20%5Bcatch%20up%20%2F%20keep%20up%20%2F%20get%20ahead%20%2F%20exam%20prep%5D%0AFormat%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AExtra%20details%20(optional)%3A%20%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D"
+                     target="_blank" rel="noopener">
+                    Email Ma3
                   </a>
-                  <a class="btn btn-amber" href="#details">Contact details</a>
+                  <a class="btn btn-amber" href="assets/Email%20Enquire.png" target="_blank" rel="noopener">
+                    Open QR image
+                  </a>
+                </div>
+
+                <div class="help-box" style="margin-top:12px;">
+                  <b>Note:</b> Links inside Gmail drafts may not be clickable — use the form button above to open the enquiry form.
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="help-box" style="margin-top:16px;">
-          <b>Not sure which option to choose?</b> Start with the enquiry form QR — it gives us the right info to recommend a program quickly.
-        </div>
       </section>
 
-      <!-- Bottom CTA -->
-      <section class="section">
-        <div class="card" style="padding:22px;">
-          <h2 class="section-title" style="margin:0 0 10px;">Ready to take the next step?</h2>
-          <p class="section-sub" style="margin:0 0 14px;">
-            Scan the enquiry QR or send an email — we’ll reply with clear next steps and the best-fit pathway.
-          </p>
-          <div class="prog-actions">
-            <a class="btn btn-success" href="#enquiry-form">Scan QR to Enquire</a>
-            <a class="btn btn-amber" href="register.html">Register</a>
+      <!-- =======================
+           REGISTRATION PROCESS
+           ======================= -->
+      <section class="section" id="registration-process">
+        <h2 class="section-title">Registration process</h2>
+        <p class="section-sub">
+          <b>Step 1:</b> Click <b>Registration form</b> and fill it in.<br>
+          <b>Step 2 (optional):</b> Click <b>Email Ma3</b> if you’d like to share extra details or ask questions (availability, fees, next steps).
+        </p>
+
+        <div class="qr-grid">
+          <!-- Step 1 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Step 1 — Registration form</h3>
+              <span class="qr-badge">Required</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="assets/Register%20form.png" alt="QR code for Registration form" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Register your child and share preferred lesson format and availability.
+                </p>
+                <div class="qr-actions">
+                  <a class="btn btn-blue" href="https://forms.gle/yr9vfa5JvwPQLDbY8" target="_blank" rel="noopener">
+                    Registration form
+                  </a>
+                  <a class="btn btn-amber" href="assets/Register%20form.png" target="_blank" rel="noopener">
+                    Open QR image
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Step 2 — Email Ma3 (Optional)</h3>
+              <span class="qr-badge">Gmail compose</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="assets/Email%20Register.png" alt="QR code for registration email template" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Optional: email us if you want to share extra details or ask questions.
+                </p>
+                <div class="qr-actions">
+                  <a class="btn btn-success"
+                     href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Tutoring%20Registration%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20registration%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0APreferred%20format%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AQuestions%20or%20extra%20details%20(optional)%3A%20%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D"
+                     target="_blank" rel="noopener">
+                    Email Ma3
+                  </a>
+                  <a class="btn btn-amber" href="assets/Email%20Register.png" target="_blank" rel="noopener">
+                    Open QR image
+                  </a>
+                </div>
+
+                <div class="help-box" style="margin-top:12px;">
+                  <b>Note:</b> If you’re not logged into Gmail, you may be prompted to sign in first.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -392,12 +435,10 @@
     </div>
   </footer>
 
-  <!-- Auto year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Auto highlight current nav item -->
   <script src="script.js"></script>
 </body>
 </html>
