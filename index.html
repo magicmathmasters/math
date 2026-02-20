@@ -320,7 +320,7 @@
             <a class="ql-btn" data-open="sec_diff">What makes us different</a>
             <a class="ql-btn" data-open="sec_why">Why parents choose us</a>
             <a class="ql-btn" data-open="sec_contact">Contact</a>
-          <!--  <a class="ql-btn" data-open="sec_all">Open all</a> -->
+            <!--  <a class="ql-btn" data-open="sec_all">Open all</a> -->
           </div>
         </div>
 
@@ -393,7 +393,8 @@
             </div>
           </div>
         </details>
-<!-- POLICIES -->
+
+        <!-- POLICIES -->
         <details class="acc" id="sec_policy" open>
           <summary class="acc-sum">Policies <span class="caret">⌄</span></summary>
           <div class="acc-body">
@@ -430,6 +431,7 @@
             </div>
           </div>
         </details>
+
         <!-- PHILOSOPHY -->
         <details class="acc" id="sec_philosophy" open>
           <summary class="acc-sum">Philosophy <span class="caret">⌄</span></summary>
@@ -449,6 +451,7 @@
             </div>
           </div>
         </details>
+
         <!-- WHAT MAKES US DIFFERENT (screenshot style) -->
         <details class="acc" id="sec_diff" open>
           <summary class="acc-sum">What makes us different <span class="caret">⌄</span></summary>
@@ -511,14 +514,15 @@
               </div>
             </div>
 
+            <!-- ✅ Updated: send to enquiry page (not contact) -->
             <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
-              👉 <a class="link-strong" href="contact.html">Send an enquiry to get a recommended starting plan →</a>
+              👉 <a class="link-strong" href="enquiry.html">Send an enquiry to get a recommended starting plan →</a>
             </p>
 
           </div>
         </details>
 
-        <!-- WHY PARENTS CHOOSE US (restored) -->
+        <!-- WHY PARENTS CHOOSE US -->
         <details class="acc" id="sec_why" open>
           <summary class="acc-sum">Why parents choose us <span class="caret">⌄</span></summary>
           <div class="acc-body">
@@ -539,13 +543,12 @@
               </div>
             </div>
 
+            <!-- ✅ Updated: send to enquiry page (not contact) -->
             <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
-              👉 <a class="link-strong" href="contact.html">Send an enquiry to get a recommended starting plan →</a>
+              👉 <a class="link-strong" href="enquiry.html">Send an enquiry to get a recommended starting plan →</a>
             </p>
           </div>
         </details>
-
-        
 
         <!-- CONTACT -->
         <details class="acc" id="sec_contact" open>
@@ -562,6 +565,12 @@
                 <a class="btn btn-success" href="enquiry.html">Make an enquiry</a>
                 <a class="btn btn-amber" href="pricing.html">View fees</a>
               </div>
+
+              <!-- Optional (nice): small direct-contact link -->
+              <p style="margin:12px 0 0; font-weight:800; color: var(--muted);">
+                Prefer to contact us directly?
+                <a class="link-strong" href="contact.html">Contact page →</a>
+              </p>
             </div>
           </div>
         </details>
@@ -574,7 +583,8 @@
     <div class="container">
       <div class="footer-inner">
         <div>© <span id="year"></span> Magic Math Master • Australia</div>
-        <div><a href="contact.html">info@magicmathmaster.com.au</a></div>
+        <!-- ✅ Updated: email should be mailto (more natural than linking to contact page) -->
+        <div><a href="mailto:info@magicmathmaster.com.au">info@magicmathmaster.com.au</a></div>
       </div>
     </div>
   </footer>
@@ -593,7 +603,7 @@
       }
 
       // Desktop: open all. Mobile: collapse by default.
-     /* function applyDefaultOpen(){
+      /* function applyDefaultOpen(){
         if(isMobileLike()) setAllDetails(false);
         else setAllDetails(true);
       }

@@ -69,16 +69,23 @@
     .btn-blue:hover{ filter: brightness(.96); }
 
     /* =========================
-       Device-aware buttons:
-       Desktop: show desktop-only
-       Mobile/iPad: show mobile-only
+       Device-aware buttons (ROBUST)
+       Desktop/Laptop: show .desktop-only (Gmail)
+       Touch devices (phones/tablets): show .app-only (mailto)
+       iPad: show BOTH (Gmail + App)
        ========================= */
-    .desktop-only{ display: inline-flex; }
-    .mobile-only{ display: none; }
-    @media (max-width: 980px){
+    .desktop-only{ display: inline-flex !important; }
+    .app-only{ display: none !important; }
+
+    /* Phones/tablets (touch): prefer email app */
+    @media (pointer: coarse){
       .desktop-only{ display: none !important; }
-      .mobile-only{ display: inline-flex !important; }
+      .app-only{ display: inline-flex !important; }
     }
+
+    /* iPad override: show Gmail button too */
+    body.is-ipad .desktop-only{ display: inline-flex !important; }
+    body.is-ipad .app-only{ display: inline-flex !important; }
 
     /* FORCE: contact cards full width, equal columns */
     .grid{
@@ -251,7 +258,7 @@
       <!-- Contact details -->
       <section class="section" id="details">
         <h2 class="section-title">Contact details</h2>
-        <p class="section-sub">Use the enquiry or registration process below. Email buttons are device-optimised.</p>
+        <p class="section-sub">Use the enquiry or registration process below. Email buttons are device-optimised (iPad shows both).</p>
 
         <div class="grid">
           <div class="card">
@@ -269,19 +276,15 @@
             </div>
 
             <div class="prog-actions" style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px;">
-              <!-- Desktop/Laptop -->
+              <!-- Desktop/Laptop (and iPad extra): Gmail -->
               <a class="btn btn-success desktop-only"
                  href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Math%20Tutoring%20Enquiry"
                  target="_blank" rel="noopener">
                 Email us (Gmail)
               </a>
-              <a class="btn btn-blue desktop-only"
-                 href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry">
-                Email us (App)
-              </a>
 
-              <!-- Mobile/iPad -->
-              <a class="btn btn-success mobile-only"
+              <!-- Touch devices (and iPad): Email app -->
+              <a class="btn btn-blue app-only"
                  href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry">
                 Email us (App)
               </a>
@@ -357,21 +360,16 @@
                 </p>
 
                 <div class="qr-actions">
-                  <!-- Desktop/Laptop -->
+                  <!-- Desktop/Laptop (and iPad extra): Gmail -->
                   <a class="btn btn-success desktop-only"
                      href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Math%20Tutoring%20Enquiry%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20enquiry%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0AGoal%3A%20%5Bcatch%20up%20%2F%20keep%20up%20%2F%20get%20ahead%20%2F%20exam%20prep%5D%0AFormat%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AExtra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D"
                      target="_blank" rel="noopener">
                     Email Ma3 (Gmail)
                   </a>
-                  <!-- App mailto: NOW includes the same body as Gmail -->
-                  <a class="btn btn-blue tablet-only"
-                    href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20enquiry%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0AGoal%3A%20%5Bcatch%20up%20%2F%20keep%20up%20%2F%20get%20ahead%20%2F%20exam%20prep%5D%0AFormat%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AExtra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
-                    Email Ma3 (App)
-                  </a>
 
-                  <!-- Mobile/iPad -->
-                  <a class="btn btn-success phone-only"
-                    href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20enquiry%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0AGoal%3A%20%5Bcatch%20up%20%2F%20keep%20up%20%2F%20get%20ahead%20%2F%20exam%20prep%5D%0AFormat%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AExtra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
+                  <!-- Touch devices (and iPad): Email app -->
+                  <a class="btn btn-blue app-only"
+                     href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20enquiry%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0AGoal%3A%20%5Bcatch%20up%20%2F%20keep%20up%20%2F%20get%20ahead%20%2F%20exam%20prep%5D%0AFormat%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AExtra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
                     Email Ma3 (App)
                   </a>
 
@@ -381,7 +379,7 @@
                 </div>
 
                 <div class="help-box" style="margin-top:12px;">
-                  <b>Note:</b> On phones/tablets, please use <b>Email Ma3 (App)</b> (opens your email app).
+                  <b>Note:</b> On phones/tablets, please use <b>Email Ma3 (App)</b>. On iPad, you may also use <b>Email Ma3 (Gmail)</b> if you prefer.
                 </div>
               </div>
             </div>
@@ -440,22 +438,16 @@
                 </p>
 
                 <div class="qr-actions">
-                  <!-- Desktop/Laptop -->
+                  <!-- Desktop/Laptop (and iPad extra): Gmail -->
                   <a class="btn btn-success desktop-only"
                      href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Tutoring%20Registration%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20registration%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0APreferred%20format%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AQuestions%20or%20extra%20details%20(optional)%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D"
                      target="_blank" rel="noopener">
                     Email Ma3 (Gmail)
                   </a>
 
-                  <!-- Tablet App button -->
-                  <a class="btn btn-blue tablet-only"
-                    href="mailto:magicmathmaster23@gmail.com?subject=Tutoring%20Registration%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20registration%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0APreferred%20format%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AQuestions%20or%20extra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
-                    Email Ma3 (App)
-                  </a>
-
-                  <!-- Mobile/iPad -->
-                  <a class="btn btn-success phone-only"
-                    href="mailto:magicmathmaster23@gmail.com?subject=Tutoring%20Registration%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20registration%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0APreferred%20format%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AQuestions%20or%20extra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
+                  <!-- Touch devices (and iPad): Email app -->
+                  <a class="btn btn-blue app-only"
+                     href="mailto:magicmathmaster23@gmail.com?subject=Tutoring%20Registration%20for%20%5BStudent%20Name%5D&body=Hello%20Magic%20Math%20Master%20Team%2C%0A%0AI%20have%20completed%20the%20registration%20form.%0A%0AStudent%20name%3A%20%5BStudent%20Name%5D%0AYear%20level%3A%20%5BX%5D%0APreferred%20format%3A%20%5Bonline%20%2F%20in-person%20%2F%20either%5D%0AAvailability%3A%20%5B%20%5D%0A%0AQuestions%20or%20extra%20details%20%28optional%29%3A%0A%5BWrite%20here%5D%0A%0AKind%20regards%2C%0A%5BParent%2FGuardian%20Name%5D%0A%5BPhone%5D">
                     Email Ma3 (App)
                   </a>
 
@@ -465,7 +457,7 @@
                 </div>
 
                 <div class="help-box" style="margin-top:12px;">
-                  <b>Note:</b> On phones/tablets, please use <b>Email Ma3 (App)</b> (opens your email app).
+                  <b>Note:</b> On phones/tablets, please use <b>Email Ma3 (App)</b>. On iPad, you may also use <b>Email Ma3 (Gmail)</b> if you prefer.
                 </div>
               </div>
             </div>
@@ -489,6 +481,17 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* Detect iPad (including iPadOS that reports as Mac) and allow BOTH buttons */
+    (function(){
+      var isIpad = false;
+      try{
+        isIpad =
+          /iPad/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      }catch(e){}
+      if(isIpad) document.body.classList.add("is-ipad");
+    })();
   </script>
 
   <script src="script.js"></script>
