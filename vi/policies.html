@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Chính sách | Magic Math Master</title>
-  <meta name="description" content="Chính sách Magic Math Master: thanh toán, hủy buổi, đổi lịch, học online, hành vi, liên lạc và quyền riêng tư. Quy định rõ ràng để buổi học diễn ra suôn sẻ và tiến bộ vững chắc." />
+  <meta name="description" content="Chính sách của Magic Math Master: thanh toán, huỷ buổi học, đổi lịch, học trực tuyến, hành vi, trao đổi thông tin và quyền riêng tư. Kỳ vọng rõ ràng để buổi học diễn ra suôn sẻ và tiến bộ vững chắc." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/policies.html" />
 
   <!-- Optional OG tags -->
   <meta property="og:title" content="Chính sách | Magic Math Master" />
-  <meta property="og:description" content="Chính sách rõ ràng về thanh toán, hủy buổi, đổi lịch, học online, hành vi, liên lạc và quyền riêng tư." />
+  <meta property="og:description" content="Chính sách rõ ràng về thanh toán, huỷ buổi học, đổi lịch, học trực tuyến, hành vi, trao đổi thông tin và quyền riêng tư." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/policies.html" />
 
-  <!-- Shared site stylesheet -->
+  <!-- Shared site stylesheet (fix for /vi path) -->
   <link rel="stylesheet" href="../style.css" />
 
   <!-- favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-  <!-- Page-only overrides (kept tiny) -->
+  <!-- Page-only overrides (keep same layout/spacing) -->
   <style>
     /* HERO: remove square frame around logo (template default) */
     .hero-snap-logoBox{
@@ -74,6 +74,7 @@
       border: 2px solid rgba(0,0,0,.10);
       border-radius:18px;
       padding: 18px;
+      scroll-margin-top: 180px;
     }
     .policy-block h3{
       margin:0 0 10px;
@@ -108,23 +109,37 @@
       font-weight: 750;
       line-height: 1.7;
     }
+
+    /* Purple button (Email app) */
+    .btn-purple{
+      background: #7c3aed;
+      color: #fff;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+    .btn-purple:hover{ filter: brightness(.96); }
+
+    /* ✅ HARD GUARANTEE: Only one button shows (no matter what style.css does) */
+    .policy-email-cta .desktop-only{ display: inline-flex !important; }
+    .policy-email-cta .mobile-only{ display: none !important; }
+
+    /* Touch devices with coarse pointer (iPhone/iPad): show Email app, hide Gmail */
+    html[data-email-mode="touch"] .policy-email-cta .desktop-only{ display: none !important; }
+    html[data-email-mode="touch"] .policy-email-cta .mobile-only{ display: inline-flex !important; }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== TOP BAR (Vietnamese site) ===== -->
+  <!-- ===== TOP BAR ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
-      <!-- ✅ Brand should go to VI home -->
-      <a class="brand" href="index.html" aria-label="Magic Math Master trang chủ">
+      <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
         <img class="brand-logo" src="../assets/logo.png" alt="Logo Magic Math Master" />
         <div class="brand-title">
           <b>Magic Math Master</b>
         </div>
       </a>
 
-      <!-- ✅ Nav should stay inside /vi/ -->
       <nav class="nav" aria-label="Điều hướng chính">
         <a data-nav href="index.html">Trang chủ</a>
         <a data-nav href="programs.html">Chương trình</a>
@@ -133,8 +148,6 @@
         <a data-nav href="about.html">Giới thiệu</a>
         <a data-nav href="philosophy.html">Triết lý</a>
         <a data-nav href="contact.html">Liên hệ</a>
-
-        <!-- ✅ Language switch ONLY jumps to English equivalent -->
         <a class="nav-lang" href="../policies.html">English</a>
       </nav>
     </div>
@@ -148,7 +161,7 @@
         <div class="hero-snap-grid">
           <div>
             <h1 class="hero-snap-title">Chính sách</h1>
-            <div class="hero-snap-tagline">Kỳ vọng rõ ràng để buổi học suôn sẻ, đảm bảo an toàn và tiến bộ vững chắc</div>
+            <div class="hero-snap-tagline">Kỳ vọng rõ ràng để buổi học diễn ra suôn sẻ, đảm bảo sức khoẻ tinh thần và tiến bộ vững chắc</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-hidden="true">
@@ -157,25 +170,24 @@
         </div>
 
         <p class="hero-snap-desc">
-          Những chính sách này giúp buổi học diễn ra thuận lợi và hỗ trợ việc học cũng như sức khỏe tinh thần của mỗi em.
+          Những chính sách này giúp buổi học diễn ra thuận lợi và hỗ trợ việc học cũng như sự an yên của mỗi học sinh.
         </p>
 
         <div class="hero-snap-checks">
-          <span>✓ Dạy học nhẹ nhàng, có cấu trúc</span>
-          <span>✓ Lộ trình học cá nhân hoá</span>
-          <span>✓ Trao đổi rõ ràng với phụ huynh</span>
+          <span>✓ Dạy nhẹ nhàng, có cấu trúc</span>
+          <span>✓ Học tập cá nhân hoá</span>
+          <span>✓ Trao đổi rõ ràng với gia đình</span>
         </div>
 
         <div class="hero-snap-pills">
           <span class="hero-snap-pill">Thanh toán &amp; sắp lịch</span>
-          <span class="hero-snap-pill">Học online</span>
+          <span class="hero-snap-pill">Học trực tuyến</span>
           <span class="hero-snap-pill">Riêng tư &amp; tôn trọng</span>
         </div>
 
-        <!-- ✅ CTAs should go to VI pages (if you have them) -->
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="contact.html">Liên hệ</a>
-          <a class="btn btn-amber" href="register.html">Đăng ký</a>
+          <a class="btn btn-success" href="contact.html#enquiry-process">Gửi yêu cầu</a>
+          <a class="btn btn-amber" href="contact.html#registration-process">Đăng ký</a>
         </div>
 
       </div>
@@ -183,30 +195,49 @@
   </section>
 
   <!-- ===== PAGE CONTENT ===== -->
-  <main class="container">
+  <main class="container" id="sec_top">
+
+    <!-- QUICK LINKS -->
+    <section class="section">
+      <div class="quicklinks">
+        <div class="ql-grid">
+          <a class="ql-btn" data-open="sec_summary">Tóm tắt</a>
+          <a class="ql-btn" data-open="sec_payment">Thanh toán</a>
+          <a class="ql-btn" data-open="sec_cancel">Huỷ buổi học</a>
+          <a class="ql-btn" data-open="sec_late">Trễ / vắng mặt</a>
+          <a class="ql-btn" data-open="sec_resched">Đổi lịch</a>
+          <a class="ql-btn" data-open="sec_online">Học trực tuyến</a>
+          <a class="ql-btn" data-open="sec_behaviour">Hành vi</a>
+          <a class="ql-btn" data-open="sec_practice">Luyện tập</a>
+          <a class="ql-btn" data-open="sec_privacy">Riêng tư</a>
+          <a class="ql-btn" data-open="sec_questions">Câu hỏi</a>
+          <a class="ql-btn" data-open="sec_top">Lên đầu trang</a>
+        </div>
+      </div>
+    </section>
 
     <!-- Summary -->
     <section class="section">
-      <div class="policy-summary">
+      <div class="policy-summary" id="sec_summary">
         <h2>📌 Thông tin quan trọng (tóm tắt)</h2>
         <ul>
-          <li><strong>Thanh toán:</strong> Học phí được thanh toán trước khi học.</li>
-          <li><strong>Hủy buổi:</strong> Cần báo trước tối thiểu 24 giờ.</li>
-          <li><strong>Hoàn phí:</strong> Có thể áp dụng nếu báo đúng hạn hoặc có giấy chứng nhận y tế (khi phù hợp).</li>
-          <li><strong>Đến trễ:</strong> Buổi học vẫn kết thúc đúng giờ đã hẹn.</li>
-          <li><strong>Vắng mặt không báo:</strong> Buổi học vẫn tính phí.</li>
-          <li><strong>Đổi lịch:</strong> Tối đa 1 lần cho mỗi lượt đặt (tuỳ lịch trống).</li>
+          <li><strong>Thanh toán:</strong> Học phí được thanh toán trước buổi học.</li>
+          <li><strong>Huỷ buổi học:</strong> Cần báo trước 24 giờ.</li>
+          <li><strong>Hoàn tiền:</strong> Có thể áp dụng khi báo trước đúng quy định hoặc có giấy xác nhận y tế (nếu phù hợp).</li>
+          <li><strong>Đi học trễ:</strong> Buổi học vẫn kết thúc đúng giờ đã đặt.</li>
+          <li><strong>Vắng mặt:</strong> Buổi học vẫn tính phí.</li>
+          <li><strong>Đổi lịch:</strong> Tối đa 1 lần cho mỗi lần đặt (tuỳ tình trạng sắp xếp).</li>
           <li><strong>Gói buổi học:</strong> Có thể có hạn sử dụng.</li>
-          <li><strong>Học online:</strong> Cần internet ổn định.</li>
-          <li><strong>Hành vi:</strong> Môi trường học tập tôn trọng và tích cực.</li>
+          <li><strong>Học trực tuyến:</strong> Cần internet ổn định.</li>
+          <li><strong>Hành vi:</strong> Môi trường học tập tôn trọng.</li>
           <li><strong>Luyện tập:</strong> Luyện tập đều giúp tiến bộ nhanh hơn.</li>
-          <li><strong>Liên lạc:</strong> Phản hồi trong vòng 24–48 giờ làm việc.</li>
-          <li><strong>Riêng tư:</strong> Không chia sẻ thông tin khi chưa được cho phép.</li>
+          <li><strong>Trao đổi:</strong> Phản hồi trong 24–48 giờ làm việc.</li>
+          <li><strong>Riêng tư:</strong> Không chia sẻ thông tin khi chưa được phép.</li>
         </ul>
       </div>
 
       <div class="lang-hint">
-        Bạn muốn xem bản tiếng Anh? Vui lòng truy cập:
+        Bạn muốn xem bản tiếng Anh? Vui lòng vào trang:
         <a href="../policies.html"><strong>English</strong></a>.
       </div>
     </section>
@@ -215,98 +246,118 @@
     <section class="section">
       <h2 class="section-title">Chi tiết chính sách</h2>
       <p class="section-sub">
-        Dưới đây là các quy định chính. Nếu có điều gì chưa rõ, vui lòng liên hệ — chúng tôi luôn sẵn sàng hỗ trợ.
+        Dưới đây là các chính sách chính. Nếu có điều gì chưa rõ, vui lòng liên hệ — chúng tôi sẵn sàng hỗ trợ.
       </p>
 
       <div class="policy-grid">
-        <div class="policy-block">
+
+        <div class="policy-block" id="sec_payment">
           <h3>💳 1. Chính sách thanh toán</h3>
           <ul>
-            <li>Học phí cần được thanh toán trước khi buổi học bắt đầu.</li>
-            <li>Học phí có thể tính theo tháng hoặc theo gói trả trước (tuỳ thỏa thuận).</li>
+            <li>Cần thanh toán trước khi bắt đầu buổi học.</li>
+            <li>Học phí có thể tính theo tháng hoặc theo gói buổi học trả trước (theo thỏa thuận).</li>
             <li>Hình thức thanh toán thường là chuyển khoản ngân hàng.</li>
-            <li>Học phí có thể thay đổi với thông báo trước hợp lý.</li>
+            <li>Học phí có thể thay đổi với thông báo hợp lý.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>🗓️ 2. Hủy buổi &amp; thay đổi</h3>
+        <div class="policy-block" id="sec_cancel">
+          <h3>🗓️ 2. Huỷ buổi học &amp; thay đổi</h3>
           <ul>
-            <li>Vui lòng báo trước tối thiểu <strong>24 giờ</strong> khi hủy hoặc thay đổi lịch.</li>
-            <li>Hủy sát giờ có thể bị tính phí (vì khung giờ đã được giữ cho học sinh).</li>
-            <li>Nếu học sinh không khỏe, vui lòng liên hệ sớm nhất có thể.</li>
+            <li>Vui lòng báo trước ít nhất <strong>24 giờ</strong> khi huỷ hoặc thay đổi lịch.</li>
+            <li>Huỷ muộn có thể vẫn bị tính phí (vì khung giờ đã được giữ cho học sinh).</li>
+            <li>Nếu học sinh không khoẻ, vui lòng liên hệ sớm nhất có thể.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>⏱️ 3. Đến trễ &amp; vắng mặt không báo</h3>
+        <div class="policy-block" id="sec_late">
+          <h3>⏱️ 3. Đi học trễ &amp; vắng mặt</h3>
           <ul>
-            <li>Buổi học kết thúc đúng giờ đã hẹn (kể cả khi đến trễ).</li>
-            <li>Vắng mặt không báo trước vẫn tính phí (vì thời gian đã được đặt).</li>
-            <li>Nếu bạn sắp đến trễ, vui lòng nhắn tin — chúng tôi sẽ cố gắng hỗ trợ trong khả năng có thể.</li>
+            <li>Buổi học kết thúc đúng giờ đã đặt (kể cả khi đến trễ).</li>
+            <li>Vắng mặt không báo trước vẫn tính phí (vì thời gian đã được giữ).</li>
+            <li>Nếu bạn bị trễ, vui lòng nhắn tin — chúng tôi sẽ cố gắng hỗ trợ trong khả năng.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>🔁 4. Đổi lịch học</h3>
+        <div class="policy-block" id="sec_resched">
+          <h3>🔁 4. Đổi lịch</h3>
           <ul>
-            <li>Việc đổi lịch phụ thuộc vào lịch trống.</li>
-            <li>Thông thường, mỗi lượt đặt chỉ được đổi lịch tối đa 1 lần.</li>
-            <li>Các gói buổi học có thể có hạn sử dụng — vui lòng dùng trong thời hạn hiệu lực.</li>
+            <li>Việc đổi lịch phụ thuộc vào tình trạng sắp xếp.</li>
+            <li>Thông thường, đổi lịch được phép tối đa 1 lần cho mỗi lần đặt.</li>
+            <li>Gói buổi học có thể có hạn sử dụng — vui lòng dùng trong thời gian hiệu lực.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>💻 5. Buổi học online</h3>
+        <div class="policy-block" id="sec_online">
+          <h3>💻 5. Buổi học trực tuyến</h3>
           <ul>
-            <li>Cần internet ổn định và không gian học yên tĩnh.</li>
-            <li>Vui lòng sẵn sàng đúng giờ để tận dụng tối đa thời lượng buổi học.</li>
-            <li>Nếu phát sinh sự cố kỹ thuật, chúng tôi sẽ phối hợp để giảm gián đoạn trong khả năng có thể.</li>
+            <li>Cần internet ổn định và một không gian học yên tĩnh.</li>
+            <li>Vui lòng sẵn sàng đúng giờ để tận dụng tối đa thời lượng.</li>
+            <li>Nếu có sự cố kỹ thuật, chúng tôi sẽ phối hợp để giảm gián đoạn trong khả năng.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>🤝 6. Hành vi &amp; an toàn học tập</h3>
+        <div class="policy-block" id="sec_behaviour">
+          <h3>🤝 6. Hành vi &amp; an toàn tinh thần</h3>
           <ul>
-            <li>Chúng tôi duy trì môi trường học tập tôn trọng, an toàn và hỗ trợ.</li>
+            <li>Chúng tôi duy trì môi trường học tập tôn trọng và hỗ trợ.</li>
             <li>Khuyến khích học sinh đặt câu hỏi và học từ sai sót.</li>
-            <li>Không chấp nhận bắt nạt, thiếu tôn trọng hoặc hành vi gây mất an toàn.</li>
+            <li>Không chấp nhận bắt nạt, thiếu tôn trọng hoặc hành vi không an toàn.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
+        <div class="policy-block" id="sec_practice">
           <h3>📚 7. Luyện tập &amp; tiến bộ</h3>
           <ul>
-            <li>Luyện tập đều đặn là yếu tố quan trọng để tiến bộ ổn định.</li>
-            <li>Chúng tôi có thể đề xuất các bài tập ngắn hằng tuần để củng cố kỹ năng.</li>
-            <li>Tiến bộ nhanh nhất khi kết hợp đều đặn: buổi học + luyện tập.</li>
+            <li>Luyện tập đều đặn là yếu tố quan trọng để cải thiện ổn định.</li>
+            <li>Chúng tôi có thể gợi ý các bài tập ngắn hằng tuần để củng cố kỹ năng.</li>
+            <li>Tiến bộ nhanh nhất khi buổi học + luyện tập được duy trì đều.</li>
           </ul>
         </div>
 
-        <div class="policy-block">
-          <h3>🔒 8. Liên lạc &amp; quyền riêng tư</h3>
+        <div class="policy-block" id="sec_privacy">
+          <h3>🔒 8. Trao đổi thông tin &amp; quyền riêng tư</h3>
           <ul>
-            <li>Chúng tôi cố gắng phản hồi trong vòng <strong>24–48 giờ làm việc</strong>.</li>
-            <li>Thông tin học sinh được bảo mật và không chia sẻ khi chưa được cho phép.</li>
+            <li>Chúng tôi cố gắng phản hồi trong <strong>24–48 giờ làm việc</strong>.</li>
+            <li>Thông tin học sinh được bảo mật và không chia sẻ khi chưa được phép.</li>
             <li>Ảnh/video chỉ sử dụng khi có sự đồng ý (nếu áp dụng).</li>
           </ul>
         </div>
+
       </div>
     </section>
 
     <!-- Closing note -->
-    <section class="section">
+    <section class="section" id="sec_questions">
       <div class="policy-note">
-        Cảm ơn bạn đã đọc các chính sách. Chúng tôi hướng tới trải nghiệm học tập an toàn, vui vẻ và hiệu quả cho mọi học sinh.
+        Cảm ơn bạn đã đọc các chính sách. Chúng tôi mong muốn mang đến trải nghiệm học tập an toàn, vui vẻ và hiệu quả cho mọi học sinh.
       </div>
 
       <div class="card" style="padding:22px;">
         <h2 class="section-title" style="margin:0 0 10px;">Bạn có câu hỏi về chính sách?</h2>
         <p class="section-sub" style="margin:0 0 14px;">
-          Hãy gửi câu hỏi — chúng tôi sẵn sàng giải thích rõ và gợi ý bước tiếp theo phù hợp nhất.
+          Hãy gửi câu hỏi cho chúng tôi — chúng tôi sẵn sàng giải thích rõ và gợi ý bước tiếp theo phù hợp.
         </p>
-        <a class="btn btn-success" href="contact.html">Liên hệ</a>
-        <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Đăng ký</a>
+
+        <!-- ✅ ONE button per device (forced) -->
+        <div class="policy-email-cta" style="display:flex; flex-wrap:wrap; gap:10px;">
+          <!-- Desktop/Laptop -->
+          <a class="btn btn-success desktop-only"
+             href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%81%20ch%C3%ADnh%20s%C3%A1ch%20d%E1%BA%A1y%20k%C3%A8m%20%28thanh%20to%C3%A1n%2C%20hu%E1%BB%B7%2C%20b%C3%B9%20bu%E1%BB%95i%29&body=Ch%C3%A0o%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20quan%20t%C3%A2m%20%C4%91%E1%BA%BFn%20vi%E1%BB%87c%20%C4%91%C4%83ng%20k%C3%BD%20d%E1%BA%A1y%20k%C3%A8m%20cho%20con%20v%C3%A0%20mu%E1%BB%91n%20h%E1%BB%8Fi%20m%E1%BB%99t%20v%C3%A0i%20%C4%91i%E1%BB%81u%20v%E1%BB%81%20ch%C3%ADnh%20s%C3%A1ch%20tr%C6%B0%E1%BB%9Bc%20khi%20%C4%91%E1%BA%B7t%20l%E1%BB%8Bch.%20Nh%E1%BB%9D%20b%C3%AAn%20m%C3%ACnh%20x%C3%A1c%20nh%E1%BA%ADn%20gi%C3%BAp%3A%0A%0A-%20C%C3%A1ch%20thanh%20to%C3%A1n%20%28m%E1%BB%A9c%20ph%C3%AD%2C%20xu%E1%BA%A5t%20ho%C3%A1%20%C4%91%C6%A1n%2C%20th%E1%BB%9Di%20h%E1%BA%A1n%20thanh%20to%C3%A1n%29%0A-%20Ch%C3%ADnh%20s%C3%A1ch%20hu%E1%BB%B7%2F%C4%91%E1%BB%95i%20l%E1%BB%8Bch%20%28th%E1%BB%9Di%20gian%20b%C3%A1o%20tr%C6%B0%E1%BB%9Bc%2C%20ph%C3%AD%2C%20bu%E1%BB%95i%20h%E1%BB%8Dc%20b%C3%B9%29%0A-%20Tr%C6%B0%E1%BB%9Dng%20h%E1%BB%A3p%20con%20b%E1%BB%8B%20%E1%BB%91m%20ho%E1%BA%B7c%20c%C3%B3%20s%E1%BB%B1%20ki%E1%BB%87n%20%C4%91%E1%BB%99t%20xu%E1%BA%A5t%20%E1%BB%9F%20tr%C6%B0%E1%BB%9Dng%0A-%20C%C3%B3%20bu%E1%BB%95i%20h%E1%BB%8Dc%20th%E1%BB%AD%20kh%C3%B4ng%20v%C3%A0%20c%C3%A1ch%20%C4%91%C3%A1nh%20gi%C3%A1%20tr%C3%ACnh%20%C4%91%E1%BB%99%20ph%C3%B9%20h%E1%BB%A3p%0A-%20K%E1%BB%B3%20v%E1%BB%8Dng%20gi%E1%BB%AFa%20c%C3%A1c%20bu%E1%BB%95i%20h%E1%BB%8Dc%20%28b%C3%A0i%20t%E1%BA%ADp%2Fluy%E1%BB%87n%20t%E1%BA%ADp%29%0A-%20C%C3%A1ch%20c%E1%BA%ADp%20nh%E1%BA%ADt%20ti%E1%BA%BFn%20b%E1%BB%99%20v%C3%A0%20t%E1%BA%A7n%20su%E1%BA%A5t%20b%C3%A1o%20c%C3%A1o%0A-%20Ch%C3%ADnh%20s%C3%A1ch%20li%C3%AAn%20quan%20%C4%91%E1%BA%BFn%20h%E1%BB%8Dc%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20%28n%E1%BB%81n%20t%E1%BA%A3ng%2C%20gi%C3%A1m%20s%C3%A1t%2C%20ghi%20h%C3%ACnh%2C%20...%29%0A%0AXin%20c%E1%BA%A3m%20%C6%A1n.%20T%C3%B4i%20s%E1%BA%B5n%20s%C3%A0ng%20chia%20s%E1%BA%BB%20kh%E1%BB%91i%20l%E1%BB%9Bp%20v%C3%A0%20m%E1%BB%A5c%20ti%C3%AAu%20c%E1%BB%A7a%20con%20sau%20khi%20hi%E1%BB%83u%20r%C3%B5%20quy%20tr%C3%ACnh.%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BT%C3%AAn%20ph%E1%BB%A5%20huynh%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D"
+             target="_blank" rel="noopener">
+            Hỏi về chính sách (Gmail)
+          </a>
+
+          <!-- iPhone/iPad -->
+          <a class="btn btn-purple mobile-only"
+             href="mailto:magicmathmaster23@gmail.com?subject=C%C3%A2u%20h%E1%BB%8Fi%20v%E1%BB%81%20ch%C3%ADnh%20s%C3%A1ch%20d%E1%BA%A1y%20k%C3%A8m&body=Ch%C3%A0o%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20quan%20t%C3%A2m%20%C4%91%E1%BA%BFn%20vi%E1%BB%87c%20%C4%91%C4%83ng%20k%C3%BD%20d%E1%BA%A1y%20k%C3%A8m%20cho%20con%20v%C3%A0%20mu%E1%BB%91n%20h%E1%BB%8Fi%20m%E1%BB%99t%20v%C3%A0i%20%C4%91i%E1%BB%81u%20v%E1%BB%81%20ch%C3%ADnh%20s%C3%A1ch%20tr%C6%B0%E1%BB%9Bc%20khi%20%C4%91%E1%BA%B7t%20l%E1%BB%8Bch.%20Nh%E1%BB%9D%20b%C3%AAn%20m%C3%ACnh%20x%C3%A1c%20nh%E1%BA%ADn%20gi%C3%BAp%3A%0A%0A-%20C%C3%A1ch%20thanh%20to%C3%A1n%20%28m%E1%BB%A9c%20ph%C3%AD%2C%20xu%E1%BA%A5t%20ho%C3%A1%20%C4%91%C6%A1n%2C%20th%E1%BB%9Di%20h%E1%BA%A1n%20thanh%20to%C3%A1n%29%0A-%20Ch%C3%ADnh%20s%C3%A1ch%20hu%E1%BB%B7%2F%C4%91%E1%BB%95i%20l%E1%BB%8Bch%20%28th%E1%BB%9Di%20gian%20b%C3%A1o%20tr%C6%B0%E1%BB%9Bc%2C%20ph%C3%AD%2C%20bu%E1%BB%95i%20h%E1%BB%8Dc%20b%C3%B9%29%0A-%20Tr%C6%B0%E1%BB%9Dng%20h%E1%BB%A3p%20con%20b%E1%BB%8B%20%E1%BB%91m%20ho%E1%BA%B7c%20c%C3%B3%20s%E1%BB%B1%20ki%E1%BB%87n%20%C4%91%E1%BB%99t%20xu%E1%BA%A5t%20%E1%BB%9F%20tr%C6%B0%E1%BB%9Dng%0A-%20C%C3%B3%20bu%E1%BB%95i%20h%E1%BB%8Dc%20th%E1%BB%AD%20kh%C3%B4ng%20v%C3%A0%20c%C3%A1ch%20%C4%91%C3%A1nh%20gi%C3%A1%20tr%C3%ACnh%20%C4%91%E1%BB%99%20ph%C3%B9%20h%E1%BB%A3p%0A-%20K%E1%BB%B3%20v%E1%BB%8Dng%20gi%E1%BB%AFa%20c%C3%A1c%20bu%E1%BB%95i%20h%E1%BB%8Dc%20%28b%C3%A0i%20t%E1%BA%ADp%2Fluy%E1%BB%87n%20t%E1%BA%ADp%29%0A-%20C%C3%A1ch%20c%E1%BA%ADp%20nh%E1%BA%ADt%20ti%E1%BA%BFn%20b%E1%BB%99%20v%C3%A0%20t%E1%BA%A7n%20su%E1%BA%A5t%20b%C3%A1o%20c%C3%A1o%0A-%20Ch%C3%ADnh%20s%C3%A1ch%20li%C3%AAn%20quan%20%C4%91%E1%BA%BFn%20h%E1%BB%8Dc%20tr%E1%BB%B1c%20tuy%E1%BA%BFn%20%28n%E1%BB%81n%20t%E1%BA%A3ng%2C%20gi%C3%A1m%20s%C3%A1t%2C%20ghi%20h%C3%ACnh%2C%20...%29%0A%0AXin%20c%E1%BA%A3m%20%C6%A1n.%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BT%C3%AAn%20ph%E1%BB%A5%20huynh%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D">
+            Hỏi về chính sách (Email)
+          </a>
+        </div>
+
+        <div style="margin-top:12px;">
+          <a class="btn btn-amber" href="contact.html">Liên hệ</a>
+        </div>
       </div>
     </section>
 
@@ -315,7 +366,7 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>© <span id="year"></span> Magic Math Master • Úc</div>
       <div>
         <a href="contact.html">Liên hệ</a> •
         <a href="policies.html">Chính sách</a>
@@ -324,9 +375,50 @@
   </footer>
 
   <script>
+    // Auto year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ✅ Decide which email button to show:
+    // - "touch" if primary pointer is coarse (iPhone/iPad)
+    // - otherwise desktop (laptop/desktop)
+    (function(){
+      var isTouchCoarse = false;
+      try{
+        isTouchCoarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+      }catch(e){ isTouchCoarse = false; }
+      document.documentElement.setAttribute("data-email-mode", isTouchCoarse ? "touch" : "desktop");
+    })();
+
+    // Quick links scroll
+    (function(){
+      function scrollToSection(el){
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
+
+        var tries = 0, maxTries = 9;
+        function nudge(){
+          tries++;
+          var rect = el.getBoundingClientRect();
+          var safeTop = 150;
+          if(rect.top < safeTop){
+            window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
+          }
+          if(tries < maxTries) setTimeout(nudge, 160);
+        }
+        setTimeout(nudge, 220);
+      }
+
+      document.querySelectorAll(".ql-btn[data-open]").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          var id = btn.getAttribute("data-open");
+          var el = document.getElementById(id);
+          if(!el) return;
+          scrollToSection(el);
+        });
+      });
+    })();
   </script>
 
+  <!-- Auto highlight current nav item (fix for /vi path) -->
   <script src="../script.js"></script>
 </body>
 </html>

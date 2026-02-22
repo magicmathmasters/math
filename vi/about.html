@@ -1,92 +1,674 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Về chúng tôi | Magic Math Master</title>
-<meta name="description" content="Về Magic Math Master: dạy kèm Toán theo lộ trình, tăng tự tin, hiểu sâu bản chất cho học sinh Prep–Year 12 tại Úc.">
-<link rel="canonical" href="https://www.magicmathmaster.com.au/vi/about.html">
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Giới thiệu | Magic Math Master</title>
+  <meta name="description" content="Giới thiệu Magic Math Master: dạy kèm Toán do giáo viên dẫn dắt, ưu tiên xây dựng tự tin cho học sinh từ Prep đến Year 12 tại Úc. Tìm hiểu triết lý, câu chuyện, bằng cấp và cách tiếp cận Toán ứng dụng thực tế." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/about.html" />
+
+  <!-- Optional OG tags -->
+  <meta property="og:title" content="Giới thiệu | Magic Math Master" />
+  <meta property="og:description" content="Dạy kèm Toán do giáo viên dẫn dắt, ưu tiên xây dựng tự tin cho Prep–Year 12 tại Úc. Gặp gỡ người sáng lập, bằng cấp và cách tiếp cận Toán ứng dụng thực tế." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/about.html" />
+
+  <!-- Shared site stylesheet (fix for /vi path) -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- Page-only overrides (kept tiny) -->
+  <style>
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    .hero { padding: 22px 0 18px; }
+
+    /* About layout */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .about-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Founder card (left) */
+    .founder-card{
+      position: sticky;
+      top: 92px;
+    }
+    @media (max-width: 980px){
+      .founder-card{ position: static; }
+    }
+
+    .founder-photo{
+      border-radius: 18px;
+      overflow:hidden;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.72);
+    }
+    .founder-photo img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .founder-caption{
+      padding: 12px 14px 14px;
+      line-height: 1.6;
+      font-weight: 750;
+    }
+    .founder-caption b{ display:block; font-size: 16px; margin-bottom: 6px; }
+
+    .about-chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:10px; }
+    .about-chip{
+      display:inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+    }
+
+    /* Timeline list */
+    .clean-list{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.8;
+      font-weight: 650;
+    }
+    .clean-list li{ margin: 8px 0; }
+
+    /* Note box */
+    .note{
+      background:#e7f4ff;
+      border-left:6px solid #42a5f5;
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* Mini grid inside cards */
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 780px){
+      .mini-grid{ grid-template-columns: 1fr; }
+    }
+
+    .badge-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .badge{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+    }
+
+    /* Make external links look like links (blue) */
+    #real-world a{
+      color: #1565c0 !important;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+    #real-world a:hover{ text-decoration: none; }
+
+    /* ===== QUICK LINKS: same behaviour feel as index ===== */
+    /* Active quick link state (like a “selected” pill) */
+    .ql-btn.is-active{
+      background: rgba(11,94,215,.18);
+      border-color: rgba(11,94,215,.35);
+      box-shadow: 0 10px 18px rgba(11,94,215,.12);
+      color: var(--brand2);
+    }
+
+    /* Smooth jump (optional; safe) */
+    html{ scroll-behavior: smooth; }
+
+    /* Flash highlight on destination */
+    @keyframes mmmFlash {
+      0%   { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+      35%  { box-shadow: 0 0 0 6px rgba(11,94,215,.18); border-color: rgba(11,94,215,.55); }
+      100% { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
+    }
+    .anchor-flash .card,
+    .anchor-flash.card{
+      animation: mmmFlash 1.15s ease;
+    }
+
+    /* Anchor jump offset for sticky topbar */
+    .anchor-target{ scroll-margin-top: 120px; }
+
+    /* ===== Section titles in different colours ===== */
+    #founder-message .section-title{ color: #9E3201; }  /* warm maroon */
+    #qualifications  .section-title{ color: var(--brand2); } /* deep blue */
+    #real-world      .section-title{ color: #1565c0; } /* link blue */
+    #background      .section-title{ color: #7a4a00; } /* warm brown */
+    #awards          .section-title{ color: #d97706; } /* amber */
+    #child-success   .section-title{ color: #15803d; } /* green */
+  </style>
 </head>
 
 <body>
-<div class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html">
-      <div class="brand-badge">M³</div>
-      <div class="brand-title"><b>Magic Math Master</b><span>Dạy kèm cao cấp • Úc</span></div>
-    </a>
-    <div class="nav">
-      <a data-nav href="index.html">Trang chủ</a>
-      <a data-nav href="about.html">Về chúng tôi</a>
-      <a data-nav href="programs.html">Chương trình</a>
-      <a data-nav href="pricing.html">Học phí</a>
-      <a class="btn btn-outline" href="../about.html">English</a>
-      <a data-nav href="contact.html" class="btn btn-primary">Liên hệ</a>
+
+  <!-- ===== TOP BAR (same template) ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
+        <img class="brand-logo" src="../assets/logo.png" alt="Logo Magic Math Master" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a data-nav href="index.html">Trang chủ</a>
+        <a data-nav href="programs.html">Chương trình</a>
+        <a data-nav href="pricing.html">Học phí</a>
+        <a data-nav href="policies.html">Chính sách</a>
+        <a data-nav href="about.html">Giới thiệu</a>
+        <a data-nav href="philosophy.html">Triết lý</a>
+        <a data-nav href="contact.html">Liên hệ</a>
+        <a class="nav-lang" href="../about.html">English</a>
+      </nav>
     </div>
   </div>
-</div>
 
-<main class="container">
-  <section class="section">
-    <h1 class="section-title">Về Magic Math Master</h1>
-    <p class="section-sub">
-      Magic Math Master được xây dựng để mang đến trải nghiệm học Toán “bình tĩnh – rõ ràng – có lộ trình”,
-      giúp học sinh tiến bộ bền vững và tự tin hơn mỗi tuần.
-    </p>
+  <!-- ===== HERO (same template) ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
 
-    <div class="grid">
-      <div class="card">
-        <div class="icon">🎓</div>
-        <h3>Giáo viên chuyên môn</h3>
-        <p>Bài học được thiết kế bài bản, giải thích rõ ràng, phù hợp cách học của từng học sinh.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🧭</div>
-        <h3>Kế hoạch học rõ ràng</h3>
-        <p>Đánh giá lỗ hổng, đặt mục tiêu và tiến từng bước — không học lan man.</p>
-      </div>
-      <div class="card">
-        <div class="icon">💬</div>
-        <h3>Trao đổi minh bạch</h3>
-        <p>Phụ huynh nắm được trọng tâm học, tiến bộ và việc cần luyện thêm.</p>
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">Giới thiệu</h1>
+            <div class="hero-snap-tagline">Dạy kèm Toán do giáo viên dẫn dắt, ưu tiên xây dựng tự tin cho Prep–Year 12</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="../assets/logo.png" alt="Logo Magic Math Master" loading="lazy" />
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          Magic Math Master được xây dựng trên sự quan tâm, sự rõ ràng và niềm tin rằng mọi học sinh có động lực đều có thể học Toán sâu và tự tin —
+          với cấu trúc nhẹ nhàng, nền tảng vững và năng lực giải quyết vấn đề thật.
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ Cấu trúc nhẹ nhàng, tiêu chuẩn cao</span>
+          <span>✓ Lộ trình học cá nhân hoá</span>
+          <span>✓ Trao đổi rõ ràng với gia đình</span>
+        </div>
+
+        <div class="about-chips" aria-label="Điểm nổi bật">
+          <span class="about-chip">Bám sát chương trình Úc</span>
+          <span class="about-chip">Tự tin &amp; nền tảng</span>
+          <span class="about-chip">Nâng cao &amp; thi đấu</span>
+          <span class="about-chip">Nhóm nhỏ</span>
+          <span class="about-chip">Toán ứng dụng thực tế</span>
+        </div>
+
+        <div class="hero-snap-cta" style="margin-top:12px;">
+          <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+          <a class="btn btn-amber" href="register.html">Đăng ký</a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="card">
-      <h2 class="section-title" style="margin-top:0;">Triết lý giảng dạy</h2>
-      <p class="section-sub" style="margin-bottom:10px;">
-        Toán không chỉ là công thức — Toán là tư duy, là cách giải quyết vấn đề và trình bày rõ ràng.
-      </p>
-      <ul style="margin:0; padding-left:18px; color:var(--muted); font-weight:650;">
-        <li>Chắc nền tảng trước (để tự tin tăng dần)</li>
-        <li>Dạy chiến lược giải bài, không chỉ “làm theo mẫu”</li>
-        <li>Dùng bối cảnh thực tế để Toán dễ hiểu và gần gũi</li>
-        <li>Khuyến khích học sinh giải thích tư duy</li>
-      </ul>
+  <!-- QUICK LINKS (same style + “effect” like index) -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="quicklinks">
+        <!-- <h2>Liên kết nhanh (chạm để đi tới)</h2> -->
+        <div class="ql-grid" aria-label="Liên kết nhanh">
+          <a class="ql-btn" href="#founder-message" data-jump="founder-message">Lời nhắn từ người sáng lập</a>
+          <a class="ql-btn" href="#qualifications" data-jump="qualifications">Bằng cấp</a>
+          <a class="ql-btn" href="#real-world" data-jump="real-world">Toán ứng dụng thực tế</a>
+          <a class="ql-btn" href="#background" data-jump="background">Kinh nghiệm giảng dạy</a>
+          <a class="ql-btn" href="#awards" data-jump="awards">Học bổng &amp; giải thưởng</a>
+          <a class="ql-btn" href="#child-success" data-jump="child-success">Ý nghĩa cho con bạn</a>
+          <a class="ql-btn" href="#top" data-jump="top" style="display:none;">Lên đầu trang</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="card" style="padding:22px;">
-      <h2 class="section-title" style="margin:0 0 10px;">Bạn muốn được tư vấn lộ trình phù hợp?</h2>
-      <p class="section-sub" style="margin:0 0 14px;">
-        Hãy gửi năm học và mục tiêu của con — chúng tôi sẽ đề xuất chương trình phù hợp.
-      </p>
-      <a class="btn btn-primary" href="contact.html">Gửi yêu cầu tư vấn</a>
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="container" id="top">
+
+    <section class="section">
+      <div class="about-grid">
+
+        <!-- LEFT: Founder photo + caption -->
+        <aside class="founder-card">
+          <div class="card" style="padding:16px;">
+            <div class="founder-photo">
+              <img src="../assets/Founder.jpg" alt="TS Tuyết Vũ - Người sáng lập &amp; Giáo viên" loading="lazy">
+            </div>
+            <div class="founder-caption">
+              <b>TS Tuyết Vũ — Người sáng lập &amp; Giáo viên</b>
+              <span>Học Toán không chỉ là nhớ công thức — mà là dùng logic, sáng tạo và tư duy giải quyết vấn đề để hiểu những tình huống trong cuộc sống.</span>
+            </div>
+
+            <div class="badge-row" aria-label="Điểm nổi bật của người sáng lập">
+              <span class="badge">Tiến sĩ (Kỹ thuật)</span>
+              <span class="badge">Toán học &amp; Giáo dục</span>
+              <span class="badge">R&amp;D Chính phủ</span>
+              <span class="badge">MATLAB &amp; mô hình hoá</span>
+            </div>
+          </div>
+
+          <div class="note" style="margin-top:14px;">
+            👨‍👩‍👧‍👦 <strong>Phụ huynh sẽ nhận được:</strong> mục tiêu rõ ràng, buổi học có cấu trúc, và cập nhật định kỳ về tiến bộ &amp; bước tiếp theo.
+          </div>
+        </aside>
+
+        <!-- RIGHT: Founder content -->
+        <div>
+
+          <!-- Founder message -->
+          <section id="founder-message" class="section anchor-target" style="padding-top:0;">
+            <h2 class="section-title">✨ Lời nhắn từ người sáng lập</h2>
+            <p class="section-sub">
+              Chào mừng bạn đến với Magic Math Master — nơi đam mê và sự chính xác cùng nhau tạo nên thành công trong Toán học.
+            </p>
+
+            <div class="card">
+              <h3 style="margin-top:0;">Câu chuyện người sáng lập</h3>
+
+              <p class="section-sub" style="margin-top:0;">
+                Tôi lớn lên trong một gia đình còn nhiều khó khăn, nhưng lại có niềm yêu thích đặc biệt với Toán học và thói quen tự học rất mạnh.
+                Dù luôn cố gắng, tôi không phải lúc nào cũng có cơ hội tiếp cận sự hướng dẫn chất lượng cao từ chuyên gia để phát huy hết tiềm năng.
+                Những trải nghiệm đó đã định hình mục tiêu của tôi.
+              </p>
+
+              <p class="section-sub">
+                Tôi thành lập Magic Math Master để tạo cơ hội cho những em học sinh ham học, có năng lực, nhưng có thể thiếu nguồn lực hoặc sự hỗ trợ để tiến xa hơn.
+                Mục tiêu của tôi là giúp giáo dục Toán chất lượng cao trở nên dễ tiếp cận hơn thông qua dạy học cá nhân hoá, học nhóm nhỏ, và các lựa chọn hỗ trợ linh hoạt cho gia đình.
+              </p>
+
+              <p class="section-sub">
+                Tôi tin rằng mỗi học sinh có động lực đều xứng đáng được học sâu, suy nghĩ tự tin và theo đuổi ước mơ của mình.
+              </p>
+
+              <div class="hero-snap-checks" style="margin-top:10px;">
+                <span>✓ Giải thích nhẹ nhàng, dễ hiểu</span>
+                <span>✓ Xây tự tin từng bước</span>
+                <span>✓ Tư duy Toán gắn với thực tế</span>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <p class="section-sub" style="margin-top:0;">
+                Là người sáng lập Magic Math Master, tôi rất vui được mang đến chương trình Toán bám sát chương trình Úc nhằm giúp học sinh xây dựng tự tin,
+                nắm vững nền tảng và phát huy tối đa năng lực — dù mục tiêu là bắt kịp, vượt lên, chuẩn bị cho kỳ thi tuyển chọn hoặc VCE, hay đơn giản là
+                khám phá vẻ đẹp của những con số.
+              </p>
+
+              <p class="section-sub">
+                Qua nhiều năm giảng dạy, nghiên cứu và làm mẹ, tôi nhận ra rằng hiểu Toán thật sự không chỉ là ghi nhớ công thức.
+                Toán học là ngôn ngữ chung của logic và sáng tạo. Nó giúp chúng ta đưa ra quyết định, thiết kế công nghệ, hiểu dữ liệu và giải các vấn đề phức tạp trong đời sống.
+                Mỗi học sinh đều có thể cảm nhận “phép màu” ấy khi Toán được dạy rõ ràng, kiên nhẫn và có liên hệ với cuộc sống.
+              </p>
+
+              <p class="section-sub" style="margin:14px 0 0;">
+                Cảm ơn bạn đã cân nhắc Magic Math Master trở thành một phần trong hành trình học tập của con bạn.
+              </p>
+              <p class="section-sub" style="margin:10px 0 0;">
+                Trân trọng,<br>
+                <strong>TS Tuyết Vũ</strong><br>
+                Người sáng lập, Magic Math Master
+              </p>
+            </div>
+          </section>
+
+          <!-- Qualifications -->
+          <section id="qualifications" class="section anchor-target">
+            <h2 class="section-title">📜 Bằng cấp chuyên môn</h2>
+            <p class="section-sub">
+              Nền tảng của tôi kết hợp Toán học, Kỹ thuật và Giáo dục — để học sinh không chỉ biết “làm thế nào”, mà còn hiểu “vì sao”.
+            </p>
+
+            <div class="card">
+              <ul class="clean-list" style="margin-top:0;">
+                <li>🎓 <strong>Tiến sĩ Kỹ thuật Điện (PhD)</strong> – The University of Melbourne</li>
+                <li>🎓 <strong>Cử nhân Toán (Danh dự)</strong> – La Trobe University</li>
+                <li>🎓 <strong>Thạc sĩ Giáo dục Khoa học &amp; Công nghệ</strong> – La Trobe University</li>
+                <li>🎓 <strong>Cử nhân Toán &amp; Giáo dục</strong> – Việt Nam</li>
+                <li>🎓 <strong>Cử nhân Ngôn ngữ Anh</strong> – Việt Nam</li>
+              </ul>
+
+              <p class="section-sub">
+                Những năm đầu sự nghiệp, tôi trúng tuyển chương trình <strong>Thạc sĩ Toán học</strong> (đầu vào cạnh tranh) tại Việt Nam và đạt điểm tối đa ở cả 3 môn Toán trong kỳ thi tuyển.
+                Sau đó, tôi được trao <strong>Học bổng Ngân hàng Phát triển Châu Á (ADB)</strong>, tạo điều kiện để sang Úc học tập tiếp.
+                Nền tảng này giúp tôi kết hợp thế mạnh của cả hệ giáo dục Việt Nam và Úc trong quá trình giảng dạy.
+              </p>
+
+              <ul class="clean-list" style="margin-top:10px;">
+                <li>🎓 <strong>Thạc sĩ Toán học</strong> (học sau đại học, 1 năm; đầu vào cạnh tranh) – Việt Nam</li>
+                <li>📜 <strong>PoSSUM (OPS 104): Orbital Mechanics and Mission Simulation</strong> — International Institute for Astronautical Sciences (chứng chỉ)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Real-world applied mathematics -->
+          <section id="real-world" class="section anchor-target">
+            <h2 class="section-title">🔬 Toán ứng dụng trong thế giới thực</h2>
+            <p class="section-sub">
+              Khi dạy Toán, tôi thường sử dụng kiểu tư duy tương tự như trong kỹ thuật, phân tích dữ liệu và công nghệ hiện đại — không chỉ là ví dụ “trong sách”.
+            </p>
+
+            <div class="card">
+              <h3 style="margin-top:0;">Từ nghiên cứu &amp; thực tế đến lớp học</h3>
+
+              <div class="mini-grid">
+                <div>
+                  <p class="section-sub" style="margin-top:0;">
+                    Tôi từng làm <strong>Trưởng nhóm Nghiên cứu &amp; Marketing</strong> tại Trung tâm Ứng dụng và Khảo sát Khoa học Kinh tế,
+                    hợp tác với nhà đầu tư nước ngoài để nội địa hoá thiết kế và nghiên cứu sản phẩm cho thị trường Việt Nam.
+                    Công việc này giúp tôi rèn luyện tư duy phân tích, kỹ năng giao tiếp và khả năng kết nối lý thuyết với nhu cầu thực tế.
+                  </p>
+                </div>
+                <div>
+                  <p class="section-sub" style="margin-top:0;">
+                    Tôi hoàn thành <strong>Tiến sĩ Kỹ thuật</strong> và hiện làm việc tại một <strong>cơ quan chính phủ Úc</strong>, nơi tôi phát triển và kiểm thử
+                    các thuật toán theo dõi bằng mô hình hoá toán học, lập luận logic và lập trình <strong>MATLAB</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="hero-snap-checks" style="margin-top:10px;">
+                <span>✓ Mô hình hoá toán học</span>
+                <span>✓ Lập luận logic</span>
+                <span>✓ Triển khai MATLAB</span>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <h3 style="margin-top:0;">Nhà khoa học, kỹ sư, nhà nghiên cứu — và người phát triển công cụ Toán học</h3>
+
+              <p class="section-sub" style="margin-top:0;">
+                Bên cạnh việc giảng dạy, tôi làm việc trong lĩnh vực khoa học và công nghệ tại Úc.
+                Hiện tôi là nhà nghiên cứu tại <strong>Defence Science and Technology Group (DSTG)</strong>. Công việc của tôi bao gồm:
+              </p>
+
+              <ul class="clean-list" style="margin-top:0;">
+                <li>🛰️ Giám sát không gian và theo dõi vệ tinh</li>
+                <li>📡 Xử lý tín hiệu và hợp nhất dữ liệu</li>
+                <li>🎯 Thuật toán theo dõi nâng cao cho nhiều mục tiêu chuyển động trong môi trường nhiễu và bất định</li>
+              </ul>
+
+              <p class="section-sub">
+                Trong nghiên cứu, tôi thiết kế và triển khai các thuật toán phức tạp dựa trên <strong>lý thuyết tập hữu hạn ngẫu nhiên (Random Finite Set)</strong>,
+                <strong>lọc hạt (particle filtering)</strong> và <strong>Markov Chain Monte Carlo (MCMC)</strong> — những công cụ Toán học được dùng trong công nghệ hiện đại
+                như radar, hệ thống tự hành và nhận thức miền không gian.
+              </p>
+
+              <p class="section-sub">
+                Tôi cũng phát triển các thước đo đánh giá hiệu năng mới (bao gồm <strong>OSPAMT</strong> và <strong>COSPA</strong>) để đánh giá mức độ hiệu quả của thuật toán theo dõi.
+                Tôi triển khai các phương pháp này bằng MATLAB và chia sẻ mã nguồn công khai để các nhà nghiên cứu và kỹ sư trên thế giới có thể sử dụng và phát triển thêm.
+              </p>
+
+              <p class="section-sub">
+                Công trình về các thước đo hiệu năng theo dõi của tôi cũng nhận được phản hồi tích cực từ các chuyên gia quốc tế hàng đầu,
+                bao gồm Giáo sư Henk Blom (Hà Lan), nổi tiếng với đóng góp cho khung IMM, và Tiến sĩ Erik P. Blasch, cán bộ chương trình tại
+                Phòng thí nghiệm Nghiên cứu Không quân Hoa Kỳ / AFOSR.
+              </p>
+
+              <p class="section-sub">Nghiên cứu của tôi đã:</p>
+              <ul class="clean-list" style="margin-top:0;">
+                <li>📄 Được công bố trên các tạp chí và hội nghị quốc tế uy tín</li>
+                <li>🏆 Đạt Finalist, Best Student Paper tại International Conference on Information Fusion (Chicago)</li>
+                <li>🤝 Hợp tác cùng các học giả hàng đầu, gồm Giáo sư Ba-Ngu Vo (Curtin University) và Giáo sư Rob Evans (The University of Melbourne)</li>
+              </ul>
+
+              <p class="section-sub" style="margin-top:10px;">
+                Điều này có nghĩa là khi tôi dạy Toán, tôi không chỉ lặp lại ví dụ trong sách.
+                Tôi mang vào lớp học đúng kiểu tư duy Toán học đang được dùng trong ứng dụng thực tế — theo dõi vệ tinh, phân tích tín hiệu và xử lý dữ liệu phức tạp.
+              </p>
+
+              <p class="section-sub">
+                Nếu bạn muốn xem các công trình nghiên cứu và mã MATLAB tôi chia sẻ công khai, bạn có thể xem tại:
+                <a href="https://www.researchgate.net/profile/Tuyet-Vu/research" target="_blank" rel="noopener">ResearchGate — Tuyet Vu</a>.
+              </p>
+            </div>
+          </section>
+
+          <!-- Teaching background -->
+          <section id="background" class="section anchor-target">
+            <h2 class="section-title">📘 Kinh nghiệm giảng dạy &amp; giáo dục</h2>
+            <p class="section-sub">
+              Niềm yêu thích dạy học của tôi bắt đầu từ rất sớm và lớn dần qua dạy kèm, giảng dạy phổ thông, giảng dạy đại học và nghiên cứu.
+            </p>
+
+            <div class="card">
+              <h3 style="margin-top:0;">Dạy kèm từ sớm và minh chứng rằng tiến bộ là hoàn toàn có thể</h3>
+              <p class="section-sub" style="margin-top:0;">
+                Khi còn là học sinh, tôi thường giúp bạn bè hiểu Toán rõ hơn trong giờ ra chơi hoặc trước giờ học; đôi khi các nhóm nhỏ còn đến nhà để tôi giải thích
+                các khái niệm một cách nhẹ nhàng, đơn giản và cuốn hút.
+              </p>
+
+              <p class="section-sub">
+                Trong thời gian học đại học, tôi tiếp tục dạy kèm khoảng 15 học sinh theo hình thức 1-1 và nhóm nhỏ.
+                Một học sinh đáng nhớ là em lớp 9 bị hổng kiến thức nặng và có nguy cơ lưu ban. Chỉ sau vài tuần dạy kèm tập trung vào học kỳ 3, em đã xây lại nền tảng,
+                trở thành một trong những học sinh giỏi nhất lớp vào cuối năm lớp 9, và sau này theo học ngành Công nghệ Thông tin.
+                Điều đó càng củng cố niềm tin của tôi: với hướng dẫn phù hợp, học sinh nào cũng có thể tiến bộ.
+              </p>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <h3 style="margin-top:0;">Kinh nghiệm giảng dạy (Việt Nam &amp; Úc)</h3>
+              <p class="section-sub" style="margin-top:0;">
+                Tôi đã giảng dạy Toán và các môn liên quan tại cả Việt Nam và Úc, bao gồm:
+              </p>
+              <ul class="clean-list">
+                <li>🏫 Saigon University (tiền thân: Cao đẳng Sư phạm TP.HCM)</li>
+                <li>🏫 University of Economics Ho Chi Minh City (School of Finance)</li>
+                <li>🏫 Trường THPT Đăng Khoa</li>
+                <li>🏫 The International School in Saigon (TIS)</li>
+                <li>🏫 Raffles Vietnam</li>
+              </ul>
+
+              <p class="section-sub">
+                Tôi cũng từng là giảng viên bồi dưỡng nghiệp vụ sư phạm tại Saigon University, đào tạo giáo viên Toán bậc THCS/THPT.
+              </p>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <h3 style="margin-top:0;">Giảng dạy đại học, hướng dẫn &amp; dẫn dắt học thuật</h3>
+              <p class="section-sub" style="margin-top:0;">
+                Trong thời gian làm Tiến sĩ, tôi cũng dạy trợ giảng cho các lớp đông và ngay sau khi hoàn thành luận án,
+                tôi được mời làm giảng viên thỉnh giảng môn Toán Ứng dụng tại The University of Melbourne.
+              </p>
+
+              <p class="section-sub">
+                Trong suốt sự nghiệp, tôi đã dạy học sinh từ Prep đến Year 12 và cả sinh viên đại học,
+                đồng thời hướng dẫn/mentoring <strong>hơn 100 sinh viên thực tập sư phạm và sinh viên đại học</strong>.
+                Những trải nghiệm này giúp tôi hiểu rất rõ học sinh học như thế nào, thường vướng ở đâu, và dạng hỗ trợ nào giúp các em tiến bộ bền vững,
+                xây dựng sự tự tin lâu dài với Toán.
+              </p>
+            </div>
+          </section>
+
+          <!-- Scholarships & Awards -->
+          <section id="awards" class="section anchor-target">
+            <h2 class="section-title">🏅 Học bổng &amp; giải thưởng</h2>
+            <p class="section-sub">
+              Tôi biết ơn khi nhận được một số học bổng và giải thưởng cạnh tranh trong hành trình học thuật.
+              Những trải nghiệm này củng cố cam kết của tôi về sự xuất sắc, bền bỉ và tinh thần sẻ chia trong học tập —
+              những giá trị tôi mang vào Magic Math Master.
+            </p>
+
+            <div class="card">
+              <ul class="clean-list" style="margin-top:0;">
+                <li>🏆 Finalist, Best Student Paper – International Conference on Information Fusion (Chicago)</li>
+                <li>🏅 Prof. C.J. Eliezer Prize in Mathematics – La Trobe University</li>
+                <li>🎓 Melbourne International Fee Remission Scholarship (MIFRS) – 4 năm (PhD Kỹ thuật Điện)</li>
+                <li>🎓 National ICT Australia (NICTA) Scholarship (thành tích học thuật) – 4 năm (PhD Kỹ thuật Điện)</li>
+                <li>🎓 Học bổng Asian Development Bank (ADB) (học phí &amp; sinh hoạt phí) – 2 năm</li>
+                <li>🎓 Học bổng 4 năm (học phí &amp; sinh hoạt phí) – Đại học Sư phạm TP.HCM (Cử nhân Toán)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- What this means for your child -->
+          <section id="child-success" class="section anchor-target">
+            <div class="card" style="padding:22px;">
+              <h2 class="section-title" style="margin:0 0 6px;">🎯 Điều này có ý nghĩa gì cho con bạn</h2>
+
+              <p class="section-sub" style="margin:0 0 14px; font-weight:900;">
+                Chuyên môn thật. Hướng dẫn nhẹ nhàng. Kết quả vững chắc.
+              </p>
+
+              <p class="section-sub" style="margin:0 0 12px;">
+                Kinh nghiệm của tôi trong <strong>Toán học</strong>, <strong>nghiên cứu kỹ thuật</strong> và <strong>giáo dục</strong> giúp tôi không chỉ dạy học sinh “ra đáp án”
+                mà còn dạy các em <strong>tư duy rõ ràng</strong>, <strong>xây nền tảng vững</strong> và <strong>giải quyết vấn đề tự tin</strong>.
+                Tôi đã dạy từ Prep–Year 12 và cả sinh viên đại học, đồng thời mentoring hơn 100 sinh viên thực tập sư phạm và sinh viên đại học,
+                nên tôi hiểu những lỗ hổng phổ biến khiến học sinh bị “kẹt” — và các bước thực tế giúp các em tiến bộ nhanh nhưng bền.
+              </p>
+
+              <p class="section-sub" style="margin:0 0 14px;">
+                Trong vai trò nghiên cứu tại cơ quan chính phủ, tôi thiết kế và kiểm thử thuật toán theo dõi bằng mô hình hoá toán học và MATLAB.
+                Công việc thực tế này làm cho cách tôi dạy Toán “sắc” hơn: tôi cho học sinh thấy Toán không phải là bộ quy tắc để học thuộc —
+                mà là công cụ mạnh mẽ để suy luận, phân tích và ra quyết định. Nhờ vậy, học sinh có động lực hơn, hiểu sâu hơn và làm tốt hơn ở trường và trong bài thi.
+              </p>
+
+              <p class="section-sub">
+                Tôi cũng thường xuyên tham gia các khoá học ngắn chuyên môn về không gian và cơ học quỹ đạo, giúp tôi kết nối Toán với các ứng dụng như chuyển động vệ tinh và theo dõi quỹ đạo.
+              </p>
+
+              <ul class="clean-list" style="margin:0 0 14px;">
+                <li><strong>Chẩn đoán cá nhân hoá:</strong> nhanh chóng xác định học sinh đã hiểu gì, đang thiếu gì và vì sao bị “kẹt”.</li>
+                <li><strong>Làm chủ từng bước:</strong> củng cố nền tảng cẩn thận, rồi tăng dần tốc độ, độ chính xác và sự tự tin theo dạng bài thi.</li>
+                <li><strong>Hiểu sâu bản chất:</strong> dạy “vì sao” đằng sau phương pháp để học sinh áp dụng vào câu hỏi mới (không chỉ làm theo khuôn).</li>
+                <li><strong>Thói quen giải quyết vấn đề:</strong> biết lập kế hoạch, kiểm tra, trình bày lập luận và giữ bình tĩnh khi gặp bài khó.</li>
+                <li><strong>Ý nghĩa thực tế:</strong> kết nối Toán với đời sống (dữ liệu, công nghệ, thể thao, mẫu hình, lập trình) để học thú vị và hữu ích.</li>
+                <li><strong>Theo dõi tiến bộ rõ ràng:</strong> phụ huynh nhận mục tiêu đơn giản, cập nhật và bước tiếp theo — để tiến bộ nhìn thấy được.</li>
+              </ul>
+
+              <p class="section-sub" style="margin:0 0 16px;">
+                Mục tiêu của tôi là giúp con bạn trở thành <strong>người học tự tin và chủ động</strong>, biết suy luận logic, giao tiếp rõ ràng và yêu Toán —
+                dù đang bắt kịp, duy trì, vượt lên, hay hướng đến thi đấu và tuyển chọn.
+              </p>
+
+              <a class="btn btn-success" href="contact.html">Gửi yêu cầu</a>
+              <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Đăng ký</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same template) ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Magic Math Master • Úc</div>
+      <div>
+        <a href="contact.html">Liên hệ</a> •
+        <a href="policies.html">Chính sách</a>
+      </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div>© 2026 Magic Math Master • Australia</div>
-    <div><a href="contact.html">Liên hệ</a> • <a href="programs.html">Chương trình</a> • <a href="pricing.html">Học phí</a></div>
-  </div>
-</footer>
+  <!-- Auto year -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
-<script src="../script.js"></script>
+  <!-- Quick links “index-like effect”: active state + highlight destination -->
+  <script>
+    (function(){
+      var btns = Array.prototype.slice.call(document.querySelectorAll(".ql-btn[data-jump]"));
+
+      function setActive(id){
+        btns.forEach(function(b){ b.classList.remove("is-active"); });
+        var match = btns.find(function(b){ return b.getAttribute("data-jump") === id; });
+        if(match) match.classList.add("is-active");
+      }
+
+      function flashSection(section){
+        if(!section) return;
+        section.classList.remove("anchor-flash");
+        void section.offsetWidth; // restart animation
+        section.classList.add("anchor-flash");
+        setTimeout(function(){ section.classList.remove("anchor-flash"); }, 1300);
+      }
+
+      function scrollToSection(el){
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
+      }
+
+      function go(id){
+        var el = document.getElementById(id);
+        if(!el) return;
+
+        history.replaceState(null, "", "#" + id);
+        setActive(id);
+        scrollToSection(el);
+
+        // Flash the nearest card for a nice “arrived” effect
+        setTimeout(function(){
+          var card = el.querySelector(".card") || el;
+          flashSection(card.classList.contains("card") ? card : el);
+        }, 250);
+      }
+
+      btns.forEach(function(btn){
+        btn.addEventListener("click", function(e){
+          e.preventDefault();
+          go(btn.getAttribute("data-jump"));
+        });
+      });
+
+      // If page opens with a hash, sync active + flash
+      function initFromHash(){
+        var id = (location.hash || "").replace("#","");
+        if(!id) return;
+        go(id);
+      }
+
+      window.addEventListener("hashchange", initFromHash);
+      // Don’t force-scroll on load if you prefer; keep it gentle:
+      // initFromHash();
+    })();
+  </script>
+
+  <!-- Auto highlight current nav item (fix for /vi path) -->
+  <script src="../script.js"></script>
 </body>
 </html>

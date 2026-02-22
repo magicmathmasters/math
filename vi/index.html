@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Magic Math Master | Dạy Kèm Toán Cao Cấp Tại Úc</title>
-  <meta name="description" content="Dạy kèm Toán nhẹ nhàng, có cấu trúc cho học sinh từ Prep đến Lớp 12 tại Úc. Xây dựng sự tự tin từng bước với lộ trình cá nhân hoá và giao tiếp rõ ràng cùng phụ huynh.">
-  <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/index.html">
+  <title>Magic Math Master | Dạy kèm Toán cao cấp tại Úc</title>
+  <meta name="description" content="Dạy kèm Toán nhẹ nhàng, có cấu trúc cho học sinh từ Prep đến Lớp 12 tại Úc. Xây dựng sự tự tin từng bước với lộ trình cá nhân hoá và trao đổi rõ ràng cùng gia đình.">
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/">
 
-  <meta property="og:title" content="Magic Math Master | Dạy Kèm Toán Cao Cấp Tại Úc">
-  <meta property="og:description" content="Dạy kèm có cấu trúc cho Prep–Lớp 12. Lộ trình cá nhân hoá và phương pháp dạy ưu tiên sự tự tin.">
+  <meta property="og:title" content="Magic Math Master | Dạy kèm Toán cao cấp tại Úc">
+  <meta property="og:description" content="Dạy kèm nhẹ nhàng, có cấu trúc cho Prep–Lớp 12. Lộ trình học cá nhân hoá và phương pháp đặt sự tự tin lên hàng đầu.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/index.html">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/">
 
   <!-- ✅ Shared site stylesheet -->
   <link rel="stylesheet" href="../style.css">
@@ -21,62 +21,10 @@
 
   <!-- ✅ Small page-specific rules (kept minimal) -->
   <style>
-    /* ✅ Remove the square/box around the TOP-LEFT logo */
-    .brand-logo{
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      box-shadow: none !important;
-      border-radius: 999px !important; /* round */
-      width: 52px;
-      height: 52px;
-      object-fit: cover;
-    }
-
-    /* ✅ No subtitle under the brand name */
+    /* ✅ No subtitle under the brand name (index-only) */
     .brand-title span{ display:none !important; }
-    .brand-title b{ font-size: 22px; }
 
-    /* ===== Quick links box (accordion launcher) ===== */
-    .quicklinks{
-      background: rgba(255,255,255,.82);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding: 14px;
-      margin: 14px 0 18px;
-    }
-    .quicklinks h2{
-      margin: 0 0 10px;
-      font-size: 16px;
-      font-weight: 1000;
-      text-align: center;
-      color: var(--brand2);
-    }
-    .ql-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-    }
-    @media (max-width: 520px){
-      .ql-grid{ grid-template-columns: 1fr; }
-    }
-    .ql-btn{
-      display:block;
-      text-align:center;
-      text-decoration:none;
-      font-weight: 1000;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(11,94,215,.06);
-      border: 1px solid rgba(11,94,215,.18);
-      color: var(--brand2);
-      cursor:pointer;
-      user-select:none;
-    }
-    .ql-btn:hover{ background: rgba(11,94,215,.10); }
-
-    /* ===== Accordion sections ===== */
+    /* ===== Accordion sections (index-only) ===== */
     details.acc{
       background: rgba(255,255,255,.82);
       border: 1px solid var(--line);
@@ -99,7 +47,7 @@
       user-select:none;
     }
     summary.acc-sum::-webkit-details-marker{ display:none; }
-    .caret{ font-weight: 1000; opacity:.85; }
+    .caret{ font-weight: 1000; opacity:.85; transition: transform .12s ease; }
     details[open] summary .caret{ transform: rotate(180deg); }
     .acc-body{ padding: 0 16px 16px; }
 
@@ -126,6 +74,7 @@
     @media (max-width: 900px){
       .two-grid{ grid-template-columns: 1fr; }
     }
+
     .mini-card{
       background: rgba(255,255,255,.86);
       border: 1px solid var(--line);
@@ -145,6 +94,7 @@
       font-weight: 650;
       line-height: 1.7;
     }
+
     .link-strong{
       color: var(--brand2);
       font-weight: 1000;
@@ -152,6 +102,138 @@
       border-bottom: 1px solid rgba(11,94,215,.30);
     }
     .link-strong:hover{ border-bottom-color: rgba(11,94,215,.60); }
+
+    /* ===== "What makes us different" block (index-only) ===== */
+    .diff-wrap{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .diff-head{
+      text-align:center;
+      padding: 8px 6px 6px;
+    }
+    .diff-title{
+      margin: 0 0 8px;
+      font-size: 34px;
+      font-weight: 1100;
+      letter-spacing: -0.4px;
+      color: var(--brand2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      line-height: 1.15;
+    }
+    .diff-title .spark{
+      font-size: 22px;
+      line-height: 1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(245,158,11,.15);
+      border: 1px solid rgba(245,158,11,.28);
+    }
+    .diff-sub{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .diff-note{
+      margin: 14px auto 16px;
+      max-width: 980px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.22);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .diff-note strong{
+      color: var(--brand2);
+      font-weight: 1100;
+    }
+    .diff-note .note-text{
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.55;
+      flex: 1 1 520px;
+      min-width: 240px;
+    }
+    .diff-note .note-link{
+      white-space: nowrap;
+      font-weight: 1100;
+      text-decoration:none;
+      color: var(--brand2);
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .diff-note .note-link:hover{
+      border-bottom-color: rgba(11,94,215,.60);
+    }
+
+    .diff-grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 1100px){
+      .diff-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px){
+      .diff-grid{ grid-template-columns: 1fr; }
+      .diff-title{ font-size: 28px; }
+    }
+
+    .diff-card{
+      background: rgba(255, 248, 231, .92);
+      border: 1px solid rgba(245,158,11,.30);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .06);
+      min-height: 170px;
+    }
+    .diff-card .diff-top{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .diff-ico{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(245,158,11,.30);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 22px;
+      flex: 0 0 42px;
+    }
+    .diff-card h3{
+      margin: 0;
+      color: #cc7a00;
+      font-size: 18px;
+      font-weight: 1100;
+      line-height: 1.15;
+    }
+    .diff-card p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
   </style>
 </head>
 
@@ -167,7 +249,7 @@
         </div>
       </a>
 
-      <nav class="nav" aria-label="Điều hướng chính">
+      <div class="nav" aria-label="Điều hướng chính">
         <a data-nav href="index.html">Trang chủ</a>
         <a data-nav href="programs.html">Chương trình</a>
         <a data-nav href="pricing.html">Học phí</a>
@@ -176,7 +258,7 @@
         <a data-nav href="philosophy.html">Triết lý</a>
         <a data-nav href="contact.html">Liên hệ</a>
         <a class="nav-lang" href="../index.html">English</a>
-      </nav>
+      </div>
     </div>
   </div>
 
@@ -187,7 +269,7 @@
         <div class="hero-snap-grid">
           <div>
             <h1 class="hero-snap-title">MAGIC MATH MASTER</h1>
-            <div class="hero-snap-tagline">Nơi việc học Toán trở nên “thật kỳ diệu”</div>
+            <div class="hero-snap-tagline">Nơi việc học Toán trở nên kỳ diệu</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-label="Logo Magic Math Master">
@@ -196,19 +278,19 @@
         </div>
 
         <p class="hero-snap-desc">
-          Dạy kèm Toán <b>nhẹ nhàng</b>, <b>có cấu trúc</b> cho học sinh từ <b>Prep đến Lớp 12</b> — xây dựng sự tự tin từng bước.
-          Học <b>online trên toàn nước Úc</b> và <b>trực tiếp</b> (tuỳ khu vực).
+          Dạy kèm Toán nhẹ nhàng, có cấu trúc cho học sinh từ <b>Prep đến Lớp 12</b> — xây dựng sự tự tin từng bước.
+          Học <b>Trực tuyến trên toàn nước Úc</b> và <b>học trực tiếp</b> (tuỳ khu vực).
         </p>
 
         <div class="hero-snap-checks">
           <span>✓ Giáo viên có chuyên môn</span>
           <span>✓ Lộ trình học cá nhân hoá</span>
-          <span>✓ Giao tiếp rõ ràng với phụ huynh</span>
+          <span>✓ Trao đổi rõ ràng với gia đình</span>
         </div>
 
         <div class="hero-snap-pills">
-          <span class="hero-snap-pill">Online &amp; trực tiếp</span>
-          <span class="hero-snap-pill">Lộ trình cá nhân hoá</span>
+          <span class="hero-snap-pill">Trực tuyến &amp; trực tiếp</span>
+          <span class="hero-snap-pill">Kế hoạch cá nhân hoá</span>
           <span class="hero-snap-pill">NAPLAN · Kiểm tra ở trường · Nâng cao</span>
         </div>
 
@@ -225,18 +307,20 @@
 
     <section class="section">
       <div class="container">
-        <!-- ✅ QUICK LINKS -->
+
+        <!-- ✅ QUICK LINKS (styled by style.css global rules) -->
         <div class="quicklinks">
           <h2>Liên kết nhanh (chạm để mở)</h2>
           <div class="ql-grid">
             <a class="ql-btn" data-open="sec_programs">Chương trình</a>
             <a class="ql-btn" data-open="sec_pricing">Học phí</a>
-            <a class="ql-btn" data-open="sec_philosophy">Triết lý</a>
-            <a class="ql-btn" data-open="sec_about">Giới thiệu</a>
-            <a class="ql-btn" data-open="sec_why">Vì sao phụ huynh chọn</a>
             <a class="ql-btn" data-open="sec_policy">Chính sách</a>
+            <a class="ql-btn" data-open="sec_about">Giới thiệu</a>
+            <a class="ql-btn" data-open="sec_philosophy">Triết lý</a>
+            <a class="ql-btn" data-open="sec_diff">Điều làm chúng tôi khác biệt</a>
+            <a class="ql-btn" data-open="sec_why">Vì sao phụ huynh chọn chúng tôi</a>
             <a class="ql-btn" data-open="sec_contact">Liên hệ</a>
-            <a class="ql-btn" data-open="sec_all">Mở tất cả</a>
+            <!--  <a class="ql-btn" data-open="sec_all">Mở tất cả</a> -->
           </div>
         </div>
 
@@ -244,49 +328,49 @@
         <details class="acc" id="sec_programs" open>
           <summary class="acc-sum">Chương trình <span class="caret">⌄</span></summary>
           <div class="acc-body">
-            <div class="h2-center">Chương trình (tóm tắt)</div>
-            <p class="sub-center">Xem chi tiết ở trang Chương trình. Dưới đây là tổng quan.</p>
+            <div class="h2-center">Chương trình (tổng quan)</div>
+            <p class="sub-center">Chi tiết đầy đủ nằm ở trang Chương trình. Dưới đây là phần tóm tắt nhanh.</p>
 
             <div class="two-grid">
               <div class="mini-card">
                 <h3>🌱 Tiểu học (Prep–Lớp 6)</h3>
                 <ul>
-                  <li>Cảm nhận số, tính toán trôi chảy và tự tin</li>
-                  <li>Phân số / thập phân / phần trăm dễ hiểu</li>
-                  <li>Chiến lược giải toán có lời văn</li>
+                  <li>Hiểu số, rèn độ trôi chảy và tự tin</li>
+                  <li>Làm rõ phân số / số thập phân / phần trăm</li>
+                  <li>Chiến lược giải bài toán có lời văn</li>
                 </ul>
               </div>
 
               <div class="mini-card">
-                <h3>🧩 Trung học (Lớp 7–10)</h3>
+                <h3>🧩 Trung học cơ sở (Lớp 7–10)</h3>
                 <ul>
-                  <li>Đại số + kỹ năng cốt lõi bám sát nội dung ở trường</li>
+                  <li>Đại số + kỹ năng cốt lõi theo chủ đề ở trường</li>
                   <li>Nền tảng hình học và lượng giác</li>
-                  <li>Lập kế hoạch ôn tập theo bài kiểm tra</li>
+                  <li>Lập kế hoạch kiểm tra và ôn tập</li>
                 </ul>
               </div>
 
               <div class="mini-card">
-                <h3>🏆 Luyện thi &amp; Nâng cao</h3>
+                <h3>🏆 Ôn thi &amp; Nâng cao</h3>
                 <ul>
                   <li>Hỗ trợ NAPLAN + kỹ thuật làm bài</li>
-                  <li>Giảm lỗi sai bất cẩn</li>
-                  <li>Thử thách cho học sinh khá/giỏi</li>
+                  <li>Giảm lỗi bất cẩn</li>
+                  <li>Thử thách phù hợp cho học sinh khá giỏi</li>
                 </ul>
               </div>
 
               <div class="mini-card">
-                <h3>👩‍🏫 1-1 hoặc Nhóm</h3>
+                <h3>👩‍🏫 1 kèm 1 hoặc Nhóm nhỏ</h3>
                 <ul>
-                  <li>Dạy kèm cá nhân hoặc nhóm nhỏ</li>
-                  <li>Tự tin và kỹ năng trình bày</li>
-                  <li>Hỗ trợ + bồi dưỡng</li>
+                  <li>Bài học cá nhân hoá hoặc lớp nhóm nhỏ</li>
+                  <li>Xây dựng tự tin và giao tiếp</li>
+                  <li>Hỗ trợ theo sát + mở rộng nâng cao</li>
                 </ul>
               </div>
             </div>
 
             <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
-              👉 <a class="link-strong" href="programs.html">Xem chi tiết chương trình →</a>
+              👉 <a class="link-strong" href="programs.html">Xem chi tiết đầy đủ về chương trình →</a>
             </p>
           </div>
         </details>
@@ -297,82 +381,16 @@
           <div class="acc-body">
             <div class="h2-center">Học phí (tóm tắt)</div>
             <div class="mini-card">
-              <h3>Minh bạch &amp; rõ ràng</h3>
+              <h3>Minh bạch, rõ ràng</h3>
               <ul>
-                <li>Mức phí rõ ràng cho Tiểu học, Trung học và Nâng cao.</li>
+                <li>Mức học phí rõ ràng cho Tiểu học, Trung học và Nâng cao.</li>
                 <li>Đăng ký theo học kỳ có thể có ưu đãi (tuỳ chọn).</li>
-                <li>Online và trực tiếp (tuỳ khu vực).</li>
+                <li>Có lựa chọn học Trực tuyến và học trực tiếp (tuỳ khu vực).</li>
               </ul>
               <p style="margin:12px 0 0; font-weight:1000;">
-                👉 <a class="link-strong" href="pricing.html">Xem học phí &amp; lựa chọn →</a>
+                👉 <a class="link-strong" href="pricing.html">Xem học phí &amp; các lựa chọn →</a>
               </p>
             </div>
-          </div>
-        </details>
-
-        <!-- PHILOSOPHY -->
-        <details class="acc" id="sec_philosophy" open>
-          <summary class="acc-sum">Triết lý <span class="caret">⌄</span></summary>
-          <div class="acc-body">
-            <div class="h2-center">Triết lý (tóm tắt)</div>
-            <div class="mini-card">
-              <h3>Toán cho cuộc sống — không chỉ để thi</h3>
-              <ul>
-                <li><b>Nền tảng vững trước</b> để con tự tin.</li>
-                <li><b>Ngữ cảnh gần gũi</b> (tiền bạc, trò chơi, thể thao, khoa học) để học dễ nhớ.</li>
-                <li><b>Giải quyết vấn đề thật</b> — học chiến lược, không chỉ học thuộc bước làm.</li>
-                <li><b>Tư duy phát triển</b> — sai là một phần của việc học.</li>
-              </ul>
-              <p style="margin:12px 0 0; font-weight:1000;">
-                👉 <a class="link-strong" href="philosophy.html">Đọc trang Triết lý đầy đủ →</a>
-              </p>
-            </div>
-          </div>
-        </details>
-
-        <!-- ABOUT -->
-        <details class="acc" id="sec_about" open>
-          <summary class="acc-sum">Giới thiệu <span class="caret">⌄</span></summary>
-          <div class="acc-body">
-            <div class="h2-center">Giới thiệu (tóm tắt)</div>
-            <div class="mini-card">
-              <h3>Dạy bởi giáo viên có chuyên môn</h3>
-              <ul>
-                <li>Thành lập bởi <b>TS Tuyet Vu</b>.</li>
-                <li>Dạy nhẹ nhàng giúp hiểu sâu — không tạo áp lực.</li>
-                <li>Giao tiếp rõ ràng với phụ huynh và có kế hoạch học tập.</li>
-              </ul>
-              <p style="margin:12px 0 0; font-weight:1000;">
-                👉 <a class="link-strong" href="about.html">Đọc trang Giới thiệu →</a>
-              </p>
-            </div>
-          </div>
-        </details>
-
-        <!-- WHY -->
-        <details class="acc" id="sec_why" open>
-          <summary class="acc-sum">Vì sao phụ huynh chọn <span class="caret">⌄</span></summary>
-          <div class="acc-body">
-            <div class="h2-center">Vì sao phụ huynh chọn Magic Math Master</div>
-
-            <div class="grid">
-              <div class="card">
-                <h3>Dạy rõ ràng, nhẹ nhàng</h3>
-                <p>Giải thích từng bước để con thoải mái hỏi và học từ lỗi sai.</p>
-              </div>
-              <div class="card">
-                <h3>Tiến bộ thấy được</h3>
-                <p>Luyện tập đúng trọng tâm + phản hồi giúp tăng độ chính xác, tốc độ và tự tin theo thời gian.</p>
-              </div>
-              <div class="card">
-                <h3>Kết nối với phụ huynh</h3>
-                <p>Phụ huynh nắm được mục tiêu, trọng tâm học và nội dung cần luyện tiếp theo.</p>
-              </div>
-            </div>
-
-            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
-              👉 <a class="link-strong" href="contact.html">Gửi yêu cầu để nhận gợi ý lộ trình phù hợp →</a>
-            </p>
           </div>
         </details>
 
@@ -384,14 +402,149 @@
             <div class="mini-card">
               <h3>Cần biết</h3>
               <ul>
-                <li>Buổi học được đặt lịch trước và thanh toán trước.</li>
-                <li>Vui lòng báo trước ít nhất <b>24 giờ</b> nếu cần đổi/hủy.</li>
-                <li>Chúng tôi duy trì môi trường học tôn trọng và hỗ trợ.</li>
+                <li>Buổi học được thanh toán trước và sắp xếp lịch trước.</li>
+                <li>Vui lòng báo trước tối thiểu <b>24 giờ</b> nếu huỷ hoặc đổi lịch.</li>
+                <li>Duy trì môi trường học tập tôn trọng, hỗ trợ và tích cực.</li>
               </ul>
               <p style="margin:12px 0 0; font-weight:1000;">
-                👉 <a class="link-strong" href="policies.html">Xem chính sách đầy đủ →</a>
+                👉 <a class="link-strong" href="policies.html">Đọc chính sách đầy đủ →</a>
               </p>
             </div>
+          </div>
+        </details>
+
+        <!-- ABOUT -->
+        <details class="acc" id="sec_about" open>
+          <summary class="acc-sum">Giới thiệu <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Giới thiệu (tổng quan)</div>
+            <div class="mini-card">
+              <h3>Dẫn dắt bởi giáo viên, đặt sự tự tin lên hàng đầu</h3>
+              <ul>
+                <li>Thành lập bởi <b>Tiến sĩ Tuyết Vũ</b>.</li>
+                <li>Phong cách dạy nhẹ nhàng giúp hiểu sâu — không gây áp lực.</li>
+                <li>Trao đổi rõ ràng với gia đình và lộ trình học có cấu trúc.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="about.html">Đọc trang Giới thiệu đầy đủ →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- PHILOSOPHY -->
+        <details class="acc" id="sec_philosophy" open>
+          <summary class="acc-sum">Triết lý <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Triết lý của chúng tôi (tóm tắt)</div>
+            <div class="mini-card">
+              <h3>Toán cho cuộc sống — không chỉ cho bài kiểm tra</h3>
+              <ul>
+                <li><b>Nền tảng vững chắc trước</b> để học sinh thật sự tự tin.</li>
+                <li><b>Ngữ cảnh ý nghĩa</b> (tiền bạc, trò chơi, thể thao, khoa học) giúp Toán “thấm” lâu hơn.</li>
+                <li><b>Tư duy giải quyết vấn đề</b> — học chiến lược, không chỉ học các bước.</li>
+                <li><b>Tư duy phát triển</b> — sai là một phần của quá trình học.</li>
+              </ul>
+              <p style="margin:12px 0 0; font-weight:1000;">
+                👉 <a class="link-strong" href="philosophy.html">Đọc trang Triết lý đầy đủ →</a>
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- WHAT MAKES US DIFFERENT -->
+        <details class="acc" id="sec_diff" open>
+          <summary class="acc-sum">Điều làm chúng tôi khác biệt <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+
+            <div class="diff-wrap">
+              <div class="diff-head">
+                <h2 class="diff-title"><span class="spark">✨</span> Điều làm chúng tôi khác biệt</h2>
+                <p class="diff-sub">Học Toán được hỗ trợ, có cấu trúc và cá nhân hoá — đồng thời trao đổi rõ ràng với gia đình.</p>
+              </div>
+
+              <div class="diff-note" role="note" aria-label="Cần biết">
+                <div class="note-text">
+                  <strong>Cần biết:</strong>
+                  Buổi học được thanh toán trước · Báo trước 24 giờ nếu đổi lịch · Môi trường học tập tôn trọng, hỗ trợ.
+                </div>
+                <a class="note-link" href="policies.html">Xem chính sách đầy đủ</a>
+              </div>
+
+              <div class="diff-grid">
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🎓</div>
+                    <h3>Giáo viên có chuyên môn</h3>
+                  </div>
+                  <p>Bài học được thiết kế và giảng dạy dựa trên nền tảng học thuật vững vàng và thấu hiểu cách học sinh tư duy, tiếp thu.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🎯</div>
+                    <h3>Cá nhân hoá, không dạy đại trà</h3>
+                  </div>
+                  <p>Mỗi học sinh học theo cách khác nhau. Chúng tôi điều chỉnh tốc độ, cách giải thích và chiến lược phù hợp — không áp dụng một khuôn mẫu cho tất cả.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">👨‍👩‍👧‍👦</div>
+                    <h3>Trao đổi rõ ràng</h3>
+                  </div>
+                  <p>Phụ huynh luôn nắm được tiến bộ, khó khăn và bước tiếp theo — để không có bất ngờ.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🧠</div>
+                    <h3>Tự tin trước, nhanh sau</h3>
+                  </div>
+                  <p>Chúng tôi ưu tiên hiểu đúng và sự tự tin. Tốc độ sẽ cải thiện tự nhiên khi khái niệm đã được nắm vững.</p>
+                </div>
+
+                <div class="diff-card">
+                  <div class="diff-top">
+                    <div class="diff-ico" aria-hidden="true">🌱</div>
+                    <h3>An toàn &amp; khích lệ</h3>
+                  </div>
+                  <p>Sai là một phần của việc học, không phải điều đáng sợ. Học sinh được hỗ trợ để mạnh dạn hỏi và tiến bộ tự tin.</p>
+                </div>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="enquiry.html">Gửi yêu cầu để nhận gợi ý lộ trình bắt đầu phù hợp →</a>
+            </p>
+
+          </div>
+        </details>
+
+        <!-- WHY PARENTS CHOOSE US -->
+        <details class="acc" id="sec_why" open>
+          <summary class="acc-sum">Vì sao phụ huynh chọn chúng tôi <span class="caret">⌄</span></summary>
+          <div class="acc-body">
+            <div class="h2-center">Vì sao phụ huynh chọn Magic Math Master</div>
+
+            <div class="grid">
+              <div class="card">
+                <h3>Dạy rõ ràng, nhẹ nhàng</h3>
+                <p>Giải thích từng bước để học sinh cảm thấy an toàn khi hỏi và biết cách học từ sai lầm.</p>
+              </div>
+              <div class="card">
+                <h3>Tiến bộ thấy được</h3>
+                <p>Luyện tập đúng trọng tâm + phản hồi giúp học sinh tăng độ chính xác, tốc độ và tự tin theo thời gian.</p>
+              </div>
+              <div class="card">
+                <h3>Kết nối với gia đình</h3>
+                <p>Phụ huynh nắm được mục tiêu, trọng tâm học tập và nội dung cần luyện thêm.</p>
+              </div>
+            </div>
+
+            <p style="text-align:center; margin:14px 0 0; font-weight:1000;">
+              👉 <a class="link-strong" href="enquiry.html">Gửi yêu cầu để nhận gợi ý lộ trình bắt đầu phù hợp →</a>
+            </p>
           </div>
         </details>
 
@@ -402,14 +555,19 @@
             <div class="h2-center">Liên hệ</div>
 
             <div class="card" style="text-align:center;">
-              <h3 style="margin:0 0 8px;">Sẵn sàng giúp con bạn tự tin hơn với Toán?</h3>
+              <h3 style="margin:0 0 8px;">Sẵn sàng giúp con bạn tự tin hơn với môn Toán?</h3>
               <p style="margin:0 0 14px;">
-                Cho biết lớp hiện tại và mục tiêu học — chúng tôi sẽ gợi ý điểm bắt đầu phù hợp.
+                Hãy cho chúng tôi biết lớp hiện tại và mục tiêu của con — chúng tôi sẽ gợi ý điểm bắt đầu phù hợp nhất.
               </p>
               <div class="hero-actions cta-row">
                 <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
                 <a class="btn btn-amber" href="pricing.html">Xem học phí</a>
               </div>
+
+              <p style="margin:12px 0 0; font-weight:800; color: var(--muted);">
+                Muốn liên hệ trực tiếp?
+                <a class="link-strong" href="contact.html">Trang liên hệ →</a>
+              </p>
             </div>
           </div>
         </details>
@@ -421,8 +579,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div>© <span id="year"></span> Magic Math Master • Australia</div>
-        <div><a href="mailto:info@magicmathmaster.com.au">info@magicmathmaster.com.au</a></div>
+        <div>© <span id="year"></span> Magic Math Master • Úc</div>
+        <div><a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a></div>
       </div>
     </div>
   </footer>
@@ -441,11 +599,11 @@
       }
 
       // Desktop: open all. Mobile: collapse by default.
-      function applyDefaultOpen(){
+      /* function applyDefaultOpen(){
         if(isMobileLike()) setAllDetails(false);
         else setAllDetails(true);
       }
-      applyDefaultOpen();
+      applyDefaultOpen();*/
 
       function scrollToSection(el){
         el.scrollIntoView({ behavior:"smooth", block:"start" });
@@ -488,7 +646,6 @@
     })();
   </script>
 
-  <!-- ✅ Nav-highlighting script -->
   <script src="../script.js"></script>
 </body>
 </html>

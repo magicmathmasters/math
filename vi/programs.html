@@ -5,51 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Chương trình | Magic Math Master</title>
-  <meta name="description" content="Khám phá các chương trình Magic Math Master cho Prep–Lớp 12: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, và luyện thi/thi đấu. Phương pháp dạy nhẹ nhàng, có cấu trúc giúp con tự tin từng bước." />
+  <meta name="description" content="Khám phá các chương trình Magic Math Master cho Prep–Lớp 12: dạy kèm 1 kèm 1, lớp nhóm nhỏ, Câu lạc bộ Toán, và luyện thi/thi đấu. Dạy học nhẹ nhàng, có cấu trúc, xây dựng sự tự tin từng bước." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/vi/programs.html" />
 
   <!-- Optional OG tags -->
   <meta property="og:title" content="Chương trình | Magic Math Master" />
-  <meta property="og:description" content="Chương trình Prep–Lớp 12: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, luyện thi/thi đấu — có cấu trúc rõ ràng, nền tảng vững, ưu tiên sự tự tin." />
+  <meta property="og:description" content="Chương trình Prep–Lớp 12: 1 kèm 1, nhóm nhỏ, Câu lạc bộ Toán và luyện thi/thi đấu — dạy có cấu trúc, nền tảng vững, ưu tiên sự tự tin." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/vi/programs.html" />
 
-  <!-- ✅ Use root CSS -->
+  <!-- Shared site stylesheet (fix for /vi path) -->
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- ✅ favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
+  <!-- Page-only overrides (Programs fun cards only) -->
   <style>
-    .hero-snap-logoBox{
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-    }
-    .hero-snap-logoBox img{
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      background: transparent !important;
-      border-radius: 0 !important;
-    }
-    .hero { padding: 22px 0 18px; }
+    html{ scroll-behavior: smooth; }
+
+    /* HERO: smaller padding for this page */
+    /*.hero { padding: 22px 0 18px; }
 
     .prog-meta{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:10px; }
-    .prog-chip{
-      display:inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 14px;
-      line-height: 1;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.7);
-    }
-    .prog-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px; }
+    .prog-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px; }*/
 
+    /* “Parents get” line (trust signal) */
     .parents-get{
       margin-top: 10px;
       padding: 10px 12px;
@@ -61,35 +42,97 @@
       line-height: 1.5;
     }
 
-    a.card{
-      display:block;
-      text-decoration:none;
-      color:inherit;
-      cursor:pointer;
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background-color .16s ease;
-    }
-    a.card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 40px rgba(2, 6, 23, .14);
-      border-color: rgba(11, 94, 215, .35);
-      background: rgba(255,255,255,.92);
-    }
-    a.card:hover .prog-chip{
-      border-color: rgba(11, 94, 215, .45);
-      background: rgba(11, 94, 215, .06);
-    }
-    a.card:focus-visible{
-      outline: 3px solid rgba(11, 94, 215, .45);
-      outline-offset: 3px;
-      border-radius: 16px;
+    /* ==================================
+       Programs page: FUN titles + icons
+       (Scoped so it won't affect other pages)
+       ================================== */
+    .page-programs .card{
+      position: relative;
+      overflow: hidden;
     }
 
-    .anchor-target{ scroll-margin-top: 110px; }
+    /* soft playful blobs */
+    .page-programs .card::before{
+      content:"";
+      position:absolute;
+      inset:-50px -60px auto auto;
+      width:220px;
+      height:220px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(11,94,215,.12), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .page-programs .card::after{
+      content:"";
+      position:absolute;
+      inset:auto auto -60px -60px;
+      width:240px;
+      height:240px;
+      border-radius:999px;
+      background: radial-gradient(circle at 40% 40%, rgba(245,158,11,.14), transparent 62%);
+      transform: rotate(-10deg);
+      pointer-events:none;
+    }
+
+    .page-programs .prog-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+    .page-programs .prog-ico{
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      font-size: 20px;
+      font-weight: 900;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 18px rgba(2, 6, 23, .08);
+      flex: 0 0 auto;
+    }
+
+    /* Bigger title just on Programs */
+    .page-programs .card h3{
+      margin: 0;               /* handled by .prog-title */
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.2px;
+      font-weight: 1000;
+    }
+
+    /* Theme colours */
+    .page-programs .theme-catchup  h3{ color: var(--brand2); }
+    .page-programs .theme-keepup   h3{ color: var(--success); }
+    .page-programs .theme-getahead h3{ color: var(--accent); }
+    .page-programs .theme-comp     h3{ color: #7c3aed; } /* violet */
+
+    /* Icon bubble tint to match theme */
+    .page-programs .theme-catchup  .prog-ico{ background: rgba(11,94,215,.10); }
+    .page-programs .theme-keepup   .prog-ico{ background: rgba(22,163,74,.12); }
+    .page-programs .theme-getahead .prog-ico{ background: rgba(245,158,11,.14); }
+    .page-programs .theme-comp     .prog-ico{ background: rgba(124,58,237,.12); }
+
+    /* Make chips look like “chips” on this page (not dark buttons) */
+    .page-programs .prog-chip{
+      background: rgba(255,255,255,.75);
+      border-color: rgba(15,23,42,.12);
+      color: var(--ink);
+    }
+    .page-programs a.card .prog-chip:hover{
+      background: rgba(11,94,215,.10);
+      color: var(--ink);
+      border-color: rgba(11,94,215,.22);
+    }
   </style>
 </head>
 
-<body>
+<body class="page-programs">
 
+  <!-- ===== TOP BAR ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
@@ -112,6 +155,7 @@
     </div>
   </div>
 
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
@@ -119,7 +163,7 @@
         <div class="hero-snap-grid">
           <div>
             <h1 class="hero-snap-title">Chương trình</h1>
-            <div class="hero-snap-tagline">Lộ trình rõ ràng cho Prep–Lớp 12 — từ bắt kịp đến vượt lên</div>
+            <div class="hero-snap-tagline">Lộ trình rõ ràng cho Prep–Lớp 12 — từ bắt kịp đến bứt phá</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-hidden="true">
@@ -128,23 +172,22 @@
         </div>
 
         <p class="hero-snap-desc">
-          Chọn mức hỗ trợ phù hợp với con: dạy kèm 1-1, nhóm nhỏ, Câu lạc bộ Toán, hoặc luyện thi/thi đấu.
+          Chọn mức hỗ trợ phù hợp cho con bạn: dạy kèm 1 kèm 1, lớp nhóm nhỏ, Câu lạc bộ Toán, hoặc luyện thi/thi đấu.
         </p>
 
         <div class="hero-snap-checks">
           <span>✓ Dạy nhẹ nhàng, có cấu trúc</span>
-          <span>✓ Học cá nhân hoá</span>
-          <span>✓ Giao tiếp rõ ràng với phụ huynh</span>
+          <span>✓ Học tập cá nhân hoá</span>
+          <span>✓ Trao đổi rõ ràng với gia đình</span>
         </div>
 
         <div class="hero-snap-pills">
-          <span class="hero-snap-pill">Online &amp; trực tiếp</span>
+          <span class="hero-snap-pill">Trực tuyến &amp; trực tiếp</span>
           <span class="hero-snap-pill">Prep–Lớp 12</span>
           <span class="hero-snap-pill">Ưu tiên sự tự tin</span>
         </div>
 
         <div class="hero-snap-cta">
-          <!-- ✅ If you have vi/enquiry.html, this is more accurate for “Gửi yêu cầu” -->
           <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
           <a class="btn btn-amber" href="register.html">Đăng ký</a>
         </div>
@@ -153,83 +196,100 @@
     </div>
   </section>
 
+  <!-- ===== PAGE CONTENT ===== -->
   <main class="container">
-
     <section class="section" id="programs">
-      <h2 class="section-title">Chương trình</h2>
       <p class="section-sub">
-        Bắt đầu từ mục tiêu của con, rồi chuyển thẳng đến chương trình phù hợp nhất.
+        Bắt đầu từ mục tiêu của con bạn, rồi chuyển thẳng đến chương trình phù hợp nhất.
       </p>
 
+      <!-- Chooser (links to program cards) -->
       <div class="grid">
-        <a class="card" href="#p-1to1">
-          <h3>Bắt kịp &amp; xây lại nền tảng</h3>
+        <a class="card theme-catchup" href="#p-1to1">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧱</span>
+            <h3>Bắt kịp &amp; xây lại nền tảng</h3>
+          </div>
           <p>
-            Phù hợp cho học sinh đang bị hổng kiến thức hoặc lo lắng với môn Toán. Chúng tôi củng cố kỹ năng cốt lõi từng bước, rồi luyện tập đến khi con thấy “dễ”.
+            Phù hợp nhất cho học sinh cảm thấy bị hổng hoặc lo lắng. Chúng tôi xây lại kỹ năng cốt lõi từng bước, rồi luyện tập cho đến khi thấy “dễ”.
           </p>
           <div class="prog-meta">
-            <span class="prog-chip">Đến Dạy kèm 1-1</span>
+            <span class="prog-chip">Đi đến 1 kèm 1</span>
             <span class="prog-chip">Nền tảng vững</span>
             <span class="prog-chip">Tự tin</span>
           </div>
         </a>
 
-        <a class="card" href="#p-group">
-          <h3>Theo kịp &amp; học đều đặn</h3>
+        <a class="card theme-keepup" href="#p-group">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">📚</span>
+            <h3>Theo kịp &amp; học đều đặn</h3>
+          </div>
           <p>
-            Phù hợp cho học sinh “tạm ổn” nhưng cần cấu trúc. Chúng tôi bám sát nội dung ở trường và ngăn khoảng trống kiến thức ngày càng lớn.
+            Phù hợp nhất cho học sinh đang “ổn” nhưng cần cấu trúc. Chúng tôi bám sát nội dung ở trường và ngăn khoảng hổng lớn dần.
           </p>
           <div class="prog-meta">
-            <span class="prog-chip">Đến Nhóm nhỏ</span>
-            <span class="prog-chip">Bám sát trường</span>
+            <span class="prog-chip">Đi đến Nhóm nhỏ</span>
+            <span class="prog-chip">Bám sát ở trường</span>
             <span class="prog-chip">Thói quen tốt</span>
           </div>
         </a>
 
-        <a class="card" href="#p-club">
-          <h3>Vượt lên &amp; mở rộng (một cách vui)</h3>
+        <a class="card theme-getahead" href="#p-club">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🚀</span>
+            <h3>Bứt phá &amp; nâng cao (vui)</h3>
+          </div>
           <p>
-            Phù hợp cho học sinh có năng lực muốn thử thách mà không áp lực. Chúng tôi rèn tư duy lập luận và linh hoạt qua các bài toán “giàu ý tưởng”.
+            Phù hợp nhất cho học sinh khá giỏi muốn thử thách mà không áp lực. Chúng tôi rèn lập luận và tư duy linh hoạt qua các bài toán hay.
           </p>
           <div class="prog-meta">
-            <span class="prog-chip">Đến CLB Toán</span>
+            <span class="prog-chip">Đi đến CLB Toán</span>
             <span class="prog-chip">Nâng cao</span>
             <span class="prog-chip">Giải quyết vấn đề</span>
           </div>
         </a>
 
-        <a class="card" href="#p-comp">
-          <h3>Hướng đến thi đấu</h3>
+        <a class="card theme-comp" href="#p-comp">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🏆</span>
+            <h3>Hướng đến các kỳ thi</h3>
+          </div>
           <p>
-            Phù hợp cho học sinh nhắm đến dạng câu hỏi AMC/AMO. Chúng tôi dạy chiến lược, rèn sức bền làm bài, và nâng chất lượng lời giải.
+            Phù hợp nhất cho học sinh nhắm tới câu hỏi kiểu AMC/AMO. Chúng tôi dạy chiến lược, rèn “độ bền”, và hoàn thiện lời giải.
           </p>
           <div class="prog-meta">
-            <span class="prog-chip">Đến Luyện thi/Thi đấu</span>
+            <span class="prog-chip">Đi đến Luyện thi</span>
             <span class="prog-chip">Tập trung AMC/AMO</span>
             <span class="prog-chip">Chiến lược</span>
           </div>
         </a>
       </div>
 
+      <!-- Actual program cards -->
       <div class="grid" style="margin-top:18px;">
-        <div class="card anchor-target" id="p-1to1">
-          <h3>Dạy kèm 1-1</h3>
+        <!-- 1-to-1 -->
+        <div class="card anchor-target theme-catchup" id="p-1to1">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧑‍🏫</span>
+            <h3>Dạy kèm 1 kèm 1</h3>
+          </div>
           <p>
-            Buổi học cá nhân hoá hoàn toàn để tiến bộ nhanh. Phù hợp khi cần hỗ trợ đúng điểm yếu, xây tự tin, hoặc đặt mục tiêu cao.
+            Bài học cá nhân hoá hoàn toàn để tiến bộ nhanh. Phù hợp cho hỗ trợ đúng trọng tâm, xây dựng tự tin, hoặc mục tiêu cao.
           </p>
           <ul>
-            <li>Lộ trình học cá nhân + mục tiêu rõ ràng</li>
-            <li>Giải thích và luyện tập đúng trọng tâm</li>
-            <li>Tiến độ linh hoạt (bắt kịp hoặc tăng tốc)</li>
+            <li>Kế hoạch học cá nhân + mục tiêu</li>
+            <li>Giải thích đúng chỗ và luyện tập đúng trọng tâm</li>
+            <li>Nhịp học linh hoạt (bắt kịp hoặc tăng tốc)</li>
           </ul>
 
           <div class="prog-meta">
             <span class="prog-chip">Prep–Lớp 12</span>
             <span class="prog-chip">1:1</span>
-            <span class="prog-chip">Online &amp; trực tiếp</span>
+            <span class="prog-chip">Trực tuyến &amp; trực tiếp</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> lộ trình cá nhân + cập nhật tiến bộ định kỳ và bước tiếp theo.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> kế hoạch cá nhân + cập nhật tiến độ định kỳ và bước tiếp theo.</div>
 
           <div class="prog-actions">
             <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
@@ -237,24 +297,28 @@
           </div>
         </div>
 
-        <div class="card anchor-target" id="p-group">
-          <h3>Nhóm nhỏ</h3>
+        <!-- Small group -->
+        <div class="card anchor-target theme-keepup" id="p-group">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">👨‍👩‍👧</span>
+            <h3>Lớp nhóm nhỏ</h3>
+          </div>
           <p>
-            Nhóm nhỏ giúp có cấu trúc + tạo động lực. Rất phù hợp để học đều hàng tuần và luyện tập theo nội dung ở trường.
+            Nhóm nhỏ để có cấu trúc + động lực. Rất phù hợp để học đều mỗi tuần và luyện tập bám sát nội dung ở trường.
           </p>
           <ul>
-            <li>Nhóm nhỏ, quan tâm sát (số chỗ giới hạn)</li>
-            <li>Trọng tâm rõ ràng theo tuần + hỗ trợ bài tập</li>
-            <li>Môi trường học ưu tiên sự tự tin</li>
+            <li>Chú ý theo nhóm nhỏ (giới hạn chỗ)</li>
+            <li>Trọng tâm rõ ràng mỗi tuần + hỗ trợ bài tập</li>
+            <li>Môi trường ưu tiên sự tự tin</li>
           </ul>
 
           <div class="prog-meta">
             <span class="prog-chip">Nhóm nhỏ</span>
-            <span class="prog-chip">Cấu trúc theo tuần</span>
-            <span class="prog-chip">Bám sát trường</span>
+            <span class="prog-chip">Nhịp học hằng tuần</span>
+            <span class="prog-chip">Bám sát ở trường</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> chủ đề trọng tâm theo tuần + cập nhật tiến bộ và bước tiếp theo rõ ràng.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> trọng tâm theo tuần + cập nhật tiến độ và bước tiếp theo rõ ràng.</div>
 
           <div class="prog-actions">
             <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
@@ -262,24 +326,28 @@
           </div>
         </div>
 
-        <div class="card anchor-target" id="p-club">
-          <h3>Câu lạc bộ Toán</h3>
+        <!-- Maths Club -->
+        <div class="card anchor-target theme-getahead" id="p-club">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">🧩</span>
+            <h3>Câu lạc bộ Toán</h3>
+          </div>
           <p>
-            Hoạt động nâng cao hàng tuần cho học sinh ham học hỏi. Rèn lập luận, nhận ra quy luật và tư duy linh hoạt qua các bài toán thú vị.
+            Bồi dưỡng mỗi tuần cho học sinh ham học hỏi. Rèn lập luận, tìm quy luật và tư duy linh hoạt qua các bài toán vui.
           </p>
           <ul>
             <li>Bài toán thử thách + trò chơi</li>
-            <li>Lập luận và kỹ năng trình bày</li>
-            <li>Xây tự tin lành mạnh qua khám phá</li>
+            <li>Rèn lập luận và diễn đạt</li>
+            <li>Tự tin lành mạnh qua khám phá</li>
           </ul>
 
           <div class="prog-meta">
-            <span class="prog-chip">Đố vui hằng tuần</span>
-            <span class="prog-chip">Online</span>
-            <span class="prog-chip">Theo dõi tiến bộ</span>
+            <span class="prog-chip">Câu đố hằng tuần</span>
+            <span class="prog-chip">Trực tuyến</span>
+            <span class="prog-chip">Biểu đồ tiến bộ</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> theo dõi tiến bộ đơn giản + gợi ý hỗ trợ con học ở nhà.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> theo dõi tiến bộ đơn giản + gợi ý hỗ trợ học tại nhà.</div>
 
           <div class="prog-actions">
             <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
@@ -287,17 +355,21 @@
           </div>
         </div>
 
-        <div class="card anchor-target" id="p-comp">
-          <h3>Luyện thi / Thi đấu</h3>
+        <!-- Competition -->
+        <div class="card anchor-target theme-comp" id="p-comp">
+          <div class="prog-title">
+            <span class="prog-ico" aria-hidden="true">⏱️</span>
+            <h3>Luyện thi / Thi đấu</h3>
+          </div>
           <p>
-            Chuẩn bị cho dạng câu hỏi AMC/AMO. Học chiến lược, rèn sức bền làm bài, và luyện đề chất lượng cao.
+            Chuẩn bị cho dạng bài giải quyết vấn đề kiểu AMC/AMO. Học chiến lược, rèn độ bền, và luyện các câu hỏi chất lượng cao.
           </p>
           <ul>
             <li>Chiến lược giải toán + thói quen tư duy</li>
-            <li>Luyện đề bấm giờ và chữa bài</li>
+            <li>Luyện theo thời gian và chữa bài</li>
             <li>Giải thích lời giải rõ ràng</li>
-            <li>Học mẹo thông minh &amp; tránh bẫy thường gặp</li>
-            <li>Xây “bộ công cụ chiến lược” theo từng dạng câu hỏi</li>
+            <li>Học “mẹo thông minh” &amp; tránh bẫy thường gặp</li>
+            <li>Xây dựng bộ công cụ chiến lược cho từng dạng câu hỏi</li>
           </ul>
 
           <div class="prog-meta">
@@ -306,7 +378,7 @@
             <span class="prog-chip">Chiến lược</span>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> phản hồi về chiến lược + lộ trình luyện tập gợi ý.</div>
+          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Phụ huynh nhận được:</strong> phản hồi chiến lược + lộ trình luyện tập được khuyến nghị.</div>
 
           <div class="prog-actions">
             <a class="btn btn-success" href="enquiry.html">Gửi yêu cầu</a>
@@ -315,12 +387,12 @@
         </div>
       </div>
     </section>
-
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>© <span id="year"></span> Magic Math Master • Úc</div>
       <div>
         <a href="contact.html">Liên hệ</a> •
         <a href="policies.html">Chính sách</a>
@@ -328,10 +400,12 @@
     </div>
   </footer>
 
+  <!-- Auto year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
+  <!-- Auto highlight current nav item (fix for /vi path) -->
   <script src="../script.js"></script>
 </body>
 </html>
