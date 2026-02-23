@@ -1,110 +1,499 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liên hệ | Magic Math Master</title>
-<meta name="description" content="Liên hệ Magic Math Master để được tư vấn dạy kèm Toán tại Úc. Gửi nhu cầu, năm học và mục tiêu để nhận gợi ý chương trình phù hợp.">
-<link rel="canonical" href="https://www.magicmathmaster.com.au/vi/contact.html">
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Liên hệ | Magic Math Master</title>
+  <meta name="description" content="Liên hệ Magic Math Master (Dự bị (Prep) – Lớp 12). Thực hiện quy trình tư vấn hoặc đăng ký theo từng bước bằng biểu mẫu + (tuỳ chọn) email. Học online và trực tiếp tại Coburg, Melbourne." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/contact.html" />
+
+  <!-- Optional OG tags -->
+  <meta property="og:title" content="Liên hệ | Magic Math Master" />
+  <meta property="og:description" content="Thực hiện quy trình tư vấn hoặc đăng ký theo từng bước bằng biểu mẫu + (tuỳ chọn) email. Học online &amp; trực tiếp (Coburg, Melbourne)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/contact.html" />
+
+  <!-- Shared site stylesheet -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+
+  <style>
+    /* =========================
+       FIX: keep hero + main the same width (even when zooming)
+       ========================= */
+    .hero{
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      overflow-x: clip;
+      padding: 22px 0 18px;
+    }
+    html, body{ max-width:100%; overflow-x: clip; }
+
+    /* HERO: remove square frame around logo (template default) */
+    .hero-snap-logoBox{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .hero-snap-logoBox img{
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+
+    /* Buttons hover */
+    .btn{
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+      will-change: transform, filter;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      filter: brightness(0.96);
+      box-shadow: 0 10px 22px rgba(2, 6, 23, .12);
+    }
+
+    /* Blue button */
+    .btn-blue{
+      background: #2563eb;
+      color: #fff;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+    .btn-blue:hover{ filter: brightness(.96); }
+
+    /* =========================
+       Device-aware buttons (ROBUST)
+       Desktop/Laptop: show .desktop-only (Gmail)
+       Touch devices (phones/tablets): show .app-only (mailto)
+       iPad: show BOTH (Gmail + App)
+       ========================= */
+    .desktop-only{ display: inline-flex !important; }
+    .app-only{ display: none !important; }
+
+    /* Phones/tablets (touch): prefer email app */
+    @media (pointer: coarse){
+      .desktop-only{ display: none !important; }
+      .app-only{ display: inline-flex !important; }
+    }
+
+    /* iPad override: show Gmail button too */
+    body.is-ipad .desktop-only{ display: inline-flex !important; }
+    body.is-ipad .app-only{ display: inline-flex !important; }
+
+    /* FORCE: contact cards full width, equal columns */
+    .grid{
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      width: 100% !important;
+      max-width: none !important;
+      align-items: stretch !important;
+    }
+    .grid > .card{
+      width: 100% !important;
+      max-width: none !important;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr !important; }
+    }
+
+    /* QR/workflow layout */
+    .qr-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+      width: 100%;
+    }
+    @media (max-width: 980px){
+      .qr-grid{ grid-template-columns: 1fr; }
+    }
+    .qr-card{
+      border-radius: 18px;
+      padding: 18px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+    }
+    .qr-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    .qr-title{
+      margin:0;
+      font-size: 22px;
+      font-weight: 1000;
+    }
+    .qr-badge{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.70);
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .qr-body{
+      display:grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .qr-body{ grid-template-columns: 1fr; }
+    }
+    .qr-img{
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 14px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+      padding: 10px;
+    }
+    .qr-actions{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    /* Contact details list */
+    .contact-list{
+      margin:0;
+      padding-left: 18px;
+      line-height: 1.8;
+      font-weight: 650;
+      opacity: .95;
+    }
+
+    /* Helper block */
+    .help-box{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 2px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.65);
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    /* Anchor offset */
+    [id]{ scroll-margin-top: 110px; }
+  </style>
 </head>
 
 <body>
-<div class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html">
-      <div class="brand-badge">M³</div>
-      <div class="brand-title"><b>Magic Math Master</b><span>Dạy kèm cao cấp • Úc</span></div>
-    </a>
-    <div class="nav">
-      <a data-nav href="index.html">Trang chủ</a>
-      <a data-nav href="about.html">Về chúng tôi</a>
-      <a data-nav href="programs.html">Chương trình</a>
-      <a data-nav href="pricing.html">Học phí</a>
-      <a class="btn btn-outline" href="../contact.html">English</a>
-      <a data-nav href="contact.html" class="btn btn-primary">Liên hệ</a>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
+        <img class="brand-logo" src="../assets/logo.png" alt="Logo Magic Math Master" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a data-nav href="index.html">Trang chủ</a>
+        <a data-nav href="programs.html">Chương trình</a>
+        <a data-nav href="pricing.html">Học phí</a>
+        <a data-nav href="policies.html">Chính sách</a>
+        <a data-nav href="about.html">Giới thiệu</a>
+        <a data-nav href="philosophy.html">Triết lý</a>
+        <a data-nav href="contact.html">Liên hệ</a>
+        <a class="nav-lang" href="../contact.html">English</a>
+      </nav>
     </div>
   </div>
-</div>
 
-<main class="container">
-  <section class="section">
-    <h1 class="section-title">Gửi yêu cầu tư vấn</h1>
-    <p class="section-sub">
-      Cho chúng tôi biết năm học và mục tiêu của con — chúng tôi sẽ đề xuất lộ trình phù hợp.
-      (Có dạy online toàn nước Úc.)
-    </p>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
 
-    <div class="card">
-      <h2 class="section-title" style="margin-top:0;">Form liên hệ</h2>
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">Xây dựng sự tự tin môn Toán cho con bạn</h1>
+            <div class="hero-snap-tagline">Chỉ cần làm theo các bước đơn giản — chúng tôi sẽ phản hồi với hướng dẫn rõ ràng.</div>
+          </div>
 
-      <form class="form" method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID">
-        <div class="field">
-          <label for="parentName">Tên phụ huynh</label>
-          <input id="parentName" name="parentName" type="text" required placeholder="Tên của bạn">
+          <div class="hero-snap-logoBox" aria-hidden="true">
+            <img src="../assets/logo.png" alt="Logo Magic Math Master" loading="lazy" />
+          </div>
         </div>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com">
+        <div class="hero-snap-checks">
+          <span>✓ Hướng dẫn bước tiếp theo rõ ràng</span>
+          <span>✓ Giao tiếp thân thiện</span>
+          <span>✓ Dạy học ưu tiên xây dựng tự tin</span>
         </div>
 
-        <div class="field">
-          <label for="studentYear">Năm học của con</label>
-          <select id="studentYear" name="studentYear" required>
-            <option value="" selected disabled>Chọn…</option>
-            <option>Prep</option><option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option>
-            <option>Year 5</option><option>Year 6</option><option>Year 7</option><option>Year 8</option><option>Year 9</option>
-            <option>Year 10</option><option>Year 11</option><option>Year 12</option>
-          </select>
+        <div class="hero-snap-cta">
+          <a class="btn btn-success" href="#details">Thông tin liên hệ</a>
+          <a class="btn btn-amber" href="#enquiry-process">Quy trình tư vấn</a>
+          <a class="btn btn-blue" href="#registration-process">Quy trình đăng ký</a>
         </div>
 
-        <div class="field">
-          <label for="mode">Hình thức học</label>
-          <select id="mode" name="mode" required>
-            <option value="" selected disabled>Chọn…</option>
-            <option>Online</option>
-            <option>Trực tiếp (nếu có)</option>
-            <option>Chưa chắc</option>
-          </select>
-        </div>
-
-        <div class="field" style="grid-column: 1 / -1;">
-          <label for="message">Con đang cần hỗ trợ phần nào?</label>
-          <textarea id="message" name="message" required placeholder="Ví dụ: phân số, đại số, mất gốc, luyện thi, thiếu tự tin…"></textarea>
-        </div>
-
-        <div style="grid-column: 1 / -1; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
-          <a class="btn btn-outline" href="mailto:info@magicmathmaster.com.au?subject=Yeu%20cau%20tu%20van%20-%20Magic%20Math%20Master">Gửi email</a>
-        </div>
-
-        <p class="helper" style="grid-column: 1 / -1;">
-          Nếu bạn chưa thiết lập Formspree, form sẽ chưa gửi được — hãy bấm “Gửi email”.
-          Sau khi thay link Formspree, form sẽ hoạt động ngay trên GitHub Pages.
-        </p>
-      </form>
-    </div>
-
-    <section class="section">
-      <div class="card">
-        <h2 class="section-title" style="margin-top:0;">Thông tin liên hệ</h2>
-        <p style="margin:0; color:var(--muted); font-weight:650;">
-          Email: <strong>info@magicmathmaster.com.au</strong><br>
-          Dịch vụ: Online toàn nước Úc + có thể học trực tiếp (tuỳ khu vực)
-        </p>
       </div>
-    </section>
+    </div>
   </section>
-</main>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div>© 2026 Magic Math Master • Australia</div>
-    <div><a href="pricing.html">Học phí</a> • <a href="programs.html">Chương trình</a> • <a href="about.html">Về chúng tôi</a></div>
-  </div>
-</footer>
+  <!-- ===== PAGE CONTENT ===== -->
+  <main>
+    <div class="container">
 
-<script src="../script.js"></script>
+      <!-- Contact details -->
+      <section class="section" id="details">
+        <h2 class="section-title">Thông tin liên hệ</h2>
+        <p class="section-sub">Hãy dùng quy trình tư vấn hoặc đăng ký bên dưới. Nút email được tối ưu theo thiết bị (iPad sẽ hiển thị cả hai).</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Cách liên hệ</h3>
+            <ul class="contact-list">
+              <li><b>Địa điểm:</b> Coburg, Melbourne — học online và trực tiếp</li>
+              <li><b>Email:</b> magicmathmaster23@gmail.com</li>
+              <li><b>Website:</b> <a href="https://www.magicmathmaster.com.au" target="_blank" rel="noopener">magicmathmaster.com.au</a></li>
+              <li><b>Facebook:</b> <a href="https://www.facebook.com/magicmathmasters/" target="_blank" rel="noopener">facebook.com/magicmathmasters</a></li>
+              <li><b>ABN:</b> 17 335 166 761</li>
+            </ul>
+
+            <div class="help-box">
+              <b>Nên ghi kèm:</b> lớp hiện tại, vấn đề chính (hổng kiến thức/tự tin/ôn thi), và mục tiêu (bắt kịp / theo kịp / vượt lên).
+            </div>
+
+            <div class="prog-actions" style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px;">
+              <!-- Desktop/Laptop (and iPad extra): Gmail -->
+              <a class="btn btn-success desktop-only"
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Y%C3%AAu%20c%E1%BA%A7u%20t%C6%B0%20v%E1%BA%A5n%20h%E1%BB%8Dc%20To%C3%A1n"
+                 target="_blank" rel="noopener">
+                Gửi email (Gmail)
+              </a>
+
+              <!-- Touch devices (and iPad): Email app -->
+              <a class="btn btn-blue app-only"
+                 href="mailto:magicmathmaster23@gmail.com?subject=Math%20Tutoring%20Enquiry">
+                Gửi email (Ứng dụng)
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Giúp chúng tôi phản hồi nhanh hơn</h3>
+            <p style="margin-bottom:10px;">
+              Nếu bạn chia sẻ các thông tin sau, chúng tôi sẽ đề xuất lộ trình phù hợp nhanh hơn:
+            </p>
+            <ul class="contact-list">
+              <li>Lớp hiện tại + chương trình học (nếu biết)</li>
+              <li>Khó khăn hiện tại (tự tin, hổng kiến thức, ôn thi)</li>
+              <li>Mục tiêu + thời gian dự kiến</li>
+              <li>Thời lượng buổi học mong muốn (30/60) + hình thức (online/trực tiếp)</li>
+            </ul>
+            <div class="help-box">
+              <b>Gợi ý:</b> Nếu con bạn đang lo lắng/căng thẳng, hãy cho chúng tôi biết — chúng tôi sẽ bắt đầu nhẹ nhàng và xây dựng tự tin từng bước.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================
+           ENQUIRY PROCESS
+           ======================= -->
+      <section class="section" id="enquiry-process">
+        <h2 class="section-title">Quy trình tư vấn</h2>
+        <p class="section-sub">
+          <b>Bước 1:</b> Nhấn <b>Biểu mẫu tư vấn</b> và điền thông tin.<br>
+          <b>Bước 2 (tuỳ chọn):</b> Nhấn <b>Email mẫu</b> nếu bạn muốn bổ sung thêm chi tiết hoặc xác nhận bước tiếp theo qua email.
+        </p>
+
+        <div class="qr-grid">
+          <!-- Step 1 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Bước 1 — Biểu mẫu tư vấn</h3>
+              <span class="qr-badge">Khuyến nghị</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="../assets/Enquiry%20Form.png" alt="Mã QR cho biểu mẫu tư vấn" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Gửi lớp, mục tiêu, nội dung cần học và hình thức mong muốn — chúng tôi sẽ đề xuất lộ trình phù hợp nhất.
+                </p>
+                <div class="qr-actions">
+                  <a class="btn btn-blue" href="https://forms.gle/6PpJCdHLskuB3VL1A" target="_blank" rel="noopener">
+                    Biểu mẫu tư vấn
+                  </a>
+                  <a class="btn btn-amber" href="../assets/Enquiry%20Form.png" target="_blank" rel="noopener">
+                    Mở ảnh QR
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Bước 2 — Email mẫu (Tuỳ chọn)</h3>
+              <span class="qr-badge">Email</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="../assets/Email%20Enquire.png" alt="Mã QR cho mẫu email tư vấn" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Tuỳ chọn: gửi email nếu bạn muốn cung cấp thêm thông tin hoặc đặt câu hỏi.
+                </p>
+
+                <div class="qr-actions">
+                  <!-- Desktop/Laptop (and iPad extra): Gmail -->
+                  <a class="btn btn-success desktop-only"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Y%C3%AAu%20c%E1%BA%A7u%20t%C6%B0%20v%E1%BA%A5n%20h%E1%BB%8Dc%20To%C3%A1n%20cho%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D&body=Xin%20ch%C3%A0o%20%C4%91%E1%BB%99i%20ng%C5%A9%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20%C4%91%C3%A3%20ho%C3%A0n%20th%C3%A0nh%20bi%E1%BB%83u%20m%E1%BA%ABu%20t%C6%B0%20v%E1%BA%A5n.%0A%0AT%C3%AAn%20h%E1%BB%8Dc%20sinh%3A%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D%0AL%E1%BB%9Bp%3A%20%5BX%5D%0AM%E1%BB%A5c%20ti%C3%AAu%3A%20%5Bb%E1%BA%AFt%20k%E1%BB%8Bp%20%2F%20theo%20k%E1%BB%8Bp%20%2F%20v%C6%B0%E1%BB%A3t%20l%C3%AAn%20%2F%20%C3%B4n%20thi%5D%0AH%C3%ACnh%20th%E1%BB%A9c%3A%20%5Btr%E1%BB%B1c%20tuy%E1%BA%BFn%20%2F%20tr%E1%BB%B1c%20ti%E1%BA%BFp%20%2F%20linh%20ho%E1%BA%A1t%5D%0ATh%E1%BB%9Di%20gian%20ph%C3%B9%20h%E1%BB%A3p%3A%20%5B%20%5D%0A%0ATh%C3%B4ng%20tin%20th%C3%AAm%20%28tu%E1%BB%B3%20ch%E1%BB%8Dn%29%3A%0A%5BVi%E1%BA%BFt%20t%E1%BA%A1i%20%C4%91%C3%A2y%5D%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BPh%E1%BB%A5%20huynh%2FNg%C6%B0%E1%BB%9Di%20gi%C3%A1m%20h%E1%BB%99%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D"
+                    target="_blank" rel="noopener">
+                    Email mẫu (Gmail)
+                  </a>
+
+                  <!-- Touch devices (and iPad): Email app -->
+                  <a class="btn btn-blue app-only"
+                     href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=Y%C3%AAu%20c%E1%BA%A7u%20t%C6%B0%20v%E1%BA%A5n%20h%E1%BB%8Dc%20To%C3%A1n%20cho%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D&body=Xin%20ch%C3%A0o%20%C4%91%E1%BB%99i%20ng%C5%A9%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20%C4%91%C3%A3%20ho%C3%A0n%20th%C3%A0nh%20bi%E1%BB%83u%20m%E1%BA%ABu%20t%C6%B0%20v%E1%BA%A5n.%0A%0AT%C3%AAn%20h%E1%BB%8Dc%20sinh%3A%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D%0AL%E1%BB%9Bp%3A%20%5BX%5D%0AM%E1%BB%A5c%20ti%C3%AAu%3A%20%5Bb%E1%BA%AFt%20k%E1%BB%8Bp%20%2F%20theo%20k%E1%BB%8Bp%20%2F%20v%C6%B0%E1%BB%A3t%20l%C3%AAn%20%2F%20%C3%B4n%20thi%5D%0AH%C3%ACnh%20th%E1%BB%A9c%3A%20%5Btr%E1%BB%B1c%20tuy%E1%BA%BFn%20%2F%20tr%E1%BB%B1c%20ti%E1%BA%BFp%20%2F%20linh%20ho%E1%BA%A1t%5D%0ATh%E1%BB%9Di%20gian%20ph%C3%B9%20h%E1%BB%A3p%3A%20%5B%20%5D%0A%0ATh%C3%B4ng%20tin%20th%C3%AAm%20%28tu%E1%BB%B3%20ch%E1%BB%8Dn%29%3A%0A%5BVi%E1%BA%BFt%20t%E1%BA%A1i%20%C4%91%C3%A2y%5D%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BPh%E1%BB%A5%20huynh%2FNg%C6%B0%E1%BB%9Di%20gi%C3%A1m%20h%E1%BB%99%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D">
+                    Email mẫu (Ứng dụng)
+                  </a>
+
+                  <a class="btn btn-amber" href="../assets/Email%20Enquire.png" target="_blank" rel="noopener">
+                    Mở ảnh QR
+                  </a>
+                </div>
+
+                <div class="help-box" style="margin-top:12px;">
+                  <b>Lưu ý:</b> Trên điện thoại/máy tính bảng, vui lòng dùng <b>Email mẫu (Ứng dụng)</b>. Trên iPad, bạn có thể dùng <b>Email mẫu (Gmail)</b> nếu muốn.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================
+           REGISTRATION PROCESS
+           ======================= -->
+      <section class="section" id="registration-process">
+        <h2 class="section-title">Quy trình đăng ký</h2>
+        <p class="section-sub">
+          <b>Bước 1:</b> Nhấn <b>Biểu mẫu đăng ký</b> và điền thông tin.<br>
+          <b>Bước 2 (tuỳ chọn):</b> Nhấn <b>Email mẫu</b> nếu bạn muốn bổ sung thêm chi tiết hoặc đặt câu hỏi (thời gian học, học phí, bước tiếp theo).
+        </p>
+
+        <div class="qr-grid">
+          <!-- Step 1 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Bước 1 — Biểu mẫu đăng ký</h3>
+              <span class="qr-badge">Bắt buộc</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="../assets/Register%20form.png" alt="Mã QR cho biểu mẫu đăng ký" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Đăng ký cho con bạn và chia sẻ hình thức học và thời gian phù hợp.
+                </p>
+                <div class="qr-actions">
+                  <a class="btn btn-blue" href="https://forms.gle/kwZVzrtKRUauAVdJ6" target="_blank" rel="noopener">
+                    Biểu mẫu đăng ký
+                  </a>
+                  <a class="btn btn-amber" href="../assets/Register%20form.png" target="_blank" rel="noopener">
+                    Mở ảnh QR
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="qr-card">
+            <div class="qr-head">
+              <h3 class="qr-title">Bước 2 — Email mẫu (Tuỳ chọn)</h3>
+              <span class="qr-badge">Email</span>
+            </div>
+
+            <div class="qr-body">
+              <img class="qr-img" src="../assets/Email%20Register.png" alt="Mã QR cho mẫu email đăng ký" loading="lazy" />
+              <div>
+                <p style="margin:0 0 8px;">
+                  Tuỳ chọn: gửi email nếu bạn muốn cung cấp thêm thông tin hoặc đặt câu hỏi.
+                </p>
+
+                <div class="qr-actions">
+                  <!-- Desktop/Laptop (and iPad extra): Gmail -->
+                  <a class="btn btn-success desktop-only"
+                     href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=%C4%90%C4%83ng%20k%C3%BD%20h%E1%BB%8Dc%20To%C3%A1n%20cho%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D&body=Xin%20ch%C3%A0o%20%C4%91%E1%BB%99i%20ng%C5%A9%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20%C4%91%C3%A3%20ho%C3%A0n%20th%C3%A0nh%20bi%E1%BB%83u%20m%E1%BA%ABu%20%C4%91%C4%83ng%20k%C3%BD.%0A%0AT%C3%AAn%20h%E1%BB%8Dc%20sinh%3A%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D%0AL%E1%BB%9Bp%3A%20%5BX%5D%0AH%C3%ACnh%20th%E1%BB%A9c%20mong%20mu%E1%BB%91n%3A%20%5Btr%E1%BB%B1c%20tuy%E1%BA%BFn%20%2F%20tr%E1%BB%B1c%20ti%E1%BA%BFp%20%2F%20linh%20ho%E1%BA%A1t%5D%0ATh%E1%BB%9Di%20gian%20ph%C3%B9%20h%E1%BB%A3p%3A%20%5B%20%5D%0A%0AC%C3%A2u%20h%E1%BB%8Fi%20ho%E1%BA%B7c%20th%C3%B4ng%20tin%20th%C3%AAm%20%28tu%E1%BB%B3%20ch%E1%BB%8Dn%29%3A%0A%5BVi%E1%BA%BFt%20t%E1%BA%A1i%20%C4%91%C3%A2y%5D%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BPh%E1%BB%A5%20huynh%2FNg%C6%B0%E1%BB%9Di%20gi%C3%A1m%20h%E1%BB%99%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D"
+                     target="_blank" rel="noopener">
+                    Email mẫu (Gmail)
+                  </a>
+
+                  <!-- Touch devices (and iPad): Email app -->
+                  <a class="btn btn-blue app-only"
+                     href="https://mail.google.com/mail/?view=cm&fs=1&to=magicmathmaster23@gmail.com&su=%C4%90%C4%83ng%20k%C3%BD%20h%E1%BB%8Dc%20To%C3%A1n%20cho%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D&body=Xin%20ch%C3%A0o%20%C4%91%E1%BB%99i%20ng%C5%A9%20Magic%20Math%20Master%2C%0A%0AT%C3%B4i%20%C4%91%C3%A3%20ho%C3%A0n%20th%C3%A0nh%20bi%E1%BB%83u%20m%E1%BA%ABu%20%C4%91%C4%83ng%20k%C3%BD.%0A%0AT%C3%AAn%20h%E1%BB%8Dc%20sinh%3A%20%5BT%C3%AAn%20h%E1%BB%8Dc%20sinh%5D%0AL%E1%BB%9Bp%3A%20%5BX%5D%0AH%C3%ACnh%20th%E1%BB%A9c%20mong%20mu%E1%BB%91n%3A%20%5Btr%E1%BB%B1c%20tuy%E1%BA%BFn%20%2F%20tr%E1%BB%B1c%20ti%E1%BA%BFp%20%2F%20linh%20ho%E1%BA%A1t%5D%0ATh%E1%BB%9Di%20gian%20ph%C3%B9%20h%E1%BB%A3p%3A%20%5B%20%5D%0A%0AC%C3%A2u%20h%E1%BB%8Fi%20ho%E1%BA%B7c%20th%C3%B4ng%20tin%20th%C3%AAm%20%28tu%E1%BB%B3%20ch%E1%BB%8Dn%29%3A%0A%5BVi%E1%BA%BFt%20t%E1%BA%A1i%20%C4%91%C3%A2y%5D%0A%0ATr%C3%A2n%20tr%E1%BB%8Dng%2C%0A%5BPh%E1%BB%A5%20huynh%2FNg%C6%B0%E1%BB%9Di%20gi%C3%A1m%20h%E1%BB%99%5D%0A%5BS%E1%BB%91%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%5D">
+                    Email mẫu (Ứng dụng)
+                  </a>
+
+                  <a class="btn btn-amber" href="../assets/Email%20Register.png" target="_blank" rel="noopener">
+                    Mở ảnh QR
+                  </a>
+                </div>
+
+                <div class="help-box" style="margin-top:12px;">
+                  <b>Lưu ý:</b> Trên điện thoại/máy tính bảng, vui lòng dùng <b>Email mẫu (Ứng dụng)</b>. Trên iPad, bạn có thể dùng <b>Email mẫu (Gmail)</b> nếu muốn.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Magic Math Master • Australia</div>
+      <div>
+        <a href="contact.html">Liên hệ</a> •
+        <a href="policies.html">Chính sách</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* Detect iPad (including iPadOS that reports as Mac) and allow BOTH buttons */
+    (function(){
+      var isIpad = false;
+      try{
+        isIpad =
+          /iPad/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      }catch(e){}
+      if(isIpad) document.body.classList.add("is-ipad");
+    })();
+  </script>
+
+  <script src="../script.js"></script>
 </body>
 </html>
