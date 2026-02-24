@@ -720,3 +720,9 @@ textarea{ min-height: 120px; resize: vertical; }
   .desktop-only{ display: none !important; }
   .mobile-only{ display: inline-flex !important; }
 }
+/* Make section-sub paragraphs span full available width site-wide */
+.section-sub{
+  max-width: none !important;
+  margin-left: 0;
+  margin-right: 0;
+}

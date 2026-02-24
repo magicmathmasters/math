@@ -39,9 +39,6 @@
     .hero { padding: 22px 0 18px; }
 
     /* ===== Founder “header + 2-column” layout ===== */
-    /* Whole founder block: 2 rows
-       Row 1: full-width header
-       Row 2: 2 columns (left: founder card, right: story + note) */
     .founder-block{
       display:grid;
       grid-template-rows: auto auto;
@@ -59,7 +56,7 @@
       align-items: stretch;
     }
 
-    /* Right column has 2 rows: story card then the note box (per your request) */
+    /* Right column has 2 rows: story card then the note box */
     .founder-right-stack{
       display:grid;
       grid-template-rows: 1fr auto; /* story stretches, note stays natural */
@@ -186,6 +183,14 @@
     #awards          .section-title{ color: #d97706; }
     #child-success   .section-title{ color: #15803d; }
 
+    /* ✅ Make ALL card paragraph text span the full card width
+       (your shared style.css likely sets .section-sub max-width for readability) */
+    main.container .card .section-sub{
+      max-width: none !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
     /* Responsive: stack columns */
     @media (max-width: 980px){
       .founder-two-col{ grid-template-columns: 1fr; }
@@ -289,7 +294,7 @@
 
         <div class="founder-block">
 
-          <!-- ROW 1: full-width header (your requested text on top of both columns) -->
+          <!-- ROW 1: full-width header -->
           <header class="founder-header">
             <h2 class="section-title">✨ Founder’s message</h2>
             <p class="section-sub">
@@ -320,7 +325,7 @@
               </div>
             </aside>
 
-            <!-- RIGHT column: story card (row 1) + Parents note (row 2, per your request) -->
+            <!-- RIGHT column: story card + parents note -->
             <div class="founder-right-stack">
 
               <div class="card">
