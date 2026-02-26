@@ -1,148 +1,185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Programs | Magic Math Master</title>
-  <meta name="description" content="Explore Magic Math Master programs for Prep–Year 12: 1-to-1 tutoring, small-group tutorials, Maths Club, and competition training. Calm, structured teaching that builds confidence step by step." />
-  <link rel="canonical" href="https://www.magicmathmaster.com.au/programs.html" />
+  <meta
+    name="description"
+    content="Explore maths tutoring programs at Magic Math Master, including Primary, Secondary, Exam & Extension, One-to-One support, and Maths Club."
+  />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/programs.html">
 
-  <!-- Optional OG tags -->
-  <meta property="og:title" content="Programs | Magic Math Master" />
-  <meta property="og:description" content="Prep–Year 12 programs: 1-to-1 tutoring, small groups, Maths Club, and competition training — calm structure, strong foundations, confidence first." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.magicmathmaster.com.au/programs.html" />
+  <meta property="og:title" content="Programs | Magic Math Master">
+  <meta
+    property="og:description"
+    content="Structured maths programs for Prep to Year 12, including personalised tutoring and flexible Maths Club practice."
+  />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/programs.html">
 
-  <!-- Shared site stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- favicon -->
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-  <!-- Page-only overrides (Programs fun cards only) -->
   <style>
-    html{ scroll-behavior: smooth; }
+    .brand-title span { display: none !important; }
 
-    /* HERO: smaller padding for this page */
-    /*.hero { padding: 22px 0 18px; }
-
-    .prog-meta{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:10px; }
-    .prog-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap:10px; }*/
-
-    /* “Parents get” line (trust signal) */
-    .parents-get{
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.65);
-      font-weight: 800;
-      font-size: 15px;
-      line-height: 1.5;
+    .page-intro{
+      text-align:center;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .page-intro h2{
+      margin: 0 0 8px;
+      color: var(--brand2);
+      font-size: 28px;
+      font-weight: 1100;
+      letter-spacing: -0.3px;
+    }
+    .page-intro p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
     }
 
-    /* ==================================
-       Programs page: FUN titles + icons
-       (Scoped so it won't affect other pages)
-       ================================== */
-    .page-programs .card{
-      position: relative;
-      overflow: hidden;
+    .page-breadcrumb{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align:center;
+    }
+    .page-breadcrumb a{
+      color: var(--brand2);
+      text-decoration:none;
+      border-bottom: 1px solid rgba(11,94,215,.28);
+    }
+    .page-breadcrumb a:hover{
+      border-bottom-color: rgba(11,94,215,.60);
     }
 
-    /* soft playful blobs */
-    .page-programs .card::before{
-      content:"";
-      position:absolute;
-      inset:-50px -60px auto auto;
-      width:220px;
-      height:220px;
-      border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, rgba(11,94,215,.12), transparent 60%);
-      transform: rotate(10deg);
-      pointer-events:none;
-    }
-    .page-programs .card::after{
-      content:"";
-      position:absolute;
-      inset:auto auto -60px -60px;
-      width:240px;
-      height:240px;
-      border-radius:999px;
-      background: radial-gradient(circle at 40% 40%, rgba(245,158,11,.14), transparent 62%);
-      transform: rotate(-10deg);
-      pointer-events:none;
-    }
-
-    .page-programs .prog-title{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom: 8px;
-    }
-    .page-programs .prog-ico{
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+    .program-grid{
       display:grid;
-      place-items:center;
-      font-size: 20px;
-      font-weight: 900;
-      border: 1px solid rgba(15,23,42,.12);
-      background: rgba(255,255,255,.75);
-      box-shadow: 0 10px 18px rgba(2, 6, 23, .08);
-      flex: 0 0 auto;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px){
+      .program-grid{ grid-template-columns: 1fr; }
     }
 
-    /* Bigger title just on Programs */
-    .page-programs .card h3{
-      margin: 0;               /* handled by .prog-title */
-      font-size: 24px;
-      line-height: 1.15;
-      letter-spacing: -0.2px;
+    .program-card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .program-card h3{
+      margin: 0 0 10px;
+      color: #7a4a00;
+      font-size: 21px;
+      font-weight: 1100;
+    }
+    .program-card p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+    .program-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.75;
+    }
+
+    .program-card.featured{
+      background: rgba(237, 246, 255, .94);
+      border: 1px solid rgba(11,94,215,.20);
+    }
+    .program-card.featured h3{
+      color: var(--brand2);
+    }
+
+    .link-strong{
+      color: var(--brand2);
+      font-weight: 1000;
+      text-decoration:none;
+      border-bottom: 1px solid rgba(11,94,215,.30);
+    }
+    .link-strong:hover{
+      border-bottom-color: rgba(11,94,215,.60);
+    }
+
+    .program-link{
+      margin-top: 12px;
       font-weight: 1000;
     }
 
-    /* Theme colours */
-    .page-programs .theme-catchup  h3{ color: var(--brand2); }
-    .page-programs .theme-keepup   h3{ color: var(--success); }
-    .page-programs .theme-getahead h3{ color: var(--accent); }
-    .page-programs .theme-comp     h3{ color: #7c3aed; } /* violet */
-
-    /* Icon bubble tint to match theme */
-    .page-programs .theme-catchup  .prog-ico{ background: rgba(11,94,215,.10); }
-    .page-programs .theme-keepup   .prog-ico{ background: rgba(22,163,74,.12); }
-    .page-programs .theme-getahead .prog-ico{ background: rgba(245,158,11,.14); }
-    .page-programs .theme-comp     .prog-ico{ background: rgba(124,58,237,.12); }
-
-    /* Make chips look like “chips” on this page (not dark buttons) */
-    .page-programs .prog-chip{
-      background: rgba(255,255,255,.75);
-      border-color: rgba(15,23,42,.12);
-      color: var(--ink);
+    .program-note{
+      margin-top: 16px;
+      background: rgba(11,94,215,.06);
+      border: 1px solid rgba(11,94,215,.20);
+      border-radius: 16px;
+      padding: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+      text-align:center;
     }
-    .page-programs a.card .prog-chip:hover{
-      background: rgba(11,94,215,.10);
-      color: var(--ink);
-      border-color: rgba(11,94,215,.22);
+    .program-note strong{
+      color: var(--brand2);
+      font-weight: 1100;
+    }
+
+    .cta-block{
+      margin-top: 16px;
+      text-align:center;
+      background: rgba(255,255,255,.84);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .cta-block h3{
+      margin: 0 0 8px;
+      color: var(--brand2);
+      font-size: 24px;
+      font-weight: 1100;
+    }
+    .cta-block p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .small-link-row{
+      margin-top: 12px;
+      color: var(--muted);
+      font-weight: 800;
     }
   </style>
 </head>
 
-<body class="page-programs">
-
-  <!-- ===== TOP BAR ===== -->
+<body>
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="Magic Math Master home">
-        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
         <div class="brand-title">
           <b>Magic Math Master</b>
+          <span>Premium tutoring • Australia</span>
         </div>
       </a>
 
-      <nav class="nav" aria-label="Primary navigation">
+      <div class="nav" aria-label="Primary navigation">
         <a data-nav href="index.html">Home</a>
         <a data-nav href="programs.html">Programs</a>
         <a data-nav href="pricing.html">Fees</a>
@@ -150,262 +187,192 @@
         <a data-nav href="about.html">About</a>
         <a data-nav href="philosophy.html">Philosophy</a>
         <a data-nav href="contact.html">Contact</a>
+        <a data-nav href="https://demo.magicmathmaster.com.au">Free Practice</a>
+        <a href="https://practice.magicmathmaster.com.au">Student Login</a>
         <a class="nav-lang" href="vi/programs.html">Tiếng Việt</a>
-      </nav>
+      </div>
     </div>
   </div>
 
-  <!-- ===== HERO ===== -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <div class="hero-snap">
-
         <div class="hero-snap-grid">
           <div>
-            <h1 class="hero-snap-title">Programs</h1>
-            <div class="hero-snap-tagline">Clear pathways for Prep–Year 12 — from catching up to getting ahead</div>
+            <h1 class="hero-snap-title">PROGRAMS</h1>
+            <div class="hero-snap-tagline">Supportive maths learning for every stage</div>
           </div>
 
-          <div class="hero-snap-logoBox" aria-hidden="true">
-            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
+          <div class="hero-snap-logoBox" aria-label="Magic Math Master logo">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
           </div>
         </div>
 
         <p class="hero-snap-desc">
-          Choose the support level that fits your child: 1-to-1 tutoring, small groups, Maths Club, or competition training.
+          Explore calm, structured maths learning options for students from
+          <b>Prep to Year 12</b> — from personalised tutoring to flexible
+          weekly enrichment through <b>Maths Club</b>.
         </p>
 
         <div class="hero-snap-checks">
-          <span>✓ Calm, structured teaching</span>
-          <span>✓ Personalised learning</span>
-          <span>✓ Clear family communication</span>
+          <span>✓ Primary to Year 12</span>
+          <span>✓ Personalised support</span>
+          <span>✓ Flexible online options</span>
         </div>
 
         <div class="hero-snap-pills">
-          <span class="hero-snap-pill">Online &amp; in-person</span>
-          <span class="hero-snap-pill">Prep–Year 12</span>
-          <span class="hero-snap-pill">Confidence first</span>
+          <span class="hero-snap-pill">Foundations</span>
+          <span class="hero-snap-pill">Exam support</span>
+          <span class="hero-snap-pill">Extension & enrichment</span>
         </div>
 
         <div class="hero-snap-cta">
           <a class="btn btn-success" href="enquiry.html">Enquire</a>
           <a class="btn btn-amber" href="register.html">Register</a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== PAGE CONTENT ===== -->
-  <main class="container">
-    <section class="section" id="programs">
-      <p class="section-sub">
-        Start with your child’s goal, then jump straight to the best-fit program.
-      </p>
+  <main>
+    <div class="container"><div class="sep"></div></div>
 
-      <!-- Chooser (links to program cards) -->
-      <div class="grid">
-        <a class="card theme-catchup" href="#p-1to1">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">🧱</span>
-            <h3>Catch up &amp; rebuild foundations</h3>
+    <section class="section">
+      <div class="container">
+
+        <div class="page-intro">
+          <div class="page-breadcrumb">
+            <a href="index.html">Home</a> ›
+            <span>Programs</span>
           </div>
+
+          <h2>Choose the right starting point</h2>
           <p>
-            Best for students who feel behind or anxious. We rebuild core skills step-by-step, then practise until it feels easy.
+            Whether your child needs strong foundations, targeted support,
+            confidence before exams, or regular challenge, we can recommend a
+            program that fits their level and goals.
           </p>
-          <div class="prog-meta">
-            <span class="prog-chip">Go to 1-to-1</span>
-            <span class="prog-chip">Strong basics</span>
-            <span class="prog-chip">Confidence</span>
-          </div>
-        </a>
+        </div>
 
-        <a class="card theme-keepup" href="#p-group">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">📚</span>
-            <h3>Keep up &amp; stay consistent</h3>
-          </div>
-          <p>
-            Best for students who are doing “okay” but need structure. We align with school topics and prevent gaps from growing.
-          </p>
-          <div class="prog-meta">
-            <span class="prog-chip">Go to Small-Group</span>
-            <span class="prog-chip">School-aligned</span>
-            <span class="prog-chip">Good habits</span>
-          </div>
-        </a>
-
-        <a class="card theme-getahead" href="#p-club">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">🚀</span>
-            <h3>Get ahead &amp; extend (with joy)</h3>
-          </div>
-          <p>
-            Best for capable students who want challenge without pressure. We build reasoning and flexible thinking through rich problems.
-          </p>
-          <div class="prog-meta">
-            <span class="prog-chip">Go to Maths Club</span>
-            <span class="prog-chip">Extension</span>
-            <span class="prog-chip">Problem-solving</span>
-          </div>
-        </a>
-
-        <a class="card theme-comp" href="#p-comp">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">🏆</span>
-            <h3>Aim for competitions</h3>
-          </div>
-          <p>
-            Best for students targeting AMC/AMO-style questions. We teach strategies, build stamina, and refine solutions.
-          </p>
-          <div class="prog-meta">
-            <span class="prog-chip">Go to Competition</span>
-            <span class="prog-chip">AMC/AMO focus</span>
-            <span class="prog-chip">Strategies</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- Actual program cards -->
-      <div class="grid" style="margin-top:18px;">
-        <!-- 1-to-1 -->
-        <div class="card anchor-target theme-catchup" id="p-1to1">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">🧑‍🏫</span>
-            <h3>1-to-1 Tutoring</h3>
-          </div>
-          <p>
-            Fully personalised lessons for rapid progress. Ideal for targeted support, confidence building, or high goals.
-          </p>
-          <ul>
-            <li>Personal learning plan + goals</li>
-            <li>Targeted explanations and practice</li>
-            <li>Flexible pacing (catch up or accelerate)</li>
-          </ul>
-
-          <div class="prog-meta">
-            <span class="prog-chip">Prep–Year 12</span>
-            <span class="prog-chip">1:1</span>
-            <span class="prog-chip">Online &amp; in-person</span>
+        <div class="program-grid">
+          <div class="program-card">
+            <h3>🌱 Primary (Prep–Year 6)</h3>
+            <p>Build confidence early with clear explanations and strong number foundations.</p>
+            <ul>
+              <li>Number sense and fluency</li>
+              <li>Fractions, decimals, and percentages made clear</li>
+              <li>Word-problem strategies and step-by-step thinking</li>
+            </ul>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> a personalised plan + regular progress updates and next steps.</div>
+          <div class="program-card">
+            <h3>🧩 Secondary (Year 7–10)</h3>
+            <p>Strengthen core skills while keeping pace with school topics.</p>
+            <ul>
+              <li>Algebra and core topic support</li>
+              <li>Geometry and trigonometry foundations</li>
+              <li>Revision structure and assessment preparation</li>
+            </ul>
+          </div>
 
-          <div class="prog-actions">
-            <a class="btn btn-success" href="enquiry.html">Enquire</a>
-            <a class="btn btn-amber" href="register.html">Register</a>
+          <div class="program-card">
+            <h3>🏆 Exam &amp; Extension</h3>
+            <p>Support for students preparing for important assessments or seeking greater challenge.</p>
+            <ul>
+              <li>NAPLAN and school exam preparation</li>
+              <li>Reduce careless mistakes and improve method</li>
+              <li>Extension for advanced learners</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <h3>👩‍🏫 One-to-One or Group</h3>
+            <p>Choose the learning format that best suits your child.</p>
+            <ul>
+              <li>Personalised one-to-one lessons</li>
+              <li>Small group tutorials</li>
+              <li>Support, extension, and confidence-building</li>
+            </ul>
+          </div>
+
+          <div class="program-card featured">
+            <h3>🌈🚀🎮 Maths Club</h3>
+            <p>
+              A flexible online enrichment program for students who want regular,
+              enjoyable maths practice without the pressure of weekly tutoring.
+            </p>
+            <ul>
+              <li>Weekly problem sets matched to level</li>
+              <li>Puzzles, reasoning, and multi-step challenges</li>
+              <li>Builds independence, confidence, and logical thinking</li>
+              <li>Optional friendly monthly challenges</li>
+            </ul>
+
+            <p class="program-link">
+              👉 <a class="link-strong" href="mathclub.html">View full Maths Club details →</a>
+            </p>
+          </div>
+
+          <div class="program-card">
+            <h3>🧪 Free Practice</h3>
+            <p>Let your child try a short public practice set before registering.</p>
+            <ul>
+              <li>Great for Grades 3–6</li>
+              <li>Instant feedback</li>
+              <li>Simple way to try the learning style first</li>
+            </ul>
+
+            <p class="program-link">
+              👉 <a class="link-strong" href="https://demo.magicmathmaster.com.au" target="_blank" rel="noopener">Open Free Practice →</a>
+            </p>
           </div>
         </div>
 
-        <!-- Small group -->
-        <div class="card anchor-target theme-keepup" id="p-group">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">👨‍👩‍👧</span>
-            <h3>Small-Group Tutorials</h3>
-          </div>
+        <div class="program-note">
+          <strong>Not sure which option fits best?</strong>
+          Tell us your child’s year level, current needs, and goals, and we’ll
+          recommend the best starting point.
+        </div>
+
+        <div class="cta-block">
+          <h3>Need help choosing a program?</h3>
           <p>
-            Small groups for structure + motivation. Great for consistent weekly learning and school-aligned practice.
+            We’re happy to suggest the most suitable path based on your child’s
+            level, confidence, and learning goals.
           </p>
-          <ul>
-            <li>Small group attention (limited seats)</li>
-            <li>Clear weekly focus + homework support</li>
-            <li>Confidence-first environment</li>
-          </ul>
 
-          <div class="prog-meta">
-            <span class="prog-chip">Small groups</span>
-            <span class="prog-chip">Weekly structure</span>
-            <span class="prog-chip">School-aligned</span>
+          <div class="hero-actions cta-row">
+            <a class="btn btn-success" href="enquiry.html">Make an enquiry</a>
+            <a class="btn btn-amber" href="pricing.html">View fees</a>
           </div>
 
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> weekly focus topics + progress updates and clear next steps.</div>
-
-          <div class="prog-actions">
-            <a class="btn btn-success" href="enquiry.html">Enquire</a>
-            <a class="btn btn-amber" href="register.html">Register</a>
+          <div class="small-link-row">
+            Want flexible weekly enrichment?
+            <a class="link-strong" href="mathclub.html">See Maths Club →</a>
           </div>
         </div>
 
-        <!-- Maths Club -->
-        <div class="card anchor-target theme-getahead" id="p-club">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">🧩</span>
-            <h3>Maths Club</h3>
-          </div>
-          <p>
-            Weekly enrichment for curious learners. Build reasoning, pattern-spotting, and flexible thinking through fun problems.
-          </p>
-          <ul>
-            <li>Challenge problems + games</li>
-            <li>Reasoning and communication</li>
-            <li>Healthy confidence through exploration</li>
-          </ul>
-
-          <div class="prog-meta">
-            <span class="prog-chip">Weekly puzzles</span>
-            <span class="prog-chip">Online</span>
-            <span class="prog-chip">Progress charts</span>
-          </div>
-
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> simple progress tracking + tips to support learning at home.</div>
-
-          <div class="prog-actions">
-            <a class="btn btn-success" href="enquiry.html">Enquire</a>
-            <a class="btn btn-amber" href="register.html">Register</a>
-          </div>
-        </div>
-
-        <!-- Competition -->
-        <div class="card anchor-target theme-comp" id="p-comp">
-          <div class="prog-title">
-            <span class="prog-ico" aria-hidden="true">⏱️</span>
-            <h3>Competition Training</h3>
-          </div>
-          <p>
-            Prepare for AMC/AMO-style problem solving. Learn strategies, build stamina, and practise high-quality questions.
-          </p>
-          <ul>
-            <li>Problem-solving strategies + habits</li>
-            <li>Timed practice and review</li>
-            <li>Solutions explained clearly</li>
-            <li>Learn smart shortcuts &amp; avoid common traps</li>
-            <li>Build a personal strategy toolkit for different question types</li>
-          </ul>
-
-          <div class="prog-meta">
-            <span class="prog-chip">Extension</span>
-            <span class="prog-chip">AMC/AMO focus</span>
-            <span class="prog-chip">Strategies</span>
-          </div>
-
-          <div class="parents-get">👨‍👩‍👧‍👦 <strong>Parents get:</strong> strategy feedback + a recommended practice pathway.</div>
-
-          <div class="prog-actions">
-            <a class="btn btn-success" href="enquiry.html">Enquire</a>
-            <a class="btn btn-amber" href="register.html">Register</a>
-          </div>
-        </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Magic Math Master • Australia</div>
-      <div>
-        <a href="contact.html">Contact</a> •
-        <a href="policies.html">Policies</a>
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Magic Math Master • Australia</div>
+        <div>
+          <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
+          <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Auto year -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Auto highlight current nav item -->
   <script src="script.js"></script>
 </body>
 </html>
