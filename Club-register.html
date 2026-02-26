@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Magic Math Master | Maths Club Register</title>
+  <meta name="description" content="Register for Magic Math Master Maths Club. Choose one club stream and enrol one or more students in a calm, structured learning environment." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/maths-club-register.html">
+
+  <meta property="og:title" content="Magic Math Master | Maths Club Register">
+  <meta property="og:description" content="Choose one maths club stream and register one or more students with Magic Math Master.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/maths-club-register.html">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <style>
+    .brand-title span{ display:none !important; }
+
+    .club-shell{
+      display:grid;
+      gap:16px;
+    }
+
+    .club-card,
+    .form-card,
+    .info-card,
+    .success-card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+
+    .section-title{
+      margin: 0 0 8px;
+      color: var(--brand2);
+      font-size: 28px;
+      font-weight: 1100;
+      letter-spacing: -0.3px;
+    }
+
+    .section-sub{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .club-options{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    @media (max-width: 980px){
+      .club-options{ grid-template-columns: 1fr; }
+    }
+
+    .club-option{
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background: rgba(255,255,255,.82);
+      padding: 16px;
+      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    .club-option:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(2, 6, 23, .05);
+    }
+
+    .club-option input[type="radio"]{
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brand2);
+      cursor: pointer;
+    }
+
+    .club-option.active{
+      border-color: rgba(11,94,215,.45);
+      box-shadow: 0 12px 26px rgba(11,94,215,.10);
+      background: rgba(11,94,215,.04);
+    }
+
+    .club-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(245,158,11,.15);
+      border: 1px solid rgba(245,158,11,.28);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .club-option h3{
+      margin: 0 0 8px;
+      color: #7a4a00;
+      font-size: 20px;
+      font-weight: 1100;
+    }
+
+    .club-option p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .subgroup-wrap{
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(11,94,215,.05);
+      border: 1px solid rgba(11,94,215,.18);
+      display: none;
+    }
+
+    .subgroup-wrap.show{ display:block; }
+
+    .subgroup-title{
+      margin: 0 0 10px;
+      color: var(--brand2);
+      font-size: 16px;
+      font-weight: 1000;
+    }
+
+    .subgroup-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 760px){
+      .subgroup-grid{ grid-template-columns: 1fr; }
+    }
+
+    .subgroup-item{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .subgroup-item input{
+      margin-top: 3px;
+      accent-color: var(--brand2);
+    }
+
+    .subgroup-item b{
+      display:block;
+      color: #7a4a00;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .subgroup-item span{
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    .field-group label{
+      display:block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 1000;
+      color: var(--brand2);
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea{
+      width:100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      color: var(--text);
+      font: inherit;
+    }
+
+    .field-group textarea{
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .register-tools{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items:center;
+      justify-content: space-between;
+      margin: 16px 0 12px;
+    }
+
+    .register-tools .tool-left,
+    .register-tools .tool-right{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items:center;
+    }
+
+    @media (max-width: 760px){
+      .register-tools .tool-left,
+      .register-tools .tool-right{ width:100%; }
+      .register-tools .btn{ width:100%; }
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
+    }
+
+    table{
+      width:100%;
+      min-width: 1180px;
+      border-collapse: collapse;
+    }
+
+    thead{
+      background: rgba(11,94,215,.06);
+    }
+
+    th,
+    td{
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align:left;
+      vertical-align: top;
+    }
+
+    th{
+      color: var(--brand2);
+      font-size: 13px;
+      font-weight: 1100;
+      white-space: nowrap;
+    }
+
+    td input,
+    td select{
+      width:100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.96);
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .row-number{
+      text-align:center;
+      font-weight: 1100;
+      color: var(--brand2);
+      min-width: 40px;
+    }
+
+    .remove-btn{
+      border:none;
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: rgba(220,38,38,.10);
+      color: #b91c1c;
+      font-weight: 1000;
+      cursor:pointer;
+      width:100%;
+    }
+
+    .remove-btn:hover{ opacity: .9; }
+
+    .consent-box{
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      display:grid;
+      gap: 14px;
+    }
+
+    .check-line{
+      display:flex;
+      align-items:flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .check-line input{
+      margin-top: 3px;
+      accent-color: var(--brand2);
+    }
+
+    .small-note{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 980px){
+      .info-grid{ grid-template-columns: 1fr; }
+    }
+
+    .info-card h3{
+      margin: 0 0 8px;
+      color: #7a4a00;
+      font-size: 18px;
+      font-weight: 1100;
+    }
+
+    .info-card p,
+    .info-card ul{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .info-card ul{
+      padding-left: 18px;
+    }
+
+    .success-card{
+      margin-top: 14px;
+      display:none;
+      border-color: rgba(34,197,94,.28);
+      background: rgba(34,197,94,.08);
+    }
+
+    .success-card strong{
+      color: #166534;
+      font-weight: 1100;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+          <span>Premium tutoring • Australia</span>
+        </div>
+      </a>
+
+      <div class="nav" aria-label="Primary navigation">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="programs.html">Programs</a>
+        <a data-nav href="pricing.html">Fees</a>
+        <a data-nav href="policies.html">Policies</a>
+        <a data-nav href="about.html">About</a>
+        <a data-nav href="philosophy.html">Philosophy</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a href="https://practice.magicmathmaster.com.au">Student Login</a>
+        <a class="nav-lang" href="vi/index.html">Tiếng Việt</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-snap">
+        <div class="hero-snap-grid">
+          <div>
+            <h1 class="hero-snap-title">MAGIC MATH MASTER</h1>
+            <div class="hero-snap-tagline">Online Math Club Registration</div>
+          </div>
+
+          <div class="hero-snap-logoBox" aria-label="Magic Math Master logo">
+            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
+          </div>
+        </div>
+
+        <p class="hero-snap-desc">
+          Choose <b>one online math club stream</b> and register <b>one or more students</b> in the same booking.
+          This club is open to students anywhere, so <b>anyone can join online</b>. Competition events may also offer an <b>online or in-person option</b> when available.
+        </p>
+
+        <div class="hero-snap-checks">
+          <span>✓ One club selection per booking</span>
+          <span>✓ Multi-student family register</span>
+          <span>✓ Clear communication with families</span>
+        </div>
+
+        <div class="hero-snap-pills">
+          <span class="hero-snap-pill">Prep–6 · 7–10 · 11–12</span>
+          <span class="hero-snap-pill">Online math club • Anyone can join</span>
+          <span class="hero-snap-pill">Confidence-first learning</span>
+        </div>
+
+        <div class="hero-snap-cta">
+          <a class="btn btn-success" href="enquiry.html">Enquire</a>
+          <a class="btn btn-amber" href="#club-register">Register Now</a>
+          <a class="btn btn-red" href="demo/index.html" target="_blank" rel="noopener">Free Practice</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container"><div class="sep"></div></div>
+
+    <section class="section" id="club-register">
+      <div class="container">
+        <div class="club-shell">
+
+          <div class="club-card">
+            <h2 class="section-title">Choose your online math club</h2>
+            <p class="section-sub">
+              Select <b>one</b> club for this booking. If you choose <b>Prep–6</b>, please also choose the correct sub-group so we can place students accurately.
+            </p>
+
+            <div class="club-options" id="clubOptions">
+              <label class="club-option" for="club-prep6">
+                <span class="club-badge" aria-hidden="true">🌱</span>
+                <h3>Prep–6 Maths Club</h3>
+                <p>Primary years with strong foundations, number sense, fluency, and confidence-building problem solving.</p>
+                <input type="radio" id="club-prep6" name="clubStream" value="Prep-6 Maths Club" required>
+              </label>
+
+              <label class="club-option" for="club-710">
+                <span class="club-badge" aria-hidden="true">🧩</span>
+                <h3>Years 7–10 Maths Club</h3>
+                <p>Core secondary skills including algebra, reasoning, revision habits, and structured support for school topics.</p>
+                <input type="radio" id="club-710" name="clubStream" value="Years 7-10 Maths Club" required>
+              </label>
+
+              <label class="club-option" for="club-1112">
+                <span class="club-badge" aria-hidden="true">🏆</span>
+                <h3>Years 11–12 Maths Club</h3>
+                <p>Senior maths support with exam preparation, deeper problem solving, and confidence under assessment pressure.</p>
+                <input type="radio" id="club-1112" name="clubStream" value="Years 11-12 Maths Club" required>
+              </label>
+            </div>
+
+            <div class="subgroup-wrap" id="prepSubgroupWrap">
+              <p class="subgroup-title">Prep–6 sub-group (required for Prep–6 only)</p>
+              <div class="subgroup-grid">
+                <label class="subgroup-item">
+                  <input type="radio" name="prepSubgroup" value="Prep-2">
+                  <span>
+                    <b>Prep–2</b>
+                    Early years focus: counting, patterns, basic operations, and confidence with number.
+                  </span>
+                </label>
+
+                <label class="subgroup-item">
+                  <input type="radio" name="prepSubgroup" value="3-6">
+                  <span>
+                    <b>Years 3–6</b>
+                    Stronger fluency with fractions, decimals, word problems, and independent reasoning.
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <form id="mathsClubRegisterForm" action="#" method="post" novalidate>
+            <div class="form-card">
+              <h2 class="section-title">Family and booking details</h2>
+              <p class="section-sub">
+                These details help us contact you, organise the booking, and recommend the best starting point. Regular club sessions are online, and competition events may offer online or in-person participation when available.
+              </p>
+
+              <div class="two-col">
+                <div class="field-group">
+                  <label for="parentName">Parent / Guardian Name</label>
+                  <input type="text" id="parentName" name="parentName" required>
+                </div>
+
+                <div class="field-group">
+                  <label for="parentEmail">Parent / Guardian Email</label>
+                  <input type="email" id="parentEmail" name="parentEmail" required>
+                </div>
+
+                <div class="field-group">
+                  <label for="parentPhone">Parent / Guardian Phone</label>
+                  <input type="tel" id="parentPhone" name="parentPhone" required>
+                </div>
+
+                <div class="field-group">
+                  <label for="paymentPlan">Preferred Payment Plan</label>
+                  <select id="paymentPlan" name="paymentPlan">
+                    <option value="">Select option</option>
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                    <option>Yearly</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="startDate">Preferred Start Date</label>
+                  <input type="date" id="startDate" name="startDate">
+                </div>
+
+                <div class="field-group">
+                  <label for="competitionMode">Competition Preference (if applicable)</label>
+                  <select id="competitionMode" name="competitionMode">
+                    <option value="">Select option</option>
+                    <option>Online</option>
+                    <option>In-person (if available)</option>
+                    <option>No preference</option>
+                    <option>Not joining competitions yet</option>
+                  </select>
+                </div>
+
+                <div class="field-group" id="competitionLocationGroup" style="display:none;">
+                  <label for="competitionLocation">Preferred In-Person / Nearby Location (required if applicable)</label>
+                  <input type="text" id="competitionLocation" name="competitionLocation" placeholder="Enter your suburb, area, or preferred nearby location">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h2 class="section-title">Student register</h2>
+              <p class="section-sub">
+                Add every student joining this booking. If you are registering siblings, please list each child on a separate row.
+              </p>
+
+              <div class="register-tools">
+                <div class="tool-left">
+                  <button type="button" class="btn" onclick="addRow()">+ Add Another Student</button>
+                  <button type="button" class="btn" onclick="resetTable()">Reset Table</button>
+                </div>
+                <div class="tool-right">
+                  <a class="btn" href="programs.html">View Programs</a>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table id="studentTable" aria-label="Student register table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Student Name</th>
+                      <th>Preferred Name</th>
+                      <th>Grade</th>
+                      <th>School</th>
+                      <th>Maths Focus</th>
+                      <th>Learning Support / Notes</th>
+                      <th>Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="row-number">1</td>
+                      <td><input type="text" name="studentName[]" required></td>
+                      <td><input type="text" name="preferredName[]"></td>
+                      <td>
+                        <select name="grade[]" required>
+                          <option value="">Select</option>
+                          <option>Prep</option>
+                          <option>Grade 1</option>
+                          <option>Grade 2</option>
+                          <option>Grade 3</option>
+                          <option>Grade 4</option>
+                          <option>Grade 5</option>
+                          <option>Grade 6</option>
+                          <option>Grade 7</option>
+                          <option>Grade 8</option>
+                          <option>Grade 9</option>
+                          <option>Grade 10</option>
+                          <option>Grade 11</option>
+                          <option>Grade 12</option>
+                        </select>
+                      </td>
+                      <td><input type="text" name="school[]" required></td>
+                      <td>
+                        <select name="mathsFocus[]">
+                          <option value="">Select</option>
+                          <option>Confidence building</option>
+                          <option>Core skills revision</option>
+                          <option>Problem solving</option>
+                          <option>Extension / challenge</option>
+                          <option>Exam preparation</option>
+                        </select>
+                      </td>
+                      <td><input type="text" name="studentNotes[]" placeholder="Optional"></td>
+                      <td><button type="button" class="remove-btn" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h2 class="section-title">Final notes and consent</h2>
+              <p class="section-sub">
+                Share any timing preferences or extra details that would help us place your child well.
+              </p>
+
+              <div class="field-group" style="margin-top:14px;">
+                <label for="familyNotes">General Notes</label>
+                <textarea id="familyNotes" name="familyNotes" placeholder="Optional notes about timetable preferences, goals, sibling grouping, allergies, or anything else we should know"></textarea>
+              </div>
+
+              <div class="consent-box">
+                <label class="check-line">
+                  <input type="checkbox" id="consent" name="consent" required>
+                  <span>I confirm that the information provided is correct and that I am the parent/guardian or authorised person enrolling these student(s).</span>
+                </label>
+
+                <p class="small-note">
+                  This form can save to Google Sheets using a Google Apps Script web app. Add your deployed web app URL in the script section at the bottom of this page.
+                </p>
+
+                <div class="hero-actions cta-row">
+                  <button type="submit" class="btn btn-success">Submit Register</button>
+                  <a class="btn btn-amber" href="enquiry.html">Need help choosing?</a>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>What this page is best for</h3>
+              <ul>
+                <li>Family bookings with more than one child</li>
+                <li>Siblings joining the same club stream</li>
+                <li>Simple admin entry in one place</li>
+              </ul>
+            </div>
+
+            <div class="info-card">
+              <h3>Important placement note</h3>
+              <p>
+                One booking should only include <b>one club stream</b>. If students belong in different club streams, submit a separate form for each stream.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <h3>Not sure which club fits?</h3>
+              <p>
+                Use the enquiry page if you want a recommended starting point based on your child’s current year level, goals, and confidence. For competitions, families can also note whether they prefer online or in-person participation when available.
+              </p>
+            </div>
+          </div>
+
+          <div class="success-card" id="successMessage">
+            <strong>Register sent.</strong> If your Google Apps Script web app URL is connected correctly, this enrolment has been submitted to your Google Sheet.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Magic Math Master • Australia</div>
+        <div><a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>; <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const tableBody = document.querySelector('#studentTable tbody');
+    const firstRowTemplate = tableBody.rows[0].cloneNode(true);
+    const clubOptions = document.querySelectorAll('.club-option');
+    const clubRadios = document.querySelectorAll('input[name="clubStream"]');
+    const prep6Radio = document.getElementById('club-prep6');
+    const prepSubgroupWrap = document.getElementById('prepSubgroupWrap');
+    const prepSubgroupRadios = document.querySelectorAll('input[name="prepSubgroup"]');
+    const form = document.getElementById('mathsClubRegisterForm');
+    const successMessage = document.getElementById('successMessage');
+    const competitionMode = document.getElementById('competitionMode');
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuJ7qDLOr6Ft4cyItXnLjfA_PdQh3U_OE55Ht7I4Bf7eqSYX-dovDOOpbX4bwKqXvN/exec';
+    const competitionLocationGroup = document.getElementById('competitionLocationGroup');
+    const competitionLocation = document.getElementById('competitionLocation');
+
+    function clearRowValues(row){
+      row.querySelectorAll('input, select').forEach((field) => {
+        if(field.type === 'checkbox' || field.type === 'radio'){
+          field.checked = false;
+        } else {
+          field.value = '';
+        }
+      });
+    }
+
+    function updateRowNumbers(){
+      document.querySelectorAll('#studentTable tbody tr').forEach((row, index) => {
+        row.querySelector('.row-number').textContent = index + 1;
+      });
+    }
+
+    function addRow(){
+      const newRow = firstRowTemplate.cloneNode(true);
+      clearRowValues(newRow);
+      tableBody.appendChild(newRow);
+      updateRowNumbers();
+    }
+
+    function removeRow(button){
+      if(tableBody.rows.length === 1){
+        alert('At least one student row must remain in the register.');
+        return;
+      }
+      button.closest('tr').remove();
+      updateRowNumbers();
+    }
+
+    function resetTable(){
+      while(tableBody.rows.length > 1){
+        tableBody.deleteRow(1);
+      }
+      clearRowValues(tableBody.rows[0]);
+      updateRowNumbers();
+    }
+
+    function updateClubUI(){
+      clubOptions.forEach((card) => {
+        const radio = card.querySelector('input[type="radio"]');
+        card.classList.toggle('active', radio.checked);
+      });
+
+      if(prep6Radio.checked){
+        prepSubgroupWrap.classList.add('show');
+        prepSubgroupRadios.forEach((radio) => {
+          radio.required = true;
+        });
+      } else {
+        prepSubgroupWrap.classList.remove('show');
+        prepSubgroupRadios.forEach((radio) => {
+          radio.required = false;
+          radio.checked = false;
+        });
+      }
+    }
+
+    function updateCompetitionLocation(){
+      if(!competitionMode || !competitionLocationGroup || !competitionLocation) return;
+
+      const needsLocation = competitionMode.value === 'In-person (if available)';
+      competitionLocationGroup.style.display = needsLocation ? 'block' : 'none';
+      competitionLocation.required = needsLocation;
+
+      if(!needsLocation){
+        competitionLocation.value = '';
+      }
+    }
+
+    clubRadios.forEach((radio) => {
+      radio.addEventListener('change', updateClubUI);
+    });
+
+    if(competitionMode){
+      competitionMode.addEventListener('change', updateCompetitionLocation);
+    }
+
+    function collectPayload(){
+      const selectedClub = document.querySelector('input[name="clubStream"]:checked');
+      const selectedPrepSubgroup = document.querySelector('input[name="prepSubgroup"]:checked');
+      const rows = Array.from(document.querySelectorAll('#studentTable tbody tr'));
+
+      const students = rows.map((row, index) => ({
+        rowNumber: index + 1,
+        studentName: row.querySelector('input[name="studentName[]"]').value.trim(),
+        preferredName: row.querySelector('input[name="preferredName[]"]').value.trim(),
+        grade: row.querySelector('select[name="grade[]"]').value,
+        school: row.querySelector('input[name="school[]"]').value.trim(),
+        mathsFocus: row.querySelector('select[name="mathsFocus[]"]').value,
+        studentNotes: row.querySelector('input[name="studentNotes[]"]').value.trim()
+      }));
+
+      return {
+        submittedAt: new Date().toISOString(),
+        clubStream: selectedClub ? selectedClub.value : '',
+        prepSubgroup: selectedPrepSubgroup ? selectedPrepSubgroup.value : '',
+        parentName: document.getElementById('parentName').value.trim(),
+        parentEmail: document.getElementById('parentEmail').value.trim(),
+        parentPhone: document.getElementById('parentPhone').value.trim(),
+        paymentPlan: document.getElementById('paymentPlan').value,
+        startDate: document.getElementById('startDate').value,
+        competitionMode: document.getElementById('competitionMode').value,
+        competitionLocation: document.getElementById('competitionLocation').value.trim(),
+        familyNotes: document.getElementById('familyNotes').value.trim(),
+        students
+      };
+    }
+
+    form.addEventListener('submit', async function(event){
+      event.preventDefault();
+
+      const clubChosen = document.querySelector('input[name="clubStream"]:checked');
+      const prepSubChosen = document.querySelector('input[name="prepSubgroup"]:checked');
+
+      if(!clubChosen){
+        alert('Please choose one maths club before submitting.');
+        return;
+      }
+
+      if(prep6Radio.checked && !prepSubChosen){
+        alert('Please choose either Prep–2 or Years 3–6 for the Prep–6 Maths Club.');
+        return;
+      }
+
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.indexOf('https://script.google.com/macros/s/AKfycbzuJ7qDLOr6Ft4cyItXnLjfA_PdQh3U_OE55Ht7I4Bf7eqSYX-dovDOOpbX4bwKqXvN/exec') !== -1){
+        alert('Add your Google Apps Script web app URL in the code before using live submissions.');
+        return;
+      }
+
+      const payload = collectPayload();
+      const body = new URLSearchParams();
+      body.append('submittedAt', payload.submittedAt);
+      body.append('clubStream', payload.clubStream);
+      body.append('prepSubgroup', payload.prepSubgroup);
+      body.append('parentName', payload.parentName);
+      body.append('parentEmail', payload.parentEmail);
+      body.append('parentPhone', payload.parentPhone);
+      body.append('paymentPlan', payload.paymentPlan);
+      body.append('startDate', payload.startDate);
+      body.append('competitionMode', payload.competitionMode);
+      body.append('competitionLocation', payload.competitionLocation);
+      body.append('familyNotes', payload.familyNotes);
+      body.append('students', JSON.stringify(payload.students));
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: body.toString()
+        });
+
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        form.reset();
+        resetTable();
+        updateClubUI();
+        updateCompetitionLocation();
+      } catch (error) {
+        alert('Submission could not be sent. Please check your Google Apps Script web app URL and deployment settings.');
+      }
+    });
+
+    updateClubUI();
+    updateCompetitionLocation();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
