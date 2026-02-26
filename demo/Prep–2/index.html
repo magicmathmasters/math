@@ -11,51 +11,103 @@
     .intro{color:#555;font-weight:650;line-height:1.6;margin-bottom:10px;}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(11,94,215,.08);border:1px solid rgba(11,94,215,.18);color:#0b5ed7;font-weight:900;margin-bottom:10px;}
     .q{font-size:20px;font-weight:900;margin:14px 0 10px;}
-    input, select{width:100%;padding:12px;font-size:16px;border-radius:12px;border:1px solid #ccc;}
-    label{display:block;margin-top:10px;font-weight:800;color:#334155;}
+
+    input, select{
+      width:100%;
+      padding:12px;
+      font-size:16px;
+      border-radius:12px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+    }
+
+    label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:800;
+      color:#334155;
+    }
+
+    /* spacing fix for name/grade */
+    .row2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:14px;
+    }
+    .field{ margin-bottom:14px; }
+    @media (max-width:720px){ .row2{grid-template-columns:1fr;} }
+
     .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
     button{padding:12px 16px;font-size:16px;font-weight:900;border-radius:12px;border:none;background:#0b5ed7;color:#fff;cursor:pointer;}
     button.secondary{background:#eef2ff;color:#0b5ed7;}
     button:disabled{opacity:.55;cursor:not-allowed;}
+
     .feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;line-height:1.5;}
     .ok{background:#e8fff0;border:1px solid #9be7b2;}
     .bad{background:#fff0f0;border:1px solid #f2a6a6;}
+
     .cta{margin-top:16px;padding:14px;border-radius:14px;background:#fff7e8;border:1px solid rgba(245,158,11,.35);color:#555;font-weight:700;line-height:1.6;}
     .cta a{color:#7a4a00;font-weight:1000;text-decoration:none;border-bottom:1px solid rgba(122,74,0,.35);}
     .cta a:hover{border-bottom-color:rgba(122,74,0,.7);}
+
     .footer{margin-top:16px;padding-top:12px;border-top:1px dashed #ccc;text-align:center;color:#666;font-weight:650;}
     .back a{font-weight:900;color:#0b5ed7;text-decoration:none;border-bottom:1px solid rgba(11,94,215,.35);}
     .back a:hover{border-bottom-color:rgba(11,94,215,.7);}
     .hide{display:none;}
     .note{margin-top:10px;color:#64748b;font-weight:650;line-height:1.6;font-size:14px;}
-    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-    @media (max-width:720px){.row2{grid-template-columns:1fr;}}
+
+    /* graph */
+    .resultBox{
+      margin-top:14px;
+      padding:12px;
+      border-radius:14px;
+      background:rgba(11,94,215,.05);
+      border:1px solid rgba(11,94,215,.18);
+    }
+    .resultTitle{
+      margin:0 0 8px;
+      font-weight:1000;
+      color:#0b5ed7;
+    }
+    .pct{
+      font-weight:1000;
+      margin:6px 0 10px;
+      color:#0b5ed7;
+    }
+    canvas{
+      width:100%;
+      max-width:100%;
+      height:220px;
+      display:block;
+      background:#fff;
+      border-radius:12px;
+      border:1px solid rgba(2,6,23,.10);
+    }
   </style>
 </head>
+
 <body>
   <div class="card">
     <div class="pill">🌱 Prep – Year 2 • Animals</div>
     <h1>Animal Maths Practice (Free Demo)</h1>
 
     <p class="intro">
-      A short, friendly demo for young learners. When you see a question, type your answer (a number),
-      then press <b>Check</b>. After checking, press <b>Next</b>.
+      Type your answer, then press <b>Check</b>. After checking, press <b>Next</b>.
     </p>
 
-    <p class="back" style="margin:0 0 6px;">
-      <a href="../">← Back to level select</a>
-    </p>
+    <p class="back" style="margin:0 0 6px;"><a href="../">← Back to level select</a></p>
 
-    <!-- Start screen -->
     <div id="startMsg" class="q">Enter your details, then press <b>Start</b> 🐾</div>
 
     <div id="profileBox">
       <div class="row2">
-        <div>
+        <div class="field">
           <label for="studentName">Student name</label>
           <input id="studentName" placeholder="e.g., Anna" autocomplete="name">
         </div>
-        <div>
+
+        <div class="field">
           <label for="studentGrade">Grade</label>
           <select id="studentGrade">
             <option value="">Select…</option>
@@ -67,12 +119,11 @@
       </div>
 
       <div class="note">
-        Privacy: this demo saves the student’s <b>name, grade, and score</b> to Magic Math Master’s records (Google Sheet)
-        to help improve lessons. No email/phone is collected here.
+        This demo saves the student’s <b>name, grade, and score</b> to a Google Sheet.
+        No email or phone number is collected.
       </div>
     </div>
 
-    <!-- Question + answer area (hidden until started) -->
     <div id="qa" class="hide">
       <div id="q" class="q"></div>
       <input id="ans" inputmode="numeric" placeholder="Type a number (e.g., 7)">
@@ -83,7 +134,6 @@
       </div>
     </div>
 
-    <!-- Start button -->
     <div id="startButtons" class="btnrow">
       <button onclick="start()">Start</button>
     </div>
@@ -91,20 +141,35 @@
     <div id="fb"></div>
 
     <div id="end" class="cta" style="display:none;">
-      🎉 <b>Well done!</b> This was a short demo.<br><br>
-      Want a personalised plan and full practice sets? 👉
-      <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank" rel="noopener">Enquire / Register →</a>
-      <div id="saveStatus" class="note" style="margin-top:10px;"></div>
+      🎉 <b>Well done!</b><br>
+      <div id="finalLine" style="margin-top:8px;"></div>
+
+      <!-- Graph + percentage -->
+      <div class="resultBox" id="resultsBox" style="display:none;">
+        <div class="resultTitle">Your results (Correct=1, Incorrect=0)</div>
+        <div class="pct" id="pctText"></div>
+        <canvas id="chart" width="900" height="260" aria-label="Results chart" role="img"></canvas>
+        <div class="note" style="margin-top:10px;">
+          Each bar shows if the question was eventually answered correctly (1) or not (0).
+        </div>
+      </div>
+
+      <div class="note" id="saveStatus" style="margin-top:10px;"></div>
+
+      <div style="margin-top:10px;">
+        Want full practice + personalised support? 👉
+        <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank" rel="noopener">Enquire / Register →</a>
+      </div>
     </div>
 
     <div class="footer">Magic Math Master • Free Demo</div>
   </div>
 
 <script>
-  /*********** 1) CONFIG: paste your Apps Script Web App URL here ***********/
+  /*********** CONFIG ***********/
   const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
 
-  /*********** 2) Questions ***********/
+  /*********** QUESTIONS ***********/
   const qs = [
     { q: "🐶 There are 5 puppies and 2 kittens. How many animals altogether?", a: 7, tip:"Add: 5 + 2" },
     { q: "🐰 9 rabbits are in a pen. 3 hop away. How many are left?", a: 6, tip:"Subtract: 9 − 3" },
@@ -119,13 +184,14 @@
   let i = -1;
   let student = { name: "", grade: "" };
 
-  // Track answers and score
+  // scoring/logging
   let answersLog = [];
   let score = 0;
-  let gotCorrect = new Array(qs.length).fill(false); // count each question once
-  let checkedThisQuestion = false; // OPTION B: must check before next
+  let gotCorrect = new Array(qs.length).fill(false); // final per-question correctness
+  // Option B: must check before next
+  let checkedThisQuestion = false;
 
-  // Load saved profile from this device (optional)
+  // Load saved profile (optional)
   (function loadProfile(){
     try{
       const saved = JSON.parse(localStorage.getItem("mmm_demo_profile") || "null");
@@ -141,31 +207,8 @@
     fb.className = "";
     fb.textContent = "";
   }
-
   function setNextEnabled(enabled){
     document.getElementById("nextBtn").disabled = !enabled;
-  }
-
-  function setCheckEnabled(enabled){
-    document.getElementById("checkBtn").disabled = !enabled;
-  }
-
-  async function sendResultToSheet(payload){
-    if(!ENDPOINT_URL || ENDPOINT_URL.includes("PASTE_YOUR")){
-      return { ok:false, error:"Missing Apps Script URL" };
-    }
-    try{
-      // GitHub Pages → Apps Script: use no-cors so sending works reliably
-      await fetch(ENDPOINT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type":"text/plain;charset=utf-8"},
-        body: JSON.stringify(payload)
-      });
-      return { ok:true };
-    }catch(err){
-      return { ok:false, error:String(err) };
-    }
   }
 
   function start(){
@@ -182,76 +225,34 @@
     student.name = name;
     student.grade = grade || "";
 
-    // Save locally on this device
     try{
       localStorage.setItem("mmm_demo_profile", JSON.stringify({name: student.name, grade: student.grade}));
     }catch(e){}
 
-    // Hide profile/start UI
     document.getElementById("startMsg").style.display = "none";
     document.getElementById("profileBox").style.display = "none";
     document.getElementById("startButtons").style.display = "none";
 
-    // Show question/answer UI
     document.getElementById("qa").classList.remove("hide");
     clearFeedback();
 
     next();
   }
 
-  async function finishAndSave(){
-    const saveEl = document.getElementById("saveStatus");
-    if(saveEl){
-      saveEl.textContent = "Sending your result…";
-    }
-
-    const payload = {
-      level: "Prep–2",
-      name: student.name,
-      grade: student.grade,
-      score: score,
-      total: qs.length,
-      answers: answersLog,
-      userAgent: navigator.userAgent,
-      pageUrl: location.href
-    };
-
-    const out = await sendResultToSheet(payload);
-
-    if(saveEl){
-      if(out && out.ok){
-        saveEl.textContent = "✅ Result sent. Thank you!";
-      }else{
-        saveEl.textContent = "⚠️ Could not send result (temporary issue).";
-        console.log("Save error:", out);
-      }
-    }
-  }
-
   function next(){
     i++;
     clearFeedback();
-
-    // Reset per-question state
     checkedThisQuestion = false;
-    setNextEnabled(false);      // OPTION B: Next disabled until Check
-    setCheckEnabled(true);
+    setNextEnabled(false);
 
     const ansEl = document.getElementById("ans");
     ansEl.value = "";
-    ansEl.style.display = "";
     ansEl.focus();
 
     if(i >= qs.length){
-      document.getElementById("q").textContent = `🏁 Finished! Great effort, ${student.name}! (Score: ${score}/${qs.length})`;
-      document.getElementById("end").style.display = "block";
-      ansEl.style.display = "none";
-      document.getElementById("checkBtn").style.display = "none";
-      document.getElementById("nextBtn").style.display = "none";
-      finishAndSave();
+      finish();
       return;
     }
-
     document.getElementById("q").textContent = qs[i].q;
   }
 
@@ -270,7 +271,7 @@
 
     const correct = (user === qs[i].a);
 
-    // Log attempt
+    // log attempt
     answersLog.push({
       qIndex: i,
       question: qs[i].q,
@@ -280,30 +281,157 @@
       time: new Date().toISOString()
     });
 
-    // Score: count each question at most once (first time they get it correct)
+    // score: count each question once (first time correct)
     if(correct && !gotCorrect[i]){
       gotCorrect[i] = true;
       score += 1;
     }
 
-    // OPTION B: once checked, allow Next
     checkedThisQuestion = true;
     setNextEnabled(true);
 
     if(correct){
       fb.className = "feedback ok";
-      fb.textContent = `✅ Correct, ${student.name}! 🐾 Press Next.`;
-    } else {
+      fb.textContent = `✅ Correct, ${student.name}! Press Next.`;
+    }else{
       fb.className = "feedback bad";
       fb.textContent = `❌ Not quite, ${student.name}. Hint: ${qs[i].tip} (Try again, then press Check again.)`;
     }
   }
 
-  // Nice-to-have: Enter key triggers Check
+  function finish(){
+    // hide quiz controls
+    document.getElementById("q").textContent = `🏁 Finished! Great effort, ${student.name}!`;
+    document.getElementById("end").style.display = "block";
+    document.getElementById("ans").style.display = "none";
+    document.getElementById("checkBtn").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+
+    // final text
+    const percent = Math.round((score / qs.length) * 1000) / 10; // 1 decimal
+    document.getElementById("finalLine").textContent = `Score: ${score}/${qs.length} • ${percent}% correct`;
+
+    // show graph + percent
+    document.getElementById("resultsBox").style.display = "block";
+    document.getElementById("pctText").textContent = `Percentage correct: ${percent}%`;
+
+    // build result array (1/0)
+    const result01 = gotCorrect.map(x => x ? 1 : 0);
+    drawChart(result01);
+
+    // send to sheet
+    finishAndSave(result01, percent);
+  }
+
+  function drawChart(values01){
+    const canvas = document.getElementById("chart");
+    const ctx = canvas.getContext("2d");
+
+    // Clear
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const W = canvas.width, H = canvas.height;
+    const padL = 52, padR = 16, padT = 16, padB = 42;
+
+    // axes
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#1f2937";
+    ctx.beginPath();
+    ctx.moveTo(padL, padT);
+    ctx.lineTo(padL, H - padB);
+    ctx.lineTo(W - padR, H - padB);
+    ctx.stroke();
+
+    // y labels 0 and 1
+    ctx.fillStyle = "#111827";
+    ctx.font = "14px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("1", 28, padT + 12);
+    ctx.fillText("0", 28, H - padB + 6);
+
+    // horizontal guide line at y=1
+    ctx.strokeStyle = "rgba(17,24,39,.25)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT);
+    ctx.lineTo(W - padR, padT);
+    ctx.stroke();
+
+    const n = values01.length;
+    const chartW = (W - padL - padR);
+    const chartH = (H - padT - padB);
+    const gap = 10;
+    const barW = Math.max(18, Math.floor((chartW - gap*(n-1)) / n));
+
+    // bars
+    for(let k=0; k<n; k++){
+      const v = values01[k]; // 0 or 1
+      const barH = v * chartH;
+      const x = padL + k*(barW + gap);
+      const y = (H - padB) - barH;
+
+      // bar
+      ctx.fillStyle = v ? "rgba(11,94,215,.85)" : "rgba(239,68,68,.65)";
+      ctx.fillRect(x, y, barW, barH);
+
+      // label Q#
+      ctx.fillStyle = "#111827";
+      ctx.font = "12px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText(`Q${k+1}`, x + 4, H - padB + 18);
+
+      // value label 0/1 above bar
+      ctx.fillStyle = "#111827";
+      ctx.font = "12px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText(String(v), x + Math.floor(barW/2) - 3, y - 6);
+    }
+  }
+
+  async function sendResultToSheet(payload){
+    if(!ENDPOINT_URL) return { ok:false, error:"Missing Apps Script URL" };
+    try{
+      // GitHub Pages → Apps Script: use no-cors so sending works reliably
+      await fetch(ENDPOINT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type":"text/plain;charset=utf-8"},
+        body: JSON.stringify(payload)
+      });
+      return { ok:true };
+    }catch(err){
+      console.log("Send failed:", err);
+      return { ok:false, error:String(err) };
+    }
+  }
+
+  async function finishAndSave(result01, percent){
+    const saveEl = document.getElementById("saveStatus");
+    saveEl.textContent = "Sending your result…";
+
+    const payload = {
+      level: "Prep–2",
+      name: student.name,
+      grade: student.grade,
+      score: score,
+      total: qs.length,
+      percent: percent,
+      perQuestion01: result01,          // <-- this is what you asked for
+      answers: answersLog,
+      userAgent: navigator.userAgent,
+      pageUrl: location.href
+    };
+
+    const out = await sendResultToSheet(payload);
+    if(out.ok){
+      saveEl.textContent = "✅ Result sent. Thank you!";
+    }else{
+      saveEl.textContent = "⚠️ Could not send result (temporary issue).";
+    }
+  }
+
+  // Enter key triggers Check (kid-friendly)
   document.addEventListener("keydown", function(e){
+    const qaVisible = !document.getElementById("qa").classList.contains("hide");
+    if(!qaVisible) return;
     if(e.key === "Enter"){
-      const qaVisible = !document.getElementById("qa").classList.contains("hide");
-      if(!qaVisible) return;
       e.preventDefault();
       check();
     }
