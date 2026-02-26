@@ -16,6 +16,7 @@
     .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
     button{padding:12px 16px;font-size:16px;font-weight:900;border-radius:12px;border:none;background:#0b5ed7;color:#fff;cursor:pointer;}
     button.secondary{background:#eef2ff;color:#0b5ed7;}
+    button:disabled{opacity:.55;cursor:not-allowed;}
     .feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;line-height:1.5;}
     .ok{background:#e8fff0;border:1px solid #9be7b2;}
     .bad{background:#fff0f0;border:1px solid #f2a6a6;}
@@ -37,7 +38,8 @@
     <h1>Animal Maths Practice (Free Demo)</h1>
 
     <p class="intro">
-      A short, friendly demo for young learners. When you see a question, type your answer (a number).
+      A short, friendly demo for young learners. When you see a question, type your answer (a number),
+      then press <b>Check</b>. After checking, press <b>Next</b>.
     </p>
 
     <p class="back" style="margin:0 0 6px;">
@@ -65,8 +67,8 @@
       </div>
 
       <div class="note">
-        Privacy: this demo will save the student’s <b>name, grade, and score</b> to Magic Math Master’s records (Google Sheet) to help improve lessons.
-        No email/phone is collected here.
+        Privacy: this demo saves the student’s <b>name, grade, and score</b> to Magic Math Master’s records (Google Sheet)
+        to help improve lessons. No email/phone is collected here.
       </div>
     </div>
 
@@ -74,9 +76,10 @@
     <div id="qa" class="hide">
       <div id="q" class="q"></div>
       <input id="ans" inputmode="numeric" placeholder="Type a number (e.g., 7)">
+
       <div class="btnrow">
         <button id="checkBtn" onclick="check()">Check</button>
-        <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+        <button id="nextBtn" class="secondary" onclick="next()" disabled>Next</button>
       </div>
     </div>
 
@@ -99,7 +102,7 @@
 
 <script>
   /*********** 1) CONFIG: paste your Apps Script Web App URL here ***********/
-   const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+  const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
 
   /*********** 2) Questions ***********/
   const qs = [
@@ -119,7 +122,8 @@
   // Track answers and score
   let answersLog = [];
   let score = 0;
-  let gotCorrect = new Array(qs.length).fill(false); // so we only count each question once
+  let gotCorrect = new Array(qs.length).fill(false); // count each question once
+  let checkedThisQuestion = false; // OPTION B: must check before next
 
   // Load saved profile from this device (optional)
   (function loadProfile(){
@@ -138,18 +142,27 @@
     fb.textContent = "";
   }
 
+  function setNextEnabled(enabled){
+    document.getElementById("nextBtn").disabled = !enabled;
+  }
+
+  function setCheckEnabled(enabled){
+    document.getElementById("checkBtn").disabled = !enabled;
+  }
+
   async function sendResultToSheet(payload){
     if(!ENDPOINT_URL || ENDPOINT_URL.includes("PASTE_YOUR")){
       return { ok:false, error:"Missing Apps Script URL" };
     }
     try{
-      const res = await fetch(ENDPOINT_URL, {
+      // GitHub Pages → Apps Script: use no-cors so sending works reliably
+      await fetch(ENDPOINT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: {"Content-Type":"text/plain;charset=utf-8"},
         body: JSON.stringify(payload)
       });
-      const out = await res.json().catch(()=> ({}));
-      return out;
+      return { ok:true };
     }catch(err){
       return { ok:false, error:String(err) };
     }
@@ -187,10 +200,9 @@
   }
 
   async function finishAndSave(){
-    // Show a small status message (optional)
     const saveEl = document.getElementById("saveStatus");
     if(saveEl){
-      saveEl.textContent = "Saving your result…";
+      saveEl.textContent = "Sending your result…";
     }
 
     const payload = {
@@ -208,9 +220,9 @@
 
     if(saveEl){
       if(out && out.ok){
-        saveEl.textContent = "✅ Result saved. Thank you!";
+        saveEl.textContent = "✅ Result sent. Thank you!";
       }else{
-        saveEl.textContent = "⚠️ Result not saved (temporary issue). You can still continue browsing.";
+        saveEl.textContent = "⚠️ Could not send result (temporary issue).";
         console.log("Save error:", out);
       }
     }
@@ -219,17 +231,23 @@
   function next(){
     i++;
     clearFeedback();
-    document.getElementById("ans").value = "";
-    document.getElementById("ans").focus();
+
+    // Reset per-question state
+    checkedThisQuestion = false;
+    setNextEnabled(false);      // OPTION B: Next disabled until Check
+    setCheckEnabled(true);
+
+    const ansEl = document.getElementById("ans");
+    ansEl.value = "";
+    ansEl.style.display = "";
+    ansEl.focus();
 
     if(i >= qs.length){
       document.getElementById("q").textContent = `🏁 Finished! Great effort, ${student.name}! (Score: ${score}/${qs.length})`;
       document.getElementById("end").style.display = "block";
-      document.getElementById("ans").style.display = "none";
+      ansEl.style.display = "none";
       document.getElementById("checkBtn").style.display = "none";
       document.getElementById("nextBtn").style.display = "none";
-
-      // Send result to Google Sheet
       finishAndSave();
       return;
     }
@@ -238,7 +256,7 @@
   }
 
   function check(){
-    if(i < 0) return;
+    if(i < 0 || i >= qs.length) return;
 
     const raw = document.getElementById("ans").value.trim();
     const user = Number(raw);
@@ -268,15 +286,28 @@
       score += 1;
     }
 
+    // OPTION B: once checked, allow Next
+    checkedThisQuestion = true;
+    setNextEnabled(true);
+
     if(correct){
       fb.className = "feedback ok";
-      fb.textContent = `✅ Correct, ${student.name}! 🐾`;
+      fb.textContent = `✅ Correct, ${student.name}! 🐾 Press Next.`;
     } else {
       fb.className = "feedback bad";
-      fb.textContent = `❌ Not quite, ${student.name}. Hint: ${qs[i].tip}`;
+      fb.textContent = `❌ Not quite, ${student.name}. Hint: ${qs[i].tip} (Try again, then press Check again.)`;
     }
   }
+
+  // Nice-to-have: Enter key triggers Check
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+      const qaVisible = !document.getElementById("qa").classList.contains("hide");
+      if(!qaVisible) return;
+      e.preventDefault();
+      check();
+    }
+  });
 </script>
 </body>
-
 </html>
