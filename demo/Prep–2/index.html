@@ -4,15 +4,43 @@
   <meta charset="UTF-8">
   <title>Prep–Year 2 Animal Maths | Free Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f7f5;margin:0;padding:24px;}
-    .card{max-width:720px;margin:auto;background:#fff;border-radius:18px;padding:22px;box-shadow:0 10px 26px rgba(0,0,0,.08);}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#f3f7f5;
+      margin:0;
+      padding:24px;
+    }
+    .card{
+      max-width:760px;
+      margin:auto;
+      background:#fff;
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 10px 26px rgba(0,0,0,.08);
+    }
     h1{margin:0 0 10px;color:#0b5ed7;font-weight:1000;}
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(11,94,215,.08);
+      border:1px solid rgba(11,94,215,.18);
+      color:#0b5ed7;
+      font-weight:900;
+      margin-bottom:10px;
+    }
     .intro{color:#555;font-weight:650;line-height:1.6;margin-bottom:10px;}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(11,94,215,.08);border:1px solid rgba(11,94,215,.18);color:#0b5ed7;font-weight:900;margin-bottom:10px;}
     .q{font-size:20px;font-weight:900;margin:14px 0 10px;}
 
-    input, select{
+    label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:800;
+      color:#334155;
+    }
+    input,select{
       width:100%;
       padding:12px;
       font-size:16px;
@@ -21,421 +49,333 @@
       box-sizing:border-box;
     }
 
-    label{
-      display:block;
-      margin-bottom:6px;
-      font-weight:800;
-      color:#334155;
-    }
-
-    /* spacing fix for name/grade */
     .row2{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
       margin-bottom:14px;
     }
-    .field{ margin-bottom:14px; }
-    @media (max-width:720px){ .row2{grid-template-columns:1fr;} }
+    .field{margin-bottom:14px;}
+    @media (max-width:720px){
+      .row2{grid-template-columns:1fr;}
+    }
 
-    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
-    button{padding:12px 16px;font-size:16px;font-weight:900;border-radius:12px;border:none;background:#0b5ed7;color:#fff;cursor:pointer;}
-    button.secondary{background:#eef2ff;color:#0b5ed7;}
-    button:disabled{opacity:.55;cursor:not-allowed;}
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    button{
+      padding:12px 16px;
+      font-size:16px;
+      font-weight:900;
+      border-radius:12px;
+      border:none;
+      background:#0b5ed7;
+      color:#fff;
+      cursor:pointer;
+    }
+    button.secondary{
+      background:#eef2ff;
+      color:#0b5ed7;
+    }
+    button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
 
-    .feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;line-height:1.5;}
+    .feedback{
+      margin-top:12px;
+      padding:12px;
+      border-radius:12px;
+      font-weight:800;
+      line-height:1.5;
+    }
     .ok{background:#e8fff0;border:1px solid #9be7b2;}
     .bad{background:#fff0f0;border:1px solid #f2a6a6;}
 
-    .cta{margin-top:16px;padding:14px;border-radius:14px;background:#fff7e8;border:1px solid rgba(245,158,11,.35);color:#555;font-weight:700;line-height:1.6;}
-    .cta a{color:#7a4a00;font-weight:1000;text-decoration:none;border-bottom:1px solid rgba(122,74,0,.35);}
-    .cta a:hover{border-bottom-color:rgba(122,74,0,.7);}
-
-    .footer{margin-top:16px;padding-top:12px;border-top:1px dashed #ccc;text-align:center;color:#666;font-weight:650;}
-    .back a{font-weight:900;color:#0b5ed7;text-decoration:none;border-bottom:1px solid rgba(11,94,215,.35);}
-    .back a:hover{border-bottom-color:rgba(11,94,215,.7);}
     .hide{display:none;}
-    .note{margin-top:10px;color:#64748b;font-weight:650;line-height:1.6;font-size:14px;}
 
-    /* graph */
+    .cta{
+      margin-top:16px;
+      padding:16px;
+      border-radius:14px;
+      background:#fff7e8;
+      border:1px solid rgba(245,158,11,.35);
+      color:#555;
+      font-weight:700;
+    }
+
+    .note{
+      margin-top:10px;
+      color:#64748b;
+      font-weight:650;
+      font-size:14px;
+      line-height:1.6;
+    }
+
     .resultBox{
-      margin-top:14px;
-      padding:12px;
+      margin-top:16px;
+      padding:14px;
       border-radius:14px;
       background:rgba(11,94,215,.05);
       border:1px solid rgba(11,94,215,.18);
     }
     .resultTitle{
-      margin:0 0 8px;
       font-weight:1000;
       color:#0b5ed7;
-    }
-    .pct{
-      font-weight:1000;
-      margin:6px 0 10px;
-      color:#0b5ed7;
+      margin-bottom:6px;
     }
     canvas{
       width:100%;
-      max-width:100%;
       height:220px;
-      display:block;
       background:#fff;
       border-radius:12px;
-      border:1px solid rgba(2,6,23,.10);
+      border:1px solid rgba(0,0,0,.12);
+      margin-top:8px;
+    }
+
+    ul{margin:6px 0 0 18px;}
+    li{margin-bottom:6px;}
+
+    .footer{
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px dashed #ccc;
+      text-align:center;
+      color:#666;
+      font-weight:650;
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <div class="pill">🌱 Prep – Year 2 • Animals</div>
-    <h1>Animal Maths Practice (Free Demo)</h1>
+<div class="card">
 
-    <p class="intro">
-      Type your answer, then press <b>Check</b>. After checking, press <b>Next</b>.
-    </p>
+  <div class="pill">🌱 Prep – Year 2 • Animals</div>
+  <h1>Animal Maths Practice (Free Demo)</h1>
 
-    <p class="back" style="margin:0 0 6px;"><a href="../">← Back to level select</a></p>
+  <p class="intro">
+    Type your answer, press <b>Check</b>, then press <b>Next</b>.
+  </p>
 
-    <div id="startMsg" class="q">Enter your details, then press <b>Start</b> 🐾</div>
+  <!-- START -->
+  <div id="startMsg" class="q">Enter your details, then press <b>Start</b> 🐾</div>
 
-    <div id="profileBox">
-      <div class="row2">
-        <div class="field">
-          <label for="studentName">Student name</label>
-          <input id="studentName" placeholder="e.g., Anna" autocomplete="name">
-        </div>
-
-        <div class="field">
-          <label for="studentGrade">Grade</label>
-          <select id="studentGrade">
-            <option value="">Select…</option>
-            <option>Prep</option>
-            <option>Year 1</option>
-            <option>Year 2</option>
-          </select>
-        </div>
+  <div id="profileBox">
+    <div class="row2">
+      <div class="field">
+        <label>Student name</label>
+        <input id="studentName" placeholder="e.g., Anna">
       </div>
-
-      <div class="note">
-        This demo saves the student’s <b>name, grade, and score</b> to a Google Sheet.
-        No email or phone number is collected.
+      <div class="field">
+        <label>Grade</label>
+        <select id="studentGrade">
+          <option value="">Select…</option>
+          <option>Prep</option>
+          <option>Year 1</option>
+          <option>Year 2</option>
+        </select>
       </div>
     </div>
-
-    <div id="qa" class="hide">
-      <div id="q" class="q"></div>
-      <input id="ans" inputmode="numeric" placeholder="Type a number (e.g., 7)">
-
-      <div class="btnrow">
-        <button id="checkBtn" onclick="check()">Check</button>
-        <button id="nextBtn" class="secondary" onclick="next()" disabled>Next</button>
-      </div>
+    <div class="note">
+      This short demo helps us understand how your child thinks.
+      No email or phone number is collected.
     </div>
-
-    <div id="startButtons" class="btnrow">
-      <button onclick="start()">Start</button>
-    </div>
-
-    <div id="fb"></div>
-
-    <div id="end" class="cta" style="display:none;">
-      🎉 <b>Well done!</b><br>
-      <div id="finalLine" style="margin-top:8px;"></div>
-
-      <!-- Graph + percentage -->
-      <div class="resultBox" id="resultsBox" style="display:none;">
-        <div class="resultTitle">Your results (Correct=1, Incorrect=0)</div>
-        <div class="pct" id="pctText"></div>
-        <canvas id="chart" width="900" height="260" aria-label="Results chart" role="img"></canvas>
-        <div class="note" style="margin-top:10px;">
-          Each bar shows if the question was eventually answered correctly (1) or not (0).
-        </div>
-      </div>
-
-      <div class="note" id="saveStatus" style="margin-top:10px;"></div>
-
-      <div style="margin-top:10px;">
-        Want full practice + personalised support? 👉
-        <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank" rel="noopener">Enquire / Register →</a>
-      </div>
-    </div>
-
-    <div class="footer">Magic Math Master • Free Demo</div>
   </div>
 
+  <div id="startButtons" class="btnrow">
+    <button onclick="start()">Start</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="qa" class="hide">
+    <div id="q" class="q"></div>
+    <input id="ans" inputmode="numeric" placeholder="Type a number">
+
+    <div class="btnrow">
+      <button id="checkBtn" onclick="check()">Check</button>
+      <button id="nextBtn" class="secondary" onclick="next()" disabled>Next</button>
+    </div>
+  </div>
+
+  <div id="fb"></div>
+
+  <!-- END -->
+  <div id="end" class="cta hide">
+    <div id="finalLine"></div>
+
+    <!-- Graph -->
+    <div class="resultBox">
+      <div class="resultTitle">Results overview</div>
+      <div id="pctText"></div>
+      <canvas id="chart" width="800" height="260"></canvas>
+    </div>
+
+    <!-- Parent summary -->
+    <div class="resultBox">
+      <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
+
+      <p id="parentOverview"></p>
+
+      <p><b>What your child did well:</b></p>
+      <ul id="strengthList"></ul>
+
+      <p><b>What to practise next:</b></p>
+      <ul id="nextList"></ul>
+
+      <p class="note">
+        This demo is <b>not a test</b>. It helps us plan calm, confidence-building lessons
+        suited to your child’s needs.
+      </p>
+    </div>
+
+    <div id="saveStatus" class="note"></div>
+
+    <div class="note">
+      Interested in a personalised learning plan?
+      <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank">
+        Enquire or register →
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">Magic Math Master • Free Demo</div>
+</div>
+
 <script>
-  /*********** CONFIG ***********/
-  const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
+/* ================= CONFIG ================= */
+const ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
 
-  /*********** QUESTIONS ***********/
-  const qs = [
-    { q: "🐶 There are 5 puppies and 2 kittens. How many animals altogether?", a: 7, tip:"Add: 5 + 2" },
-    { q: "🐰 9 rabbits are in a pen. 3 hop away. How many are left?", a: 6, tip:"Subtract: 9 − 3" },
-    { q: "🐤 4 nests. Each nest has 2 chicks. How many chicks?", a: 8, tip:"Groups of 2: 4 × 2" },
-    { q: "🦁 Count the legs: 3 lions. Each has 4 legs. How many legs?", a: 12, tip:"3 × 4" },
-    { q: "🐢 You see 10 turtles. 1 hides. How many can you see now?", a: 9, tip:"10 − 1" },
-    { q: "🦉 Owl hoots: 2 hoots, then 4 hoots, then 6 hoots. What comes next?", a: 8, tip:"It goes up by 2 each time." },
-    { q: "🐠 6 fish swim by. Then 6 more swim by. How many fish?", a: 12, tip:"6 + 6" },
-    { q: "🦋 There are 14 butterflies. 7 fly away. How many are left?", a: 7, tip:"14 − 7" }
-  ];
+const qs = [
+  { q:"Counting and adding animals (5 + 2)", a:7 },
+  { q:"Subtracting animals (9 − 3)", a:6 },
+  { q:"Equal groups (4 × 2)", a:8 },
+  { q:"Counting legs (3 × 4)", a:12 }
+];
 
-  let i = -1;
-  let student = { name: "", grade: "" };
+let i=-1, score=0;
+let student={name:"",grade:""};
+let gotCorrect=new Array(qs.length).fill(false);
 
-  // scoring/logging
-  let answersLog = [];
-  let score = 0;
-  let gotCorrect = new Array(qs.length).fill(false); // final per-question correctness
-  // Option B: must check before next
-  let checkedThisQuestion = false;
+const el=id=>document.getElementById(id);
 
-  // Load saved profile (optional)
-  (function loadProfile(){
-    try{
-      const saved = JSON.parse(localStorage.getItem("mmm_demo_profile") || "null");
-      if(saved && typeof saved === "object"){
-        if(saved.name) document.getElementById("studentName").value = saved.name;
-        if(saved.grade) document.getElementById("studentGrade").value = saved.grade;
-      }
-    }catch(e){}
-  })();
+/* ================= FLOW ================= */
+function start(){
+  student.name=el("studentName").value.trim();
+  student.grade=el("studentGrade").value;
+  if(!student.name){alert("Please enter student name");return;}
 
-  function clearFeedback(){
-    const fb = document.getElementById("fb");
-    fb.className = "";
-    fb.textContent = "";
-  }
-  function setNextEnabled(enabled){
-    document.getElementById("nextBtn").disabled = !enabled;
-  }
+  el("profileBox").style.display="none";
+  el("startButtons").style.display="none";
+  el("startMsg").style.display="none";
+  el("qa").classList.remove("hide");
 
-  function start(){
-    const name = document.getElementById("studentName").value.trim();
-    const grade = document.getElementById("studentGrade").value;
+  next();
+}
 
-    if(!name){
-      const fb = document.getElementById("fb");
-      fb.className = "feedback bad";
-      fb.textContent = "Please type the student name, then press Start.";
-      return;
-    }
+function next(){
+  i++;
+  el("fb").textContent="";
+  el("nextBtn").disabled=true;
+  el("ans").value="";
 
-    student.name = name;
-    student.grade = grade || "";
+  if(i>=qs.length){ finish(); return; }
+  el("q").textContent=qs[i].q;
+}
 
-    try{
-      localStorage.setItem("mmm_demo_profile", JSON.stringify({name: student.name, grade: student.grade}));
-    }catch(e){}
-
-    document.getElementById("startMsg").style.display = "none";
-    document.getElementById("profileBox").style.display = "none";
-    document.getElementById("startButtons").style.display = "none";
-
-    document.getElementById("qa").classList.remove("hide");
-    clearFeedback();
-
-    next();
+function check(){
+  const v=Number(el("ans").value);
+  if(!Number.isFinite(v)){
+    el("fb").className="feedback bad";
+    el("fb").textContent="Please type a number.";
+    return;
   }
 
-  function next(){
-    i++;
-    clearFeedback();
-    checkedThisQuestion = false;
-    setNextEnabled(false);
-
-    const ansEl = document.getElementById("ans");
-    ansEl.value = "";
-    ansEl.focus();
-
-    if(i >= qs.length){
-      finish();
-      return;
-    }
-    document.getElementById("q").textContent = qs[i].q;
+  if(v===qs[i].a){
+    if(!gotCorrect[i]) score++;
+    gotCorrect[i]=true;
+    el("fb").className="feedback ok";
+    el("fb").textContent="Correct!";
+  }else{
+    el("fb").className="feedback bad";
+    el("fb").textContent="That one was tricky — let’s practise it more.";
   }
+  el("nextBtn").disabled=false;
+}
 
-  function check(){
-    if(i < 0 || i >= qs.length) return;
+function finish(){
+  el("qa").style.display="none";
+  el("end").classList.remove("hide");
 
-    const raw = document.getElementById("ans").value.trim();
-    const user = Number(raw);
-    const fb = document.getElementById("fb");
+  const pct=Math.round(score/qs.length*100);
+  el("finalLine").textContent=`Score: ${score}/${qs.length} (${pct}%)`;
+  el("pctText").textContent=`Percentage correct: ${pct}%`;
 
-    if(!Number.isFinite(user)){
-      fb.className = "feedback bad";
-      fb.textContent = "Please type a number (like 6).";
-      return;
-    }
+  drawChart(gotCorrect.map(v=>v?1:0));
+  buildParentSummary();
+  saveResult(pct);
+}
 
-    const correct = (user === qs[i].a);
-
-    // log attempt
-    answersLog.push({
-      qIndex: i,
-      question: qs[i].q,
-      userAnswer: raw,
-      correctAnswer: qs[i].a,
-      correct: correct,
-      time: new Date().toISOString()
-    });
-
-    // score: count each question once (first time correct)
-    if(correct && !gotCorrect[i]){
-      gotCorrect[i] = true;
-      score += 1;
-    }
-
-    checkedThisQuestion = true;
-    setNextEnabled(true);
-
-    if(correct){
-      fb.className = "feedback ok";
-      fb.textContent = `✅ Correct, ${student.name}! Press Next.`;
-    }else{
-      fb.className = "feedback bad";
-      fb.textContent = `❌ Not quite, ${student.name}. Hint: ${qs[i].tip} (Try again, then press Check again.)`;
-    }
-  }
-
-  function finish(){
-    // hide quiz controls
-    document.getElementById("q").textContent = `🏁 Finished! Great effort, ${student.name}!`;
-    document.getElementById("end").style.display = "block";
-    document.getElementById("ans").style.display = "none";
-    document.getElementById("checkBtn").style.display = "none";
-    document.getElementById("nextBtn").style.display = "none";
-
-    // final text
-    const percent = Math.round((score / qs.length) * 1000) / 10; // 1 decimal
-    document.getElementById("finalLine").textContent = `Score: ${score}/${qs.length} • ${percent}% correct`;
-
-    // show graph + percent
-    document.getElementById("resultsBox").style.display = "block";
-    document.getElementById("pctText").textContent = `Percentage correct: ${percent}%`;
-
-    // build result array (1/0)
-    const result01 = gotCorrect.map(x => x ? 1 : 0);
-    drawChart(result01);
-
-    // send to sheet
-    finishAndSave(result01, percent);
-  }
-
-  function drawChart(values01){
-    const canvas = document.getElementById("chart");
-    const ctx = canvas.getContext("2d");
-
-    // Clear
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    const W = canvas.width, H = canvas.height;
-    const padL = 52, padR = 16, padT = 16, padB = 42;
-
-    // axes
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "#1f2937";
-    ctx.beginPath();
-    ctx.moveTo(padL, padT);
-    ctx.lineTo(padL, H - padB);
-    ctx.lineTo(W - padR, H - padB);
-    ctx.stroke();
-
-    // y labels 0 and 1
-    ctx.fillStyle = "#111827";
-    ctx.font = "14px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-    ctx.fillText("1", 28, padT + 12);
-    ctx.fillText("0", 28, H - padB + 6);
-
-    // horizontal guide line at y=1
-    ctx.strokeStyle = "rgba(17,24,39,.25)";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padL, padT);
-    ctx.lineTo(W - padR, padT);
-    ctx.stroke();
-
-    const n = values01.length;
-    const chartW = (W - padL - padR);
-    const chartH = (H - padT - padB);
-    const gap = 10;
-    const barW = Math.max(18, Math.floor((chartW - gap*(n-1)) / n));
-
-    // bars
-    for(let k=0; k<n; k++){
-      const v = values01[k]; // 0 or 1
-      const barH = v * chartH;
-      const x = padL + k*(barW + gap);
-      const y = (H - padB) - barH;
-
-      // bar
-      ctx.fillStyle = v ? "rgba(11,94,215,.85)" : "rgba(239,68,68,.65)";
-      ctx.fillRect(x, y, barW, barH);
-
-      // label Q#
-      ctx.fillStyle = "#111827";
-      ctx.font = "12px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-      ctx.fillText(`Q${k+1}`, x + 4, H - padB + 18);
-
-      // value label 0/1 above bar
-      ctx.fillStyle = "#111827";
-      ctx.font = "12px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-      ctx.fillText(String(v), x + Math.floor(barW/2) - 3, y - 6);
-    }
-  }
-
-  async function sendResultToSheet(payload){
-    if(!ENDPOINT_URL) return { ok:false, error:"Missing Apps Script URL" };
-    try{
-      // GitHub Pages → Apps Script: use no-cors so sending works reliably
-      await fetch(ENDPOINT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {"Content-Type":"text/plain;charset=utf-8"},
-        body: JSON.stringify(payload)
-      });
-      return { ok:true };
-    }catch(err){
-      console.log("Send failed:", err);
-      return { ok:false, error:String(err) };
-    }
-  }
-
-  async function finishAndSave(result01, percent){
-    const saveEl = document.getElementById("saveStatus");
-    saveEl.textContent = "Sending your result…";
-
-    const payload = {
-      level: "Prep–2",
-      name: student.name,
-      grade: student.grade,
-      score: score,
-      total: qs.length,
-      percent: percent,
-      perQuestion01: result01,          // <-- this is what you asked for
-      answers: answersLog,
-      userAgent: navigator.userAgent,
-      pageUrl: location.href
-    };
-
-    const out = await sendResultToSheet(payload);
-    if(out.ok){
-      saveEl.textContent = "✅ Result sent. Thank you!";
-    }else{
-      saveEl.textContent = "⚠️ Could not send result (temporary issue).";
-    }
-  }
-
-  // Enter key triggers Check (kid-friendly)
-  document.addEventListener("keydown", function(e){
-    const qaVisible = !document.getElementById("qa").classList.contains("hide");
-    if(!qaVisible) return;
-    if(e.key === "Enter"){
-      e.preventDefault();
-      check();
-    }
+/* ================= GRAPH ================= */
+function drawChart(vals){
+  const c=el("chart"),ctx=c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+  const barW=50,gap=20,base=220;
+  vals.forEach((v,i)=>{
+    const h=v*180;
+    ctx.fillStyle=v?"#0b5ed7":"#ef4444";
+    ctx.fillRect(60+i*(barW+gap),base-h,barW,h);
+    ctx.fillStyle="#000";
+    ctx.fillText(`Q${i+1}`,60+i*(barW+gap)+10,base+18);
+    ctx.fillText(v,60+i*(barW+gap)+18,base-h-6);
   });
+}
+
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  const strengths=[], next=[];
+  qs.forEach((q,i)=>{
+    if(gotCorrect[i]) strengths.push(q.q);
+    else next.push(q.q);
+  });
+
+  el("parentOverview").textContent =
+    score===qs.length
+      ? "🌟 Excellent work! Your child showed strong understanding across all questions."
+      : score>=qs.length*0.6
+        ? "👍 Your child shows developing understanding with some areas to strengthen."
+        : "🌱 Your child is still building confidence, which is very normal at this stage.";
+
+  el("strengthList").innerHTML =
+    strengths.length ? strengths.map(s=>`<li>${s}</li>`).join("") :
+    "<li>Showing effort and willingness to try.</li>";
+
+  el("nextList").innerHTML =
+    next.length ? next.map(n=>`<li>${n}</li>`).join("") :
+    "<li>Continue practising to build speed and confidence.</li>";
+}
+
+/* ================= SAVE ================= */
+async function saveResult(pct){
+  el("saveStatus").textContent="Saving result…";
+  await fetch(ENDPOINT_URL,{
+    method:"POST",
+    mode:"no-cors",
+    body:JSON.stringify({
+      level:"Prep–2",
+      name:student.name,
+      grade:student.grade,
+      score,total:qs.length,
+      percent:pct,
+      perQuestion01:gotCorrect.map(v=>v?1:0)
+    })
+  });
+  el("saveStatus").textContent="✅ Result saved.";
+}
 </script>
+
 </body>
 </html>
