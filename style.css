@@ -242,7 +242,10 @@ a{ color:inherit; }
 .btn-success{ background: var(--success); color:#fff; }
 .btn-amber{ background: var(--accent); color:#111827; }
 .btn-red{ background: var(--red); color:#fff }
-
+.btn-cyan {
+      background: #0ea5b7;
+      color: #fff;
+    }
 
 .btn-success:hover{ background: var(--success-hover); }
 .btn-amber:hover{ background: var(--accent-hover); }
