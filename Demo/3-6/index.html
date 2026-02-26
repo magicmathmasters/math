@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Free Soccer Maths Practice | Magic Math Master</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f3f7f5;
+      margin: 0;
+      padding: 24px;
+    }
+    .card{
+      max-width: 720px;
+      margin: auto;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+    }
+    h1{
+      margin-top: 0;
+      color: #0b5ed7;
+      font-weight: 1000;
+    }
+    .intro{
+      color: #555;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .question{
+      font-size: 20px;
+      font-weight: 900;
+      margin: 16px 0 10px;
+    }
+    input{
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+    }
+    button{
+      margin-top: 12px;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 12px;
+      border: none;
+      background: #0b5ed7;
+      color: white;
+      cursor: pointer;
+    }
+    button.secondary{
+      background: #eef2ff;
+      color: #0b5ed7;
+    }
+    .feedback{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .ok{ background: #e8fff0; border: 1px solid #9be7b2; }
+    .bad{ background: #fff0f0; border: 1px solid #f2a6a6; }
+    .footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed #ccc;
+      text-align: center;
+      color: #555;
+      font-weight: 600;
+    }
+    .cta{
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f6f9ff;
+      border: 1px solid #c9dbff;
+    }
+    .cta a{
+      color: #0b5ed7;
+      font-weight: 900;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>⚽ Free Soccer Maths Practice</h1>
+
+    <p class="intro">
+      Try a short maths practice set for <strong>Grades 3–6</strong>, using fun soccer-themed questions.
+      This demo shows how we explain maths clearly and calmly.
+    </p>
+
+    <div id="question" class="question">Press Start to kick off!</div>
+
+    <input id="answer" placeholder="Type your answer here">
+
+    <button onclick="check()">Check Answer</button>
+    <button class="secondary" onclick="next()">Next Question</button>
+
+    <div id="feedback"></div>
+
+    <div id="end" class="cta" style="display:none;">
+      🎉 <strong>Well done!</strong><br><br>
+      This was a short demo. Full practice sets include:
+      <ul style="text-align:left;">
+        <li>Adaptive difficulty</li>
+        <li>More topics (fractions, decimals, problem-solving)</li>
+        <li>Guided support and feedback</li>
+      </ul>
+      👉 <a href="/contact.html">Enquire or register to access full practice →</a>
+    </div>
+
+    <div class="footer">
+      Magic Math Master • Free Demo
+    </div>
+  </div>
+
+<script>
+const questions = [
+  { q: "⚽ A team scored 12 goals on Saturday and 9 goals on Sunday. How many goals in total?", a: 21 },
+  { q: "🥅 A goalkeeper stopped 28 shots in the first half and 17 in the second half. How many shots did they stop?", a: 45 },
+  { q: "⚽ There are 11 players on each team. How many players are on the field altogether?", a: 22 },
+  { q: "🏟️ A stadium has 4 sections with 125 seats each. How many seats are there?", a: 500 },
+  { q: "⚽ A player scored 3 goals out of 6 shots. What fraction of the shots were goals? (simplify)", a: 0.5 },
+  { q: "📊 1/4 of the team are defenders. If there are 12 players, how many defenders?", a: 3 },
+  { q: "⚽ A match lasts 90 minutes. The first half is 45 minutes. How long is the second half?", a: 45 },
+  { q: "🏆 A team earns 3 points for a win. They win 6 matches. How many points?", a: 18 }
+];
+
+let i = -1;
+
+function next(){
+  i++;
+  document.getElementById("feedback").innerHTML = "";
+  document.getElementById("answer").value = "";
+
+  if(i >= questions.length){
+    document.getElementById("question").innerHTML = "🏁 Practice finished!";
+    document.getElementById("end").style.display = "block";
+    return;
+  }
+
+  document.getElementById("question").innerHTML = questions[i].q;
+}
+
+function check(){
+  if(i < 0) return;
+
+  const input = document.getElementById("answer").value.trim();
+  const user = input.includes("/") ? eval(input) : Number(input);
+
+  const correct = questions[i].a;
+
+  const box = document.getElementById("feedback");
+
+  if(Math.abs(user - correct) < 1e-9){
+    box.className = "feedback ok";
+    box.innerHTML = "✅ Correct! Nice work.";
+  }else{
+    box.className = "feedback bad";
+    box.innerHTML = "❌ Not quite. Try thinking step by step.";
+  }
+}
+</script>
+</body>
+</html>

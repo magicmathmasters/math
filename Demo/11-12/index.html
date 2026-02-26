@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Year 11–12 Nursing Modelling | Free Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f7f5;margin:0;padding:24px;}
+    .card{max-width:820px;margin:auto;background:#fff;border-radius:18px;padding:22px;box-shadow:0 10px 26px rgba(0,0,0,.08);}
+    h1{margin:0 0 10px;color:#0b5ed7;font-weight:1000;}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(11,94,215,.08);border:1px solid rgba(11,94,215,.18);color:#0b5ed7;font-weight:900;margin-bottom:10px;}
+    .intro{color:#555;font-weight:650;line-height:1.6;margin-bottom:12px;}
+    .disclaimer{background:#fff7e8;border:1px solid rgba(245,158,11,.35);border-radius:14px;padding:12px;color:#555;font-weight:700;line-height:1.6;margin-bottom:16px;}
+    .q{font-size:20px;font-weight:900;margin:14px 0 10px;}
+    input{width:100%;padding:12px;font-size:18px;border-radius:12px;border:1px solid #ccc;}
+    button{margin-top:12px;padding:12px 16px;font-size:16px;font-weight:900;border-radius:12px;border:none;background:#0b5ed7;color:#fff;cursor:pointer;}
+    button.secondary{background:#eef2ff;color:#0b5ed7;}
+    .feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;line-height:1.55;}
+    .ok{background:#e8fff0;border:1px solid #9be7b2;}
+    .bad{background:#fff0f0;border:1px solid #f2a6a6;}
+    .small{margin-top:10px;color:#666;font-weight:650;line-height:1.6;}
+    .cta{margin-top:16px;padding:14px;border-radius:14px;background:#f6f9ff;border:1px solid rgba(11,94,215,.18);color:#555;font-weight:700;line-height:1.6;}
+    .cta a{color:#0b5ed7;font-weight:1000;text-decoration:none;border-bottom:1px solid rgba(11,94,215,.35);}
+    .cta a:hover{border-bottom-color:rgba(11,94,215,.7);}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="pill">🏆 Year 11 – Year 12 • Nursing Modelling</div>
+    <h1>Nursing Modelling (Maths) — Free Demo</h1>
+
+    <p class="intro">
+      This demo uses nursing-inspired scenarios to practise maths modelling (rates, linear/exponential models, and simple queue thinking).
+    </p>
+    <div class="disclaimer">
+      <b>Note:</b> These are <b>educational maths problems</b> and are <b>not clinical or medication advice</b>.
+    </div>
+
+    <div id="q" class="q">Press Start to begin</div>
+    <input id="ans" placeholder="Type a number (decimals OK)">
+
+    <button onclick="check()">Check</button>
+    <button class="secondary" onclick="next()">Next</button>
+
+    <div id="fb"></div>
+    <div id="hint" class="small"></div>
+
+    <div id="end" class="cta" style="display:none;">
+      🎉 <b>Well done!</b> Want more modelling practice and exam-style questions? 👉
+      <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank" rel="noopener">Enquire / Register →</a>
+    </div>
+  </div>
+
+<script>
+  function parseNum(s){
+    s = String(s).trim();
+    if(!s) return NaN;
+    return Number(s);
+  }
+  function close(a,b,eps=1e-6){ return Math.abs(a-b) < eps; }
+
+  const qs = [
+    {
+      q:"👩‍⚕️ Staffing ratio: A ward aims for 1 nurse per 5 patients. If there are 27 patients, how many nurses are needed (round up)?",
+      a:6,
+      hint:"27/5 = 5.4 → round up to 6."
+    },
+    {
+      q:"⏱️ Patient flow: Patients arrive at 6 per hour. The team can discharge 5 per hour. If this continues for 4 hours, how many more patients are waiting (net change)?",
+      a:4,
+      hint:"Net +1 per hour → 4 hours → +4."
+    },
+    {
+      q:"🧴 Inventory (linear): A unit uses 18 gloves per hour. Starting stock is 500 gloves. After 10 hours, how many remain?",
+      a:320,
+      hint:"Used = 18×10 = 180. 500−180=320."
+    },
+    {
+      q:"📉 Infection control (exponential): A surface contamination level decreases by 20% each hour. Start level = 100 units. After 2 hours, what is the level?",
+      a:64,
+      hint:"100×0.8×0.8 = 64."
+    },
+    {
+      q:"📈 Simple model: Waiting time W (minutes) is modelled by W = 8 + 3n, where n is number of patients ahead. If n=6, what is W?",
+      a:26,
+      hint:"8 + 3×6 = 26."
+    },
+    {
+      q:"🗓️ Shift planning: A nurse works 3 shifts of 7.5 hours each in a week. Total hours?",
+      a:22.5,
+      hint:"3×7.5 = 22.5."
+    },
+    {
+      q:"📊 Data check: Four triage times (minutes): 12, 18, 15, 25. What is the mean time?",
+      a:17.5,
+      hint:"Sum=70. 70/4=17.5."
+    },
+    {
+      q:"📦 Restocking: A supply order arrives every 5 days. Over 30 days, how many deliveries arrive? (assume day 5,10,...,30)",
+      a:6,
+      hint:"30/5 = 6 deliveries."
+    }
+  ];
+
+  let i = -1;
+
+  function next(){
+    i++;
+    document.getElementById("fb").className = "";
+    document.getElementById("fb").textContent = "";
+    document.getElementById("hint").textContent = "";
+    document.getElementById("ans").value = "";
+
+    if(i >= qs.length){
+      document.getElementById("q").textContent = "🏁 Finished!";
+      document.getElementById("end").style.display = "block";
+      return;
+    }
+    document.getElementById("q").textContent = qs[i].q;
+  }
+
+  function check(){
+    if(i < 0) return;
+    const user = parseNum(document.getElementById("ans").value);
+    const fb = document.getElementById("fb");
+    const h = document.getElementById("hint");
+
+    if(!Number.isFinite(user)){
+      fb.className = "feedback bad";
+      fb.textContent = "Please enter a number (decimals are OK).";
+      return;
+    }
+
+    if(close(user, qs[i].a)){
+      fb.className = "feedback ok";
+      fb.textContent = "✅ Correct!";
+    } else {
+      fb.className = "feedback bad";
+      fb.textContent = "❌ Not quite.";
+      h.textContent = "Hint: " + qs[i].hint;
+    }
+  }
+</script>
+</body>
+</html>

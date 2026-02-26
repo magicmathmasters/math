@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Year 7–10 Soccer Maths | Free Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f7f5;margin:0;padding:24px;}
+    .card{max-width:760px;margin:auto;background:#fff;border-radius:18px;padding:22px;box-shadow:0 10px 26px rgba(0,0,0,.08);}
+    h1{margin:0 0 10px;color:#0b5ed7;font-weight:1000;}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(11,94,215,.08);border:1px solid rgba(11,94,215,.18);color:#0b5ed7;font-weight:900;margin-bottom:10px;}
+    .intro{color:#555;font-weight:650;line-height:1.6;margin-bottom:16px;}
+    .q{font-size:20px;font-weight:900;margin:14px 0 10px;}
+    input{width:100%;padding:12px;font-size:18px;border-radius:12px;border:1px solid #ccc;}
+    button{margin-top:12px;padding:12px 16px;font-size:16px;font-weight:900;border-radius:12px;border:none;background:#0b5ed7;color:#fff;cursor:pointer;}
+    button.secondary{background:#eef2ff;color:#0b5ed7;}
+    .feedback{margin-top:12px;padding:12px;border-radius:12px;font-weight:800;line-height:1.55;}
+    .ok{background:#e8fff0;border:1px solid #9be7b2;}
+    .bad{background:#fff0f0;border:1px solid #f2a6a6;}
+    .small{margin-top:10px;color:#666;font-weight:650;line-height:1.6;}
+    .cta{margin-top:16px;padding:14px;border-radius:14px;background:#fff7e8;border:1px solid rgba(245,158,11,.35);color:#555;font-weight:700;line-height:1.6;}
+    .cta a{color:#7a4a00;font-weight:1000;text-decoration:none;border-bottom:1px solid rgba(122,74,0,.35);}
+    .cta a:hover{border-bottom-color:rgba(122,74,0,.7);}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="pill">🧩 Year 7 – Year 10 • Soccer</div>
+    <h1>Soccer Maths Practice (Free Demo)</h1>
+    <p class="intro">
+      Short demo for Year 7–10: ratios, percentages, algebra, averages.  
+      Type your answer (you can use decimals or fractions like <b>3/4</b>).
+    </p>
+
+    <div id="q" class="q">Press Start to kick off ⚽</div>
+    <input id="ans" placeholder="e.g., 12  or  0.75  or  3/4">
+
+    <button onclick="check()">Check</button>
+    <button class="secondary" onclick="next()">Next</button>
+
+    <div id="fb"></div>
+    <div id="hint" class="small"></div>
+
+    <div id="end" class="cta" style="display:none;">
+      🎉 <b>Nice work!</b> This was a short demo.<br><br>
+      Want full practice sets + support? 👉
+      <a href="https://www.magicmathmaster.com.au/contact.html" target="_blank" rel="noopener">Enquire / Register →</a>
+    </div>
+  </div>
+
+<script>
+  function parseNum(s){
+    s = String(s).trim();
+    if(!s) return NaN;
+    if(s.includes("/")){
+      const [a,b] = s.split("/").map(x=>Number(x.trim()));
+      if(!Number.isFinite(a)||!Number.isFinite(b)||b===0) return NaN;
+      return a/b;
+    }
+    return Number(s);
+  }
+  function close(a,b,eps=1e-9){ return Math.abs(a-b) < eps; }
+
+  const qs = [
+    { q:"⚽ A striker scored 12 goals from 48 shots. What is the scoring rate as a percentage?", a:25, hint:"12/48 = 0.25 = 25%" },
+    { q:"📊 A team’s passes completed: 40, 52, 48, 60. What is the mean (average)?", a:50, hint:"Add then divide by 4." },
+    { q:"🥅 Keeper save rate: saved 18 out of 24 shots. Write as a simplified fraction.", a:0.75, hint:"18/24 simplifies to 3/4." },
+    { q:"🏃 A player runs 3.2 km in the first half and 4.6 km in the second. Total distance (km)?", a:7.8, hint:"Add the distances." },
+    { q:"📈 Ticket sales increased from 800 to 920. What is the percentage increase?", a:15, hint:"Increase=120. 120/800=0.15=15%" },
+    { q:"⚽ Algebra: Goals g = 2m + 3, where m is matches played. If m = 5, what is g?", a:13, hint:"g = 2(5)+3" },
+    { q:"🧮 Ratio: Training is 90 minutes. Drills take 30 minutes. What fraction of training is drills? (simplify)", a:(1/3), hint:"30/90 simplifies to 1/3." },
+    { q:"🏟️ A mini-league gives 3 points win, 1 draw. A team has 4 wins and 2 draws. Total points?", a:14, hint:"4×3 + 2×1" }
+  ];
+
+  let i = -1;
+
+  function next(){
+    i++;
+    document.getElementById("fb").className = "";
+    document.getElementById("fb").textContent = "";
+    document.getElementById("hint").textContent = "";
+    document.getElementById("ans").value = "";
+
+    if(i >= qs.length){
+      document.getElementById("q").textContent = "🏁 Finished!";
+      document.getElementById("end").style.display = "block";
+      return;
+    }
+    document.getElementById("q").textContent = qs[i].q;
+  }
+
+  function check(){
+    if(i < 0) return;
+    const user = parseNum(document.getElementById("ans").value);
+    const fb = document.getElementById("fb");
+    const h = document.getElementById("hint");
+
+    if(!Number.isFinite(user)){
+      fb.className = "feedback bad";
+      fb.textContent = "Please enter a number (or fraction like 3/4).";
+      return;
+    }
+
+    if(close(user, qs[i].a)){
+      fb.className = "feedback ok";
+      fb.textContent = "✅ Correct!";
+    } else {
+      fb.className = "feedback bad";
+      fb.textContent = "❌ Not quite.";
+      h.textContent = "Hint: " + qs[i].hint;
+    }
+  }
+</script>
+</body>
+</html>
