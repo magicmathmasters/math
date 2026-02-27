@@ -497,8 +497,15 @@
             </div>
           </div>
 
-          <form id="mathsClubRegisterForm" action="#" method="post" novalidate>
+          <iframe name="clubRegisterSubmitFrame" style="display:none;" title="Club register submission"></iframe>
+
+          <form id="mathsClubRegisterForm" action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec" method="post" target="clubRegisterSubmitFrame" novalidate>
             <input type="hidden" name="formType" value="club-register">
+            <input type="hidden" name="submittedAt" id="submittedAtField">
+            <input type="hidden" name="clubStream" id="clubStreamField">
+            <input type="hidden" name="prepSubgroup" id="prepSubgroupField">
+            <input type="hidden" name="students" id="studentsField">
+
             <div class="form-card">
               <h2 class="section-title">Family and booking details</h2>
               <p class="section-sub">
@@ -697,172 +704,200 @@
     </div>
   </footer>
 
- <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  const tableBody = document.querySelector('#studentTable tbody');
-  const firstRowTemplate = tableBody.rows[0].cloneNode(true);
-  const clubOptions = document.querySelectorAll('.club-option');
-  const clubRadios = document.querySelectorAll('input[name="clubStream"]');
-  const prep6Radio = document.getElementById('club-prep6');
-  const prepSubgroupWrap = document.getElementById('prepSubgroupWrap');
-  const prepSubgroupRadios = document.querySelectorAll('input[name="prepSubgroup"]');
-  const form = document.getElementById('mathsClubRegisterForm');
-  const successMessage = document.getElementById('successMessage');
-  const competitionMode = document.getElementById('competitionMode');
-  const competitionLocationGroup = document.getElementById('competitionLocationGroup');
-  const competitionLocation = document.getElementById('competitionLocation');
-  const submittedAtField = document.getElementById('submittedAtField');
-  const clubStreamField = document.getElementById('clubStreamField');
-  const prepSubgroupField = document.getElementById('prepSubgroupField');
-  const studentsField = document.getElementById('studentsField');
+    const tableBody = document.querySelector('#studentTable tbody');
+    const firstRowTemplate = tableBody.rows[0].cloneNode(true);
+    const clubOptions = document.querySelectorAll('.club-option');
+    const clubRadios = document.querySelectorAll('input[name="clubStream"]');
+    const prep6Radio = document.getElementById('club-prep6');
+    const prepSubgroupWrap = document.getElementById('prepSubgroupWrap');
+    const prepSubgroupRadios = document.querySelectorAll('input[name="prepSubgroup"]');
+    const form = document.getElementById('mathsClubRegisterForm');
+    const submitFrame = document.querySelector('iframe[name="clubRegisterSubmitFrame"]');
+    const successMessage = document.getElementById('successMessage');
+    const competitionMode = document.getElementById('competitionMode');
+    const competitionLocationGroup = document.getElementById('competitionLocationGroup');
+    const competitionLocation = document.getElementById('competitionLocation');
+    const submittedAtField = document.getElementById('submittedAtField');
+    const clubStreamField = document.getElementById('clubStreamField');
+    const prepSubgroupField = document.getElementById('prepSubgroupField');
+    const studentsField = document.getElementById('studentsField');
 
-  function clearRowValues(row) {
-    row.querySelectorAll('input, select').forEach((field) => {
-      if (field.type === 'checkbox' || field.type === 'radio') {
-        field.checked = false;
-      } else {
-        field.value = '';
-      }
-    });
-  }
+    let submissionPending = false;
 
-  function updateRowNumbers() {
-    document.querySelectorAll('#studentTable tbody tr').forEach((row, index) => {
-      row.querySelector('.row-number').textContent = index + 1;
-    });
-  }
-
-  function addRow() {
-    const newRow = firstRowTemplate.cloneNode(true);
-    clearRowValues(newRow);
-    tableBody.appendChild(newRow);
-    updateRowNumbers();
-  }
-
-  function removeRow(button) {
-    if (tableBody.rows.length === 1) {
-      alert('At least one student row must remain in the register.');
-      return;
-    }
-    button.closest('tr').remove();
-    updateRowNumbers();
-  }
-
-  function resetTable() {
-    while (tableBody.rows.length > 1) {
-      tableBody.deleteRow(1);
-    }
-    clearRowValues(tableBody.rows[0]);
-    updateRowNumbers();
-  }
-
-  function updateClubUI() {
-    clubOptions.forEach((card) => {
-      const radio = card.querySelector('input[type="radio"]');
-      card.classList.toggle('active', radio.checked);
-    });
-
-    if (prep6Radio.checked) {
-      prepSubgroupWrap.classList.add('show');
-      prepSubgroupRadios.forEach((radio) => {
-        radio.required = true;
+    function clearRowValues(row) {
+      row.querySelectorAll('input, select').forEach((field) => {
+        if (field.type === 'checkbox' || field.type === 'radio') {
+          field.checked = false;
+        } else {
+          field.value = '';
+        }
       });
-    } else {
-      prepSubgroupWrap.classList.remove('show');
-      prepSubgroupRadios.forEach((radio) => {
-        radio.required = false;
+    }
+
+    function updateRowNumbers() {
+      document.querySelectorAll('#studentTable tbody tr').forEach((row, index) => {
+        row.querySelector('.row-number').textContent = index + 1;
+      });
+    }
+
+    function addRow() {
+      const newRow = firstRowTemplate.cloneNode(true);
+      clearRowValues(newRow);
+      tableBody.appendChild(newRow);
+      updateRowNumbers();
+    }
+
+    function removeRow(button) {
+      if (tableBody.rows.length === 1) {
+        alert('At least one student row must remain in the register.');
+        return;
+      }
+      button.closest('tr').remove();
+      updateRowNumbers();
+    }
+
+    function resetTable() {
+      while (tableBody.rows.length > 1) {
+        tableBody.deleteRow(1);
+      }
+      clearRowValues(tableBody.rows[0]);
+      updateRowNumbers();
+    }
+
+    function resetClubSelection() {
+      clubRadios.forEach((radio) => {
         radio.checked = false;
       });
-    }
-  }
 
-  function updateCompetitionLocation() {
-    if (!competitionMode || !competitionLocationGroup || !competitionLocation) return;
+      prepSubgroupRadios.forEach((radio) => {
+        radio.checked = false;
+        radio.required = false;
+      });
 
-    const needsLocation = competitionMode.value === 'In-person (if available)';
-    competitionLocationGroup.style.display = needsLocation ? 'block' : 'none';
-    competitionLocation.required = needsLocation;
+      clubOptions.forEach((card) => {
+        card.classList.remove('active');
+      });
 
-    if (!needsLocation) {
-      competitionLocation.value = '';
-    }
-  }
-
-  clubRadios.forEach((radio) => {
-    radio.addEventListener('change', updateClubUI);
-  });
-
-  if (competitionMode) {
-    competitionMode.addEventListener('change', updateCompetitionLocation);
-  }
-
-  function collectPayload() {
-    const selectedClub = document.querySelector('input[name="clubStream"]:checked');
-    const selectedPrepSubgroup = document.querySelector('input[name="prepSubgroup"]:checked');
-    const rows = Array.from(document.querySelectorAll('#studentTable tbody tr'));
-
-    const students = rows.map((row, index) => ({
-      rowNumber: index + 1,
-      studentName: row.querySelector('input[name="studentName[]"]').value.trim(),
-      preferredName: row.querySelector('input[name="preferredName[]"]').value.trim(),
-      grade: row.querySelector('select[name="grade[]"]').value,
-      school: row.querySelector('input[name="school[]"]').value.trim(),
-      mathsFocus: row.querySelector('select[name="mathsFocus[]"]').value,
-      studentNotes: row.querySelector('input[name="studentNotes[]"]').value.trim()
-    }));
-
-    return {
-      submittedAt: new Date().toISOString(),
-      clubStream: selectedClub ? selectedClub.value : '',
-      prepSubgroup: selectedPrepSubgroup ? selectedPrepSubgroup.value : '',
-      students
-    };
-  }
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const clubChosen = document.querySelector('input[name="clubStream"]:checked');
-    const prepSubChosen = document.querySelector('input[name="prepSubgroup"]:checked');
-
-    if (!clubChosen) {
-      alert('Please choose one maths club before submitting.');
-      return;
+      prepSubgroupWrap.classList.remove('show');
     }
 
-    if (prep6Radio.checked && !prepSubChosen) {
-      alert('Please choose either Prep–2 or Years 3–6 for the Prep–6 Maths Club.');
-      return;
+    function updateClubUI() {
+      clubOptions.forEach((card) => {
+        const radio = card.querySelector('input[type="radio"]');
+        card.classList.toggle('active', radio.checked);
+      });
+
+      if (prep6Radio.checked) {
+        prepSubgroupWrap.classList.add('show');
+        prepSubgroupRadios.forEach((radio) => {
+          radio.required = true;
+        });
+      } else {
+        prepSubgroupWrap.classList.remove('show');
+        prepSubgroupRadios.forEach((radio) => {
+          radio.required = false;
+          radio.checked = false;
+        });
+      }
     }
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+    function updateCompetitionLocation() {
+      if (!competitionMode || !competitionLocationGroup || !competitionLocation) return;
+
+      const needsLocation = competitionMode.value === 'In-person (if available)';
+      competitionLocationGroup.style.display = needsLocation ? 'block' : 'none';
+      competitionLocation.required = needsLocation;
+
+      if (!needsLocation) {
+        competitionLocation.value = '';
+      }
     }
 
-    const payload = collectPayload();
-    submittedAtField.value = payload.submittedAt;
-    clubStreamField.value = payload.clubStream;
-    prepSubgroupField.value = payload.prepSubgroup;
-    studentsField.value = JSON.stringify(payload.students);
+    function collectPayload() {
+      const selectedClub = document.querySelector('input[name="clubStream"]:checked');
+      const selectedPrepSubgroup = document.querySelector('input[name="prepSubgroup"]:checked');
+      const rows = Array.from(document.querySelectorAll('#studentTable tbody tr'));
 
-    HTMLFormElement.prototype.submit.call(form);
+      const students = rows.map((row, index) => ({
+        rowNumber: index + 1,
+        studentName: row.querySelector('input[name="studentName[]"]').value.trim(),
+        preferredName: row.querySelector('input[name="preferredName[]"]').value.trim(),
+        grade: row.querySelector('select[name="grade[]"]').value,
+        school: row.querySelector('input[name="school[]"]').value.trim(),
+        mathsFocus: row.querySelector('select[name="mathsFocus[]"]').value,
+        studentNotes: row.querySelector('input[name="studentNotes[]"]').value.trim()
+      }));
 
-    successMessage.style.display = 'block';
-    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    alert('Thank you. Your registration has been received. We will contact you soon with payment arrangements and the next steps.');
+      return {
+        submittedAt: new Date().toISOString(),
+        clubStream: selectedClub ? selectedClub.value : '',
+        prepSubgroup: selectedPrepSubgroup ? selectedPrepSubgroup.value : '',
+        students
+      };
+    }
 
-    setTimeout(() => {
-      form.reset();
-      resetTable();
-      updateClubUI();
-      updateCompetitionLocation();
-    }, 200);
-  });
+    clubRadios.forEach((radio) => {
+      radio.addEventListener('change', updateClubUI);
+    });
 
-  updateClubUI();
-  updateCompetitionLocation();
-</script>
+    if (competitionMode) {
+      competitionMode.addEventListener('change', updateCompetitionLocation);
+    }
+
+    if (submitFrame) {
+      submitFrame.addEventListener('load', () => {
+        if (!submissionPending) return;
+
+        submissionPending = false;
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        alert('Thank you. Your registration has been received. We will contact you soon with payment arrangements and the next steps.');
+
+        form.reset();
+        resetTable();
+        resetClubSelection();
+        updateCompetitionLocation();
+      });
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const clubChosen = document.querySelector('input[name="clubStream"]:checked');
+      const prepSubChosen = document.querySelector('input[name="prepSubgroup"]:checked');
+
+      if (!clubChosen) {
+        alert('Please choose one maths club before submitting.');
+        return;
+      }
+
+      if (prep6Radio.checked && !prepSubChosen) {
+        alert('Please choose either Prep–2 or Years 3–6 for the Prep–6 Maths Club.');
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const payload = collectPayload();
+      submittedAtField.value = payload.submittedAt;
+      clubStreamField.value = payload.clubStream;
+      prepSubgroupField.value = payload.prepSubgroup;
+      studentsField.value = JSON.stringify(payload.students);
+
+      submissionPending = true;
+      HTMLFormElement.prototype.submit.call(form);
+    });
+
+    updateClubUI();
+    updateCompetitionLocation();
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>

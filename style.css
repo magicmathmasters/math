@@ -63,6 +63,28 @@ body{
 a{ color:inherit; }
 .container{ max-width: var(--max); margin: 0 auto; padding: 0 18px; }
 
+/* ============ LANGUAGE LINKS ============ */
+.lang-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+
+.lang-link:hover{
+  text-decoration:underline;
+}
+
+.lang-flag-icon{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  object-fit:cover;
+  display:inline-block;
+  flex:0 0 24px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, .08);
+}
+
 /* ============ TOP BAR (pill nav) ============ */
 .topbar{
   position: sticky;
@@ -725,20 +747,22 @@ textarea{ min-height: 120px; resize: vertical; }
   .desktop-only{ display: none !important; }
   .mobile-only{ display: inline-flex !important; }
 }
+
 /* Make section-sub paragraphs span full available width site-wide */
 .section-sub{
   max-width: none !important;
   margin-left: 0;
   margin-right: 0;
 }
+
 .best-value{
-      display:inline-block;
-      margin-left: 8px;
-      background: rgba(229,57,53,.95);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-weight: 1000;
-      font-size: 12px;
-      vertical-align: middle;
-    }
+  display:inline-block;
+  margin-left: 8px;
+  background: rgba(229,57,53,.95);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 1000;
+  font-size: 12px;
+  vertical-align: middle;
+}
