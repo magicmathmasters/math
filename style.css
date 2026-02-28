@@ -823,3 +823,19 @@ textarea{
   font-size: 12px;
   vertical-align: middle;
 }
+.nav a.nav-lang{
+  border-color: rgba(11,94,215,.22);
+  gap: 7px;
+  padding-left: 12px;
+  padding-right: 14px;
+}
+
+.nav-lang-flag{
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex: 0 0 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.10);
+}
