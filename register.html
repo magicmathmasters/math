@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Magic Math Master – Mẫu Đăng Ký</title>
-  <meta name="description" content="Đăng ký các chương trình học toán của Magic Math Master. Hoàn thành mẫu đăng ký cho lớp 1 kèm 1, lớp nhóm, Câu lạc bộ Toán hoặc luyện thi toán." />
-
+  <title>Magic Math Master – Register Form</title>
+  <meta name="description" content="Register for Magic Math Master tutoring programs. Complete the registration form for one-to-one lessons, group lessons, Maths Club, or maths competition training." />
   <!-- Shared site stylesheet -->
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <!-- favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-
   <style>
     :root {
       --bg: #efe7e3;
@@ -33,6 +31,7 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -77,17 +76,13 @@
       letter-spacing: -.2px;
     }
 
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .brand-title b {
-      display: block;
-      font-size: 1rem;
-      line-height: 1.1;
+    .brand-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      box-shadow: 0 0 0 4px rgba(242,140,40,.14);
+      flex: 0 0 14px;
     }
 
     .top-actions {
@@ -292,7 +287,6 @@
     }
 
     select {
-      text-indent: 8px;
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -310,6 +304,32 @@
 
     option {
       padding-left: 10px;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    select {
+      text-indent: 8px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position: calc(100% - 18px) calc(1.15em + 2px), calc(100% - 12px) calc(1.15em + 2px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 36px;
+      cursor: pointer;
     }
 
     textarea {
@@ -387,6 +407,13 @@
 
     .error.show { display: block; }
 
+    .footer-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 650;
+    }
+
     .footer {
       padding: 22px 0 34px;
       color: var(--muted);
@@ -416,192 +443,194 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="index.html" aria-label="Trang chủ Magic Math Master">
-        <img class="brand-logo" src="../assets/logo.png" alt="Logo Magic Math Master" />
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
         <div class="brand-title">
           <b>Magic Math Master</b>
         </div>
       </a>
       <div class="top-actions">
-        <a class="btn btn-outline" href="index.html">Trang chủ</a>
-        <a class="btn btn-success" href="enquiry.html">Gửi câu hỏi</a>
+        <a class="btn btn-outline" href="index.html">Home</a>
+        <a class="btn btn-success" href="enquiry.html">Enquiry</a>
       </div>
     </div>
   </div>
 
   <main>
     <div class="container">
-      <section class="hero-card" aria-label="Banner Magic Math Master">
-        <img class="hero-banner" src="../assets/banner.png" alt="Banner Magic Math Master" loading="eager" />
+      <section class="hero-card" aria-label="Magic Math Master banner hero">
+        <img class="hero-banner" src="assets/banner.png" alt="Magic Math Master banner" loading="eager" />
         <div class="hero-copy">
-          <h1 class="hero-title">Đăng ký với Magic Math Master</h1>
+          <h1 class="hero-title">Register for Magic Math Master</h1>
           <p class="hero-desc">
-            Kiểu banner ở đầu trang giúp giữ sự đồng bộ thương hiệu với website, đồng thời vẫn để phụ huynh tiếp cận biểu mẫu đăng ký nhanh chóng — đặc biệt trên điện thoại.
+            A banner-led hero is a better fit here than a full homepage hero. It keeps the form branded and consistent with your site,
+            while still letting families reach the registration fields quickly — especially on mobile.
           </p>
           <div class="hero-pills">
-            <span class="hero-pill">Prep đến Lớp 12</span>
-            <span class="hero-pill">Học online &amp; trực tiếp</span>
-            <span class="hero-pill">Dạy học xây dựng sự tự tin</span>
+            <span class="hero-pill">Prep to Year 12</span>
+            <span class="hero-pill">Online &amp; in-person</span>
+            <span class="hero-pill">Confidence-first teaching</span>
           </div>
         </div>
       </section>
 
       <section class="page-card">
-        <h2 class="page-title">🧮 Magic Math Master – Mẫu Đăng Ký</h2>
-        <p class="lead">Bạn có thể điền mẫu này bằng tiếng Việt hoặc tiếng Anh.</p>
-        <p class="lead"><strong>🌐 Ngôn ngữ / Language</strong></p>
-        <p class="lead">en <a href="../register.html">Bấm vào đây để dùng tiếng Anh</a></p>
-        <p class="lead"><strong>Mẫu đăng ký chính thức của Magic Math Master (Dr. Tuyet Vu).</strong></p>
-        <p class="lead">Chúng tôi chỉ thu thập thông tin trong mẫu này để liên hệ với bạn về việc học, đăng ký và xếp lớp phù hợp.</p>
-        <p class="lead">Cần hỗ trợ?</p>
+        <h2 class="page-title">🧮 Magic Math Master – Register Form</h2>
+        <p class="lead">You may complete this form in English or Tiếng Việt.</p>
+        <p class="lead"><strong>🌐 Language / Ngôn ngữ</strong></p>
+        <p class="lead">vn <a href="vi/register.html" target="_blank" rel="noopener">Click here for Tiếng Việt</a></p>
+        <p class="lead"><strong>Official registration form for Magic Math Master (Dr. Tuyet Vu).</strong></p>
+        <p class="lead">We collect the information in this form only to contact you about tutoring, enrolment, and appropriate class placement.</p>
+        <p class="lead">Questions?</p>
         <div class="contact-list">
           <a href="tel:+61402204599">📞 +61 402 204 599</a>
           <a href="https://wa.me/61402204599" target="_blank" rel="noopener">🟢 WhatsApp</a>
           <a href="mailto:magicmathmasters@gmail.com">✉️ magicmathmasters@gmail.com</a>
         </div>
-        <p class="lead">Vui lòng điền mẫu này nếu bạn muốn đăng ký các chương trình của Magic Math Master. Chúng tôi sẽ sớm liên hệ để xác nhận bước phù hợp tiếp theo cho con bạn.</p>
+        <p class="lead">Please complete this form if you would like to register for Magic Math Master programs. We will contact you shortly to confirm the best next step for your child.</p>
       </section>
 
+  
       <form id="registerForm" action="https://script.google.com/macros/s/AKfycbzVvFfCeVr8QpPBYUMdMUaJK6H1L7BAWVwjrJoK3vqTCVGrQ9jqfcRUbooewNCsANpz/exec" method="post" novalidate>
-        <input type="hidden" name="language" value="Tiếng Việt">
-
+  <input type="hidden" name="language" value="English">
         <section class="form-card">
-          <h3 class="section-title">Thông tin phụ huynh / liên hệ</h3>
+          <h3 class="section-title">Parent / contact details</h3>
 
           <div class="field-block">
             <label class="required" for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="Nhập địa chỉ email hợp lệ" required />
-            <p class="note">Chúng tôi chỉ sử dụng email của bạn để phản hồi đăng ký này.</p>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Valid email address" required />
+            <p class="note">We will only use your email address to respond to this registration.</p>
           </div>
 
           <div class="field-block">
-            <label class="required" for="parentName">🧑‍🤝‍🧑 Họ và tên phụ huynh / người giám hộ</label>
-            <input id="parentName" name="parent_name" type="text" placeholder="Câu trả lời ngắn" required />
+            <label class="required" for="parentName">🧑‍🤝‍🧑 Parent/Guardian Full Name</label>
+            <input id="parentName" name="parent_name" type="text" placeholder="Short-answer text" required />
           </div>
 
           <div class="field-block">
-            <label class="required" for="mobileNumber">📱 Số điện thoại</label>
-            <input id="mobileNumber" name="mobile_number" type="tel" autocomplete="tel" placeholder="Câu trả lời ngắn" required />
+            <label class="required" for="mobileNumber">📱 Mobile Number</label>
+            <input id="mobileNumber" name="mobile_number" type="tel" autocomplete="tel" placeholder="Short-answer text" required />
           </div>
         </section>
 
         <section class="form-card">
-          <h3 class="section-title">Cách liên hệ</h3>
+          <h3 class="section-title">Contact preference</h3>
 
           <div class="field-block">
-            <label class="required" for="contactMethod">☎️ Phương thức liên hệ ưu tiên</label>
+            <label class="required" for="contactMethod">☎️ Preferred Contact Method</label>
             <select id="contactMethod" name="contact_method" required data-target="contactOther" data-other-value="Other">
-              <option value="" selected disabled>Chọn một phương thức</option>
+              <option value="" selected disabled>Select one option</option>
               <option value="Email">Email</option>
-              <option value="Phone">Điện thoại</option>
-              <option value="Text">Tin nhắn</option>
-              <option value="WhatsApp (if used)">WhatsApp (nếu dùng)</option>
-              <option value="Other">Khác</option>
+              <option value="Phone">Phone</option>
+              <option value="Text">Text</option>
+              <option value="WhatsApp (if used)">WhatsApp (if used)</option>
+              <option value="Other">Other</option>
             </select>
             <div id="contactOther" class="inline-other">
-              <input type="text" name="contact_method_other" placeholder="Vui lòng ghi rõ" />
+              <input type="text" name="contact_method_other" placeholder="Please specify" />
             </div>
           </div>
 
           <div class="field-block">
-            <label for="studentName">🧒🧒 Họ và tên học sinh</label>
-            <input id="studentName" name="student_name" type="text" placeholder="Câu trả lời ngắn" />
+            <label for="studentName">🧒🧒 Student Full Name</label>
+            <input id="studentName" name="student_name" type="text" placeholder="Short-answer text" />
           </div>
         </section>
 
         <section class="form-card">
-          <h3 class="section-title">Thông tin học sinh</h3>
+          <h3 class="section-title">Student information</h3>
 
           <div class="field-block">
-            <label class="required" for="yearLevel">🎓 Lớp hiện tại</label>
+            <label class="required" for="yearLevel">🎓 Year level (current)</label>
             <select id="yearLevel" name="year_level" required data-target="yearOther" data-other-value="Other">
-              <option value="" selected disabled>Chọn lớp hiện tại</option>
-              <option value="Prep or Foundation">Prep / Foundation</option>
-              <option value="Grade 1">Lớp 1</option>
-              <option value="Grade 2">Lớp 2</option>
-              <option value="Grade 3">Lớp 3</option>
-              <option value="Grade 4">Lớp 4</option>
-              <option value="Grade 5">Lớp 5</option>
-              <option value="Grade 6">Lớp 6</option>
-              <option value="Grade 7">Lớp 7</option>
-              <option value="Grade 8">Lớp 8</option>
-              <option value="Grade 9">Lớp 9</option>
-              <option value="Grade 10">Lớp 10</option>
-              <option value="Grade 11">Lớp 11</option>
-              <option value="Grade 12">Lớp 12</option>
-              <option value="Other">Khác (vui lòng ghi rõ)</option>
+              <option value="" selected disabled>Select current year level</option>
+              <option value="Prep or Foundation">Prep or Foundation</option>
+              <option value="Grade 1">Grade 1</option>
+              <option value="Grade 2">Grade 2</option>
+              <option value="Grade 3">Grade 3</option>
+              <option value="Grade 4">Grade 4</option>
+              <option value="Grade 5">Grade 5</option>
+              <option value="Grade 6">Grade 6</option>
+              <option value="Grade 7">Grade 7</option>
+              <option value="Grade 8">Grade 8</option>
+              <option value="Grade 9">Grade 9</option>
+              <option value="Grade 10">Grade 10</option>
+              <option value="Grade 11">Grade 11</option>
+              <option value="Grade 12">Grade 12</option>
+              <option value="Other">Other (please specify)</option>
             </select>
             <div id="yearOther" class="inline-other">
-              <input type="text" name="year_level_other" placeholder="Vui lòng ghi rõ lớp hiện tại" />
+              <input type="text" name="year_level_other" placeholder="Please specify current year level" />
             </div>
           </div>
         </section>
 
         <section class="form-card">
-          <h3 class="section-title">Chọn chương trình</h3>
+          <h3 class="section-title">Program selection</h3>
 
           <fieldset class="field-block">
-            <legend class="required">📘 Bạn muốn đăng ký chương trình nào?</legend>
+            <legend class="required">📘 What would you like to register for?</legend>
             <div class="option-list">
-              <label class="option"><input type="checkbox" name="register_for" value="One-to-one" /> Học kèm 1-1</label>
-              <label class="option"><input type="checkbox" name="register_for" value="Group lessons" /> Lớp học nhóm</label>
-              <label class="option"><input type="checkbox" name="register_for" value="Maths Club" /> Câu lạc bộ Toán</label>
-              <label class="option"><input type="checkbox" name="register_for" value="Maths competition training" /> Luyện thi toán</label>
+              <label class="option"><input type="checkbox" name="register_for" value="One-to-one" /> One-to-one</label>
+              <label class="option"><input type="checkbox" name="register_for" value="Group lessons" /> Group lessons</label>
+              <label class="option"><input type="checkbox" name="register_for" value="Maths Club" /> Maths Club</label>
+              <label class="option"><input type="checkbox" name="register_for" value="Maths competition training" /> Maths competition training</label>
             </div>
-            <p id="registerError" class="error">Vui lòng chọn ít nhất một chương trình.</p>
+            <p id="registerError" class="error">Please select at least one program.</p>
           </fieldset>
 
           <div class="field-block">
-            <label class="required" for="lessonType">🏫 Hình thức học</label>
+            <label class="required" for="lessonType">🏫 Lesson type</label>
             <select id="lessonType" name="lesson_type" required data-target="lessonOther" data-other-value="Other">
-              <option value="" selected disabled>Chọn hình thức học</option>
-              <option value="Online one-to-one">Học online 1-1</option>
-              <option value="Face-to-face one-to-one (Coburg/ nearby)">Học trực tiếp 1-1 (Coburg / khu vực gần đó)</option>
-              <option value="Face-to-face group (Coburg area/nearby)">Học trực tiếp theo nhóm (khu vực Coburg / gần đó)</option>
-              <option value="Group (online)">Học nhóm online</option>
-              <option value="School group program (at student’s school)">Chương trình học nhóm tại trường của học sinh</option>
-              <option value="Either is fine">Hình thức nào cũng được</option>
-              <option value="Not sure yet">Chưa chắc chắn</option>
-              <option value="Other">Khác</option>
+              <option value="" selected disabled>Select lesson type</option>
+              <option value="Online one-to-one">Online one-to-one</option>
+              <option value="Face-to-face one-to-one (Coburg/ nearby)">Face-to-face one-to-one (Coburg/ nearby)</option>
+              <option value="Face-to-face group (Coburg area/nearby)">Face-to-face group (Coburg area/nearby)</option>
+              <option value="Group (online)">Group (online)</option>
+              <option value="School group program (at student’s school)">School group program (at student’s school)</option>
+              <option value="Either is fine">Either is fine</option>
+              <option value="Not sure yet">Not sure yet</option>
+              <option value="Other">Other</option>
             </select>
             <div id="lessonOther" class="inline-other">
-              <input type="text" name="lesson_type_other" placeholder="Vui lòng ghi rõ" />
+              <input type="text" name="lesson_type_other" placeholder="Please specify" />
             </div>
           </div>
         </section>
 
         <section class="form-card">
-          <h3 class="section-title">Mục tiêu học tập</h3>
+          <h3 class="section-title">Learning goals</h3>
 
           <div class="field-block">
-            <label class="required" for="helpAreas">✏️ Con bạn cần hỗ trợ ở những nội dung nào?</label>
-            <p class="helper"><strong>Ví dụ:</strong> Phân số, bài toán đố, xây dựng sự tự tin, chuẩn bị thi, kỹ năng giải quyết vấn đề.</p>
-            <textarea id="helpAreas" name="help_areas" placeholder="Câu trả lời dài" required></textarea>
+            <label class="required" for="helpAreas">✏️ What areas does your child need help with?</label>
+            <p class="helper"><strong>Example:</strong> Fractions, word problems, building confidence, exam preparation, problem solving.</p>
+            <textarea id="helpAreas" name="help_areas" placeholder="Long-answer text" required></textarea>
           </div>
 
           <div class="field-block">
-            <label for="questions">❓ Bạn có câu hỏi nào dành cho Magic Math Master không?</label>
-            <p class="helper"><strong>Ví dụ:</strong> Học phí, lịch học, sĩ số lớp, phương pháp giảng dạy hoặc trình độ phù hợp.</p>
-            <textarea id="questions" name="questions" placeholder="Câu trả lời dài"></textarea>
+            <label for="questions">❓ Do you have any questions for Magic Math Master?</label>
+            <p class="helper"><strong>Example:</strong> Fees, schedule, class size, teaching approach, or learning level.</p>
+            <textarea id="questions" name="questions" placeholder="Long-answer text"></textarea>
           </div>
         </section>
 
         <section class="form-card privacy">
-          <h3 class="section-title">Quyền riêng tư &amp; đồng ý</h3>
+          <h3 class="section-title">Privacy &amp; consent</h3>
 
           <div class="field-block">
-            <label class="required" for="consent">🔒 Quyền riêng tư &amp; Sự đồng ý</label>
-            <p class="lead">Chúng tôi chỉ sử dụng thông tin của bạn để phản hồi đăng ký này.</p>
+            <label class="required" for="consent">🔒 Privacy &amp; Consent</label>
+            <p class="lead">We will only use your information to respond to this registration.</p>
             <label class="option">
               <input id="consent" name="consent" type="checkbox" value="Yes" required />
-              Tôi đồng ý để Magic Math Master liên hệ với tôi về việc đăng ký và sử dụng thông tin của tôi cho mục đích này.
+              I consent to Magic Math Master contacting me about my registration and using my information for this purpose.
             </label>
           </div>
 
           <div class="submit-row">
-            <button type="submit" class="btn btn-amber">Gửi đăng ký</button>
-            <span class="small">🌸 Khi đã sẵn sàng, vui lòng bấm Gửi đăng ký để hoàn tất.</span>
+            <button type="submit" class="btn btn-amber">Submit registration</button>
+            <span class="small">🌸 When you’re ready, please click Submit to complete the registration.</span>
           </div>
+          <!--<p class="footer-note">Optional note: connect this form to Formspree, Netlify Forms, Google Apps Script, or your backend before publishing.</p>-->
         </section>
       </form>
     </div>
@@ -622,7 +651,7 @@
       const hasSelection = checkboxGroup.some(box => box.checked);
       registerError.classList.toggle('show', !hasSelection);
       checkboxGroup.forEach(box => {
-        box.setCustomValidity(hasSelection ? '' : 'Vui lòng chọn ít nhất một chương trình.');
+        box.setCustomValidity(hasSelection ? '' : 'Please select at least one program.');
       });
       return hasSelection;
     }
@@ -651,6 +680,7 @@
       select.addEventListener('change', () => syncSelectOther(select));
       syncSelectOther(select);
     });
+    
 
     form.addEventListener('submit', event => {
       const programsValid = validatePrograms();
