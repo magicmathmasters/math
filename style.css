@@ -766,3 +766,27 @@ textarea{ min-height: 120px; resize: vertical; }
   font-size: 12px;
   vertical-align: middle;
 }
+.lang-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+
+.lang-link:hover{
+  text-decoration:underline;
+}
+
+.lang-flag-badge{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 24px;
+  background:#fff;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08);
+  font-size:15px;
+  line-height:1;
+}
