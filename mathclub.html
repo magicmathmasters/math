@@ -186,6 +186,24 @@
     .club-small-links a:hover{
       border-bottom-color: rgba(11,94,215,.60);
     }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+      font-weight:700;
+    }
+    .footer-links a{
+      text-decoration:none;
+      color:inherit;
+      opacity:.9;
+    }
+    .footer-links a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
   </style>
 </head>
 
@@ -201,7 +219,7 @@
 
       <div class="nav" aria-label="Primary navigation">
         <a data-nav href="index.html">Home</a>
-        <a data-nav href="Club-register.html">Math Club</a>
+        <a data-nav href="mathclub.html">Math Club</a>
         <a data-nav href="programs.html">Programs</a>
         <a data-nav href="pricing.html">Fees</a>
         <a data-nav href="about.html">About</a>
@@ -324,8 +342,7 @@
           <div class="club-intro">
             <div class="club-breadcrumb">
               <a href="index.html">Home</a> ›
-              <!--<a href="Club-register.html">-->
-                Math Club</a> ›
+              <span>Math Club</span> ›
               <span>Maths Club</span>
             </div>
 
@@ -426,6 +443,13 @@
           <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
           <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
         </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="policies.html">Policies</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </footer>
