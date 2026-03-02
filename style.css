@@ -1178,3 +1178,58 @@ textarea{
     margin: 0 auto;
   }
 }
+
+.hero-snap-grid-split{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 22px;
+  align-items: start;
+}
+
+.hero-snap-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.hero-snap-grid-split .hero-snap-title,
+.hero-snap-grid-split .hero-snap-tagline,
+.hero-snap-grid-split .hero-snap-desc-left{
+  text-align:left;
+}
+
+.hero-snap-grid-split .hero-snap-desc-left{
+  margin: 18px 0 0;
+  max-width: none;
+}
+
+.hero-snap-full{
+  margin-top: 20px;
+}
+
+.hero-snap-full .hero-snap-checks,
+.hero-snap-full .hero-snap-pills,
+.hero-snap-full .hero-snap-cta{
+  justify-content:center;
+}
+
+@media (max-width: 980px){
+  .hero-snap-grid-split{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-snap-copy{
+    align-items:center;
+  }
+
+  .hero-snap-grid-split .hero-snap-title,
+  .hero-snap-grid-split .hero-snap-tagline,
+  .hero-snap-grid-split .hero-snap-desc-left{
+    text-align:center;
+  }
+
+  .hero-snap-logoBox{
+    justify-self:center;
+    margin: 0 auto;
+  }
+}
