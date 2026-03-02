@@ -3,52 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register for Tutoring | Magic Math Master</title>
-  <meta name="description" content="Register for tutoring at Magic Math Master. One-to-one, group tutoring, or maths competition training." />
+  <title>Magic Math Master – Register Form</title>
+  <meta name="description" content="Register for Magic Math Master tutoring programs. Complete the registration form for one-to-one lessons, group lessons, Maths Club, or maths competition training." />
 
-  <!-- Shared site stylesheet (GitHub Pages friendly: NO leading slash) -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Shared site stylesheet -->
+  <link rel="stylesheet" href="/style.css" />
 
-  <!-- favicon (GitHub Pages friendly) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
   <style>
-    /* Page-only layout helpers (keep light; rely on style.css for hero/buttons) */
+    :root {
+      --bg: #efe7e3;
+      --card: rgba(255,255,255,.94);
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --brand: #f28c28;
+      --brand-dark: #a84300;
+      --line: #e8d9cf;
+      --accent: #0b5ed7;
+      --accent-soft: rgba(11,94,215,.08);
+      --hero: #08153e;
+      --green: #138a48;
+      --amber: #cc7a00;
+      --red: #cf3d32;
+      --radius: 18px;
+      --shadow: 0 14px 34px rgba(2, 6, 23, .10);
+      --shadow-soft: 0 8px 22px rgba(84, 37, 0, .06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f5efec 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.84);
+      border-bottom: 1px solid rgba(232, 217, 207, .9);
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 1000;
+      letter-spacing: -.2px;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: transform .12s ease, filter .12s ease;
+      box-shadow: 0 10px 20px rgba(2, 6, 23, .10);
+      font: inherit;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .btn-success { background: linear-gradient(135deg, #1f9d58, var(--green)); color: #fff; }
+    .btn-amber { background: linear-gradient(135deg, #f4a528, var(--amber)); color: #fff; }
+    .btn-outline {
+      background: rgba(255,255,255,.88);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.18);
+      box-shadow: none;
+    }
+
     main { padding: 18px 0 40px; }
+
+    .hero-card {
+      overflow: hidden;
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: 0 18px 36px rgba(2, 6, 23, .14);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      margin-bottom: 16px;
+    }
+
+    .hero-banner {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--hero);
+    }
+
+    .hero-copy {
+      background: rgba(255,255,255,.95);
+      border-top: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.15;
+      color: var(--brand-dark);
+      font-weight: 1000;
+      letter-spacing: -.3px;
+    }
+
+    .hero-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .hero-pills {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+      border: 1px solid rgba(11,94,215,.14);
+      font-size: .95rem;
+    }
 
     .page-card,
     .form-card {
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(15, 23, 42, .10);
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(2, 6, 23, .08);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
     }
 
     .page-card { padding: 22px; margin-bottom: 16px; }
 
     .page-title {
       margin: 0 0 12px;
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       font-weight: 1000;
       line-height: 1.15;
       color: var(--ink);
       padding-bottom: 12px;
-      border-bottom: 3px solid rgba(11,94,215,.25);
+      border-bottom: 3px solid rgba(168,67,0,.85);
     }
 
     .lead { margin: 0 0 12px; font-size: 1.02rem; color: var(--ink); }
     .lead strong { font-weight: 1000; }
 
-    .contact-list { display: grid; gap: 8px; margin: 10px 0 14px; }
-    .contact-list a { color: var(--brand2); text-decoration: none; font-weight: 900; }
+    .contact-list {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .contact-list a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
+    }
     .contact-list a:hover { text-decoration: underline; }
 
     form { display: grid; gap: 16px; }
-
     .form-card { padding: 20px; }
+
     .section-title {
       margin: 0 0 14px;
-      color: var(--brand2);
+      color: var(--brand-dark);
       font-size: 1.12rem;
       font-weight: 1000;
       letter-spacing: -.15px;
@@ -64,11 +228,7 @@
       color: var(--ink);
     }
 
-    .required::after {
-      content: " *";
-      color: #d93025;
-      font-weight: 1000;
-    }
+    .required::after { content: " *"; color: #d93025; font-weight: 1000; }
 
     input[type="text"],
     input[type="email"],
@@ -89,9 +249,7 @@
     input[type="email"]:focus,
     input[type="tel"]:focus,
     select:focus,
-    textarea:focus {
-      border-bottom-color: var(--brand);
-    }
+    textarea:focus { border-bottom-color: var(--accent); }
 
     select {
       text-indent: 8px;
@@ -138,7 +296,7 @@
       height: 22px;
       margin: 0;
       flex: 0 0 auto;
-      accent-color: var(--brand);
+      accent-color: var(--accent);
     }
 
     .inline-other { margin-top: 10px; display: none; }
@@ -156,13 +314,45 @@
       margin-top: 20px;
     }
 
-    .submit-row .btn { min-width: 170px; }
+    .submit-row .btn { min-width: 150px; }
 
     .error { color: #b91c1c; font-weight: 800; margin-top: 8px; display: none; }
     .error.show { display: block; }
 
+    .footer {
+      padding: 22px 0 34px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      font-size: .95rem;
+    }
+
+    /* Simple thank-you modal */
+    #thankYouModal{
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.45);
+      z-index: 9999;
+      padding: 18px;
+    }
+    #thankYouModal .modal-card{
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      width: min(420px, 100%);
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    }
+
     @media (max-width: 820px) {
-      .page-card, .form-card { padding: 16px; }
+      .container { width: min(100%, calc(100% - 18px)); }
+      .topbar-inner { padding: 8px 0; align-items: flex-start; flex-direction: column; }
+      .top-actions { width: 100%; }
+      .top-actions .btn { flex: 1 1 auto; }
+      .page-card, .form-card, .hero-copy { padding: 16px; }
     }
 
     @media (max-width: 560px) {
@@ -179,28 +369,22 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="index.html" aria-label="Magic Math Master home">
-        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+      <a class="brand" href="/index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="/assets/logo.png" alt="Magic Math Master logo" />
         <div class="brand-title">
           <b>Magic Math Master</b>
         </div>
       </a>
-
       <div class="top-actions">
-        <a class="btn btn-outline" href="index.html">Home</a>
-        <a class="btn btn-success" href="enquiry.html">Enquiry</a>
-        <a class="btn btn-secondary" href="club-register.html">
-          Maths Club Register <span class="badge">Club only</span>
-        </a>
+        <a class="btn btn-outline" href="/index.html">Home</a>
+        <a class="btn btn-success" href="/enquiry.html">Enquiry</a>
       </div>
     </div>
   </div>
 
   <main>
     <div class="container">
-
-      <!-- HERO (shared in style.css) -->
-      <section class="hero-card" aria-label="Register hero">
+      <section class="hero-card" aria-label="Magic Math Master banner hero">
         <img class="hero-banner" src="assets/banner.png" alt="Magic Math Master banner" loading="eager" />
         <div class="hero-copy">
           <h1 class="hero-title">Register for Tutoring at Magic Math Master</h1>
@@ -216,28 +400,26 @@
       </section>
 
       <section class="page-card">
-        <h2 class="page-title">🧮 Register for Tutoring</h2>
+        <h2 class="page-title">🧮 Register for Tutoring at Magic Math Master</h2>
         <p class="lead"><strong>Official registration form for Magic Math Master (Dr. Tuyet Vu).</strong></p>
         <p class="lead">We collect the information in this form only to contact you about tutoring, enrolment, and appropriate class placement.</p>
-
-        <p class="lead"><strong>Questions?</strong></p>
+        <p class="lead">Questions?</p>
         <div class="contact-list">
           <a href="tel:+61402204599">📞 +61 402 204 599</a>
           <a href="https://wa.me/61402204599" target="_blank" rel="noopener">🟢 WhatsApp</a>
           <a href="mailto:magicmathmasters@gmail.com?subject=Magic%20Math%20Master%20Registration">✉️ magicmathmasters@gmail.com</a>
         </div>
-
-        <p class="lead">
-          Note: Maths Club has a separate registration form:
-          <a class="link-strong" href="club-register.html">Maths Club Register</a>.
-        </p>
+        <p class="lead">Please complete this form if you would like to register for Magic Math Master programs. We will contact you shortly to confirm the best next step for your child.</p>
       </section>
+
+      <!-- Hidden iframe for cross-origin submission (no CORS issues) -->
+      <iframe name="registerSubmitFrame" style="display:none;" title="Register submission"></iframe>
 
       <form id="registerForm"
             action="https://script.google.com/macros/s/AKfycbw3KTCtU35eY_r7F1tgkd16FlDM_C5ETnvgsLSaCNdybcuZvajIoy6lyuvznWu3VDg/exec"
             method="post"
+            target="registerSubmitFrame"
             novalidate>
-
         <input type="hidden" name="language" value="English">
 
         <section class="form-card">
@@ -279,7 +461,7 @@
           </div>
 
           <div class="field-block">
-            <label for="studentName">🧒 Student Full Name (optional)</label>
+            <label for="studentName">🧒🧒 Student Full Name</label>
             <input id="studentName" name="student_name" type="text" placeholder="Short-answer text" />
           </div>
         </section>
@@ -318,8 +500,8 @@
           <fieldset class="field-block">
             <legend class="required">📘 What would you like to register for?</legend>
             <div class="option-list">
-              <label class="option"><input type="checkbox" name="register_for" value="One-to-one" /> One-to-one tutoring</label>
-              <label class="option"><input type="checkbox" name="register_for" value="Group lessons" /> Group tutoring</label>
+              <label class="option"><input type="checkbox" name="register_for" value="One-to-one" /> One-to-one</label>
+              <label class="option"><input type="checkbox" name="register_for" value="Group lessons" /> Group lessons</label>
               <label class="option"><input type="checkbox" name="register_for" value="Maths competition training" /> Maths competition training</label>
             </div>
             <p id="registerError" class="error">Please select at least one program.</p>
@@ -354,7 +536,7 @@
           </div>
 
           <div class="field-block">
-            <label for="questions">❓ Questions (optional)</label>
+            <label for="questions">❓ Do you have any questions for Magic Math Master?</label>
             <p class="helper"><strong>Example:</strong> Fees, schedule, class size, teaching approach, or learning level.</p>
             <textarea id="questions" name="questions" placeholder="Long-answer text"></textarea>
           </div>
@@ -373,26 +555,25 @@
             </label>
 
             <div class="field-block" style="margin-top: 16px;">
-              <label for="promoConsent">📣 Optional – Media Consent</label>
+              <label for="promoConsent">📣🖼️🎥 Optional – Media Consent</label>
               <p class="note">
                 Magic Math Master may occasionally share examples of student work or achievement (for example, on our website)
                 for educational or promotional purposes. Students may be identified by first name and initial only
-                (e.g. “Ben S, Year 4”), and no sensitive personal information will be shared.
-                Giving consent is optional and you may withdraw it at any time by contacting us.
+                (e.g. “Ben S, Year 4”), and no sensitive personal information will be shared. Giving consent is optional and you
+                may withdraw it at any time by contacting us.
               </p>
 
-              <!-- Important: ensures a value is always submitted -->
               <input type="hidden" name="promo_consent" value="No" />
               <label class="option">
                 <input id="promoConsent" name="promo_consent" type="checkbox" value="Yes" />
-                Yes, I consent to sharing de-identified examples as described above.
+                Yes, I consent to Magic Math Master sharing de-identified examples of my child’s work/achievement as described above.
               </label>
             </div>
           </div>
 
           <div class="submit-row">
             <button type="submit" class="btn btn-amber">Submit registration</button>
-            <span class="small">🌸 When you’re ready, click Submit to complete the registration.</span>
+            <span class="small">🌸 When you’re ready, please click Submit to complete the registration.</span>
           </div>
         </section>
       </form>
@@ -400,17 +581,30 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Magic Math Master • Australia</div>
-    </div>
+    <div class="container">© <span id="year"></span> Magic Math Master • Australia</div>
   </footer>
+
+  <!-- Thank you modal -->
+  <div id="thankYouModal" role="dialog" aria-modal="true" aria-label="Thank you">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px;">Thank you!</h3>
+      <p style="margin:0 0 14px;">Your registration has been received. We will contact you shortly.</p>
+      <button class="btn btn-amber" id="thankYouOkBtn" type="button">OK</button>
+    </div>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const form = document.getElementById('registerForm');
+    const submitFrame = document.querySelector('iframe[name="registerSubmitFrame"]');
     const checkboxGroup = [...document.querySelectorAll('input[name="register_for"]')];
     const registerError = document.getElementById('registerError');
+
+    const modal = document.getElementById('thankYouModal');
+    const okBtn = document.getElementById('thankYouOkBtn');
+
+    let submissionPending = false;
 
     function validatePrograms() {
       const hasSelection = checkboxGroup.some(box => box.checked);
@@ -418,6 +612,7 @@
       checkboxGroup.forEach(box => box.setCustomValidity(hasSelection ? '' : 'Please select at least one program.'));
       return hasSelection;
     }
+
     checkboxGroup.forEach(box => box.addEventListener('change', validatePrograms));
 
     function syncSelectOther(select) {
@@ -437,12 +632,30 @@
         if (!isActive) field.value = '';
       }
     }
+
     document.querySelectorAll('select[data-target]').forEach(select => {
       select.addEventListener('change', () => syncSelectOther(select));
       syncSelectOther(select);
     });
 
-    form.addEventListener('submit', async (event) => {
+    okBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // When iframe loads after submit → show thank you + reset
+    submitFrame.addEventListener('load', () => {
+      if (!submissionPending) return;
+
+      submissionPending = false;
+      modal.style.display = 'flex';
+
+      form.reset();
+      document.querySelectorAll('select[data-target]').forEach(select => syncSelectOther(select));
+      validatePrograms();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    form.addEventListener('submit', (event) => {
       const programsValid = validatePrograms();
       if (!programsValid || !form.checkValidity()) {
         event.preventDefault();
@@ -450,37 +663,8 @@
         return;
       }
 
-      event.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.textContent : '';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-      }
-
-      try {
-        const formData = new FormData(form);
-
-        const res = await fetch(form.action, { method: 'POST', body: formData });
-        if (!res.ok) throw new Error('Submission failed.');
-
-        alert('Thank you! Your registration has been received.');
-        form.reset();
-
-        // reset conditional UI
-        document.querySelectorAll('select[data-target]').forEach(select => syncSelectOther(select));
-        validatePrograms();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      } catch (err) {
-        alert('Sorry — something went wrong. Please try again, or contact us.');
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText || 'Submit registration';
-        }
-      }
+      submissionPending = true; // allow iframe load handler to trigger modal
+      // Do NOT preventDefault here; we WANT the normal submit into the iframe.
     });
   </script>
 </body>
