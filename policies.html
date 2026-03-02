@@ -5,23 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Policies | Magic Math Master</title>
-  <meta name="description" content="Magic Math Master policies: payments, cancellations, rescheduling, online lessons, behaviour, communication, and privacy." />
+  <meta name="description" content="Magic Math Master policies: payments, cancellations, rescheduling, online lessons, behaviour, communication, and privacy. Clear expectations for smooth lessons and strong learning progress." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/policies.html" />
 
+  <!-- Optional OG tags -->
   <meta property="og:title" content="Policies | Magic Math Master" />
   <meta property="og:description" content="Clear policies for payments, cancellations, rescheduling, online lessons, behaviour, communication, and privacy." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/policies.html" />
 
+  <!-- Shared site stylesheet -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- Page-only overrides (keep minimal; use global .card styling) -->
+  <style>
+    /* Policies-specific layout */
+    .policy-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 900px){
+      .policy-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Make policy blocks behave like cards + anchor spacing */
+    .policy-block{
+      scroll-margin-top: 180px;
+    }
+
+    /* Keep policy headings clean (avoid global gradient title styling) */
+    .policy-block h3,
+    .policy-summary h2{
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      color: var(--ink) !important;
+    }
+    .policy-block h3{
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 1000;
+    }
+
+    /* Lists inside policy cards */
+    .policy-block ul,
+    .policy-summary ul{
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.7;
+      font-weight: 650;
+      opacity: .95;
+      color: var(--muted);
+    }
+    .policy-summary ul{ opacity: 1; }
+
+    /* Summary as a proper card */
+    .policy-summary{
+      background:#eaf4ff;
+      border:2px solid #9ec9ff;
+    }
+    .policy-summary h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 1000;
+    }
+
+    /* Note as a card */
+    .policy-note{
+      background:#e7f4ff;
+      border-left:6px solid #42a5f5;
+    }
+
+    /* Language hint as a card */
+    .lang-hint{
+      margin-top: 14px;
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    /* Purple button (Email app) */
+    .btn-purple{
+      background: #7c3aed;
+      color: #fff;
+      border: 2px solid rgba(0,0,0,.10);
+    }
+    .btn-purple:hover{ filter: brightness(.96); }
+
+    /* ✅ HARD GUARANTEE: Only one button shows (override any global helpers) */
+    .policy-email-cta .desktop-only{ display: inline-flex !important; }
+    .policy-email-cta .mobile-only{ display: none !important; }
+    html[data-email-mode="touch"] .policy-email-cta .desktop-only{ display: none !important; }
+    html[data-email-mode="touch"] .policy-email-cta .mobile-only{ display: inline-flex !important; }
+  </style>
 </head>
 
 <body>
 
-  <!-- ===== TOP BAR (nav only, no brand) ===== -->
+  <!-- ===== TOP BAR ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+        </div>
+      </a>
+
       <nav class="nav" aria-label="Primary navigation">
         <a data-nav href="index.html">Home</a>
         <a data-nav href="programs.html">Programs</a>
@@ -30,18 +121,7 @@
         <a data-nav href="about.html">About</a>
         <a data-nav href="philosophy.html">Philosophy</a>
         <a data-nav href="contact.html">Contact</a>
-
-        <!-- Language dropdown -->
-        <div class="lang-menu">
-          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
-            <span class="lang-btn-text" id="currentLangText">En</span>
-            <span class="lang-btn-caret">▾</span>
-          </button>
-          <div class="lang-dropdown" id="langDropdown" hidden>
-            <button class="lang-option" type="button" data-lang="en" data-label="En">English</button>
-            <button class="lang-option" type="button" data-lang="vi" data-label="Vn">Tiếng Việt</button>
-          </div>
-        </div>
+        <a class="nav-lang" href="vi/policies.html">Tiếng Việt</a>
       </nav>
     </div>
   </div>
@@ -54,12 +134,7 @@
         <div class="hero-snap-grid">
           <div>
             <h1 class="hero-snap-title">Policies</h1>
-            <div class="hero-snap-tagline">
-              Clear expectations to support smooth lessons and strong progress
-            </div>
-            <p class="hero-snap-desc">
-              These policies help lessons run smoothly and support each child’s learning and wellbeing.
-            </p>        
+            <div class="hero-snap-tagline">Clear expectations to support smooth lessons, wellbeing, and strong progress</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-hidden="true">
@@ -67,6 +142,9 @@
           </div>
         </div>
 
+        <p class="hero-snap-desc">
+          These policies help lessons run smoothly and support each child’s learning and wellbeing.
+        </p>
 
         <div class="hero-snap-checks">
           <span>✓ Calm, structured teaching</span>
@@ -74,18 +152,24 @@
           <span>✓ Clear family communication</span>
         </div>
 
+        <div class="hero-snap-pills">
+          <span class="hero-snap-pill">Payments &amp; scheduling</span>
+          <span class="hero-snap-pill">Online lessons</span>
+          <span class="hero-snap-pill">Privacy &amp; respect</span>
+        </div>
+
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="contact.html">Enquire</a>
-          <a class="btn btn-amber" href="register.html">Register</a>
+          <a class="btn btn-success" href="contact.html#enquiry-process">Enquire</a>
+          <a class="btn btn-amber" href="contact.html#registration-process">Register</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTENT ===== -->
-  <main class="container">
-    <div class="sep"></div>
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="container" id="sec_top">
+
     <!-- QUICK LINKS -->
     <section class="section">
       <div class="quicklinks">
@@ -105,9 +189,9 @@
       </div>
     </section>
 
-    <!-- Summary -->
+    <!-- SUMMARY -->
     <section class="section">
-      <div class="policy-summary" id="sec_summary">
+      <div class="card policy-summary" id="sec_summary">
         <h2>📌 Important information (short summary)</h2>
         <ul>
           <li><strong>Payment:</strong> Fees are paid before lessons.</li>
@@ -125,13 +209,13 @@
         </ul>
       </div>
 
-      <div class="lang-hint">
+      <div class="card lang-hint">
         Prefer Vietnamese? Visit our Vietnamese policies page:
         <a href="vi/policies.html"><strong>Tiếng Việt</strong></a>.
       </div>
     </section>
 
-    <!-- Policies grid -->
+    <!-- DETAILS -->
     <section class="section">
       <h2 class="section-title">Policy details</h2>
       <p class="section-sub">
@@ -139,7 +223,8 @@
       </p>
 
       <div class="policy-grid">
-        <div class="policy-block" id="sec_payment">
+
+        <div class="card policy-block" id="sec_payment">
           <h3>💳 1. Payment policy</h3>
           <ul>
             <li>Payment is required before lessons begin.</li>
@@ -149,7 +234,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_cancel">
+        <div class="card policy-block" id="sec_cancel">
           <h3>🗓️ 2. Cancellations &amp; changes</h3>
           <ul>
             <li>Please provide at least <strong>24 hours’ notice</strong> for cancellations or changes.</li>
@@ -158,7 +243,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_late">
+        <div class="card policy-block" id="sec_late">
           <h3>⏱️ 3. Late arrival &amp; no-show</h3>
           <ul>
             <li>Lessons finish at the scheduled end time (even if arriving late).</li>
@@ -167,7 +252,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_resched">
+        <div class="card policy-block" id="sec_resched">
           <h3>🔁 4. Rescheduling</h3>
           <ul>
             <li>Rescheduling is subject to availability.</li>
@@ -176,7 +261,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_online">
+        <div class="card policy-block" id="sec_online">
           <h3>💻 5. Online lessons</h3>
           <ul>
             <li>A stable internet connection and a quiet learning space are required.</li>
@@ -185,7 +270,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_behaviour">
+        <div class="card policy-block" id="sec_behaviour">
           <h3>🤝 6. Behaviour &amp; wellbeing</h3>
           <ul>
             <li>We maintain a respectful, supportive learning environment.</li>
@@ -194,7 +279,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_practice">
+        <div class="card policy-block" id="sec_practice">
           <h3>📚 7. Practice &amp; progress</h3>
           <ul>
             <li>Regular practice is essential for steady improvement.</li>
@@ -203,7 +288,7 @@
           </ul>
         </div>
 
-        <div class="policy-block" id="sec_privacy">
+        <div class="card policy-block" id="sec_privacy">
           <h3>🔒 8. Communication &amp; privacy</h3>
           <ul>
             <li>We aim to respond within <strong>24–48 business hours</strong>.</li>
@@ -211,12 +296,13 @@
             <li>Photos/videos are only used with consent (if applicable).</li>
           </ul>
         </div>
+
       </div>
     </section>
 
-    <!-- Closing note -->
+    <!-- CLOSING -->
     <section class="section" id="sec_questions">
-      <div class="policy-note">
+      <div class="card policy-note">
         Thank you for reading our policies. We aim to provide a safe, enjoyable, and effective learning experience for every child.
       </div>
 
@@ -247,6 +333,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- ===== FOOTER ===== -->
@@ -262,7 +349,48 @@
     </div>
   </footer>
 
-  <!-- ONE shared script -->
+  <script>
+    // ✅ Decide which email button to show:
+    // - "touch" if primary pointer is coarse (iPhone/iPad)
+    // - otherwise desktop (laptop/desktop)
+    (function(){
+      var isTouchCoarse = false;
+      try{
+        isTouchCoarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+      }catch(e){ isTouchCoarse = false; }
+      document.documentElement.setAttribute("data-email-mode", isTouchCoarse ? "touch" : "desktop");
+    })();
+
+    // Quick links scroll (index-like)
+    (function(){
+      function scrollToSection(el){
+        el.scrollIntoView({ behavior:"smooth", block:"start" });
+
+        var tries = 0, maxTries = 9;
+        function nudge(){
+          tries++;
+          var rect = el.getBoundingClientRect();
+          var safeTop = 150;
+          if(rect.top < safeTop){
+            window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
+          }
+          if(tries < maxTries) setTimeout(nudge, 160);
+        }
+        setTimeout(nudge, 220);
+      }
+
+      document.querySelectorAll(".ql-btn[data-open]").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          var id = btn.getAttribute("data-open");
+          var el = document.getElementById(id);
+          if(!el) return;
+          scrollToSection(el);
+        });
+      });
+    })();
+  </script>
+
+  <!-- Global behaviours: year + active links + language dropdown -->
   <script src="script.js"></script>
 </body>
 </html>
