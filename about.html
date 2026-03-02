@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>About | Magic Math Master</title>
-  <meta name="description" content="About Magic Math Master: educator-led, confidence-first maths tutoring for Prep–Year 12 in Australia. Learn our philosophy, story, qualifications, and real-world applied maths approach." />
+  <meta name="description" content="Educator-led, confidence-first maths tutoring for Prep–Year 12 in Australia. Learn about our philosophy, founder, qualifications, and real-world applied maths approach." />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/about.html" />
 
   <meta property="og:title" content="About | Magic Math Master" />
-  <meta property="og:description" content="Educator-led, confidence-first maths tutoring for Prep–Year 12 in Australia. Meet our founder, qualifications, and real-world applied maths approach." />
+  <meta property="og:description" content="Educator-led maths tutoring focused on confidence, clarity, and strong foundations." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.magicmathmaster.com.au/about.html" />
 
@@ -17,10 +17,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
   <style>
-    .brand-title span{ display:none !important; }
-    html{ scroll-behavior: smooth; }
-
-    /* HERO: remove square frame around logo (template default) */
     .hero-snap-logoBox{
       background: transparent !important;
       border: none !important;
@@ -29,738 +25,233 @@
       border-radius: 0 !important;
     }
     .hero-snap-logoBox img{
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
       background: transparent !important;
+      box-shadow: none !important;
       border-radius: 0 !important;
     }
     .hero { padding: 22px 0 18px; }
-
-    /* ===== Founder “header + 2-column” layout ===== */
-    .founder-block{
-      display:grid;
-      grid-template-rows: auto auto;
-      gap: 14px;
-    }
-    .founder-header{ padding: 0; }
-
-    .founder-two-col{
-      display:grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .founder-right-stack{
-      display:grid;
-      grid-template-rows: 1fr auto;
-      gap: 14px;
-    }
-
-    .founder-card{
-      position: static;
-      top: auto;
-    }
-
-    .founder-photo{
-      border-radius: 18px;
-      overflow:hidden;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.72);
-    }
-    .founder-photo img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-    .founder-caption{
-      padding: 12px 14px 14px;
-      line-height: 1.6;
-      font-weight: 750;
-    }
-    .founder-caption b{ display:block; font-size: 16px; margin-bottom: 6px; }
-
-    .about-chips{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:10px; }
-    .about-chip{
-      display:inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 14px;
-      line-height: 1;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.70);
-    }
-
-    .clean-list{
-      margin: 0;
-      padding-left: 20px;
-      line-height: 1.8;
-      font-weight: 650;
-    }
-    .clean-list li{ margin: 8px 0; }
-
-    .note{
-      background:#e7f4ff;
-      border-left:6px solid #42a5f5;
-      border-radius:14px;
-      padding:14px 16px;
-      font-weight: 750;
-      line-height: 1.7;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 780px){
-      .mini-grid{ grid-template-columns: 1fr; }
-    }
-
-    .badge-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 10px;
-    }
-    .badge{
-      display:inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 13px;
-      border: 2px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.70);
-    }
-
-    #real-world a{
-      color: #1565c0 !important;
-      font-weight: 800;
-      text-decoration: underline;
-    }
-    #real-world a:hover{ text-decoration: none; }
-
-    /* Quick links: same feel as index */
-    .quicklinks h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 1000;
-      color: var(--brand2);
-    }
-    .ql-btn.is-active{
-      background: rgba(11,94,215,.18);
-      border-color: rgba(11,94,215,.35);
-      box-shadow: 0 10px 18px rgba(11,94,215,.12);
-      color: var(--brand2);
-    }
-
-    @keyframes mmmFlash {
-      0%   { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
-      35%  { box-shadow: 0 0 0 6px rgba(11,94,215,.18); border-color: rgba(11,94,215,.55); }
-      100% { box-shadow: 0 0 0 rgba(11,94,215,0); border-color: rgba(11,94,215,.12); }
-    }
-    .anchor-flash.card{ animation: mmmFlash 1.15s ease; }
-
-    .anchor-target{ scroll-margin-top: 140px; }
-
-    /* Section titles */
-    #founder-message .section-title{ color: #9E3201; }
-    #qualifications  .section-title{ color: var(--brand2); }
-    #real-world      .section-title{ color: #1565c0; }
-    #background      .section-title{ color: #7a4a00; }
-    #awards          .section-title{ color: #d97706; }
-    #child-success   .section-title{ color: #15803d; }
-
-    /* Ensure paragraphs in cards use full width */
-    main .card .section-sub{
-      max-width: none !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    @media (max-width: 980px){
-      .founder-two-col{ grid-template-columns: 1fr; }
-      .founder-right-stack{ grid-template-rows: auto; }
-    }
-
-    /* Footer links like index */
-    .footer-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:10px;
-      font-weight:700;
-    }
-    .footer-links a{
-      text-decoration:none;
-      color:inherit;
-      opacity:.9;
-    }
-    .footer-links a:hover{
-      opacity:1;
-      text-decoration:underline;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== TOP BAR (match index.html) ===== -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="nav" aria-label="Primary navigation">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="mathclub.html">Math Club</a>
-        <a data-nav href="programs.html">Programs</a>
-        <a data-nav href="pricing.html">Fees</a>
-        <a data-nav href="about.html">About</a>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo">
+      <div class="brand-title"><b>Magic Math Master</b></div>
+    </a>
 
-        <a href="https://practice.magicmathmaster.com.au">Student Login</a>
+    <nav class="nav">
+      <a data-nav href="index.html">Home</a>
+      <a data-nav href="programs.html">Programs</a>
+      <a data-nav href="pricing.html">Fees</a>
+      <a data-nav href="about.html">About</a>
+      <a data-nav href="philosophy.html">Philosophy</a>
+      <a data-nav href="contact.html">Contact</a>
+      <a href="https://practice.magicmathmaster.com.au">Student Login</a>
+    </nav>
+  </div>
+</div>
 
-        <div class="lang-menu">
-          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
-            <span class="lang-btn-text" id="currentLangText">En</span>
-            <span class="lang-btn-caret">▾</span>
-          </button>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-snap">
 
-          <div class="lang-dropdown" id="langDropdown" hidden>
-            <button class="lang-option" type="button" data-lang="en" data-label="En">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#012169"/>
-                <polygon points="0,0 7,0 60,33 60,40 53,40 0,7" fill="#fff"/>
-                <polygon points="60,0 53,0 0,33 0,40 7,40 60,7" fill="#fff"/>
-                <polygon points="0,0 3.5,0 60,35 60,40 56.5,40 0,5" fill="#C8102E"/>
-                <polygon points="60,0 56.5,0 0,35 0,40 3.5,40 60,5" fill="#C8102E"/>
-                <rect x="24" width="12" height="40" fill="#fff"/>
-                <rect y="14" width="60" height="12" fill="#fff"/>
-                <rect x="26" width="8" height="40" fill="#C8102E"/>
-                <rect y="16" width="60" height="8" fill="#C8102E"/>
-              </svg>
-              <span class="lang-label">En</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#DA251D"/>
-                <polygon fill="#FFDE00" points="30,8 33.5,18.5 44.5,18.5 35.5,24.8 39,35 30,28.7 21,35 24.5,24.8 15.5,18.5 26.5,18.5"/>
-              </svg>
-              <span class="lang-label">Vn</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#DE2910"/>
-                <polygon fill="#FFDE00" points="12,6 13.8,11.3 19.4,11.3 14.9,14.6 16.6,20 12,16.7 7.4,20 9.1,14.6 4.6,11.3 10.2,11.3"/>
-                <polygon fill="#FFDE00" points="24,4 24.7,6.1 27,6.1 25.1,7.4 25.8,9.6 24,8.2 22.2,9.6 22.9,7.4 21,6.1 23.3,6.1"/>
-                <polygon fill="#FFDE00" points="29,9 29.7,11.1 32,11.1 30.1,12.4 30.8,14.6 29,13.2 27.2,14.6 27.9,12.4 26,11.1 28.3,11.1"/>
-                <polygon fill="#FFDE00" points="29,17 29.7,19.1 32,19.1 30.1,20.4 30.8,22.6 29,21.2 27.2,22.6 27.9,20.4 26,19.1 28.3,19.1"/>
-                <polygon fill="#FFDE00" points="24,22 24.7,24.1 27,24.1 25.1,25.4 25.8,27.6 24,26.2 22.2,27.6 22.9,25.4 21,24.1 23.3,24.1"/>
-              </svg>
-              <span class="lang-label">Zh</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="hi" data-label="Hi">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="13.333" y="0" fill="#FF9933"/>
-                <rect width="60" height="13.333" y="13.333" fill="#FFFFFF"/>
-                <rect width="60" height="13.334" y="26.666" fill="#138808"/>
-                <circle cx="30" cy="20" r="4.2" fill="none" stroke="#000080" stroke-width="1"/>
-                <circle cx="30" cy="20" r="0.6" fill="#000080"/>
-              </svg>
-              <span class="lang-label">Hi</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="es" data-label="Es">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#AA151B"/>
-                <rect y="10" width="60" height="20" fill="#F1BF00"/>
-              </svg>
-              <span class="lang-label">Es</span>
-            </button>
+      <div class="hero-snap-grid">
+        <div>
+          <h1 class="hero-snap-title">About Us</h1>
+          <div class="hero-snap-tagline">
+            Educator-led, confidence-first maths learning
           </div>
         </div>
+
+        <div class="hero-snap-logoBox">
+          <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy">
+        </div>
+      </div>
+
+      <p class="hero-snap-desc">
+        Magic Math Master is built on calm structure, strong foundations, and a belief
+        that every motivated child can learn maths deeply and confidently.
+      </p>
+
+      <div class="hero-snap-checks">
+        <span>✓ Calm, structured teaching</span>
+        <span>✓ Personalised learning pathways</span>
+        <span>✓ Clear family communication</span>
+      </div>
+
+      <div class="hero-snap-pills">
+        <span class="hero-snap-pill">Prep–Year 12</span>
+        <span class="hero-snap-pill">Online &amp; in-person</span>
+        <span class="hero-snap-pill">Confidence first</span>
+      </div>
+
+      <div class="hero-snap-cta">
+        <a class="btn btn-success" href="contact.html">Enquire</a>
+        <a class="btn btn-amber" href="register.html">Register</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="sep"></div></div>
+
+<!-- ===== QUICK LINKS (same as index) ===== -->
+<section class="section">
+  <div class="container">
+    <div class="quicklinks">
+      <div class="ql-grid">
+        <a class="ql-btn" data-open="sec_founder">Founder</a>
+        <a class="ql-btn" data-open="sec_qualifications">Qualifications</a>
+        <a class="ql-btn" data-open="sec_realworld">Real-world maths</a>
+        <a class="ql-btn" data-open="sec_background">Teaching background</a>
+        <a class="ql-btn" data-open="sec_awards">Awards</a>
+        <a class="ql-btn" data-open="sec_child">For your child</a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ===== HERO (match index.html hero format) ===== -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-snap">
+<!-- ===== CONTENT ===== -->
+<main class="container">
 
-        <div class="hero-snap-grid">
-          <div>
-            <h1 class="hero-snap-title">About Us</h1>
-            <div class="hero-snap-tagline">Educator-led, confidence-first maths tutoring for Prep–Year 12</div>
-          </div>
+  <section class="section" id="sec_founder">
+    <div class="card">
+      <h2 class="section-title">Founder’s message</h2>
+      <p class="section-sub">
+        I founded Magic Math Master to help students build confidence, clarity,
+        and strong foundations in mathematics — without stress.
+      </p>
 
-          <div class="hero-snap-logoBox" aria-hidden="true">
-            <img src="assets/logo.png" alt="Magic Math Master logo" loading="lazy" />
-          </div>
-        </div>
+      <p>
+        I grew up with limited access to high-quality expert guidance, despite a strong love
+        for mathematics. These early challenges shaped my belief that every motivated child
+        deserves clear teaching and meaningful support.
+      </p>
 
-        <p class="hero-snap-desc">
-          Magic Math Master is built on care, clarity, and a belief that every motivated child can learn maths deeply and confidently —
-          with calm structure, strong foundations, and real problem-solving.
-        </p>
+      <p>
+        My goal is to make high-quality maths education accessible through personalised
+        teaching, small groups, and calm, structured learning pathways.
+      </p>
 
-        <div class="hero-snap-checks">
-          <span>✓ Calm structure, high standards</span>
-          <span>✓ Personalised learning pathways</span>
-          <span>✓ Clear family communication</span>
-        </div>
-
-        <div class="about-chips" aria-label="Highlights">
-          <span class="about-chip">Australian curriculum–aligned</span>
-          <span class="about-chip">Confidence &amp; foundations</span>
-          <span class="about-chip">Extension &amp; competitions</span>
-          <span class="about-chip">Small groups</span>
-          <span class="about-chip">Real-world applied maths</span>
-        </div>
-
-        <div class="hero-snap-cta" style="margin-top:12px;">
-          <a class="btn btn-success" href="enquiry.html">Enquire</a>
-          <a class="btn btn-amber" href="register.html">Register</a>
-        </div>
-
-      </div>
+      <p>
+        Warm regards,<br>
+        <strong>Dr Tuyet Vu</strong><br>
+        Founder &amp; Educator
+      </p>
     </div>
   </section>
 
-  <main>
-    <div class="container"><div class="sep"></div></div>
-
-    <!-- QUICK LINKS (match index quicklinks style/placement) -->
-    <section class="section" style="padding-top:0;">
-      <div class="container">
-        <div class="quicklinks">
-          <h2>Quick links (tap to open)</h2>
-          <div class="ql-grid" aria-label="Quick links">
-            <a class="ql-btn" data-open="founder-message">Founder’s message</a>
-            <a class="ql-btn" data-open="qualifications">Qualifications</a>
-            <a class="ql-btn" data-open="real-world">Real-world applied maths</a>
-            <a class="ql-btn" data-open="background">Teaching background</a>
-            <a class="ql-btn" data-open="awards">Scholarships &amp; awards</a>
-            <a class="ql-btn" data-open="child-success">What this means for your child</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PAGE CONTENT ===== -->
-    <section class="section">
-      <div class="container" id="top">
-
-        <!-- Founder message -->
-        <section id="founder-message" class="anchor-target">
-
-          <div class="founder-block">
-
-            <header class="founder-header">
-              <h2 class="section-title">✨ Founder’s message</h2>
-              <p class="section-sub">
-                Welcome to Magic Math Master — where passion and precision come together to build success in mathematics.
-              </p>
-            </header>
-
-            <div class="founder-two-col">
-
-              <aside class="founder-card">
-                <div class="card" style="padding:16px;">
-                  <div class="founder-photo">
-                    <img src="assets/Founder.jpg" alt="Dr Tuyet Vu - Founder and Educator" loading="lazy">
-                  </div>
-                  <div class="founder-caption">
-                    <b>Dr Tuyet Vu — Founder &amp; Educator</b>
-                    <span>Maths learning goes far beyond memorising rules — it’s about using logic, creativity, and problem-solving to make sense of real-world situations.</span>
-                  </div>
-
-                  <div class="badge-row" aria-label="Founder highlights">
-                    <span class="badge">PhD (Engineering)</span>
-                    <span class="badge">Mathematics &amp; Education</span>
-                    <span class="badge">Government R&amp;D</span>
-                    <span class="badge">MATLAB &amp; modelling</span>
-                  </div>
-                </div>
-              </aside>
-
-              <div class="founder-right-stack">
-
-                <div class="card">
-                  <h3 style="margin-top:0;">Founder’s story</h3>
-
-                  <p class="section-sub" style="margin-top:0;">
-                    I was raised in a family with limited means, yet I developed a deep love for mathematics and a strong habit of self-study.
-                    Although I worked hard, I did not always have access to high-quality expert guidance to help me reach my full potential.
-                    These early challenges shaped my purpose.
-                  </p>
-
-                  <p class="section-sub">
-                    I founded Magic Math Master to create opportunities for children who are curious and capable, but may not have the resources
-                    or support to advance. My goal is to make high-quality mathematics education more accessible through personalised teaching,
-                    small-group learning, and flexible support options for families.
-                  </p>
-
-                  <p class="section-sub">
-                    I believe every motivated child deserves the chance to learn deeply, think confidently, and follow their dreams.
-                  </p>
-
-                  <div class="hero-snap-checks" style="margin-top:10px;">
-                    <span>✓ Calm, simple explanations</span>
-                    <span>✓ Step-by-step confidence building</span>
-                    <span>✓ Real-world maths thinking</span>
-                  </div>
-                </div>
-
-                <div class="note">
-                  👨‍👩‍👧‍👦 <strong>Parents can expect:</strong> clear goals, structured lessons, and regular updates about progress and next steps.
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top:16px;">
-            <p class="section-sub" style="margin-top:0;">
-              As the founder of Magic Math Master, it is my great pleasure to offer an Australian curriculum–aligned mathematics program designed
-              to help students build confidence, master foundational skills, and reach their full potential — whether the goal is to catch up,
-              extend beyond the classroom, prepare for selective entry or VCE, or simply enjoy the beauty of numbers.
-            </p>
-
-            <p class="section-sub">
-              Over decades of teaching, researching, and parenting, I’ve learned that true mathematical understanding goes far beyond memorising formulas.
-              Mathematics is a universal language of logic and creativity. It helps us make decisions, design technology, understand data, and solve complex
-              problems in the real world. Every child can appreciate this “magic” when it is taught clearly, patiently, and in a way that connects to life.
-            </p>
-
-            <p class="section-sub" style="margin:14px 0 0;">
-              Thank you for considering Magic Math Master to be part of your child’s learning journey.
-            </p>
-            <p class="section-sub" style="margin:10px 0 0;">
-              Warm regards,<br>
-              <strong>Dr Tuyet Vu</strong><br>
-              Founder, Magic Math Master
-            </p>
-          </div>
-        </section>
-
-        <!-- Qualifications -->
-        <section id="qualifications" class="section anchor-target">
-          <h2 class="section-title">📜 Formal qualifications</h2>
-          <p class="section-sub">
-            My background combines mathematics, engineering, and education — so students learn not only the “how”, but also the “why”.
-          </p>
-
-          <div class="card">
-            <ul class="clean-list" style="margin-top:0;">
-              <li>🎓 <strong>PhD in Electrical Engineering</strong> – The University of Melbourne</li>
-              <li>🎓 <strong>Honours Bachelor of Mathematics</strong> – La Trobe University</li>
-              <li>🎓 <strong>Master of Science and Technology Education</strong> – La Trobe University</li>
-              <li>🎓 <strong>Bachelor of Mathematics and Education</strong> – Vietnam</li>
-              <li>🎓 <strong>Bachelor of Arts in English Language</strong> – Vietnam</li>
-            </ul>
-
-            <p class="section-sub">
-              Earlier in my career, I was accepted into a competitive Master of Mathematics program in Vietnam and achieved the maximum score in all
-              three entrance mathematics subjects. Shortly afterwards, I was awarded an <strong>Asian Development Bank (ADB) Scholarship</strong>, which enabled
-              me to move to Australia and complete further study. This training helps me combine strengths from both the Vietnamese and Australian education systems.
-            </p>
-
-            <ul class="clean-list" style="margin-top:10px;">
-              <li>🎓 <strong>Master of Mathematics</strong> (postgraduate study, 1 year; competitive entry) – Vietnam</li>
-              <li>📜 <strong>PoSSUM (OPS 104): Orbital Mechanics and Mission Simulation</strong> — International Institute for Astronautical Sciences (certificate)</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Real-world applied mathematics -->
-        <section id="real-world" class="section anchor-target">
-          <h2 class="section-title">🔬 Real-world applied mathematics</h2>
-          <p class="section-sub">
-            When I teach mathematics, I draw from the same kind of thinking used in engineering, data analysis, and modern technology — not just textbook examples.
-          </p>
-
-          <div class="card">
-            <h3 style="margin-top:0;">From research &amp; industry to the classroom</h3>
-
-            <div class="mini-grid">
-              <div>
-                <p class="section-sub" style="margin-top:0;">
-                  I worked as the <strong>Research and Marketing Leader</strong> at the Centre for Economics Sciences Application and Investigation, collaborating
-                  with foreign investors to localise product design and research for the Vietnamese market. This strengthened my analytical thinking, communication,
-                  and ability to connect theory with real-world needs.
-                </p>
-              </div>
-              <div>
-                <p class="section-sub" style="margin-top:0;">
-                  I completed a <strong>PhD in Engineering</strong> and currently work for an <strong>Australian government organisation</strong>, where I develop and test tracking
-                  algorithms using mathematical modelling, logical reasoning, and <strong>MATLAB</strong> programming.
-                </p>
-              </div>
-            </div>
-
-            <div class="hero-snap-checks" style="margin-top:10px;">
-              <span>✓ Mathematical modelling</span>
-              <span>✓ Logical reasoning</span>
-              <span>✓ MATLAB implementation</span>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top:16px;">
-            <h3 style="margin-top:0;">Scientist, engineer, researcher — and inventor of mathematical tools</h3>
-
-            <p class="section-sub" style="margin-top:0;">
-              Alongside my teaching, I work as a science and technology professional in Australia.
-              I am currently a researcher at <strong>Defence Science and Technology Group (DSTG)</strong>. My work includes:
-            </p>
-
-            <ul class="clean-list" style="margin-top:0;">
-              <li>🛰️ Space surveillance and satellite tracking</li>
-              <li>📡 Signal processing and data fusion</li>
-              <li>🎯 Advanced tracking algorithms that can follow many moving objects in noisy, uncertain environments</li>
-            </ul>
-
-            <p class="section-sub">
-              In my research, I design and implement sophisticated algorithms using <strong>random finite set theory</strong>, <strong>particle filtering</strong>, and
-              <strong>Markov Chain Monte Carlo (MCMC)</strong> methods — mathematical tools used in modern technologies such as radar, autonomous systems, and space domain awareness.
-            </p>
-
-            <p class="section-sub">
-              I have also invented new mathematical performance metrics (including <strong>OSPAMT</strong> and <strong>COSPA</strong>) to evaluate how well tracking algorithms perform.
-              I implement these methods in MATLAB and share my code openly so that other researchers and engineers around the world can use and build on my work.
-            </p>
-
-            <p class="section-sub">
-              My work on tracking performance metrics has also been positively recognised by leading international experts, including Professor Henk Blom (Netherlands),
-              known for his contributions to the IMM framework, and Dr Erik P. Blasch, a program officer at the United States Air Force Research Laboratory / AFOSR.
-            </p>
-
-            <p class="section-sub">My research has been:</p>
-            <ul class="clean-list" style="margin-top:0;">
-              <li>📄 Published in top-tier international journals and conferences</li>
-              <li>🏆 Recognised with a Finalist, Best Student Paper award at the International Conference on Information Fusion (Chicago)</li>
-              <li>🤝 Developed in collaboration with leading academics, including Professor Ba-Ngu Vo (Curtin University) and Professor Rob Evans (The University of Melbourne)</li>
-            </ul>
-
-            <p class="section-sub" style="margin-top:10px;">
-              All of this means that when I teach mathematics, I am not just repeating textbook examples. I am drawing directly from the same mathematical thinking used in real
-              industry and defence applications — tracking satellites, analysing signals, and making sense of complex data.
-            </p>
-
-            <p class="section-sub">
-              If you’d like to see my research publications and the MATLAB code I share publicly for other researchers and engineers to use, you can view them here:
-              <a href="https://www.researchgate.net/profile/Tuyet-Vu/research" target="_blank" rel="noopener">ResearchGate — Tuyet Vu</a>.
-            </p>
-          </div>
-        </section>
-
-        <!-- Teaching background -->
-        <section id="background" class="section anchor-target">
-          <h2 class="section-title">📘 Teaching &amp; education background</h2>
-          <p class="section-sub">
-            My passion for teaching began early, and it has grown through tutoring, classroom teaching, university teaching, and research.
-          </p>
-
-          <div class="card">
-            <h3 style="margin-top:0;">Early tutoring and proof that progress is possible</h3>
-            <p class="section-sub" style="margin-top:0;">
-              My passion for teaching began early, when I was still a student myself. Throughout primary and high school, I often helped friends
-              understand mathematics more clearly during break time or before class; at times, small groups would even gather at my home so I could
-              explain concepts in a calm, simple, and engaging way.
-            </p>
-
-            <p class="section-sub">
-              During my undergraduate studies, I continued tutoring around 15 students in both one-to-one and small-group sessions.
-              One memorable student was a Grade 9 student who had fallen far behind and was at risk of repeating the year. After a few weeks of targeted
-              tutoring in Term 3, he rebuilt the background knowledge he needed, became one of the top students in his class by the end of Grade 9,
-              and later pursued a degree in Information Technology. This reinforced my belief that with the right guidance, every student can improve.
-            </p>
-          </div>
-
-          <div class="card" style="margin-top:16px;">
-            <h3 style="margin-top:0;">Teaching experience (Vietnam &amp; Australia)</h3>
-            <p class="section-sub" style="margin-top:0;">
-              Professionally, I have taught mathematics and related subjects in both Vietnam and Australia, including:
-            </p>
-            <ul class="clean-list">
-              <li>🏫 Saigon University (formerly Ho Chi Minh City College of Education)</li>
-              <li>🏫 University of Economics Ho Chi Minh City (School of Finance)</li>
-              <li>🏫 Dang Khoa High School</li>
-              <li>🏫 The International School in Saigon (TIS)</li>
-              <li>🏫 Raffles Vietnam</li>
-            </ul>
-
-            <p class="section-sub">
-              I also served as a teacher-training lecturer at Saigon University, preparing future secondary mathematics teachers.
-            </p>
-          </div>
-
-          <div class="card" style="margin-top:16px;">
-            <h3 style="margin-top:0;">University teaching, mentoring, and leadership</h3>
-            <p class="section-sub" style="margin-top:0;">
-              During my PhD, I also taught large-group tutorials, and shortly after completing my doctorate,
-              I was invited to be a guest lecturer in Applied Mathematics at the University of Melbourne.
-            </p>
-
-            <p class="section-sub">
-              Throughout my career, I have taught students from Prep to Year 12, as well as university students,
-              and I have supervised and mentored <strong>more than 100 trainee teachers and undergraduates</strong>.
-              These experiences have given me deep insight into how students learn, where they often struggle,
-              and what types of support help them thrive and build long-lasting confidence in mathematics.
-            </p>
-          </div>
-        </section>
-
-        <!-- Scholarships & Awards -->
-        <section id="awards" class="section anchor-target">
-          <h2 class="section-title">🏅 Scholarships &amp; awards</h2>
-          <p class="section-sub">
-            I am grateful to have received several competitive scholarships and prizes over my academic journey.
-            These experiences reinforced my commitment to excellence, perseverance, and generosity in learning —
-            values I bring into Magic Math Master.
-          </p>
-
-          <div class="card">
-            <ul class="clean-list" style="margin-top:0;">
-              <li>🏆 Finalist, Best Student Paper – International Conference on Information Fusion (Chicago)</li>
-              <li>🏅 Prof. C.J. Eliezer Prize in Mathematics – La Trobe University</li>
-              <li>🎓 Melbourne International Fee Remission Scholarship (MIFRS) – 4 years (PhD in Electrical Engineering)</li>
-              <li>🎓 National ICT Australia (NICTA) Scholarships for academic excellence – 4 years (PhD in Electrical Engineering)</li>
-              <li>🎓 Asian Development Bank (ADB) Scholarship (tuition-fee and living-allowance) – 2 years</li>
-              <li>🎓 Four-year tuition-fee and living-allowance scholarship – Ho Chi Minh City University of Education (Bachelor of Mathematics)</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- What this means for your child -->
-        <section id="child-success" class="section anchor-target">
-          <div class="card" style="padding:22px;">
-            <h2 class="section-title" style="margin:0 0 6px;">🎯 What this means for your child</h2>
-
-            <p class="section-sub" style="margin:0 0 14px; font-weight:900;">
-              Real expertise. Calm guidance. Strong results.
-            </p>
-
-            <p class="section-sub" style="margin:0 0 12px;">
-              My experience across <strong>mathematics</strong>, <strong>engineering research</strong>, and <strong>education</strong> means I don’t just teach students
-              to “get answers” — I teach them to <strong>think clearly</strong>, <strong>build solid foundations</strong>, and <strong>solve problems with confidence</strong>.
-              I have taught Prep–Year 12 and university students, and mentored more than 100 trainee teachers and undergraduates, so I understand the common gaps
-              that hold students back — and the practical steps that help them progress quickly and sustainably.
-            </p>
-
-            <p class="section-sub" style="margin:0 0 14px;">
-              In my government research role, I design and test tracking algorithms using mathematical modelling and MATLAB. This real-world work strengthens how I teach:
-              I show students that maths is not a set of rules to memorise — it is a powerful way to reason, analyse, and make decisions. This helps students stay motivated,
-              understand concepts more deeply, and perform better in school and exams.
-            </p>
-
-            <p class="section-sub">
-              I also complete professional short courses in space and orbital mechanics, which helps me connect maths to real applications such as satellite motion and tracking.
-            </p>
-
-            <ul class="clean-list" style="margin:0 0 14px;">
-              <li><strong>Personalised diagnosis:</strong> I quickly identify exactly what your child understands, what they are missing, and why they feel stuck.</li>
-              <li><strong>Step-by-step mastery:</strong> Lessons rebuild foundations carefully, then strengthen speed, accuracy, and exam-style confidence.</li>
-              <li><strong>Deep understanding:</strong> I teach the “why” behind methods so your child can apply ideas in new questions (not just repeat patterns).</li>
-              <li><strong>Problem-solving habits:</strong> Your child learns how to plan, check, explain reasoning, and stay calm under challenge.</li>
-              <li><strong>Real-world meaning:</strong> I connect maths to life (data, technology, sport, patterns, coding), so learning feels useful and engaging.</li>
-              <li><strong>Clear progress tracking:</strong> Parents receive simple goals, updates, and next steps — so improvement is visible and measurable.</li>
-            </ul>
-
-            <p class="section-sub" style="margin:0 0 16px;">
-              My goal is for your child to become a <strong>confident, independent learner</strong> who can think logically, communicate clearly, and enjoy maths —
-              whether they are catching up, keeping up, getting ahead, or aiming for competitions and selective entry.
-            </p>
-
-            <a class="btn btn-success" href="enquiry.html">Enquire</a>
-            <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Register</a>
-          </div>
-        </section>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER (match index.html) ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Magic Math Master • Australia</div>
-        <div>
-          <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
-          <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="footer-links" aria-label="Footer links">
-        <a href="about.html">About</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="policies.html">Policies</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  <section class="section" id="sec_qualifications">
+    <div class="card">
+      <h2 class="section-title">Formal qualifications</h2>
+      <ul>
+        <li>PhD in Electrical Engineering – University of Melbourne</li>
+        <li>Honours Bachelor of Mathematics – La Trobe University</li>
+        <li>Master of Science &amp; Technology Education – La Trobe University</li>
+        <li>Bachelor of Mathematics &amp; Education</li>
+        <li>Asian Development Bank (ADB) Scholar</li>
+      </ul>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <section class="section" id="sec_realworld">
+    <div class="card">
+      <h2 class="section-title">Real-world applied mathematics</h2>
+      <p>
+        Alongside teaching, I work in Australian government research,
+        developing mathematical models and tracking algorithms used in
+        real-world applications such as satellite tracking and signal analysis.
+      </p>
 
-    // Quick links: index-like scroll + active + flash
-    (function(){
-      var btns = Array.prototype.slice.call(document.querySelectorAll(".ql-btn[data-open]"));
+      <p>
+        This experience allows me to teach maths as a way of thinking —
+        not just memorising formulas, but reasoning, modelling, and problem-solving.
+      </p>
+    </div>
+  </section>
 
-      function setActive(id){
-        btns.forEach(function(b){ b.classList.remove("is-active"); });
-        var match = btns.find(function(b){ return b.getAttribute("data-open") === id; });
-        if(match) match.classList.add("is-active");
-      }
+  <section class="section" id="sec_background">
+    <div class="card">
+      <h2 class="section-title">Teaching background</h2>
+      <p>
+        I have taught mathematics across Vietnam and Australia, including
+        secondary schools, universities, and teacher-training programs.
+      </p>
 
-      function flashCard(section){
-        if(!section) return;
-        var card = section.querySelector(".card") || section;
-        card.classList.remove("anchor-flash");
-        void card.offsetWidth;
-        card.classList.add("anchor-flash");
-        setTimeout(function(){ card.classList.remove("anchor-flash"); }, 1300);
-      }
+      <p>
+        I have worked with students from Prep to Year 12, university students,
+        and mentored over 100 trainee teachers and undergraduates.
+      </p>
+    </div>
+  </section>
 
-      function scrollToSection(el){
-        el.scrollIntoView({ behavior:"smooth", block:"start" });
+  <section class="section" id="sec_awards">
+    <div class="card">
+      <h2 class="section-title">Scholarships &amp; awards</h2>
+      <ul>
+        <li>Finalist – Best Student Paper, International Conference on Information Fusion</li>
+        <li>Prof. C.J. Eliezer Prize in Mathematics – La Trobe University</li>
+        <li>Melbourne International Fee Remission Scholarship (PhD)</li>
+        <li>National ICT Australia (NICTA) Scholarship</li>
+      </ul>
+    </div>
+  </section>
 
-        // nudge for topbar overlap
-        var tries = 0;
-        var maxTries = 9;
-        function nudge(){
-          tries++;
-          var rect = el.getBoundingClientRect();
-          var safeTop = 150;
-          if(rect.top < safeTop){
-            window.scrollBy({ top: rect.top - safeTop, left: 0, behavior: "smooth" });
-          }
-          if(tries < maxTries) setTimeout(nudge, 160);
-        }
-        setTimeout(nudge, 220);
-      }
+  <section class="section" id="sec_child">
+    <div class="card">
+      <h2 class="section-title">What this means for your child</h2>
+      <p>
+        Your child receives calm guidance, deep understanding, and
+        step-by-step confidence building — not pressure.
+      </p>
 
-      function go(id){
-        var el = document.getElementById(id);
-        if(!el) return;
-        history.replaceState(null, "", "#" + id);
-        setActive(id);
-        scrollToSection(el);
-        setTimeout(function(){ flashCard(el); }, 260);
-      }
+      <ul>
+        <li>Clear diagnosis of gaps</li>
+        <li>Strong foundations before speed</li>
+        <li>Real problem-solving skills</li>
+        <li>Clear communication with families</li>
+      </ul>
 
-      btns.forEach(function(btn){
-        btn.addEventListener("click", function(){
-          go(btn.getAttribute("data-open"));
-        });
+      <a class="btn btn-success" href="contact.html">Enquire</a>
+      <a class="btn btn-amber" href="register.html" style="margin-left:10px;">Register</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Magic Math Master • Australia</div>
+    <div>
+      <a href="contact.html">Contact</a> •
+      <a href="policies.html">Policies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  (function(){
+    function scrollToSection(el){
+      el.scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+    document.querySelectorAll(".ql-btn[data-open]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const el=document.getElementById(btn.dataset.open);
+        if(el) scrollToSection(el);
       });
-    })();
-  </script>
+    });
+  })();
+</script>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
