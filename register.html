@@ -230,18 +230,21 @@
 
     .required::after { content: " *"; color: #d93025; font-weight: 1000; }
 
+    /* =========================================================
+       ✅ UPDATED INPUTS: match club-register.html (boxed + padded)
+       ========================================================= */
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     select,
     textarea {
       width: 100%;
-      border: 0;
-      border-bottom: 2px solid #d1d5db;
-      background: transparent;
-      padding: 12px 0 10px;
-      font: inherit;
+      padding: 12px 12px;            /* ✅ space on left */
+      border: 1px solid var(--line); /* ✅ full border */
+      border-radius: 14px;           /* ✅ rounded */
+      background: rgba(255,255,255,.92);
       color: var(--ink);
+      font: inherit;
       outline: none;
     }
 
@@ -249,10 +252,21 @@
     input[type="email"]:focus,
     input[type="tel"]:focus,
     select:focus,
-    textarea:focus { border-bottom-color: var(--accent); }
+    textarea:focus {
+      border-color: rgba(11,94,215,.45);
+      box-shadow: 0 0 0 4px rgba(11,94,215,.10);
+    }
 
+    textarea { min-height: 118px; resize: vertical; }
+
+    /* Placeholder readability */
+    ::placeholder{
+      color: rgba(95,107,122,.78);
+      font-weight: 650;
+    }
+
+    /* Keep select arrow clean */
     select {
-      text-indent: 8px;
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -260,15 +274,13 @@
         linear-gradient(45deg, transparent 50%, var(--muted) 50%),
         linear-gradient(135deg, var(--muted) 50%, transparent 50%);
       background-position:
-        calc(100% - 18px) calc(1.15em + 2px),
-        calc(100% - 12px) calc(1.15em + 2px);
+        calc(100% - 18px) 50%,
+        calc(100% - 12px) 50%;
       background-size: 6px 6px, 6px 6px;
       background-repeat: no-repeat;
-      padding: 12px 36px 10px 10px;
+      padding-right: 40px;
       cursor: pointer;
     }
-
-    textarea { min-height: 118px; resize: vertical; }
 
     .helper, .note, .small {
       margin-top: 8px;
