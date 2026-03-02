@@ -1279,3 +1279,66 @@ textarea{
     font-size: 16px;
   }
 }
+
+/* =========================================================
+   GLOBAL MOBILE OVERFLOW FIX (put at END of style.css)
+   Stops cards/sections from being wider than the screen
+   ========================================================= */
+
+/* 1) Prevent any accidental horizontal overflow */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) Let grid/flex children shrink (CRITICAL fix) */
+.grid > *,
+.form > *,
+.footer-inner > *,
+.hero-actions > *,
+.nav > * {
+  min-width: 0;
+}
+
+/* 3) Long text must wrap instead of pushing layout */
+.section-sub,
+.card,
+.card p,
+.card h3,
+.hero-desc,
+.hero-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 4) Buttons: allow wrapping on small screens to avoid overflow */
+@media (max-width: 600px) {
+  .btn {
+    white-space: normal;   /* overrides nowrap */
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* Where buttons are in rows, allow wrapping safely */
+  .hero-actions,
+  .hero-snap-cta,
+  .footer-inner,
+  .quick-jump {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}
+
+/* 5) Generic table safety: tables should scroll inside a wrapper */
+.table-wrap,
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* If any table exists without a wrapper, at least don’t let it break the page */
+table {
+  max-width: 100%;
+}

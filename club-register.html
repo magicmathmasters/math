@@ -17,660 +17,358 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
   <style>
-    html, body { overflow-x: hidden; }
+    /* =========================================================
+       Club-register page ONLY
+       (Do not redefine .container/.btn/.topbar here — use style.css)
+       ========================================================= */
 
-    :root {
-      --bg: #efe7e3;
-      --card: rgba(255,255,255,.94);
-      --ink: #172033;
-      --muted: #5f6b7a;
-      --brand: #f28c28;
-      --brand-dark: #a84300;
-      --line: #e8d9cf;
-      --accent: #0b5ed7;
-      --accent-soft: rgba(11,94,215,.08);
-      --hero: #08153e;
-      --green: #138a48;
-      --amber: #cc7a00;
-      --red: #cf3d32;
-      --radius: 18px;
-      --shadow: 0 14px 34px rgba(2, 6, 23, .10);
-      --shadow-soft: 0 8px 22px rgba(84, 37, 0, .06);
+    /* Make sure nothing can push the page wider */
+    .club-shell, .club-shell * { max-width: 100%; }
+    .club-shell > * { min-width: 0; }
+    .club-card, .form-card, .info-card, .success-card { min-width: 0; }
+
+    /* Card look (match your site style but keep inside container) */
+    .club-shell{
+      display: grid;
+      gap: 16px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f5efec 0%, var(--bg) 100%);
-      color: var(--ink);
-      line-height: 1.55;
-    }
-
-    a { color: var(--accent); }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,.84);
-      border-bottom: 1px solid rgba(232, 217, 207, .9);
-    }
-
-    .container {
-      width: min(1040px, calc(100% - 28px));
-      margin: 0 auto;
-    }
-
-    .topbar-inner {
-      min-height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 1000;
-      letter-spacing: -.2px;
-    }
-
-    .brand-logo{
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      display:block;
-    }
-
-    .brand-title b{
-      font-weight: 1000;
-      font-size: 20px;
-      color: var(--ink);
-    }
-
-    .top-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 900;
-      border: 0;
-      cursor: pointer;
-      transition: transform .12s ease, filter .12s ease;
-      box-shadow: 0 10px 20px rgba(2, 6, 23, .10);
-      font: inherit;
-      white-space: nowrap;
-    }
-
-    .btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
-
-    .btn-success { background: linear-gradient(135deg, #1f9d58, var(--green)); color: #fff; }
-    .btn-amber   { background: linear-gradient(135deg, #f4a528, var(--amber)); color: #fff; }
-    .btn-outline {
-      background: rgba(255,255,255,.88);
-      color: var(--accent);
-      border: 1px solid rgba(11,94,215,.18);
-      box-shadow: none;
-    }
-    .btn-secondary{
-      background: rgba(11,94,215,.08);
-      color: var(--accent);
-      border: 1px solid rgba(11,94,215,.25);
-      box-shadow: none;
-    }
-
-    main { padding: 18px 0 40px; }
-
-    .hero-card {
-      overflow: hidden;
-      border-radius: calc(var(--radius) + 4px);
-      box-shadow: 0 18px 36px rgba(2, 6, 23, .14);
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      margin-bottom: 16px;
-    }
-
-    .hero-banner {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: var(--hero);
-    }
-
-    .hero-copy {
-      background: rgba(255,255,255,.95);
-      border-top: 1px solid var(--line);
-      padding: 18px;
-    }
-
-    .hero-title {
-      margin: 0 0 8px;
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      line-height: 1.15;
-      color: var(--brand-dark);
-      font-weight: 1000;
-      letter-spacing: -.3px;
-    }
-
-    .hero-desc {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.7;
-    }
-
-    .hero-pills {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-pill {
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-weight: 900;
-      border: 1px solid rgba(11,94,215,.14);
-      font-size: .95rem;
-    }
-
-    .hero-actions{
-      margin-top: 14px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
-    }
-
-    /* Club layout */
-    .club-shell{ display:grid; gap:16px; width:100%; max-width:100%; }
     .club-card,
     .form-card,
     .info-card,
     .success-card{
       background: rgba(255,255,255,.86);
-      border: 1px solid rgba(232,217,207,.9);
-      border-radius: calc(var(--radius) + 4px);
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 22px;
+      box-shadow: var(--shadow2);
       padding: 18px;
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
+      overflow: hidden; /* prevents inner elements from spilling out */
     }
 
     .section-title{
       margin: 0 0 8px;
-      color: var(--brand-dark);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 1000;
       letter-spacing: -0.3px;
+      color: var(--brand2);
     }
 
     .section-sub{
       margin: 0;
-      color: var(--muted);
-      font-weight: 700;
-      line-height: 1.65;
+      color: rgba(15,23,42,.72);
+      font-weight: 650;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
     }
 
+    /* Stream chooser */
     .club-options{
       margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-
     @media (max-width: 980px){
       .club-options{ grid-template-columns: 1fr; }
     }
 
     .club-option{
       position: relative;
-      border: 1px solid rgba(232,217,207,.9);
-      border-radius: calc(var(--radius) + 4px);
-      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 18px;
+      background: rgba(255,255,255,.86);
       padding: 16px;
-      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
-      cursor:pointer;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      min-width: 0;
     }
-
     .club-option:hover{
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(2, 6, 23, .05);
+      box-shadow: 0 12px 24px rgba(2, 6, 23, .08);
     }
-
     .club-option input[type="radio"]{
       position: absolute;
       top: 16px;
       right: 16px;
       width: 18px;
       height: 18px;
-      accent-color: var(--accent);
+      accent-color: var(--brand);
       cursor: pointer;
     }
-
     .club-option.active{
-      border-color: rgba(11,94,215,.45);
+      border-color: rgba(11,94,215,.35);
+      background: rgba(11,94,215,.06);
       box-shadow: 0 12px 26px rgba(11,94,215,.10);
-      background: rgba(11,94,215,.04);
     }
-
     .club-badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
       height: 42px;
       border-radius: 14px;
-      background: rgba(245,158,11,.15);
-      border: 1px solid rgba(245,158,11,.28);
+      background: rgba(245,158,11,.14);
+      border: 1px solid rgba(245,158,11,.22);
       font-size: 20px;
       margin-bottom: 10px;
+      flex: 0 0 auto;
     }
-
     .club-option h3{
       margin: 0 0 8px;
-      color: #7a4a00;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 1000;
+      color: rgba(15,23,42,.92);
+      overflow-wrap: anywhere;
     }
-
     .club-option p{
       margin: 0;
-      color: var(--muted);
-      font-weight: 700;
+      color: rgba(15,23,42,.72);
+      font-weight: 650;
       line-height: 1.65;
+      overflow-wrap: anywhere;
     }
 
+    /* Primary subgroup */
     .subgroup-wrap{
       margin-top: 16px;
       padding: 14px;
-      border-radius: 16px;
-      background: rgba(11,94,215,.05);
+      border-radius: 18px;
+      background: rgba(11,94,215,.06);
       border: 1px solid rgba(11,94,215,.18);
       display: none;
     }
-    .subgroup-wrap.show{ display:block; }
+    .subgroup-wrap.show{ display: block; }
 
     .subgroup-title{
       margin: 0 0 10px;
-      color: var(--accent);
-      font-size: 16px;
+      color: var(--brand2);
       font-weight: 1000;
     }
-
     .subgroup-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
     @media (max-width: 760px){
       .subgroup-grid{ grid-template-columns: 1fr; }
     }
-
     .subgroup-item{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(232,217,207,.9);
-      border-radius: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 16px;
       padding: 12px;
       cursor: pointer;
+      min-width: 0;
     }
-
-    .subgroup-item input{ margin-top: 3px; accent-color: var(--accent); }
-
+    .subgroup-item input{
+      margin-top: 3px;
+      accent-color: var(--brand);
+      flex: 0 0 auto;
+    }
+    .subgroup-item span{ min-width: 0; }
     .subgroup-item b{
-      display:block;
-      color: #7a4a00;
-      font-size: 15px;
+      display: block;
       margin-bottom: 2px;
+      font-weight: 1000;
+      color: rgba(15,23,42,.92);
     }
-
     .subgroup-item span{
-      color: var(--muted);
-      font-weight: 700;
+      color: rgba(15,23,42,.72);
+      font-weight: 650;
       line-height: 1.55;
-      font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
+    /* Form fields */
     .two-col{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
       margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
     @media (max-width: 900px){
       .two-col{ grid-template-columns: 1fr; }
     }
 
     .field-group label{
-      display:block;
+      display: block;
       margin-bottom: 6px;
       font-size: 14px;
-      font-weight: 1000;
-      color: var(--brand-dark);
+      font-weight: 900;
+      color: rgba(15,23,42,.90);
     }
-
     .field-group input,
     .field-group select,
     .field-group textarea{
-      width:100%;
-      padding: 11px 12px;
-      border: 1px solid rgba(232,217,207,.9);
-      border-radius: 14px;
-      background: rgba(255,255,255,.92);
-      color: var(--ink);
-      font: inherit;
+      width: 100%;
       max-width: 100%;
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      background: rgba(255,255,255,.92);
+      font: inherit;
+      color: var(--ink);
     }
+    .field-group textarea{ min-height: 110px; resize: vertical; }
 
-    .field-group textarea{ min-height: 100px; resize: vertical; }
-
+    /* Tools row */
     .register-tools{
-      display:flex;
+      display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      align-items:center;
+      align-items: center;
       justify-content: space-between;
-      margin: 16px 0 12px;
+      margin: 14px 0 12px;
     }
-
     .register-tools .tool-left,
     .register-tools .tool-right{
-      display:flex;
+      display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      align-items:center;
+      align-items: center;
+      min-width: 0;
     }
-
     @media (max-width: 760px){
       .register-tools .tool-left,
-      .register-tools .tool-right{ width:100%; }
-      .register-tools .btn{ width:100%; }
+      .register-tools .tool-right{ width: 100%; }
+      .register-tools .btn{ width: 100%; }
     }
 
-    /* Table: keep inside card without forcing width */
+    /* Table: ALWAYS scroll inside wrapper, never push page */
     .table-wrap{
-      display:block;
       width: 100%;
       max-width: 100%;
       overflow-x: auto;
-      border: 1px solid rgba(232,217,207,.9);
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid rgba(15,23,42,.10);
       border-radius: 18px;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.90);
     }
-
     table{
-      width:100%;
       border-collapse: collapse;
-      min-width: 980px; /* still scrolls, but less “huge” */
+      width: max(980px, 100%); /* desktop fits; mobile scrolls */
     }
-
     thead{ background: rgba(11,94,215,.06); }
-
     th, td{
-      border-bottom: 1px solid rgba(232,217,207,.9);
+      border-bottom: 1px solid rgba(15,23,42,.10);
       padding: 10px;
-      text-align:left;
+      text-align: left;
       vertical-align: top;
     }
-
     th{
-      color: var(--brand-dark);
       font-size: 13px;
-      font-weight: 1000;
+      font-weight: 900;
       white-space: nowrap;
+      color: rgba(15,23,42,.90);
     }
-
     td input, td select{
-      width:100%;
-      padding: 10px;
-      border: 1px solid rgba(232,217,207,.9);
-      border-radius: 12px;
-      background: rgba(255,255,255,.96);
-      color: var(--ink);
-      font: inherit;
-      font-size: 14px;
+      width: 100%;
       max-width: 100%;
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,.96);
+      font: inherit;
+      min-width: 0;
     }
-
     .row-number{
-      text-align:center;
+      text-align: center;
       font-weight: 1000;
-      color: var(--brand-dark);
+      color: rgba(15,23,42,.90);
       min-width: 40px;
     }
-
     .remove-btn{
-      border:none;
+      width: 100%;
+      border: none;
       border-radius: 12px;
       padding: 10px 12px;
       background: rgba(220,38,38,.10);
       color: #b91c1c;
-      font-weight: 1000;
-      cursor:pointer;
-      width:100%;
+      font-weight: 900;
+      cursor: pointer;
     }
 
-    .remove-btn:hover{ opacity: .9; }
-
+    /* Consent */
     .consent-box{
       margin-top: 16px;
       padding: 16px;
-      border: 1px solid rgba(232,217,207,.9);
+      border: 1px solid rgba(15,23,42,.10);
       border-radius: 18px;
-      background: rgba(255,255,255,.72);
-      display:grid;
+      background: rgba(255,255,255,.78);
+      display: grid;
       gap: 14px;
     }
-
     .check-line{
-      display:flex;
-      align-items:flex-start;
+      display: flex;
+      align-items: flex-start;
       gap: 10px;
-      color: var(--muted);
-      font-weight: 700;
+      color: rgba(15,23,42,.72);
+      font-weight: 650;
       line-height: 1.65;
+      min-width: 0;
     }
-
-    .check-line input{ margin-top: 3px; accent-color: var(--accent); }
-
+    .check-line input{
+      margin-top: 3px;
+      accent-color: var(--brand);
+      flex: 0 0 auto;
+    }
     .small-note{
       margin: 0;
-      color: var(--muted);
-      font-weight: 700;
+      color: rgba(15,23,42,.72);
+      font-weight: 650;
       line-height: 1.65;
       font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
+    /* Info grid */
     .info-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       margin-top: 14px;
     }
-
     @media (max-width: 980px){
       .info-grid{ grid-template-columns: 1fr; }
     }
 
-    .info-card h3{
-      margin: 0 0 8px;
-      color: #7a4a00;
-      font-size: 18px;
-      font-weight: 1000;
-    }
-
-    .info-card p, .info-card ul{
-      margin: 0;
-      color: var(--muted);
-      font-weight: 700;
-      line-height: 1.7;
-    }
-
-    .info-card ul{ padding-left: 18px; }
-
+    /* Success */
     .success-card{
-      margin-top: 14px;
-      display:none;
+      display: none;
       border-color: rgba(34,197,94,.28);
       background: rgba(34,197,94,.08);
     }
-    .success-card strong{ color: #166534; font-weight: 1000; }
-
-    .footer{
-      padding: 22px 0 34px;
-      color: var(--muted);
-      font-weight: 700;
-      text-align: center;
-      font-size: .95rem;
-    }
-
-    @media (max-width: 820px) {
-      .container { width: min(100%, calc(100% - 18px)); }
-      .topbar-inner { padding: 8px 0; align-items: flex-start; flex-direction: column; }
-      .top-actions { width: 100%; }
-      .top-actions .btn { flex: 1 1 auto; }
-      .hero-copy { padding: 16px; }
-    }
-
-    @media (max-width: 560px) {
-      .hero-banner {
-        max-height: 185px;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
-    /* =========================
-   MOBILE WIDTH / OVERFLOW FIX
-   Put this at the END of your <style> block
-   ========================= */
-
-/* Stop the page itself from becoming wider than the viewport */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* Make sure your container never exceeds the viewport */
-.container {
-  max-width: 1040px;
-  width: min(1040px, calc(100% - 28px));
-}
-
-/* Every major section/card must stay within the container */
-.club-shell,
-.club-shell > * ,
-.club-card,
-.form-card,
-.info-card,
-.success-card,
-.info-grid,
-.club-options,
-.subgroup-grid,
-.two-col {
-  max-width: 100%;
-}
-
-/* CRITICAL: allow grid/flex children to shrink instead of forcing overflow */
-.club-shell > *,
-.info-grid > *,
-.club-options > *,
-.subgroup-grid > *,
-.two-col > * {
-  min-width: 0;
-}
-
-/* Prevent long text/labels from pushing width */
-.club-card, .form-card, .info-card, .success-card,
-.section-title, .section-sub,
-.club-option, .subgroup-item,
-.field-group label, .field-group input, .field-group textarea, .field-group select {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-/* Buttons must wrap on mobile (no forced single-line overflow) */
-.hero-actions,
-.register-tools,
-.register-tools .tool-left,
-.register-tools .tool-right {
-  max-width: 100%;
-  flex-wrap: wrap;
-}
-
-.btn {
-  max-width: 100%;
-  white-space: normal; /* allow wrapping if needed */
-}
-
-/* Table must scroll INSIDE its wrapper, not expand the page */
-.table-wrap {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Keep the table big, but contained within the scroll area */
-table {
-  width: 100%;
-  min-width: 1100px; /* desktop/tablet */
-  border-collapse: collapse;
-}
-
-/* Slightly reduce scroll width on phones */
-@media (max-width: 600px) {
-  table { min-width: 900px; }
-}
-@media (max-width: 420px) {
-  table { min-width: 820px; }
-}
+    .success-card strong{ font-weight: 1000; }
   </style>
 </head>
 
 <body>
+  <!-- Topbar uses style.css -->
   <div class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="Magic Math Master home">
         <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
-        <div class="brand-title"><b>Magic Math Master</b></div>
+        <div class="brand-title">
+          <b>Magic Math Master</b>
+          <span>Australia</span>
+        </div>
       </a>
 
-      <div class="top-actions">
-        <a class="btn btn-outline" href="index.html">Home</a>
-        <a class="btn btn-success" href="enquiry.html">Enquiry</a>
-        <a class="btn btn-amber" href="register.html">Register</a>
-      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="enquiry.html">Enquiry</a>
+        <a href="register.html">Register</a>
+        <a class="active" aria-current="page" href="club-register.html">Maths Club Register</a>
+      </nav>
     </div>
   </div>
 
   <main>
-    <!-- HERO in container -->
     <div class="container">
+      <!-- HERO uses style.css -->
       <section class="hero-card" aria-label="Maths Club register hero">
         <img class="hero-banner" src="assets/banner.png" alt="Magic Math Master banner" loading="eager" />
         <div class="hero-copy">
@@ -688,25 +386,22 @@ table {
 
           <div class="hero-actions">
             <a class="btn btn-amber" href="#club-register">Register now</a>
-            <a class="btn btn-secondary" href="pricing.html#maths-club-fee">View fees</a>
+            <a class="btn btn-secondary" href="pricing.html#maths-club-fees">View fees</a>
             <a class="btn btn-outline" href="mathclub.html">Maths Club info</a>
             <a class="btn btn-success" href="enquiry.html">Tutoring enquiry</a>
           </div>
 
           <p class="section-sub" style="margin-top:14px;">
             Questions before registering? Contact us via
-            <a href="https://wa.me/61402204599" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="link-strong" href="https://wa.me/61402204599" target="_blank" rel="noopener">WhatsApp</a>
             or
-            <a href="mailto:magicmathmasters@gmail.com?subject=Maths%20Club%20Registration%20Question">email</a>
+            <a class="link-strong" href="mailto:magicmathmasters@gmail.com?subject=Maths%20Club%20Registration%20Question">email</a>
             — we’re happy to help.
           </p>
         </div>
       </section>
-    </div>
 
-    <!-- EVERYTHING after hero also inside container -->
-    <section id="club-register">
-      <div class="container">
+      <section id="club-register" class="anchor-target">
         <div class="club-shell">
 
           <div class="club-card">
@@ -761,6 +456,7 @@ table {
             </div>
           </div>
 
+          <!-- Hidden iframe submit -->
           <iframe name="clubRegisterSubmitFrame" style="display:none;" title="Club register submission"></iframe>
 
           <form id="mathsClubRegisterForm"
@@ -834,12 +530,15 @@ table {
               <p class="section-sub">
                 Add every student joining this booking. If you are registering siblings, list each child on a separate row.
               </p>
+
               <p class="section-sub" style="margin-top:10px;">
                 <b>Registering more than one child?</b> Family discounts and sibling rewards may apply.
               </p>
+
               <div class="hero-actions" style="margin-top:10px;">
                 <a class="btn btn-secondary" href="pricing.html#discounts-rewards">Family discounts &amp; rewards</a>
               </div>
+
               <div class="register-tools">
                 <div class="tool-left">
                   <button type="button" class="btn btn-outline" onclick="addRow()">+ Add another student</button>
@@ -931,7 +630,7 @@ table {
 
                 <div class="hero-actions">
                   <button type="submit" class="btn btn-success">Submit registration</button>
-                  <a class="btn btn-outline" href="pricing.html#maths-club-fee">View fees</a>
+                  <a class="btn btn-outline" href="pricing.html#maths-club-fees">View fees</a>
                 </div>
               </div>
             </div>
@@ -940,7 +639,7 @@ table {
           <div class="info-grid">
             <div class="info-card">
               <h3>What this page is best for</h3>
-              <ul>
+              <ul class="clean-list">
                 <li>Family bookings with more than one child</li>
                 <li>Siblings joining the same club stream</li>
                 <li>Simple admin entry in one place</li>
@@ -949,14 +648,14 @@ table {
 
             <div class="info-card">
               <h3>Important placement note</h3>
-              <p>
+              <p class="section-sub">
                 One booking should include <b>one club stream</b>. If students belong in different streams, submit a separate form for each stream.
               </p>
             </div>
 
             <div class="info-card">
               <h3>Not sure which club fits?</h3>
-              <p>
+              <p class="section-sub">
                 Use the enquiry page if you want help with tutoring (one-to-one, group tutoring, competitions).
               </p>
             </div>
@@ -968,8 +667,8 @@ table {
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
@@ -981,17 +680,22 @@ table {
 
     const tableBody = document.querySelector('#studentTable tbody');
     const firstRowTemplate = tableBody.rows[0].cloneNode(true);
+
     const clubOptions = document.querySelectorAll('.club-option');
     const clubRadios = document.querySelectorAll('input[name="clubStream"]');
     const prep6Radio = document.getElementById('club-prep6');
+
     const prepSubgroupWrap = document.getElementById('prepSubgroupWrap');
     const prepSubgroupRadios = document.querySelectorAll('input[name="prepSubgroup"]');
+
     const form = document.getElementById('mathsClubRegisterForm');
     const submitFrame = document.querySelector('iframe[name="clubRegisterSubmitFrame"]');
     const successMessage = document.getElementById('successMessage');
+
     const competitionMode = document.getElementById('competitionMode');
     const competitionLocationGroup = document.getElementById('competitionLocationGroup');
     const competitionLocation = document.getElementById('competitionLocation');
+
     const clubStreamField = document.getElementById('clubStreamField');
     const prepSubgroupField = document.getElementById('prepSubgroupField');
     const studentsField = document.getElementById('studentsField');
@@ -1114,12 +818,10 @@ table {
         alert('Please choose one Maths Club stream before submitting.');
         return;
       }
-
       if (prep6Radio.checked && !prepSubChosen) {
         alert('Please choose either Prep–2 or Years 3–6 for Primary Maths Club.');
         return;
       }
-
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
