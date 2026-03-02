@@ -4,12 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Magic Math Master | Maths Club Register</title>
-  <meta name="description" content="Register for Magic Math Master Maths Club. Choose one club stream and enrol one or more students in a calm, structured learning environment." />
+  <title>Maths Club Register | Magic Math Master</title>
+  <meta
+    name="description"
+    content="Register for Magic Math Master Maths Club. Choose one club stream and enrol one or more students in a calm, structured online learning environment."
+  />
   <link rel="canonical" href="https://www.magicmathmaster.com.au/Club-register.html">
 
-  <meta property="og:title" content="Magic Math Master | Maths Club Register">
-  <meta property="og:description" content="Choose one maths club stream and register one or more students with Magic Math Master.">
+  <meta property="og:title" content="Maths Club Register | Magic Math Master">
+  <meta
+    property="og:description"
+    content="Choose one Maths Club stream and register one or more students with Magic Math Master."
+  />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.magicmathmaster.com.au/Club-register.html">
 
@@ -68,6 +74,7 @@
       background: rgba(255,255,255,.82);
       padding: 16px;
       transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+      cursor:pointer;
     }
 
     .club-option:hover{
@@ -203,7 +210,7 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       background: rgba(255,255,255,.92);
-      color: var(--text);
+      color: var(--ink);
       font: inherit;
     }
 
@@ -274,7 +281,7 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       background: rgba(255,255,255,.96);
-      color: var(--text);
+      color: var(--ink);
       font: inherit;
       font-size: 14px;
     }
@@ -372,29 +379,108 @@
       color: #166534;
       font-weight: 1100;
     }
+
+    .footer-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+      font-weight:700;
+    }
+    .footer-links a{
+      text-decoration:none;
+      color:inherit;
+      opacity:.9;
+    }
+    .footer-links a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
   </style>
 </head>
 
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+      <!--<a class="brand" href="index.html" aria-label="Magic Math Master home">
         <div class="brand-title">
           <b>Magic Math Master</b>
           <span>Premium tutoring • Australia</span>
         </div>
-      </a>
+      </a>-->
 
       <div class="nav" aria-label="Primary navigation">
         <a data-nav href="index.html">Home</a>
+        <a data-nav href="mathclub.html">Math Club</a>
         <a data-nav href="programs.html">Programs</a>
         <a data-nav href="pricing.html">Fees</a>
-        <a data-nav href="policies.html">Policies</a>
         <a data-nav href="about.html">About</a>
-        <a data-nav href="philosophy.html">Philosophy</a>
-        <a data-nav href="contact.html">Contact</a>
+
         <a href="https://practice.magicmathmaster.com.au">Student Login</a>
-        <a class="nav-lang" href="vi/index.html">Tiếng Việt</a>
+
+        <div class="lang-menu">
+          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="lang-btn-text" id="currentLangText">En</span>
+            <span class="lang-btn-caret">▾</span>
+          </button>
+
+          <div class="lang-dropdown" id="langDropdown" hidden>
+            <button class="lang-option" type="button" data-lang="en" data-label="En">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#012169"/>
+                <polygon points="0,0 7,0 60,33 60,40 53,40 0,7" fill="#fff"/>
+                <polygon points="60,0 53,0 0,33 0,40 7,40 60,7" fill="#fff"/>
+                <polygon points="0,0 3.5,0 60,35 60,40 56.5,40 0,5" fill="#C8102E"/>
+                <polygon points="60,0 56.5,0 0,35 0,40 3.5,40 60,5" fill="#C8102E"/>
+                <rect x="24" width="12" height="40" fill="#fff"/>
+                <rect y="14" width="60" height="12" fill="#fff"/>
+                <rect x="26" width="8" height="40" fill="#C8102E"/>
+                <rect y="16" width="60" height="8" fill="#C8102E"/>
+              </svg>
+              <span class="lang-label">En</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#DA251D"/>
+                <polygon fill="#FFDE00" points="30,8 33.5,18.5 44.5,18.5 35.5,24.8 39,35 30,28.7 21,35 24.5,24.8 15.5,18.5 26.5,18.5"/>
+              </svg>
+              <span class="lang-label">Vn</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#DE2910"/>
+                <polygon fill="#FFDE00" points="12,6 13.8,11.3 19.4,11.3 14.9,14.6 16.6,20 12,16.7 7.4,20 9.1,14.6 4.6,11.3 10.2,11.3"/>
+                <polygon fill="#FFDE00" points="24,4 24.7,6.1 27,6.1 25.1,7.4 25.8,9.6 24,8.2 22.2,9.6 22.9,7.4 21,6.1 23.3,6.1"/>
+                <polygon fill="#FFDE00" points="29,9 29.7,11.1 32,11.1 30.1,12.4 30.8,14.6 29,13.2 27.2,14.6 27.9,12.4 26,11.1 28.3,11.1"/>
+                <polygon fill="#FFDE00" points="29,17 29.7,19.1 32,19.1 30.1,20.4 30.8,22.6 29,21.2 27.2,22.6 27.9,20.4 26,19.1 28.3,19.1"/>
+                <polygon fill="#FFDE00" points="24,22 24.7,24.1 27,24.1 25.1,25.4 25.8,27.6 24,26.2 22.2,27.6 22.9,25.4 21,24.1 23.3,24.1"/>
+              </svg>
+              <span class="lang-label">Zh</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="hi" data-label="Hi">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="13.333" y="0" fill="#FF9933"/>
+                <rect width="60" height="13.333" y="13.333" fill="#FFFFFF"/>
+                <rect width="60" height="13.334" y="26.666" fill="#138808"/>
+                <circle cx="30" cy="20" r="4.2" fill="none" stroke="#000080" stroke-width="1"/>
+                <circle cx="30" cy="20" r="0.6" fill="#000080"/>
+              </svg>
+              <span class="lang-label">Hi</span>
+            </button>
+
+            <button class="lang-option" type="button" data-lang="es" data-label="Es">
+              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
+                <rect width="60" height="40" fill="#AA151B"/>
+                <rect y="10" width="60" height="20" fill="#F1BF00"/>
+              </svg>
+              <span class="lang-label">Es</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -404,8 +490,8 @@
       <div class="hero-snap">
         <div class="hero-snap-grid">
           <div>
-            <h1 class="hero-snap-title">MAGIC MATH MASTER</h1>
-            <div class="hero-snap-tagline">Online Math Club Registration</div>
+            <h1 class="hero-snap-title">Register for Maths Club</h1>
+            <div class="hero-snap-tagline">Choose one stream and enrol one or more students in one booking</div>
           </div>
 
           <div class="hero-snap-logoBox" aria-label="Magic Math Master logo">
@@ -414,8 +500,8 @@
         </div>
 
         <p class="hero-snap-desc">
-          Choose <b>one online math club stream</b> and register <b>one or more students</b> in the same booking.
-          This club is open to students anywhere, so <b>anyone can join online</b>. Competition events may also offer an <b>online or in-person option</b> when available.
+          Choose <b>one Maths Club stream</b> and register <b>one or more students</b> in the same booking.
+          Maths Club is online and flexible, so students can join from anywhere.
         </p>
 
         <div class="hero-snap-checks">
@@ -425,15 +511,15 @@
         </div>
 
         <div class="hero-snap-pills">
-          <span class="hero-snap-pill">Prep–6 · 7–10 · 11–12</span>
-          <span class="hero-snap-pill">Online math club • Anyone can join</span>
+          <span class="hero-snap-pill">Primary · Years 7–10 · Years 11–12</span>
+          <span class="hero-snap-pill">Flexible online participation</span>
           <span class="hero-snap-pill">Confidence-first learning</span>
         </div>
 
         <div class="hero-snap-cta">
-          <a class="btn btn-success" href="enquiry.html">Enquire</a>
+          <a class="btn btn-success" href="enquiry.html?program=maths-club">Ask About Maths Club</a>
           <a class="btn btn-amber" href="#club-register">Register Now</a>
-          <a class="btn btn-red" href="demo/index.html" target="_blank" rel="noopener">Free Practice</a>
+          <a class="btn btn-blue" href="pricing.html#maths-club-fees">View Maths Club Fees</a>
         </div>
       </div>
     </div>
@@ -447,36 +533,36 @@
         <div class="club-shell">
 
           <div class="club-card">
-            <h2 class="section-title">Choose your online math club</h2>
+            <h2 class="section-title">Choose your Maths Club stream</h2>
             <p class="section-sub">
-              Select <b>one</b> club for this booking. If you choose <b>Prep–6</b>, please also choose the correct sub-group so we can place students accurately.
+              Select <b>one</b> club stream for this booking. If you choose <b>Primary Maths Club</b>, please also choose the correct sub-group so we can place students accurately.
             </p>
 
             <div class="club-options" id="clubOptions">
               <label class="club-option" for="club-prep6">
                 <span class="club-badge" aria-hidden="true">🌱</span>
-                <h3>Prep–6 Maths Club</h3>
-                <p>Primary years with strong foundations, number sense, fluency, and confidence-building problem solving.</p>
-                <input type="radio" id="club-prep6" name="clubStream" value="Prep-6 Maths Club" required>
+                <h3>Primary Maths Club</h3>
+                <p>Strong foundations, number sense, fluency, and confidence-building problem solving for younger learners.</p>
+                <input type="radio" id="club-prep6" name="clubStream" value="Primary Maths Club" required>
               </label>
 
               <label class="club-option" for="club-710">
                 <span class="club-badge" aria-hidden="true">🧩</span>
                 <h3>Years 7–10 Maths Club</h3>
-                <p>Core secondary skills including algebra, reasoning, revision habits, and structured support for school topics.</p>
+                <p>Steady skill building, reasoning, and structured weekly practice for middle and lower secondary students.</p>
                 <input type="radio" id="club-710" name="clubStream" value="Years 7-10 Maths Club" required>
               </label>
 
               <label class="club-option" for="club-1112">
-                <span class="club-badge" aria-hidden="true">🏆</span>
-                <h3>Years 11–12 Maths Club</h3>
-                <p>Senior maths support with exam preparation, deeper problem solving, and confidence under assessment pressure.</p>
+                <span class="club-badge" aria-hidden="true">🎓</span>
+                <h3>Senior Maths Club</h3>
+                <p>Higher-level review, structured revision, and exam-style practice for Years 11–12 students.</p>
                 <input type="radio" id="club-1112" name="clubStream" value="Years 11-12 Maths Club" required>
               </label>
             </div>
 
             <div class="subgroup-wrap" id="prepSubgroupWrap">
-              <p class="subgroup-title">Prep–6 sub-group (required for Prep–6 only)</p>
+              <p class="subgroup-title">Primary sub-group (required for Primary Maths Club only)</p>
               <div class="subgroup-grid">
                 <label class="subgroup-item">
                   <input type="radio" name="prepSubgroup" value="Prep-2">
@@ -509,7 +595,7 @@
             <div class="form-card">
               <h2 class="section-title">Family and booking details</h2>
               <p class="section-sub">
-                These details help us contact you, organise the booking, and recommend the best starting point. Regular club sessions are online, and competition events may offer online or in-person participation when available.
+                These details help us contact you, organise the booking, and recommend the best starting point.
               </p>
 
               <div class="two-col">
@@ -555,7 +641,7 @@
                 </div>
 
                 <div class="field-group" id="competitionLocationGroup" style="display:none;">
-                  <label for="competitionLocation">Preferred In-Person / Nearby Location (required if applicable)</label>
+                  <label for="competitionLocation">Preferred In-Person / Nearby Location</label>
                   <input type="text" id="competitionLocation" name="competitionLocation" placeholder="Enter your suburb, area, or preferred nearby location">
                 </div>
               </div>
@@ -573,7 +659,7 @@
                   <button type="button" class="btn" onclick="resetTable()">Reset Table</button>
                 </div>
                 <div class="tool-right">
-                  <a class="btn" href="programs.html">View Programs</a>
+                  <a class="btn" href="mathclub.html">View Maths Club Info</a>
                 </div>
               </div>
 
@@ -655,8 +741,8 @@
                 </p>
 
                 <div class="hero-actions cta-row">
-                  <button type="submit" class="btn btn-success">Submit Register</button>
-                  <a class="btn btn-amber" href="enquiry.html">Need help choosing?</a>
+                  <button type="submit" class="btn btn-success">Submit Registration</button>
+                  <a class="btn btn-amber" href="enquiry.html?program=maths-club">Need help choosing?</a>
                 </div>
               </div>
             </div>
@@ -675,20 +761,20 @@
             <div class="info-card">
               <h3>Important placement note</h3>
               <p>
-                One booking should only include <b>one club stream</b>. If students belong in different club streams, submit a separate form for each stream.
+                One booking should only include <b>one club stream</b>. If students belong in different club streams, please submit a separate form for each stream.
               </p>
             </div>
 
             <div class="info-card">
               <h3>Not sure which club fits?</h3>
               <p>
-                Use the enquiry page if you want a recommended starting point based on your child’s current year level, goals, and confidence. For competitions, families can also note whether they prefer online or in-person participation when available.
+                Use the enquiry page if you want a recommended starting point based on your child’s year level, goals, and confidence.
               </p>
             </div>
           </div>
 
           <div class="success-card" id="successMessage">
-            <strong>Thank you. Your registration has been received.</strong> We will contact you soon with payment arrangements and the next steps for joining the club.
+            <strong>Thank you. Your registration has been received.</strong> We will contact you soon with payment arrangements and the next steps for joining Maths Club.
           </div>
         </div>
       </div>
@@ -699,7 +785,17 @@
     <div class="container">
       <div class="footer-inner">
         <div>© <span id="year"></span> Magic Math Master • Australia</div>
-        <div><a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>; <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a></div>
+        <div>
+          <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
+          <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="policies.html">Policies</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </footer>
@@ -870,12 +966,12 @@
       const prepSubChosen = document.querySelector('input[name="prepSubgroup"]:checked');
 
       if (!clubChosen) {
-        alert('Please choose one maths club before submitting.');
+        alert('Please choose one Maths Club stream before submitting.');
         return;
       }
 
       if (prep6Radio.checked && !prepSubChosen) {
-        alert('Please choose either Prep–2 or Years 3–6 for the Prep–6 Maths Club.');
+        alert('Please choose either Prep–2 or Years 3–6 for Primary Maths Club.');
         return;
       }
 

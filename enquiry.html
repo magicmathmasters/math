@@ -1,174 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enquiry – Tutoring at Magic Math Master</title>
-  <meta name="description" content="Send an enquiry about tutoring programs at Magic Math Master." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enquiry – Magic Math Master</title>
+  <meta name="description" content="Send an enquiry to Magic Math Master. Ask questions and we’ll recommend the best next step for your child." />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
   <style>
-    :root {
-      --bg: #efe7e3;
-      --card: rgba(255,255,255,.94);
-      --ink: #172033;
-      --muted: #5f6b7a;
-      --brand-dark: #a84300;
-      --line: #e8d9cf;
-      --accent: #0b5ed7;
-      --accent-soft: rgba(11,94,215,.08);
-      --hero: #08153e;
-      --green: #138a48;
-      --amber: #cc7a00;
-      --radius: 18px;
-      --shadow-soft: 0 8px 22px rgba(84, 37, 0, .06);
-    }
+    html, body { overflow-x:hidden; }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f5efec 0%, var(--bg) 100%);
-      color: var(--ink);
-      line-height: 1.55;
-    }
-
-    .container {
-      width: min(1040px, calc(100% - 28px));
+    /* -------- Layout -------- */
+    .wrap {
+      max-width: var(--max);
       margin: 0 auto;
+      padding: 0 18px 40px;
     }
 
-    /* ---------- TOP BAR ---------- */
-    .topbar {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,.85);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-    }
-
-    .topbar-inner {
+    /* -------- Hero extras -------- */
+    .hero-actions {
+      margin-top: 14px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 66px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 10px;
-      font-weight: 1000;
-      text-decoration: none;
-      color: var(--ink);
+      align-items: center;
     }
 
-    .btn {
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 0;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .btn-outline {
-      background: #fff;
-      border: 1px solid rgba(11,94,215,.25);
+    .btn-secondary {
+      background: rgba(11,94,215,.08);
       color: var(--accent);
+      border: 1px solid rgba(11,94,215,.25);
+      box-shadow: none;
     }
 
-    .btn-amber {
-      background: linear-gradient(135deg, #f4a528, var(--amber));
-      color: #fff;
+    .btn-secondary:hover {
+      background: rgba(11,94,215,.14);
     }
 
-    /* ---------- HERO ---------- */
-    .hero-card {
-      margin: 16px 0;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 18px 36px rgba(0,0,0,.14);
-    }
-
-    .hero-banner {
-      width: 100%;
-      display: block;
-    }
-
-    .hero-copy {
-      background: #fff;
-      padding: 18px;
-    }
-
-    .hero-title {
-      margin: 0 0 6px;
-      font-size: 2rem;
-      color: var(--brand-dark);
-      font-weight: 1000;
-    }
-
-    .hero-desc {
-      margin: 0;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    /* ---------- CARDS ---------- */
-    .page-card,
-    .form-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .page-title {
-      margin: 0 0 12px;
-      font-size: 1.6rem;
-      font-weight: 1000;
-      border-bottom: 3px solid rgba(168,67,0,.85);
-      padding-bottom: 10px;
-    }
-
-    /* ---------- FORM ---------- */
-    form { display: grid; gap: 16px; }
-
-    label, legend {
+    .badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: .8rem;
       font-weight: 900;
-      display: block;
-      margin-bottom: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.2);
     }
 
-    .required::after {
-      content: " *";
-      color: #d93025;
+    /* -------- Form card -------- */
+    .form-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.12);
+      overflow: hidden;
     }
 
-    /* ⭐⭐ UPDATED INPUT SPACING ⭐⭐ */
+    .form-card-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .form-card-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+
+    .form-card-body {
+      padding: 16px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* -------- Inputs (spacing fix) -------- */
     input[type="text"],
     input[type="email"],
     input[type="tel"],
-    select,
-    textarea {
+    textarea,
+    select {
       width: 100%;
-      border: 0;
-      border-bottom: 2px solid #d1d5db;
-      background: transparent;
-      padding: 12px 12px 10px; /* ✅ left/right spacing added */
-      font: inherit;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-bottom-color: var(--accent);
+      padding: 12px 12px 10px;
     }
 
     textarea {
@@ -176,150 +105,185 @@
       resize: vertical;
     }
 
-    .option {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      font-weight: 650;
-    }
-
-    .option input {
-      width: 22px;
-      height: 22px;
-      accent-color: var(--accent);
-    }
-
     .note {
-      font-size: .95rem;
-      color: var(--muted);
       margin-top: 6px;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 650;
+      line-height: 1.6;
     }
 
-    .submit-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    /* ---------- THANK YOU MODAL ---------- */
+    /* -------- Thank you modal -------- */
     #thankYouModal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.45);
       display: none;
       align-items: center;
       justify-content: center;
+      background: rgba(0,0,0,.45);
       z-index: 9999;
+      padding: 18px;
     }
 
-    .modal-card {
+    #thankYouModal .modal-card {
       background: #fff;
       border-radius: 18px;
       padding: 22px;
       width: min(420px, 100%);
       text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 22px;
-      font-size: .9rem;
-      color: var(--muted);
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
     }
   </style>
 </head>
 
 <body>
 
+<!-- ===== TOP BAR ===== -->
 <div class="topbar">
   <div class="container topbar-inner">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Magic Math Master logo" height="36">
-      Magic Math Master
+      <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+      <b>Magic Math Master</b>
     </a>
-    <a class="btn btn-outline" href="register.html">Register</a>
+    <div class="top-actions">
+      <a class="btn btn-outline" href="index.html">Home</a>
+      <a class="btn btn-success" href="register.html">Register</a>
+    </div>
   </div>
 </div>
 
 <main>
   <div class="container">
 
-    <section class="hero-card">
-      <img src="assets/banner.png" alt="" class="hero-banner">
+    <!-- ===== HERO (matches register.html layout) ===== -->
+    <section class="hero-card" aria-label="Magic Math Master enquiry hero">
+      <img class="hero-banner" src="assets/banner.png" alt="Magic Math Master banner" loading="eager" />
       <div class="hero-copy">
-        <h1 class="hero-title">Tutoring Enquiry</h1>
+        <h1 class="hero-title">Enquiry</h1>
         <p class="hero-desc">
-          Ask us anything about one-to-one tutoring, group lessons, or competition training.
+          Send your questions — we’ll reply as soon as possible.<br>
+          Tell us your child’s <strong>year level</strong>, your goal
+          (<strong>catch up / keep up / get ahead</strong>), and any topics you’d like help with.
+          We’ll recommend the best next step.
         </p>
+
+        <div class="hero-pills">
+          <span class="hero-pill">Clear next steps</span>
+          <span class="hero-pill">Friendly communication</span>
+          <span class="hero-pill">Confidence-first teaching</span>
+        </div>
+
+        <!-- Hero actions aligned with site -->
+        <div class="hero-actions">
+          <a class="btn btn-amber" href="register.html">Register for Tutoring</a>
+
+          <a class="btn btn-secondary" href="club-register.html">
+            Maths Club Registration
+            <span class="badge">Club only</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="page-card">
-      <h2 class="page-title">📩 Enquiry Form</h2>
-      <p class="note">
-        For Maths Club only enquiries, please use the separate Maths Club enquiry page.
-      </p>
+    <!-- ===== FORM ===== -->
+    <section class="wrap" id="enquiry-form">
+      <div class="form-card">
+        <div class="form-card-head">
+          <h2 class="form-card-title">Tutoring Enquiry Form</h2>
+        </div>
+
+        <div class="form-card-body">
+          <p class="note">
+            This enquiry form is for <strong>tutoring</strong> (one-to-one, group tutoring, competition training).
+            Maths Club has a separate registration.
+          </p>
+
+          <form id="enquiryForm"
+                target="hidden_iframe"
+                action="PASTE_YOUR_ENQUIRY_APPS_SCRIPT_URL_HERE"
+                method="post"
+                novalidate>
+
+            <input type="hidden" name="formType" value="tutoring-enquiry" />
+
+            <div class="grid-2">
+              <div>
+                <label class="required">Parent/Guardian Name</label>
+                <input type="text" name="parent_name" required />
+              </div>
+
+              <div>
+                <label>Student Name (optional)</label>
+                <input type="text" name="student_name" />
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label class="required">Email</label>
+                <input type="email" name="email" required />
+              </div>
+
+              <div>
+                <label>Mobile (optional)</label>
+                <input type="tel" name="mobile" />
+              </div>
+            </div>
+
+            <label class="required">Your enquiry</label>
+            <textarea name="message" required
+              placeholder="Tell us what support you’re looking for, preferred lesson type, and any specific topics..."></textarea>
+
+            <label class="option">
+              <input type="checkbox" name="consent" value="Yes" required />
+              I consent to Magic Math Master contacting me about this enquiry.
+            </label>
+
+            <button type="submit" class="btn btn-amber">Submit enquiry</button>
+          </form>
+
+          <iframe name="hidden_iframe" style="display:none;"></iframe>
+        </div>
+      </div>
     </section>
 
-    <form id="enquiryForm"
-          target="hidden_iframe"
-          action="PASTE_YOUR_ENQUIRY_SCRIPT_URL_HERE"
-          method="post"
-          novalidate>
-
-      <section class="form-card">
-        <label class="required">Parent / Guardian Name</label>
-        <input type="text" name="parent_name" required>
-
-        <label class="required">Email</label>
-        <input type="email" name="email" required>
-
-        <label>Mobile (optional)</label>
-        <input type="tel" name="mobile">
-      </section>
-
-      <section class="form-card">
-        <legend class="required">What is your enquiry about?</legend>
-        <label class="option"><input type="checkbox" name="topic" value="One-to-one"> One-to-one tutoring</label>
-        <label class="option"><input type="checkbox" name="topic" value="Group"> Group tutoring</label>
-        <label class="option"><input type="checkbox" name="topic" value="Competition"> Competition training</label>
-
-        <label class="required" style="margin-top:14px;">Your message</label>
-        <textarea name="message" required></textarea>
-      </section>
-
-      <section class="form-card">
-        <label class="option">
-          <input type="checkbox" required>
-          I consent to Magic Math Master contacting me about this enquiry.
-        </label>
-
-        <div class="submit-row">
-          <button type="submit" class="btn btn-amber">Send enquiry</button>
-        </div>
-      </section>
-
-    </form>
-
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
   </div>
 </main>
 
-<footer>
-  © <span id="year"></span> Magic Math Master • Australia
+<footer class="footer">
+  <div class="container footer-inner">
+    © <span id="year"></span> Magic Math Master • Australia
+  </div>
 </footer>
 
+<!-- Thank you modal -->
 <div id="thankYouModal">
   <div class="modal-card">
     <h3>Thank you!</h3>
-    <p>Your enquiry has been received.</p>
+    <p>Your enquiry has been received. We will contact you shortly.</p>
     <button class="btn btn-amber" onclick="document.getElementById('thankYouModal').style.display='none'">OK</button>
   </div>
 </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const form = document.getElementById('enquiryForm');
+  const iframe = document.querySelector('iframe');
+  const modal = document.getElementById('thankYouModal');
+  let submitted = false;
+
+  iframe.addEventListener('load', () => {
+    if (!submitted) return;
+    submitted = false;
+    modal.style.display = 'flex';
+    form.reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  form.addEventListener('submit', () => {
+    submitted = true;
+  });
 </script>
 
 </body>
