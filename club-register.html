@@ -5,26 +5,210 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Maths Club Register | Magic Math Master</title>
-  <meta
-    name="description"
-    content="Register for Magic Math Master Maths Club. Choose one club stream and enrol one or more students in a calm, structured online learning environment."
-  />
-  <link rel="canonical" href="https://www.magicmathmaster.com.au/Club-register.html">
+  <meta name="description" content="Register for Magic Math Master Maths Club. Choose one club stream and enrol one or more students in one booking." />
+  <link rel="canonical" href="https://www.magicmathmaster.com.au/club-register.html" />
 
   <meta property="og:title" content="Maths Club Register | Magic Math Master">
-  <meta
-    property="og:description"
-    content="Choose one Maths Club stream and register one or more students with Magic Math Master."
-  />
+  <meta property="og:description" content="Choose one Maths Club stream and register one or more students with Magic Math Master.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.magicmathmaster.com.au/Club-register.html">
+  <meta property="og:url" content="https://www.magicmathmaster.com.au/club-register.html">
 
+  <!-- Shared site stylesheet (GitHub Pages friendly) -->
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
   <style>
-    .brand-title span{ display:none !important; }
+    /* =========================================================
+       Match Register/Enquiry layout system (topbar + hero-card)
+       (kept local so this page looks identical immediately)
+       ========================================================= */
+    :root {
+      --bg: #efe7e3;
+      --card: rgba(255,255,255,.94);
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --brand: #f28c28;
+      --brand-dark: #a84300;
+      --line: #e8d9cf;
+      --accent: #0b5ed7;
+      --accent-soft: rgba(11,94,215,.08);
+      --hero: #08153e;
+      --green: #138a48;
+      --amber: #cc7a00;
+      --red: #cf3d32;
+      --radius: 18px;
+      --shadow: 0 14px 34px rgba(2, 6, 23, .10);
+      --shadow-soft: 0 8px 22px rgba(84, 37, 0, .06);
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f5efec 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.84);
+      border-bottom: 1px solid rgba(232, 217, 207, .9);
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 1000;
+      letter-spacing: -.2px;
+    }
+
+    .brand-logo{
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      display:block;
+    }
+
+    .brand-title b{
+      font-weight: 1000;
+      font-size: 20px;
+      color: var(--ink);
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: transform .12s ease, filter .12s ease;
+      box-shadow: 0 10px 20px rgba(2, 6, 23, .10);
+      font: inherit;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
+
+    .btn-success { background: linear-gradient(135deg, #1f9d58, var(--green)); color: #fff; }
+    .btn-amber   { background: linear-gradient(135deg, #f4a528, var(--amber)); color: #fff; }
+    .btn-outline {
+      background: rgba(255,255,255,.88);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.18);
+      box-shadow: none;
+    }
+    .btn-secondary{
+      background: rgba(11,94,215,.08);
+      color: var(--accent);
+      border: 1px solid rgba(11,94,215,.25);
+      box-shadow: none;
+    }
+
+    main { padding: 18px 0 40px; }
+
+    .hero-card {
+      overflow: hidden;
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: 0 18px 36px rgba(2, 6, 23, .14);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      margin-bottom: 16px;
+    }
+
+    .hero-banner {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: var(--hero);
+    }
+
+    .hero-copy {
+      background: rgba(255,255,255,.95);
+      border-top: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.15;
+      color: var(--brand-dark);
+      font-weight: 1000;
+      letter-spacing: -.3px;
+    }
+
+    .hero-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .hero-pills {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+      border: 1px solid rgba(11,94,215,.14);
+      font-size: .95rem;
+    }
+
+    .hero-actions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+    }
+
+    /* =========================================================
+       Existing club page styles (kept + lightly cleaned)
+       ========================================================= */
     .club-shell{ display:grid; gap:16px; }
 
     .club-card,
@@ -32,17 +216,17 @@
     .info-card,
     .success-card{
       background: rgba(255,255,255,.86);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: calc(var(--radius) + 4px);
-      box-shadow: var(--shadow2);
+      box-shadow: var(--shadow-soft);
       padding: 18px;
     }
 
     .section-title{
       margin: 0 0 8px;
-      color: var(--brand2);
+      color: var(--brand-dark);
       font-size: 28px;
-      font-weight: 1100;
+      font-weight: 1000;
       letter-spacing: -0.3px;
     }
 
@@ -66,7 +250,7 @@
 
     .club-option{
       position: relative;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: calc(var(--radius) + 4px);
       background: rgba(255,255,255,.82);
       padding: 16px;
@@ -85,7 +269,7 @@
       right: 16px;
       width: 18px;
       height: 18px;
-      accent-color: var(--brand2);
+      accent-color: var(--accent);
       cursor: pointer;
     }
 
@@ -112,7 +296,7 @@
       margin: 0 0 8px;
       color: #7a4a00;
       font-size: 20px;
-      font-weight: 1100;
+      font-weight: 1000;
     }
 
     .club-option p{
@@ -130,12 +314,11 @@
       border: 1px solid rgba(11,94,215,.18);
       display: none;
     }
-
     .subgroup-wrap.show{ display:block; }
 
     .subgroup-title{
       margin: 0 0 10px;
-      color: var(--brand2);
+      color: var(--accent);
       font-size: 16px;
       font-weight: 1000;
     }
@@ -145,7 +328,6 @@
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 12px;
     }
-
     @media (max-width: 760px){
       .subgroup-grid{ grid-template-columns: 1fr; }
     }
@@ -155,16 +337,13 @@
       align-items:flex-start;
       gap:10px;
       background: rgba(255,255,255,.78);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: 14px;
       padding: 12px;
       cursor: pointer;
     }
 
-    .subgroup-item input{
-      margin-top: 3px;
-      accent-color: var(--brand2);
-    }
+    .subgroup-item input{ margin-top: 3px; accent-color: var(--accent); }
 
     .subgroup-item b{
       display:block;
@@ -186,7 +365,6 @@
       gap: 14px;
       margin-top: 14px;
     }
-
     @media (max-width: 900px){
       .two-col{ grid-template-columns: 1fr; }
     }
@@ -196,7 +374,7 @@
       margin-bottom: 6px;
       font-size: 14px;
       font-weight: 1000;
-      color: var(--brand2);
+      color: var(--brand-dark);
     }
 
     .field-group input,
@@ -204,17 +382,14 @@
     .field-group textarea{
       width:100%;
       padding: 11px 12px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: 14px;
       background: rgba(255,255,255,.92);
       color: var(--ink);
       font: inherit;
     }
 
-    .field-group textarea{
-      min-height: 100px;
-      resize: vertical;
-    }
+    .field-group textarea{ min-height: 100px; resize: vertical; }
 
     .register-tools{
       display:flex;
@@ -241,7 +416,7 @@
 
     .table-wrap{
       overflow-x:auto;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: 18px;
       background: rgba(255,255,255,.9);
     }
@@ -254,26 +429,24 @@
 
     thead{ background: rgba(11,94,215,.06); }
 
-    th,
-    td{
-      border-bottom: 1px solid var(--line);
+    th, td{
+      border-bottom: 1px solid rgba(232,217,207,.9);
       padding: 10px;
       text-align:left;
       vertical-align: top;
     }
 
     th{
-      color: var(--brand2);
+      color: var(--brand-dark);
       font-size: 13px;
-      font-weight: 1100;
+      font-weight: 1000;
       white-space: nowrap;
     }
 
-    td input,
-    td select{
+    td input, td select{
       width:100%;
       padding: 10px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: 12px;
       background: rgba(255,255,255,.96);
       color: var(--ink);
@@ -283,8 +456,8 @@
 
     .row-number{
       text-align:center;
-      font-weight: 1100;
-      color: var(--brand2);
+      font-weight: 1000;
+      color: var(--brand-dark);
       min-width: 40px;
     }
 
@@ -304,7 +477,7 @@
     .consent-box{
       margin-top: 16px;
       padding: 16px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(232,217,207,.9);
       border-radius: 18px;
       background: rgba(255,255,255,.72);
       display:grid;
@@ -320,10 +493,7 @@
       line-height: 1.65;
     }
 
-    .check-line input{
-      margin-top: 3px;
-      accent-color: var(--brand2);
-    }
+    .check-line input{ margin-top: 3px; accent-color: var(--accent); }
 
     .small-note{
       margin: 0;
@@ -348,11 +518,10 @@
       margin: 0 0 8px;
       color: #7a4a00;
       font-size: 18px;
-      font-weight: 1100;
+      font-weight: 1000;
     }
 
-    .info-card p,
-    .info-card ul{
+    .info-card p, .info-card ul{
       margin: 0;
       color: var(--muted);
       font-weight: 700;
@@ -367,155 +536,89 @@
       border-color: rgba(34,197,94,.28);
       background: rgba(34,197,94,.08);
     }
+    .success-card strong{ color: #166534; font-weight: 1000; }
 
-    .success-card strong{
-      color: #166534;
-      font-weight: 1100;
+    .footer{
+      padding: 22px 0 34px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      font-size: .95rem;
     }
 
-    .footer-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:10px;
-      font-weight:700;
+    @media (max-width: 820px) {
+      .container { width: min(100%, calc(100% - 18px)); }
+      .topbar-inner { padding: 8px 0; align-items: flex-start; flex-direction: column; }
+      .top-actions { width: 100%; }
+      .top-actions .btn { flex: 1 1 auto; }
+      .hero-copy { padding: 16px; }
     }
-    .footer-links a{
-      text-decoration:none;
-      color:inherit;
-      opacity:.9;
-    }
-    .footer-links a:hover{
-      opacity:1;
-      text-decoration:underline;
+
+    @media (max-width: 560px) {
+      .hero-banner {
+        max-height: 185px;
+        object-fit: cover;
+        object-position: center;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- TOP BAR (same system as register/enquiry) -->
   <div class="topbar">
     <div class="container topbar-inner">
-
-      <div class="nav" aria-label="Primary navigation">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="mathclub.html">Math Club</a>
-        <a data-nav href="programs.html">Programs</a>
-        <a data-nav href="pricing.html">Fees</a>
-        <a data-nav href="about.html">About</a>
-
-        <a href="https://practice.magicmathmaster.com.au">Student Login</a>
-
-        <div class="lang-menu">
-          <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false">
-            <span class="lang-btn-text" id="currentLangText">En</span>
-            <span class="lang-btn-caret">▾</span>
-          </button>
-
-          <div class="lang-dropdown" id="langDropdown" hidden>
-            <button class="lang-option" type="button" data-lang="en" data-label="En">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#012169"/>
-                <polygon points="0,0 7,0 60,33 60,40 53,40 0,7" fill="#fff"/>
-                <polygon points="60,0 53,0 0,33 0,40 7,40 60,7" fill="#fff"/>
-                <polygon points="0,0 3.5,0 60,35 60,40 56.5,40 0,5" fill="#C8102E"/>
-                <polygon points="60,0 56.5,0 0,35 0,40 3.5,40 60,5" fill="#C8102E"/>
-                <rect x="24" width="12" height="40" fill="#fff"/>
-                <rect y="14" width="60" height="12" fill="#fff"/>
-                <rect x="26" width="8" height="40" fill="#C8102E"/>
-                <rect y="16" width="60" height="8" fill="#C8102E"/>
-              </svg>
-              <span class="lang-label">En</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="vi" data-label="Vn">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#DA251D"/>
-                <polygon fill="#FFDE00" points="30,8 33.5,18.5 44.5,18.5 35.5,24.8 39,35 30,28.7 21,35 24.5,24.8 15.5,18.5 26.5,18.5"/>
-              </svg>
-              <span class="lang-label">Vn</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="zh" data-label="Zh">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#DE2910"/>
-                <polygon fill="#FFDE00" points="12,6 13.8,11.3 19.4,11.3 14.9,14.6 16.6,20 12,16.7 7.4,20 9.1,14.6 4.6,11.3 10.2,11.3"/>
-                <polygon fill="#FFDE00" points="24,4 24.7,6.1 27,6.1 25.1,7.4 25.8,9.6 24,8.2 22.2,9.6 22.9,7.4 21,6.1 23.3,6.1"/>
-                <polygon fill="#FFDE00" points="29,9 29.7,11.1 32,11.1 30.1,12.4 30.8,14.6 29,13.2 27.2,14.6 27.9,12.4 26,11.1 28.3,11.1"/>
-                <polygon fill="#FFDE00" points="29,17 29.7,19.1 32,19.1 30.1,20.4 30.8,22.6 29,21.2 27.2,22.6 27.9,20.4 26,19.1 28.3,19.1"/>
-                <polygon fill="#FFDE00" points="24,22 24.7,24.1 27,24.1 25.1,25.4 25.8,27.6 24,26.2 22.2,27.6 22.9,25.4 21,24.1 23.3,24.1"/>
-              </svg>
-              <span class="lang-label">Zh</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="hi" data-label="Hi">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="13.333" y="0" fill="#FF9933"/>
-                <rect width="60" height="13.333" y="13.333" fill="#FFFFFF"/>
-                <rect width="60" height="13.334" y="26.666" fill="#138808"/>
-                <circle cx="30" cy="20" r="4.2" fill="none" stroke="#000080" stroke-width="1"/>
-                <circle cx="30" cy="20" r="0.6" fill="#000080"/>
-              </svg>
-              <span class="lang-label">Hi</span>
-            </button>
-
-            <button class="lang-option" type="button" data-lang="es" data-label="Es">
-              <svg class="lang-flag-svg-rect" viewBox="0 0 60 40" aria-hidden="true">
-                <rect width="60" height="40" fill="#AA151B"/>
-                <rect y="10" width="60" height="20" fill="#F1BF00"/>
-              </svg>
-              <span class="lang-label">Es</span>
-            </button>
-          </div>
+      <a class="brand" href="index.html" aria-label="Magic Math Master home">
+        <img class="brand-logo" src="assets/logo.png" alt="Magic Math Master logo" />
+        <div class="brand-title">
+          <b>Magic Math Master</b>
         </div>
+      </a>
+
+      <div class="top-actions">
+        <a class="btn btn-outline" href="index.html">Home</a>
+        <a class="btn btn-success" href="enquiry.html">Enquiry</a>
+        <a class="btn btn-amber" href="register.html">Register</a>
       </div>
     </div>
   </div>
 
-  <!-- ✅ NEW HERO aligned with register.html system -->
   <main>
     <div class="container">
-      <section class="hero-card" aria-label="Maths Club registration hero">
+
+      <!-- HERO (same system as register/enquiry) -->
+      <section class="hero-card" aria-label="Maths Club register hero">
         <img class="hero-banner" src="assets/banner.png" alt="Magic Math Master banner" loading="eager" />
         <div class="hero-copy">
           <h1 class="hero-title">Register for Maths Club</h1>
           <p class="hero-desc">
-            Choose <strong>one Maths Club stream</strong> and enrol <strong>one or more students</strong> in the same booking.
-            Maths Club is online and flexible, so students can join from anywhere.
-            <br><br>
-            <strong>Tutoring students:</strong> Maths Club membership is complimentary — you do not need to register here.
+            Choose <strong>one club stream</strong> and enrol <strong>one or more students</strong> in one booking.
+            Maths Club is online and students can join from anywhere.
           </p>
 
           <div class="hero-pills">
-            <span class="hero-pill">One stream per booking</span>
-            <span class="hero-pill">Multi-student family register</span>
-            <span class="hero-pill">Clear communication</span>
+            <span class="hero-pill">Club only</span>
+            <span class="hero-pill">Multi-student booking</span>
+            <span class="hero-pill">Flexible online participation</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-success" href="register.html">Register for Tutoring</a>
-            <a class="btn btn-outline" href="enquiry.html">Tutoring Enquiry</a>
-
-            <a class="btn btn-secondary" href="#club-register">
-              Register for Maths Club <span class="badge">Club only</span>
-            </a>
-
-            <a class="btn btn-amber" href="pricing.html#maths-club-fees">View Maths Club Fees</a>
+            <a class="btn btn-amber" href="#club-register">Register now</a>
+            <a class="btn btn-secondary" href="pricing.html#maths-club-fees">View fees</a>
+            <a class="btn btn-outline" href="mathclub.html">Maths Club info</a>
+            <a class="btn btn-success" href="enquiry.html">Tutoring enquiry</a>
           </div>
         </div>
       </section>
-    </div>
 
-    <div class="container"><div class="sep"></div></div>
-
-    <section class="section" id="club-register">
-      <div class="container">
+      <section id="club-register">
         <div class="club-shell">
 
           <div class="club-card">
             <h2 class="section-title">Choose your Maths Club stream</h2>
             <p class="section-sub">
-              Select <b>one</b> club stream for this booking. If you choose <b>Primary Maths Club</b>, please also choose the correct sub-group so we can place students accurately.
+              Select <b>one</b> club stream for this booking.
+              If you choose <b>Primary Maths Club</b>, please also choose the correct sub-group so we can place students accurately.
             </p>
 
             <div class="club-options" id="clubOptions">
@@ -565,7 +668,12 @@
 
           <iframe name="clubRegisterSubmitFrame" style="display:none;" title="Club register submission"></iframe>
 
-          <form id="mathsClubRegisterForm" action="https://script.google.com/macros/s/AKfycbzVvFfCeVr8QpPBYUMdMUaJK6H1L7BAWVwjrJoK3vqTCVGrQ9jqfcRUbooewNCsANpz/exec" method="post" target="clubRegisterSubmitFrame" novalidate>
+          <form id="mathsClubRegisterForm"
+                action="https://script.google.com/macros/s/AKfycbzVvFfCeVr8QpPBYUMdMUaJK6H1L7BAWVwjrJoK3vqTCVGrQ9jqfcRUbooewNCsANpz/exec"
+                method="post"
+                target="clubRegisterSubmitFrame"
+                novalidate>
+
             <input type="hidden" name="formType" value="club-register">
             <input type="hidden" name="submittedAt" id="submittedAtField">
             <input type="hidden" name="clubStream" id="clubStreamField">
@@ -575,7 +683,7 @@
             <div class="form-card">
               <h2 class="section-title">Family and booking details</h2>
               <p class="section-sub">
-                We collect this information to contact you about the club booking, organise payment, and place students appropriately.
+                These details help us contact you, organise the booking, and confirm the best starting point.
               </p>
 
               <div class="two-col">
@@ -630,16 +738,16 @@
             <div class="form-card">
               <h2 class="section-title">Student register</h2>
               <p class="section-sub">
-                Add every student joining this booking. If you are registering siblings, please list each child on a separate row.
+                Add every student joining this booking. If you are registering siblings, list each child on a separate row.
               </p>
 
               <div class="register-tools">
                 <div class="tool-left">
-                  <button type="button" class="btn" onclick="addRow()">+ Add Another Student</button>
-                  <button type="button" class="btn" onclick="resetTable()">Reset Table</button>
+                  <button type="button" class="btn btn-outline" onclick="addRow()">+ Add another student</button>
+                  <button type="button" class="btn btn-outline" onclick="resetTable()">Reset table</button>
                 </div>
                 <div class="tool-right">
-                  <a class="btn" href="mathclub.html">View Maths Club Info</a>
+                  <a class="btn btn-secondary" href="mathclub.html">View Maths Club info</a>
                 </div>
               </div>
 
@@ -713,16 +821,18 @@
               <div class="consent-box">
                 <label class="check-line">
                   <input type="checkbox" id="consent" name="consent" required>
-                  <span>I confirm that the information provided is correct and that I am the parent/guardian or authorised person enrolling these student(s).</span>
+                  <span>
+                    I confirm I am the parent/guardian (or authorised person) enrolling these student(s) and the information provided is correct.
+                  </span>
                 </label>
 
                 <p class="small-note">
-                  We use your information to manage this registration and contact you about next steps. We do not sell your information.
+                  After you submit, we will review your registration and contact you with payment arrangements and next steps.
                 </p>
 
-                <div class="hero-actions cta-row">
-                  <button type="submit" class="btn btn-success">Submit Registration</button>
-                  <a class="btn btn-amber" href="enquiry.html">Need help choosing?</a>
+                <div class="hero-actions">
+                  <button type="submit" class="btn btn-success">Submit registration</button>
+                  <a class="btn btn-outline" href="pricing.html#maths-club-fees">View fees</a>
                 </div>
               </div>
             </div>
@@ -741,43 +851,30 @@
             <div class="info-card">
               <h3>Important placement note</h3>
               <p>
-                One booking should only include <b>one club stream</b>. If students belong in different club streams, please submit a separate form for each stream.
+                One booking should include <b>one club stream</b>. If students belong in different streams, submit a separate form for each stream.
               </p>
             </div>
 
             <div class="info-card">
               <h3>Not sure which club fits?</h3>
               <p>
-                Use the enquiry page if you want a recommended starting point based on your child’s year level, goals, and confidence.
+                Use the enquiry page if you want help with tutoring (one-to-one, group tutoring, competitions).
               </p>
             </div>
           </div>
 
           <div class="success-card" id="successMessage">
-            <strong>Thank you. Your registration has been received.</strong> We will contact you soon with payment arrangements and the next steps for joining Maths Club.
+            <strong>Thank you. Your registration has been received.</strong>
+            We will contact you soon with payment arrangements and next steps for joining Maths Club.
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Magic Math Master • Australia</div>
-        <div>
-          <a href="mailto:magicmathmaster@outlook.com">magicmathmaster@outlook.com</a>;
-          <a href="mailto:magicmathmasters@gmail.com">magicmathmasters@gmail.com</a>
-        </div>
-      </div>
-
-      <div class="footer-links" aria-label="Footer links">
-        <a href="about.html">About</a>
-        <a href="philosophy.html">Philosophy</a>
-        <a href="policies.html">Policies</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
+    <div class="container">© <span id="year"></span> Magic Math Master • Australia</div>
   </footer>
 
   <script>
@@ -844,19 +941,14 @@
     }
 
     function resetClubSelection() {
-      clubRadios.forEach((radio) => {
-        radio.checked = false;
-      });
+      clubRadios.forEach((radio) => { radio.checked = false; });
 
       prepSubgroupRadios.forEach((radio) => {
         radio.checked = false;
         radio.required = false;
       });
 
-      clubOptions.forEach((card) => {
-        card.classList.remove('active');
-      });
-
+      clubOptions.forEach((card) => { card.classList.remove('active'); });
       prepSubgroupWrap.classList.remove('show');
     }
 
@@ -868,9 +960,7 @@
 
       if (prep6Radio.checked) {
         prepSubgroupWrap.classList.add('show');
-        prepSubgroupRadios.forEach((radio) => {
-          radio.required = true;
-        });
+        prepSubgroupRadios.forEach((radio) => { radio.required = true; });
       } else {
         prepSubgroupWrap.classList.remove('show');
         prepSubgroupRadios.forEach((radio) => {
@@ -887,9 +977,7 @@
       competitionLocationGroup.style.display = needsLocation ? 'block' : 'none';
       competitionLocation.required = needsLocation;
 
-      if (!needsLocation) {
-        competitionLocation.value = '';
-      }
+      if (!needsLocation) competitionLocation.value = '';
     }
 
     function collectPayload() {
@@ -915,13 +1003,9 @@
       };
     }
 
-    clubRadios.forEach((radio) => {
-      radio.addEventListener('change', updateClubUI);
-    });
+    clubRadios.forEach((radio) => radio.addEventListener('change', updateClubUI));
 
-    if (competitionMode) {
-      competitionMode.addEventListener('change', updateCompetitionLocation);
-    }
+    if (competitionMode) competitionMode.addEventListener('change', updateCompetitionLocation);
 
     if (submitFrame) {
       submitFrame.addEventListener('load', () => {
@@ -930,7 +1014,7 @@
         submissionPending = false;
         successMessage.style.display = 'block';
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        alert('Thank you. Your registration has been received. We will contact you soon with payment arrangements and the next steps.');
+        alert('Thank you. Your registration has been received. We will contact you soon with payment arrangements and next steps.');
 
         form.reset();
         resetTable();
@@ -973,7 +1057,5 @@
     updateClubUI();
     updateCompetitionLocation();
   </script>
-
-  <script src="script.js"></script>
 </body>
 </html>
