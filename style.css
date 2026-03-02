@@ -1342,3 +1342,13 @@ html, body {
 table {
   max-width: 100%;
 }
+/* ===== Emoji fix for gradient headings ===== */
+.emoji{
+  color: initial !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  margin-right: 6px;
+}
