@@ -123,6 +123,8 @@
 
     <div class="btnrow">
       <button id="checkBtn" onclick="check()">Check</button>
+      <!-- ✅ NEW: Previous -->
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
       <button id="nextBtn" class="secondary" onclick="next()" disabled>Next</button>
       <button class="secondary" onclick="backToGrade()">Change grade</button>
       <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
@@ -278,6 +280,32 @@ function updatePrecisionNote(){
   }
 }
 
+/* ✅ NEW: render current question (used by next/prev) */
+function renderCurrentQuestion(){
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+
+  el("q").textContent = qs[i].q;
+  updatePrecisionNote();
+
+  // Previous disabled at first question
+  el("prevBtn").disabled = (i <= 0);
+
+  // If already correct, allow next immediately; otherwise keep "Check then Next"
+  el("nextBtn").disabled = !gotCorrect[i];
+
+  el("ans").focus();
+}
+
+/* ✅ NEW: Previous */
+function prev(){
+  if(i <= 0) return;
+  i--;
+  renderCurrentQuestion();
+}
+
 /* Go back to grade selection */
 function backToGrade(){
   qs = [];
@@ -307,7 +335,7 @@ function backToGrade(){
   el("studentGrade").focus();
 }
 
-/* ✅ NEW: Back to demo hub page */
+/* Back to demo hub page */
 function goToDemoHome(){
   window.location.href = "https://www.magicmathmaster.com.au/demo/";
 }
@@ -341,17 +369,8 @@ function start(){
 
 function next(){
   i++;
-  el("fb").textContent = "";
-  el("fb").className = "";
-  el("hint").textContent = "";
-  el("nextBtn").disabled = true;
-  el("ans").value = "";
-
   if(i >= qs.length){ finish(); return; }
-
-  el("q").textContent = qs[i].q;
-  updatePrecisionNote();
-  el("ans").focus();
+  renderCurrentQuestion();
 }
 
 function check(){
@@ -374,6 +393,7 @@ function check(){
   if(ok){
     if(!gotCorrect[i]) score++;
     gotCorrect[i] = true;
+
     box.className = "feedback ok";
     box.textContent = "✅ Correct!";
   }else{
@@ -382,7 +402,8 @@ function check(){
     el("hint").textContent = "Hint: " + (qs[i].hint || "Try again step by step.");
   }
 
-  el("nextBtn").disabled = false;
+  // Enable next after checking (or keep enabled if already correct)
+  el("nextBtn").disabled = !gotCorrect[i];
 }
 
 function finish(){
