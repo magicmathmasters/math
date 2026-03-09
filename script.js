@@ -116,3 +116,26 @@
     }
   });
 })();
+// Enter on Start screen = Start (when button is enabled)
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+  if (quizVisible) return; // your quiz Enter handler will run instead
+
+  const startVisible =
+    el("profileBox").style.display !== "none" &&
+    el("startButtons").style.display !== "none";
+
+  if (!startVisible) return;
+
+  // Avoid Enter on the dropdown accidentally starting (optional but recommended)
+  if (e.target && e.target.tagName === "SELECT") return;
+
+  const startBtn = el("startBtn");
+  if (startBtn && !startBtn.disabled) {
+    e.preventDefault();
+    start();
+  }
+});
