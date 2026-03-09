@@ -97,6 +97,13 @@
       font-size:14px;
       line-height:1.6;
     }
+    .hint{
+      margin-top:10px;
+      color:#475569;
+      font-weight:750;
+      font-size:14px;
+      line-height:1.6;
+    }
 
     .cta{
       margin-top:16px;
@@ -142,7 +149,6 @@
       font-weight:650;
     }
 
-    /* ===== Printable report toggle UI ===== */
     .toggleRow{
       display:flex;
       align-items:center;
@@ -161,13 +167,18 @@
     @media print{
       body{ background:#fff; padding:0; }
       .card{ box-shadow:none; padding:0; max-width:none; border-radius:0; }
-      .card > *:not(#printReport){ display:none !important; }
+
+      .card > *:not(#printReport){
+        display:none !important;
+      }
+
       #printReport{
         display:block !important;
         padding:18px;
         font-size:14px;
         line-height:1.6;
       }
+
       #printReport h2, #printReport h3 { color:#000; margin: 10px 0 6px; }
       #printReport .small { color:#333; font-size:13px; }
       #printReport ul{ margin-left:18px; }
@@ -179,16 +190,18 @@
 <body>
 <div class="card">
 
-  <div class="pill">🌱 Prep – Year 2 • Animals</div>
-  <h1>Animal Maths Practice (Free Demo)</h1>
+  <div id="pill" class="pill">🌱 Prep – Year 2 • Animals</div>
+  <h1 id="titleH1">Animal Maths Practice (Free Demo)</h1>
 
   <p class="intro">
     Type your answer, press <b>Check</b>, then press <b>Next</b>.
-    <span class="note">Tip: Press <b>Enter</b> to Check. After a check, press <b>Enter</b> again for Next.</span>
+    <span class="note">
+      Keyboard: <b>Enter</b> = Check, then <b>Enter</b> again = Next • <b>Shift+Enter</b> = Previous • <b>Ctrl/Cmd+Enter</b> = Next (skip checking)
+    </span>
   </p>
 
   <!-- START -->
-  <div id="startMsg" class="q">Enter your details, then press <b>Start</b> 🐾</div>
+  <div id="startMsg" class="q">Enter your details, choose Prep/Year 1/Year 2, then press <b>Start</b> 🐾</div>
 
   <div id="profileBox">
     <div class="row2">
@@ -196,8 +209,9 @@
         <label>Student name</label>
         <input id="studentName" placeholder="e.g., Anna">
       </div>
+
       <div class="field">
-        <label>Grade</label>
+        <label>Year level</label>
         <select id="studentGrade">
           <option value="">Select…</option>
           <option>Prep</option>
@@ -207,11 +221,13 @@
         <div class="note" id="gradeHint" style="margin-top:8px;">Please choose Prep, Year 1, or Year 2.</div>
       </div>
     </div>
+
     <div class="note">
       This short demo helps us understand how your child thinks. No email or phone number is collected.
     </div>
   </div>
 
+  <!-- ✅ Start screen buttons (same as Year 3–6 style) -->
   <div id="startButtons" class="btnrow">
     <button id="startBtn" onclick="start()" disabled>Start</button>
     <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
@@ -221,33 +237,57 @@
   <div id="qa" class="hide">
     <div id="qCounter" class="note" style="margin-top:0; font-weight:900; color:#334155;"></div>
     <div id="q" class="q"></div>
-    <input id="ans" inputmode="numeric" placeholder="Type a number">
+
+    <input id="ans" inputmode="decimal" placeholder="Type a number">
+
+    <div id="precisionNote" class="note" style="margin-top:8px;"></div>
+
+    <div class="note" style="margin-top:10px;">
+      <b>Tips:</b> You can press <b>Next</b> to skip and come back with <b>Previous</b>.<br>
+      <b>Finish:</b> You can press <b>Finish</b> any time to see your results.
+    </div>
 
     <div class="btnrow">
       <button id="checkBtn" onclick="check()">Check</button>
-      <button id="nextBtn" class="secondary" onclick="next()" disabled>Next</button>
+      <button id="prevBtn" class="secondary" onclick="prev()" disabled>Previous</button>
+      <button id="nextBtn" class="secondary" onclick="next()">Next</button>
+      <button id="finishBtn" class="secondary" onclick="finishEarly()">Finish</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
+      <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
     </div>
   </div>
 
   <div id="fb"></div>
+  <div id="hint" class="hint"></div>
 
   <!-- END / RESULTS -->
   <div id="end" class="cta hide">
     <div id="finalLine"></div>
 
-    <!-- Graph -->
     <div class="resultBox">
       <div class="resultTitle">Results overview</div>
       <div id="pctText"></div>
       <canvas id="chart" width="900" height="260"></canvas>
-      <div class="note">Blue = correct (✔) • Red = incorrect (✘)</div>
+      <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
     </div>
 
-    <!-- Parent summary -->
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" style="margin:0 0 10px;"></p>
+
+      <p style="margin:0;"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p style="margin:10px 0 0;"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+    </div>
+
     <div class="resultBox">
       <div class="resultTitle">👨‍👩‍👧 Parent Summary</div>
 
       <p id="parentOverview"></p>
+      <p><b>Unanswered questions:</b> <span id="unansweredLine"></span></p>
 
       <p><b>What your child did well:</b></p>
       <ul id="strengthList"></ul>
@@ -260,7 +300,6 @@
       </p>
     </div>
 
-    <!-- Parent can choose to include report -->
     <div class="toggleRow">
       <input id="includeReport" type="checkbox" checked>
       <label for="includeReport">Include a printable report (PDF)</label>
@@ -269,10 +308,34 @@
     <div class="btnrow">
       <button onclick="printOrSkip()">🖨️ Print / Save PDF</button>
       <button class="secondary" onclick="restart()">Try again</button>
+      <button class="secondary" onclick="backToGrade()">Change grade</button>
       <button class="secondary" onclick="goToDemoHome()">Back to Free Demos</button>
     </div>
 
     <div id="saveStatus" class="note"></div>
+
+    <details class="note" style="margin-top:10px;">
+      <summary style="cursor:pointer; font-weight:900; color:#334155;">
+        Privacy &amp; what we save (tap to read)
+      </summary>
+      <div style="margin-top:8px; color:#64748b; font-weight:650; line-height:1.6;">
+        <p style="margin:0 0 8px;">
+          This demo can save results to <b>Magic Math Master’s internal records (Google Sheets)</b> so we can review progress.
+          <b>No email is sent</b> from this page.
+        </p>
+        <p style="margin:0 0 6px;"><b>We save:</b></p>
+        <ul style="margin:0 0 8px 18px;">
+          <li>Student name (as typed here)</li>
+          <li>Year level selected</li>
+          <li>Total score and percentage</li>
+          <li>Per-question result (correct / incorrect / unanswered)</li>
+          <li>Which demo/page was used (page URL)</li>
+        </ul>
+        <p style="margin:0;">
+          <b>We do not collect</b> email address or phone number on this demo page.
+        </p>
+      </div>
+    </details>
 
     <div class="note">
       Interested in a personalised learning plan?
@@ -294,6 +357,7 @@
 
     <h3>Summary</h3>
     <p id="rSummary"></p>
+    <p class="small"><b>Unanswered:</b> <span id="rUnanswered"></span></p>
 
     <h3>What your child did well</h3>
     <ul id="rStrengths"></ul>
@@ -317,55 +381,53 @@
 const ENDPOINT_URL =
   "https://script.google.com/macros/s/AKfycbwvWZJLRflPGQA3s5P2-B5LkTFonS4Z1SPI5-85lzlj1lFY02qXJzTd239PsiB0WICr/exec";
 
-/* ================= QUESTION BANKS (10 each: easy → hard) ================= */
-/* Prep */
+/* ================= QUESTION BANKS (10 each, easy → hard) ================= */
 const qsPrep = [
-  { q:"🐶 There are 3 puppies and 2 kittens. How many animals altogether?", a:5, skill:"Addition" },
-  { q:"🐰 9 rabbits are in a pen. 4 hop away. How many are left?", a:5, skill:"Subtraction" },
-  { q:"🐤 4 nests. Each nest has 2 eggs. How many eggs?", a:8, skill:"Groups" },
-  { q:"🐢 Counting by 2: 2, 4, 6, __. What number comes next?", a:8, skill:"Patterns" },
-  { q:"🦁 Type the bigger number: 14 or 9.", a:14, skill:"Comparing" },
-  { q:"🐟 You see 10 fish. 1 swims away. How many can you see now?", a:9, skill:"Subtraction" },
-  { q:"🐸 A frog jumps 5 steps, then 3 more. How many steps?", a:8, skill:"Addition" },
-  { q:"🔺 How many sides does a triangle have?", a:3, skill:"Shapes" },
-  { q:"🥕 There are 12 carrots shared equally between 3 rabbits. How many carrots each?", a:4, skill:"Sharing" },
-  { q:"🐨 You have 7 koalas and you find 6 more. How many koalas now?", a:13, skill:"Addition (harder)" }
+  { q:"🐶 Easy: 2 puppies + 3 puppies = ?", a:5,  skill:"Addition" },
+  { q:"🐰 Easy: 8 rabbits − 5 rabbits = ?", a:3,  skill:"Subtraction" },
+  { q:"🐤 Easy: 4 nests. Each nest has 2 eggs. How many eggs?", a:8, skill:"Groups" },
+  { q:"🔢 Medium: Counting by 2: 2, 4, 6, __. What number comes next?", a:8, skill:"Patterns" },
+  { q:"🔺 Medium: How many sides does a triangle have?", a:3, skill:"Shapes" },
+  { q:"📈 Medium: Which is bigger? 17 or 14 (type the bigger number)", a:17, skill:"Comparing" },
+  { q:"🐟 Medium: 10 fish are swimming. 3 swim away. How many fish now?", a:7, skill:"Subtraction" },
+  { q:"🦆 Medium: 6 ducks are in the pond. 2 more join. How many ducks now?", a:8, skill:"Addition" },
+  { q:"🥕 Hard: 12 carrots shared equally between 3 rabbits. How many carrots each?", a:4, skill:"Sharing" },
+  { q:"🐾 Hard: 5 puppies are playing. 4 more come. Then 3 leave. How many puppies now?", a:6, skill:"Two-step" }
 ];
 
-/* Year 1 */
 const qsY1 = [
-  { q:"🐶 There are 12 dogs and 5 cats. How many animals altogether?", a:17, skill:"Addition" },
-  { q:"🦜 There are 18 birds. 9 fly away. How many birds are left?", a:9, skill:"Subtraction" },
-  { q:"🐤 6 cages. Each cage has 3 parrots. How many parrots?", a:18, skill:"Groups" },
-  { q:"🔢 Counting by 5: 5, 10, 15, __. What number comes next?", a:20, skill:"Patterns" },
-  { q:"➕ Missing number: __ + 7 = 15. What number goes in the blank?", a:8, skill:"Missing number" },
-  { q:"📏 Type the smaller number: 16 or 19.", a:16, skill:"Comparing" },
-  { q:"🍪 24 treats are shared equally between 4 dogs. How many treats each?", a:6, skill:"Division" },
-  { q:"🥚 Half of 10 eggs is __. How many eggs?", a:5, skill:"Halves" },
-  { q:"⏱️ 1 hour = __ minutes. Type the number of minutes.", a:60, skill:"Time facts" },
-  { q:"🐰 There are 9 rabbits. 5 more join. Then 4 hop away. How many rabbits now?", a:10, skill:"Two-step" }
+  { q:"🐶 Easy: 14 dogs + 9 cats = ?", a:23, skill:"Addition" },
+  { q:"🦜 Easy: 25 birds − 8 birds = ?", a:17, skill:"Subtraction" },
+  { q:"🐤 Easy: 5 cages. Each cage has 3 birds. How many birds?", a:15, skill:"Groups" },
+  { q:"🔢 Medium: Counting by 5: 15, 20, 25, __. What comes next?", a:30, skill:"Patterns" },
+  { q:"➕ Medium: Missing number: __ + 6 = 20. What is the missing number?", a:14, skill:"Missing number" },
+  { q:"📉 Medium: Which is smaller? 38 or 41 (type the smaller number)", a:38, skill:"Comparing" },
+  { q:"🍪 Medium: 30 treats shared equally between 5 dogs. How many treats each?", a:6, skill:"Division" },
+  { q:"🥚 Medium: Half of 18 eggs is __. How many eggs?", a:9, skill:"Halves" },
+  { q:"💰 Hard: A toy costs $7. You pay with $12. How much change?", a:5, skill:"Money" },
+  { q:"🐰 Hard: 16 rabbits. 5 join. Then 9 hop away. How many rabbits now?", a:12, skill:"Two-step" }
 ];
 
-/* Year 2 */
 const qsY2 = [
-  { q:"🦊 Addition: 47 + 28 = ?", a:75, skill:"Two-digit addition" },
-  { q:"🦉 Subtraction: 63 − 27 = ?", a:36, skill:"Two-digit subtraction" },
-  { q:"🐾 8 packs of stickers. Each pack has 6 stickers. How many stickers?", a:48, skill:"Multiplication" },
-  { q:"🥕 72 carrots are shared equally between 9 rabbits. How many carrots each?", a:8, skill:"Division" },
-  { q:"🍏 Fractions: 3/4 of 20 apples is __ apples.", a:15, skill:"Fractions of a number" },
-  { q:"💰 Money: A toy costs $7. You pay with $10. How much change?", a:3, skill:"Money" },
-  { q:"⏱️ Time: Starts at 2:10 pm and lasts 35 minutes. Finish time? (Type HHMM, e.g., 2:45 pm = 245)", a:245, skill:"Time" },
-  { q:"📏 Perimeter: A rectangle is 9 cm long and 5 cm wide. What is the perimeter (cm)?", a:28, skill:"Perimeter" },
-  { q:"📊 Average: 6, 8, 10, 12. What is the mean (average)?", a:9, skill:"Averages" },
-  { q:"🧮 Two-step: You have 120 animal cards. Give away 35, get 18 more, then give away 22. How many cards now?", a:81, skill:"Two-step" }
+  { q:"🦊 Easy: 47 + 28 = ?", a:75, skill:"Addition" },
+  { q:"🦉 Easy: 63 − 27 = ?", a:36, skill:"Subtraction" },
+  { q:"🐾 Easy: 8 packs. Each pack has 7 stickers. How many stickers?", a:56, skill:"Multiplication" },
+  { q:"🎒 Medium: 84 soccer balls shared equally into 6 bags. How many balls per bag?", a:14, skill:"Division" },
+  { q:"🍏 Medium: 3/4 of 28 apples were used. How many apples were used?", a:21, skill:"Fractions of a number" },
+  { q:"⏱️ Medium: Starts at 2:10 pm and lasts 35 minutes. Finish time? (Type HHMM, e.g., 2:45 pm = 245)", a:245, note:"Answer tip: type time as HHMM (e.g., 2:45 pm = 245).", skill:"Time" },
+  { q:"📏 Medium: Perimeter: A rectangle is 9 cm long and 5 cm wide. What is the perimeter (cm)?", a:28, skill:"Perimeter" },
+  { q:"🔟 Medium: Place value: What is the value of the digit 6 in 4,682?", a:600, skill:"Place Value" },
+  { q:"🚌 Hard: 3 buses bring 24 students each. 15 students leave early. How many students stay?", a:57, skill:"Two-step" },
+  { q:"🧮 Hard: You have 120 animal cards. Give away 35, get 18 more, then give away 22. How many cards now?", a:81, skill:"Two-step" }
 ];
 
 /* ================= STATE ================= */
 let qs = [];
-let i = -1, score = 0;
+let i = -1;
+let score = 0;
 let student = { name:"", grade:"" };
 let gotCorrect = [];
-
+let ansCache = [];
 let checkedThisView = false;
 
 const el = id => document.getElementById(id);
@@ -383,94 +445,227 @@ function validateStart(){
   el("gradeHint").textContent = gradeOk ? `Selected: ${el("studentGrade").value}` : "Please choose Prep, Year 1, or Year 2.";
 }
 
+/* ================= PARSERS ================= */
+function parseNumber(raw){
+  const s = (raw || "").trim().replace(/,/g,"").replace(/\s+/g,"");
+  if(!s) return NaN;
+  const v = Number(s);
+  return Number.isFinite(v) ? v : NaN;
+}
+function close(a,b,eps=1e-9){ return Math.abs(a-b) < eps; }
+
+/* ================= ANSWER CACHE ================= */
+function stashAnswer(){
+  if(i >= 0 && i < ansCache.length){
+    ansCache[i] = el("ans").value;
+  }
+}
+function isAnswered(idx){
+  return ((ansCache[idx] || "").trim() !== "");
+}
+function getUnanswered(){
+  const miss = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) miss.push(k+1);
+  }
+  return miss;
+}
+
+/* ================= GRADING ================= */
+function gradeOne(idx){
+  const qObj = qs[idx];
+  if(!qObj) return null;
+  if(!isAnswered(idx)) return null;
+
+  const user = parseNumber(ansCache[idx]);
+  if(!Number.isFinite(user)) return false;
+
+  return close(user, qObj.a);
+}
+function autoGradeAll(){
+  score = 0;
+  gotCorrect = new Array(qs.length).fill(false);
+  for(let k=0;k<qs.length;k++){
+    const r = gradeOne(k);
+    if(r === true){
+      gotCorrect[k] = true;
+      score++;
+    }
+  }
+}
+function autoGradeIndex(idx){
+  const r = gradeOne(idx); // true / false / null
+  if(r === null) return;
+
+  const newVal = (r === true);
+  if(newVal && !gotCorrect[idx]) score++;
+  if(!newVal && gotCorrect[idx]) score--;
+  gotCorrect[idx] = newVal;
+}
+
+/* ================= UI HELPERS ================= */
+function updatePrecisionNote(){
+  const noteEl = el("precisionNote");
+  const qObj = qs[i];
+  noteEl.textContent = (qObj && qObj.note) ? qObj.note : "";
+}
+function renderCurrentQuestion(){
+  checkedThisView = false;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+
+  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
+  el("q").textContent = qs[i].q;
+
+  el("ans").value = ansCache[i] ?? "";
+  updatePrecisionNote();
+
+  el("prevBtn").disabled = (i <= 0);
+  el("ans").focus();
+}
+
 /* ================= FLOW ================= */
 function start(){
   student.name = el("studentName").value.trim();
   student.grade = el("studentGrade").value;
 
   if(!student.name){ alert("Please enter the student name."); return; }
-  if(!student.grade){ alert("Please choose a grade."); return; }
+  if(!student.grade){ alert("Please choose a year level."); return; }
 
-  // select question bank (10 each)
   if(student.grade === "Prep") qs = qsPrep;
   else if(student.grade === "Year 1") qs = qsY1;
   else qs = qsY2;
 
+  gotCorrect = new Array(qs.length).fill(false);
+  ansCache = new Array(qs.length).fill("");
+
   i = -1;
   score = 0;
-  gotCorrect = new Array(qs.length).fill(false);
+
+  el("pill").textContent = `🌱 ${student.grade} • Animals`;
+  el("titleH1").textContent = `Animal Maths Practice (Free Demo — ${student.grade})`;
 
   el("profileBox").style.display = "none";
   el("startButtons").style.display = "none";
   el("startMsg").style.display = "none";
+
+  el("qa").style.display = "block";
   el("qa").classList.remove("hide");
+  el("end").classList.add("hide");
 
   next();
 }
 
 function next(){
+  stashAnswer();
+  if(i >= 0) autoGradeIndex(i);
+
+  // last question -> finish flow
+  if(i >= qs.length - 1){
+    finishEarly();
+    return;
+  }
+
   i++;
-  checkedThisView = false;
+  renderCurrentQuestion();
+}
 
-  el("fb").textContent = "";
-  el("fb").className = "";
-  el("nextBtn").disabled = true;
-  el("ans").value = "";
-
-  if(i >= qs.length){ finish(); return; }
-
-  el("qCounter").textContent = `Question ${i+1} of ${qs.length}`;
-  el("q").textContent = qs[i].q;
-  el("ans").focus();
+function prev(){
+  if(i <= 0) return;
+  stashAnswer();
+  autoGradeIndex(i);
+  i--;
+  renderCurrentQuestion();
 }
 
 function check(){
-  const v = Number(el("ans").value);
-  if(!Number.isFinite(v)){
-    el("fb").className = "feedback bad";
-    el("fb").textContent = "Please type a number.";
+  if(i < 0) return;
+
+  stashAnswer();
+
+  const box = el("fb");
+  el("hint").textContent = "";
+
+  const user = parseNumber(ansCache[i]);
+
+  if(!Number.isFinite(user)){
+    box.className = "feedback bad";
+    box.textContent = "Please type a number.";
     checkedThisView = true;
     return;
   }
 
-  const correct = (v === qs[i].a);
+  const okNow = close(user, qs[i].a);
 
-  if(correct){
-    if(!gotCorrect[i]) score++;
-    gotCorrect[i] = true;
-    el("fb").className = "feedback ok";
-    el("fb").textContent = "✅ Correct!";
+  if(okNow){
+    box.className = "feedback ok";
+    box.textContent = "✅ Correct!";
   }else{
-    gotCorrect[i] = false;
-    el("fb").className = "feedback bad";
-    el("fb").textContent = "❌ Not quite — try again, then press Check.";
+    box.className = "feedback bad";
+    box.textContent = "❌ Not quite.";
+    el("hint").textContent = "Tip: Try again step by step.";
   }
 
-  el("nextBtn").disabled = false;
+  if(okNow && !gotCorrect[i]) score++;
+  if(!okNow && gotCorrect[i]) score--;
+  gotCorrect[i] = okNow;
+
   checkedThisView = true;
 }
 
+function finishEarly(){
+  stashAnswer();
+  autoGradeAll();
+
+  const miss = getUnanswered();
+  if(miss.length){
+    const preview = miss.slice(0,12).map(n=>`Q${n}`).join(", ");
+    const suffix = miss.length > 12 ? ` (+${miss.length-12} more)` : "";
+    const ok = confirm(`You still have unanswered questions: ${preview}${suffix}.\n\nFinish anyway?`);
+    if(!ok){
+      i = miss[0]-1;
+      renderCurrentQuestion();
+      return;
+    }
+  }
+  finish();
+}
+
 function finish(){
+  stashAnswer();
+  autoGradeAll();
+
   el("qa").style.display = "none";
   el("end").classList.remove("hide");
+  el("precisionNote").textContent = "";
 
   const pct = Math.round(score / qs.length * 100);
-  el("finalLine").textContent = `Score: ${score}/${qs.length} (${pct}%)`;
+  const miss = getUnanswered();
+
+  el("finalLine").textContent = `Score: ${score}/${qs.length} (${pct}%) • Unanswered: ${miss.length}`;
   el("pctText").textContent = `Percentage correct: ${pct}%`;
 
-  drawChart(gotCorrect.map(v => v ? 1 : 0));
+  const states = qs.map((_,idx)=>{
+    if(gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
+
+  drawChart(states);
+  buildStudentSummary();
   buildParentSummary();
   saveResult(pct);
 }
 
-/* ================= GRAPH (shows RED bars too) ================= */
-function drawChart(vals01){
+/* ================= CHART ================= */
+function drawChart(states){
   const c = el("chart"), ctx = c.getContext("2d");
   ctx.clearRect(0,0,c.width,c.height);
 
   const W=c.width, H=c.height;
   const L=52, R=18, T=18, B=45;
-  const n=vals01.length;
+  const n=states.length;
   const chartW=W-L-R, chartH=H-T-B;
 
   ctx.strokeStyle="#111827";
@@ -484,27 +679,39 @@ function drawChart(vals01){
   const gap=12;
   const barW=Math.max(24, (chartW - gap*(n-1))/n);
 
-  const incorrectH = 18;
+  const incorrectH  = 18;
+  const unansweredH = 18;
 
-  vals01.forEach((v,i)=>{
+  states.forEach((s,i)=>{
     const x=L + i*(barW+gap);
 
-    if(v === 1){
+    if(s === 1){
       const barH = chartH;
-      const y = (H-B)-barH;
+      const y = (H-B) - barH;
       ctx.fillStyle = "rgba(11,94,215,.85)";
       ctx.fillRect(x,y,barW,barH);
       ctx.fillStyle="#111827";
       ctx.font="13px system-ui";
       ctx.fillText("✔", x+barW/2-4, y-6);
-    }else{
+
+    }else if(s === 0){
       const barH = incorrectH;
-      const y = (H-B)-barH;
+      const y = (H-B) - barH;
       ctx.fillStyle = "rgba(239,68,68,.75)";
       ctx.fillRect(x,y,barW,barH);
       ctx.fillStyle="#111827";
       ctx.font="13px system-ui";
       ctx.fillText("✘", x+barW/2-4, y-6);
+
+    }else{
+      const barH = unansweredH;
+      const y = (H-B) - barH;
+      ctx.strokeStyle = "rgba(148,163,184,.95)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x,y,barW,barH);
+      ctx.fillStyle="#111827";
+      ctx.font="13px system-ui";
+      ctx.fillText("U", x+barW/2-4, y-6);
     }
 
     ctx.fillStyle="#111827";
@@ -513,37 +720,85 @@ function drawChart(vals01){
   });
 }
 
-/* ================= PARENT SUMMARY ================= */
-function buildParentSummary(){
-  const strengths = [];
-  const nextSteps = [];
+/* ================= STUDENT SUMMARY ================= */
+function buildStudentSummary(){
+  const pct = Math.round(score / qs.length * 100);
+  const unanswered = getUnanswered();
 
-  qs.forEach((q,i)=>{
-    const plain = q.q.replace(/^[^ ]+ /,"");
-    if(gotCorrect[i]) strengths.push(plain);
-    else nextSteps.push(plain);
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You got lots of questions right.";
+  else if(pct >= 60) msg = "👍 Good effort! Keep practising and you’ll improve quickly.";
+  else msg = "🌱 Nice try! A little practice each day makes a big difference.";
+
+  if(unanswered.length) msg += ` You left ${unanswered.length} unanswered — try those next time.`;
+
+  el("studentOverview").textContent = msg;
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
   });
 
-  let overview = "";
-  if(score === qs.length){
-    overview = "🌟 Excellent work! Your child showed strong understanding across all questions today.";
-  }else if(score >= qs.length*0.6){
-    overview = "👍 Your child shows developing understanding, with a few areas to strengthen.";
-  }else{
-    overview = "🌱 Your child is still building confidence, which is very normal at this stage.";
-  }
-  el("parentOverview").textContent = overview;
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
 
-  el("strengthList").innerHTML = strengths.length
-    ? strengths.slice(0,5).map(s=>`<li>${s}</li>`).join("")
-    : "<li>Showing effort and persistence — a strong learning skill.</li>";
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
 
-  el("nextList").innerHTML = nextSteps.length
-    ? nextSteps.slice(0,5).map(s=>`<li>${s}</li>`).join("")
-    : "<li>Continue practising to build speed and confidence.</li>";
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Trying your best — that’s a great learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise a few more examples.</li>`).join("")
+    : "<li>Keep practising to build confidence.</li>";
 }
 
-/* ================= OPTIONAL PRINT REPORT ================= */
+/* ================= PARENT SUMMARY ================= */
+function buildParentSummary(){
+  const unanswered = getUnanswered();
+  el("unansweredLine").textContent = unanswered.length ? unanswered.map(n=>`Q${n}`).join(", ") : "None ✅";
+
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let overview = "";
+  if(pct >= 85) overview = "🌟 Strong work! Your child showed confident understanding across many skills today.";
+  else if(pct >= 60) overview = "👍 Good progress. Developing confidence, with a few skills to strengthen next.";
+  else overview = "🌱 Still building confidence — very normal. With steady practice, accuracy improves quickly.";
+
+  el("parentOverview").textContent = overview;
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,3);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,3);
+
+  el("strengthList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}:</b> showing confidence.</li>`).join("")
+    : "<li>Great effort and persistence — an important learning skill.</li>";
+
+  el("nextList").innerHTML = (unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>`
+    : ""
+  ) + (nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}:</b> practise a few more examples to build accuracy.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>"
+  );
+}
+
+/* ================= PRINT REPORT ================= */
 function printOrSkip(){
   const include = el("includeReport").checked;
   if(!include){
@@ -556,15 +811,18 @@ function printOrSkip(){
 
 function buildPrintReport(){
   const pct = Math.round(score / qs.length * 100);
+  const unanswered = getUnanswered();
   const results01 = gotCorrect.map(v=>v?1:0);
 
   el("rName").textContent = student.name;
   el("rGrade").textContent = student.grade || "—";
   el("rDate").textContent = new Date().toLocaleDateString();
 
+  el("rUnanswered").textContent = unanswered.length ? unanswered.map(n=>`Q${n}`).join(", ") : "None";
+
   el("rSummary").textContent =
-    `Grade: ${student.grade}. Score: ${score}/${qs.length} (${pct}%). ` +
-    (pct>=85 ? "Strong understanding across most skills."
+    `Score: ${score}/${qs.length} (${pct}%). ` +
+    (pct>=85 ? "Strong understanding across many skills."
       : pct>=60 ? "Developing understanding with some areas to strengthen."
       : "Still building confidence — very normal at this stage.");
 
@@ -575,17 +833,21 @@ function buildPrintReport(){
     ? strengths.map(s=>`<li>${s}</li>`).join("")
     : "<li>Showing effort and persistence.</li>";
 
-  el("rNext").innerHTML = nextSteps.length
-    ? nextSteps.map(s=>`<li>${s}</li>`).join("")
-    : "<li>Continue practising to build speed and confidence.</li>";
+  el("rNext").innerHTML = unanswered.length
+    ? `<li><b>Finish unanswered questions first:</b> ${unanswered.map(n=>`Q${n}`).join(", ")}</li>` +
+      (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "")
+    : (nextSteps.length ? nextSteps.map(s=>`<li>${s.replace(/^[^ ]+ /,"")}</li>`).join("") : "<li>Continue practising to build confidence.</li>");
 }
 
 /* ================= SAVE TO SHEET ================= */
 async function saveResult(pct){
   el("saveStatus").textContent = "Saving your result to Magic Math Master records…";
 
-  // 1 = correct, 0 = incorrect (this demo forces every question to be checked)
-  const answers = qs.map((_, idx) => (gotCorrect[idx] ? 1 : 0));
+  // 1 = correct, 0 = incorrect (answered but wrong), -1 = unanswered (blank)
+  const answers = qs.map((_, idx) => {
+    if (gotCorrect[idx]) return 1;
+    return isAnswered(idx) ? 0 : -1;
+  });
 
   try{
     await fetch(ENDPOINT_URL,{
@@ -594,7 +856,7 @@ async function saveResult(pct){
       headers:{ "Content-Type":"text/plain;charset=utf-8" },
       body:JSON.stringify({
         group:"Prep–2",
-        level: student.grade,          // Apps Script requires 'level'
+        level: student.grade,     // required by your Apps Script
         theme:"Animals",
         name: student.name,
         grade: student.grade,
@@ -602,10 +864,10 @@ async function saveResult(pct){
         total: qs.length,
         percent: pct,
 
-        // helpful for your Apps Script (records per-question)
         answers: answers,
+        unansweredQs: getUnanswered(),
 
-        // backward compatible
+        // backward-compatible
         perQuestion01: gotCorrect.map(v=>v?1:0),
 
         pageUrl: location.href,
@@ -619,6 +881,36 @@ async function saveResult(pct){
   }
 }
 
+/* ================= CHANGE GRADE ================= */
+function backToGrade(){
+  qs = [];
+  gotCorrect = [];
+  ansCache = [];
+  i = -1;
+  score = 0;
+
+  el("fb").textContent = "";
+  el("fb").className = "";
+  el("hint").textContent = "";
+  el("ans").value = "";
+  el("precisionNote").textContent = "";
+
+  el("qa").classList.add("hide");
+  el("qa").style.display = "none";
+  el("end").classList.add("hide");
+
+  el("profileBox").style.display = "block";
+  el("startButtons").style.display = "flex";
+  el("startMsg").style.display = "block";
+
+  el("studentGrade").value = "";
+  el("pill").textContent = "🌱 Prep – Year 2 • Animals";
+  el("titleH1").textContent = "Animal Maths Practice (Free Demo)";
+
+  validateStart();
+  el("studentName").focus();
+}
+
 /* ================= RESET ================= */
 function restart(){ location.reload(); }
 
@@ -627,18 +919,33 @@ document.addEventListener("DOMContentLoaded", () => {
   validateStart();
   el("studentName").addEventListener("input", validateStart);
   el("studentGrade").addEventListener("change", validateStart);
+
+  el("ans").addEventListener("input", () => {
+    if(i >= 0 && i < ansCache.length){
+      ansCache[i] = el("ans").value;
+    }
+    checkedThisView = false;
+  });
 });
 
-/* Enter key: first Enter = Check, second Enter = Next */
-document.addEventListener("keydown", e=>{
-  if(e.key !== "Enter") return;
+/* Keyboard:
+   Enter = Check, then Enter again = Next
+   Shift+Enter = Previous
+   Ctrl/Cmd+Enter = Next (skip checking)
+*/
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
 
-  const quizVisible = !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
-  if(!quizVisible) return;
+  const quizVisible =
+    !el("qa").classList.contains("hide") && el("qa").style.display !== "none";
+  if (!quizVisible) return;
 
   e.preventDefault();
 
-  if(checkedThisView) next();
+  if (e.shiftKey) { prev(); return; }
+  if (e.ctrlKey || e.metaKey) { next(); return; }
+
+  if (checkedThisView) next();
   else check();
 });
 </script>
