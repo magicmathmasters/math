@@ -216,7 +216,6 @@
 
       <div class="field">
         <label>Year level</label>
-        <!-- ✅ Dropdown instead of buttons -->
         <select id="studentGrade">
           <option value="">Select…</option>
           <option>Year 7</option>
@@ -288,6 +287,23 @@
       <div id="pctText"></div>
       <canvas id="chart" width="900" height="260"></canvas>
       <div class="note">Blue = correct (✔) • Red = incorrect (✘) • Grey outline = unanswered (U)</div>
+    </div>
+
+    <!-- ✅ ADDED: Student Summary (same style as Year 11–12) -->
+    <div class="resultBox">
+      <div class="resultTitle">🧑‍🎓 Student Summary</div>
+
+      <p id="studentOverview" style="margin:0 0 10px;"></p>
+
+      <p style="margin:0;"><b>✅ What you did well:</b></p>
+      <ul id="studentWellList"></ul>
+
+      <p style="margin:10px 0 0;"><b>🎯 What to practise next:</b></p>
+      <ul id="studentNextList"></ul>
+
+      <p class="note" style="margin-top:10px;">
+        Tip: Try to finish any unanswered questions, then press <b>Finish</b>.
+      </p>
     </div>
 
     <div class="resultBox">
@@ -437,10 +453,10 @@ const qs10 = [
   { q:"🧮 Quadratic: x² − 6x + 2 = 0. What is the smaller solution? (round to 2 decimals)", type:"number", a:0.35, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Quadratics", hint:"x = (6 − √28)/2 ≈ 0.354 → 0.35." },
   { q:"📐 Cosine rule: Two sides are 12 and 9 with included angle 50°. Find the third side (round to 2 decimals).", type:"number", a:9.28, tol:0.05, note:"Answer tip: use a calculator and round to 2 decimals.", skill:"Trigonometry (Cosine Rule)", hint:"c² = 12² + 9² − 2·12·9·cos(50°). c ≈ 9.28." },
   { q:"📐 Trig: A right triangle has hypotenuse 18 and angle 28°. Find the opposite side (round to 2 decimals).", type:"number", a:8.45, tol:0.05, note:"Answer tip: use a calculator and round to 2 decimals.", skill:"Trigonometry", hint:"Opp = 18·sin(28°) ≈ 8.45." },
-  { q:"📈 Modelling comparison: Linear L = 800 + 40t and Exponential E = 800×1.06^t. At t = 10, how much larger is E than L? (round to 2 decimals)", type:"number", a:232.68, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Linear vs Exponential", hint:"L=1200. E≈1432.68. Difference ≈ 232.68." },
-  { q:"📉 Exponential decay: A level starts at 900 and decreases by 7% each hour. After 8 hours, what is the level? (round to 2 decimals)", type:"number", a:503.62, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential Decay", hint:"900×0.93^8 ≈ 503.62." },
+  { q:"📈 Modelling comparison: Linear L = 800 + 40t and Exponential E = 800×1.06ᵗ. At t = 10, how much larger is E than L? (round to 2 decimals)", type:"number", a:232.68, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Linear vs Exponential", hint:"L=1200. E≈1432.68. Difference ≈ 232.68." },
+  { q:"📉 Exponential decay: A level starts at 900 and decreases by 7% each hour. After 8 hours, what is the level? (round to 2 decimals)", type:"number", a:503.62, tol:0.05, note:"Answer tip: round to 2 decimal places.", skill:"Exponential Decay", hint:"900×0.93⁸ ≈ 503.62." },
   { q:"🧠 Simultaneous equations: 2x + 3y = 19 and x − y = 1. What is x?", type:"number", a:4.4, tol:1e-6, skill:"Simultaneous Equations", hint:"x=y+1. Substitute: 2(y+1)+3y=19 → y=3.4 → x=4.4." },
-  { q:"⚡ Indices: (2⁴ × 8⁻¹)) ÷ 4⁻² = ?", type:"number", a:32, skill:"Indices", hint:"16×(1/8)=2. 2 ÷ (1/16)=32." },
+  { q:"⚡ Indices: (2⁴ × 8⁻¹) ÷ 4⁻² = ?", type:"number", a:32, skill:"Indices", hint:"16×(1/8)=2. 2 ÷ (1/16)=32." },
   { q:"🎯 Total probability: 60% practise. If practise, 80% pass. If not practise, 50% pass. Probability a student passes? (decimal)", type:"number", a:0.68, tol:0.001, note:"Answer tip: decimals OK.", skill:"Probability", hint:"0.6×0.8 + 0.4×0.5 = 0.68." },
   { q:"🔢 Arithmetic series: Row 1 has 20 seats, each next row has 2 more seats. There are 15 rows. How many seats total?", type:"number", a:510, skill:"Sequences (Arithmetic Series)", hint:"S = n/2[2a+(n−1)d] = 510." }
 ];
@@ -805,8 +821,53 @@ function finish(){
   });
   drawChart(states);
 
+  // ✅ NEW: student summary first, then parent summary
+  buildStudentSummary();
   buildParentSummary();
   saveResult(pct);
+}
+
+/* ================= STUDENT SUMMARY (NEW) ================= */
+function buildStudentSummary(){
+  const unanswered = [];
+  for(let k=0;k<qs.length;k++){
+    if(!isAnswered(k)) unanswered.push(k+1);
+  }
+
+  const pct = Math.round(score / qs.length * 100);
+
+  let msg = "";
+  if(pct >= 85) msg = "🌟 Awesome work! You’re getting lots of questions right.";
+  else if(pct >= 60) msg = "👍 Good effort! You’re improving — keep going.";
+  else msg = "🌱 Nice try! The more you practise, the easier it will feel.";
+
+  if(unanswered.length){
+    msg += ` You left ${unanswered.length} unanswered — you can try them next time.`;
+  }
+  el("studentOverview").textContent = msg;
+
+  // Skill summary: top 2 strengths + top 2 next steps
+  const skillStats = {};
+  qs.forEach((item, idx)=>{
+    if(!skillStats[item.skill]) skillStats[item.skill] = { total:0, correct:0 };
+    skillStats[item.skill].total++;
+    if(gotCorrect[idx]) skillStats[item.skill].correct++;
+  });
+
+  const skillsSorted = Object.entries(skillStats)
+    .map(([skill, s])=>({ skill, rate: s.correct / s.total }))
+    .sort((a,b)=> b.rate - a.rate);
+
+  const strengths = skillsSorted.filter(x=>x.rate >= 0.75).slice(0,2);
+  const nextSteps = skillsSorted.filter(x=>x.rate < 0.75).slice(0,2);
+
+  el("studentWellList").innerHTML = strengths.length
+    ? strengths.map(x=>`<li><b>${x.skill}</b> — great job!</li>`).join("")
+    : "<li>Sticking with the questions — that’s a strong learning skill.</li>";
+
+  el("studentNextList").innerHTML = nextSteps.length
+    ? nextSteps.map(x=>`<li><b>${x.skill}</b> — practise 2–3 more similar examples.</li>`).join("")
+    : "<li>Keep practising to build speed and confidence.</li>";
 }
 
 /* ================= CHART ================= */
